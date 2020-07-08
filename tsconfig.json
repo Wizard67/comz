@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "esnext"],
+    "declaration": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "index.ts",
+    "defines/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
