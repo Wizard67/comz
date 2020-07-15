@@ -1,5 +1,6 @@
-import typescript from 'rollup-plugin-typescript2'
-import vuePlugin from 'rollup-plugin-vue'
+import VuePlugin from 'rollup-plugin-vue'
+import PostcssPlugin from 'rollup-plugin-postcss'
+import Typescript from 'rollup-plugin-typescript2'
 
 export default {
   input: {
@@ -17,9 +18,10 @@ export default {
   ],
   external: [ 'vue' ],
   plugins: [
-    typescript(),
-    vuePlugin({
-      needMap: false
-    })
+    VuePlugin({
+      preprocessStyles: true
+    }),
+    PostcssPlugin(),
+    Typescript(),
   ]
 }

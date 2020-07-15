@@ -12,8 +12,7 @@
     "allowSyntheticDefaultImports": true
   },
   "include": [
-    "index.ts",
-    "defines/*"
+    "components/**/*.ts",
   ],
   "exclude": [
     "node_modules"

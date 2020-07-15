@@ -1,18 +1,16 @@
 <template>
-  <h1>{{ text }}</h1>
+  <Button></Button>
 </template>
 
 <script>
 import { ref } from 'vue'
+import { Button } from '@fe-tools/nui-ui'
 
 export default {
-  setup() {
-    const text = ref('hello vue3!')
-
-    return {
-      text
-    }
-  }
+  components: {
+    Button
+  },
+  setup() {}
 }
 </script>
 

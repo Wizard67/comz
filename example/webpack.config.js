@@ -6,7 +6,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 module.exports = (env = {}) => ({
   mode: env.prod ? 'production' : 'development',
   devtool: env.prod ? 'source-map' : 'cheap-module-eval-source-map',
-  entry: path.resolve(__dirname, './src/main.js'),
+  entry: path.resolve(__dirname, './index.js'),
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/'
@@ -14,7 +14,8 @@ module.exports = (env = {}) => ({
   resolve: {
     alias: {
       'vue': '@vue/runtime-dom'
-    }
+    },
+    extensions: ['.js', '.vue']
   },
   module: {
     rules: [
