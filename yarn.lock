@@ -138,36 +138,36 @@
     "@types/webpack-sources" "*"
     source-map "^0.6.0"
 
-"@vue/compiler-core@3.0.0-beta.21":
-  version "3.0.0-beta.21"
-  resolved "https://registry.npm.taobao.org/@vue/compiler-core/download/@vue/compiler-core-3.0.0-beta.21.tgz#818b1a27d640663de01fef3a12ba53cd90cbd946"
-  integrity sha1-gYsaJ9ZAZj3gH+86ErpTzZDL2UY=
+"@vue/compiler-core@3.0.0-beta.22":
+  version "3.0.0-beta.22"
+  resolved "https://registry.npm.taobao.org/@vue/compiler-core/download/@vue/compiler-core-3.0.0-beta.22.tgz#d49acac2125d5e54fcf6958402ad449e2587c540"
+  integrity sha1-1JrKwhJdXlT89pWEAq1EniWHxUA=
   dependencies:
     "@babel/parser" "^7.10.4"
     "@babel/types" "^7.10.4"
-    "@vue/shared" "3.0.0-beta.21"
+    "@vue/shared" "3.0.0-beta.22"
     estree-walker "^2.0.1"
     source-map "^0.6.1"
 
-"@vue/compiler-dom@3.0.0-beta.21":
-  version "3.0.0-beta.21"
-  resolved "https://registry.npm.taobao.org/@vue/compiler-dom/download/@vue/compiler-dom-3.0.0-beta.21.tgz#16140b976a083481a7f58577dbb5d7f70f487798"
-  integrity sha1-FhQLl2oINIGn9YV327XX9w9Id5g=
+"@vue/compiler-dom@3.0.0-beta.22":
+  version "3.0.0-beta.22"
+  resolved "https://registry.npm.taobao.org/@vue/compiler-dom/download/@vue/compiler-dom-3.0.0-beta.22.tgz#d3eae4321767529ca73f93a1ddb378f53e5728b4"
+  integrity sha1-0+rkMhdnUpynP5Oh3bN49T5XKLQ=
   dependencies:
-    "@vue/compiler-core" "3.0.0-beta.21"
-    "@vue/shared" "3.0.0-beta.21"
+    "@vue/compiler-core" "3.0.0-beta.22"
+    "@vue/shared" "3.0.0-beta.22"
 
-"@vue/compiler-sfc@^3.0.0-beta.19":
-  version "3.0.0-beta.21"
-  resolved "https://registry.npm.taobao.org/@vue/compiler-sfc/download/@vue/compiler-sfc-3.0.0-beta.21.tgz#56c256c0d1067ca1ac58556fddb2c7adfcec9572"
-  integrity sha1-VsJWwNEGfKGsWFVv3bLHrfzslXI=
+"@vue/compiler-sfc@^3.0.0-beta.22":
+  version "3.0.0-beta.22"
+  resolved "https://registry.npm.taobao.org/@vue/compiler-sfc/download/@vue/compiler-sfc-3.0.0-beta.22.tgz?cache=0&sync_timestamp=1594831483569&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Fcompiler-sfc%2Fdownload%2F%40vue%2Fcompiler-sfc-3.0.0-beta.22.tgz#14694b57b78c7332d7c65084395b5eb457241be6"
+  integrity sha1-FGlLV7eMczLXxlCEOVtetFckG+Y=
   dependencies:
     "@babel/parser" "^7.10.4"
     "@babel/types" "^7.10.4"
-    "@vue/compiler-core" "3.0.0-beta.21"
-    "@vue/compiler-dom" "3.0.0-beta.21"
-    "@vue/compiler-ssr" "3.0.0-beta.21"
-    "@vue/shared" "3.0.0-beta.21"
+    "@vue/compiler-core" "3.0.0-beta.22"
+    "@vue/compiler-dom" "3.0.0-beta.22"
+    "@vue/compiler-ssr" "3.0.0-beta.22"
+    "@vue/shared" "3.0.0-beta.22"
     consolidate "^0.15.1"
     estree-walker "^2.0.1"
     hash-sum "^2.0.0"
@@ -179,42 +179,42 @@
     postcss-selector-parser "^6.0.2"
     source-map "^0.6.1"
 
-"@vue/compiler-ssr@3.0.0-beta.21":
-  version "3.0.0-beta.21"
-  resolved "https://registry.npm.taobao.org/@vue/compiler-ssr/download/@vue/compiler-ssr-3.0.0-beta.21.tgz#ea06f054a84832143a311688067000b970d427a7"
-  integrity sha1-6gbwVKhIMhQ6MRaIBnAAuXDUJ6c=
+"@vue/compiler-ssr@3.0.0-beta.22":
+  version "3.0.0-beta.22"
+  resolved "https://registry.npm.taobao.org/@vue/compiler-ssr/download/@vue/compiler-ssr-3.0.0-beta.22.tgz#98f42e44f1d83f336dfa26613f6e0a2e07ec43a2"
+  integrity sha1-mPQuRPHYPzNt+iZhP24KLgfsQ6I=
   dependencies:
-    "@vue/compiler-dom" "3.0.0-beta.21"
-    "@vue/shared" "3.0.0-beta.21"
+    "@vue/compiler-dom" "3.0.0-beta.22"
+    "@vue/shared" "3.0.0-beta.22"
 
-"@vue/reactivity@3.0.0-beta.21":
-  version "3.0.0-beta.21"
-  resolved "https://registry.npm.taobao.org/@vue/reactivity/download/@vue/reactivity-3.0.0-beta.21.tgz#b974040b50799f36c5b75941e7b13dc074db1827"
-  integrity sha1-uXQEC1B5nzbFt1lB57E9wHTbGCc=
+"@vue/reactivity@3.0.0-beta.22":
+  version "3.0.0-beta.22"
+  resolved "https://registry.npm.taobao.org/@vue/reactivity/download/@vue/reactivity-3.0.0-beta.22.tgz#7abf17bdf1bb2e0faa2aff84435da761f4db6b63"
+  integrity sha1-er8XvfG7Lg+qKv+EQ12nYfTba2M=
   dependencies:
-    "@vue/shared" "3.0.0-beta.21"
+    "@vue/shared" "3.0.0-beta.22"
 
-"@vue/runtime-core@3.0.0-beta.21":
-  version "3.0.0-beta.21"
-  resolved "https://registry.npm.taobao.org/@vue/runtime-core/download/@vue/runtime-core-3.0.0-beta.21.tgz#7c8e351d8376bc8076d7685a7ac0a1caf8a9d3cb"
-  integrity sha1-fI41HYN2vIB212haesChyvip08s=
+"@vue/runtime-core@3.0.0-beta.22":
+  version "3.0.0-beta.22"
+  resolved "https://registry.npm.taobao.org/@vue/runtime-core/download/@vue/runtime-core-3.0.0-beta.22.tgz#0b4342899f27d67e1d55dc48e40b90e61dddd45c"
+  integrity sha1-C0NCiZ8n1n4dVdxI5AuQ5h3d1Fw=
   dependencies:
-    "@vue/reactivity" "3.0.0-beta.21"
-    "@vue/shared" "3.0.0-beta.21"
+    "@vue/reactivity" "3.0.0-beta.22"
+    "@vue/shared" "3.0.0-beta.22"
 
-"@vue/runtime-dom@3.0.0-beta.21":
-  version "3.0.0-beta.21"
-  resolved "https://registry.npm.taobao.org/@vue/runtime-dom/download/@vue/runtime-dom-3.0.0-beta.21.tgz#ec84f1f775494a28a4f2375224c7d9d2c54a5a68"
-  integrity sha1-7ITx93VJSiik8jdSJMfZ0sVKWmg=
+"@vue/runtime-dom@3.0.0-beta.22":
+  version "3.0.0-beta.22"
+  resolved "https://registry.npm.taobao.org/@vue/runtime-dom/download/@vue/runtime-dom-3.0.0-beta.22.tgz?cache=0&sync_timestamp=1594831506583&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Fruntime-dom%2Fdownload%2F%40vue%2Fruntime-dom-3.0.0-beta.22.tgz#7254b72ebec229664cef32d6843759950fa7f912"
+  integrity sha1-clS3Lr7CKWZM7zLWhDdZlQ+n+RI=
   dependencies:
-    "@vue/runtime-core" "3.0.0-beta.21"
-    "@vue/shared" "3.0.0-beta.21"
+    "@vue/runtime-core" "3.0.0-beta.22"
+    "@vue/shared" "3.0.0-beta.22"
     csstype "^2.6.8"
 
-"@vue/shared@3.0.0-beta.21":
-  version "3.0.0-beta.21"
-  resolved "https://registry.npm.taobao.org/@vue/shared/download/@vue/shared-3.0.0-beta.21.tgz#f4fd53501f40aaaead1448de20beb831283a6e08"
-  integrity sha1-9P1TUB9Aqq6tFEjeIL64MSg6bgg=
+"@vue/shared@3.0.0-beta.22":
+  version "3.0.0-beta.22"
+  resolved "https://registry.npm.taobao.org/@vue/shared/download/@vue/shared-3.0.0-beta.22.tgz#b5c40f27f9fbb76f235255d836c3226566ae9652"
+  integrity sha1-tcQPJ/n7t28jUlXYNsMiZWaullI=
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -4508,10 +4508,10 @@ rollup-plugin-typescript2@^0.27.1:
     resolve "1.15.1"
     tslib "1.11.2"
 
-rollup-plugin-vue@^6.0.0-beta.6:
-  version "6.0.0-beta.6"
-  resolved "https://registry.npm.taobao.org/rollup-plugin-vue/download/rollup-plugin-vue-6.0.0-beta.6.tgz#e77dc9cdec9e53778f086259a89fbff36f391ddf"
-  integrity sha1-533JzeyeU3ePCGJZqJ+/8285Hd8=
+rollup-plugin-vue@^6.0.0-beta.8:
+  version "6.0.0-beta.8"
+  resolved "https://registry.npm.taobao.org/rollup-plugin-vue/download/rollup-plugin-vue-6.0.0-beta.8.tgz#7ad7cb9cdeee1475919c2f0e33fe0b2dfdeb59bd"
+  integrity sha1-etfLnN7uFHWRnC8OM/4LLf3rWb0=
   dependencies:
     debug "^4.1.1"
     hash-sum "^2.0.0"
@@ -5413,14 +5413,14 @@ vue-loader@^16.0.0-beta.4:
     merge-source-map "^1.1.0"
     source-map "^0.6.1"
 
-vue@^3.0.0-beta.19:
-  version "3.0.0-beta.21"
-  resolved "https://registry.npm.taobao.org/vue/download/vue-3.0.0-beta.21.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue%2Fdownload%2Fvue-3.0.0-beta.21.tgz#71b8ba89cf5e2321371344492caa854e8087848c"
-  integrity sha1-cbi6ic9eIyE3E0RJLKqFToCHhIw=
+vue@^3.0.0-beta.22:
+  version "3.0.0-beta.22"
+  resolved "https://registry.npm.taobao.org/vue/download/vue-3.0.0-beta.22.tgz#7ef933093313b457446e0257b5abce35e71b4669"
+  integrity sha1-fvkzCTMTtFdEbgJXtavONecbRmk=
   dependencies:
-    "@vue/compiler-dom" "3.0.0-beta.21"
-    "@vue/runtime-dom" "3.0.0-beta.21"
-    "@vue/shared" "3.0.0-beta.21"
+    "@vue/compiler-dom" "3.0.0-beta.22"
+    "@vue/runtime-dom" "3.0.0-beta.22"
+    "@vue/shared" "3.0.0-beta.22"
 
 watchpack-chokidar2@^2.0.0:
   version "2.0.0"
