@@ -1,15 +1,23 @@
 <template>
-  <div class="button">
-    BUTTON
+  <div
+    class="button"
+    @click="handleButtonClick"
+  >
+    <slot></slot>
   </div>
 </template>
 
-<script lang="typescript">
-import { defineComponent } from 'vue'
+<script setup="_, { emit }" lang="ts">
 
-export default defineComponent({
-  setup() {}
-})
+declare function emit(event: 'on-click'): void
+
+declare const props: {
+  type?: string
+  color?: string
+}
+
+export const handleButtonClick = () => emit('on-click')
+
 </script>
 
 <style lang="scss">
@@ -19,5 +27,9 @@ export default defineComponent({
   color: white;
   background-color: lightskyblue;
   font-size: 14px;
+  user-select: none;
+}
+.button:hover {
+  cursor: pointer;
 }
 </style>
