@@ -78,7 +78,7 @@
   dependencies:
     "@rollup/pluginutils" "^3.0.8"
 
-"@rollup/plugin-node-resolve@^8.0.0", "@rollup/plugin-node-resolve@^8.1.0":
+"@rollup/plugin-node-resolve@^8.0.0":
   version "8.4.0"
   resolved "https://registry.npm.taobao.org/@rollup/plugin-node-resolve/download/@rollup/plugin-node-resolve-8.4.0.tgz#261d79a680e9dc3d86761c14462f24126ba83575"
   integrity sha1-Jh15poDp3D2GdhwURi8kEmuoNXU=
