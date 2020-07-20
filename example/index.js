@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
 import Button from './src/button.vue'
+import Card from './src/card.vue'
 
-createApp(Button).mount('#app')
+createApp(Card).mount('#app')
