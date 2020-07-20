@@ -1,11 +1,14 @@
 <template>
   <main>
-    <Button
-      type="red"
-      @on-click="handleClick"
-    >
-      BUTTON
-    </Button>
+    <Button @on-click="handleClick">按钮 normal</Button>
+
+    <br>
+
+    <Button status="disabled" @on-click="handleClick">按钮 disabled</Button>
+
+    <br>
+
+    <Button status="loading" @on-click="handleClick">按钮 loading</Button>
   </main>
 </template>
 
@@ -28,8 +31,13 @@ export default {
 </script>
 
 <style>
+html, body {
+  margin: 0;
+}
+
 main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
