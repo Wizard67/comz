@@ -22,6 +22,8 @@ declare const props: {
 
 declare function emit(event: 'on-click'): void
 
+import {} from 'vue'
+
 export const handleClick = () => {
   props.status === 'normal'
     ? emit('on-click')

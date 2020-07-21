@@ -18,6 +18,8 @@ declare const props: {
   shadow?: boolean
 }
 
+import {} from 'vue'
+
 </script>
 
 <style lang="scss">
