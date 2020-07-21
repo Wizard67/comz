@@ -16,7 +16,7 @@
 <script setup="props, { emit }" lang="ts">
 
 declare const props: {
-  status?: 'normal' | 'disabled'
+  status?: 'normal' | 'disabled' | 'loading'
   autofocus: boolean
 }
 
