@@ -34,6 +34,7 @@ declare const props: {
   border: 1px rgba(0, 0, 0, .08) solid;
 
   &--shadow {
+    @extend %card;
     box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, .2);
   }
 
