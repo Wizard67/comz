@@ -8,10 +8,10 @@
   },
   "dependencies": {
     "components": "^0.1.0",
-    "vue": "^3.0.0-rc.2"
+    "vue": "^3.0.0-rc.4"
   },
   "devDependencies": {
-    "@vue/compiler-sfc": "^3.0.0-rc.2",
+    "@vue/compiler-sfc": "^3.0.0-rc.4",
     "vite": "^1.0.0-beta.11"
   }
 }
