@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
-// import Button from './src/button.vue'
-// import Card from './src/card.vue'
-import Grid from './src/grid.vue'
+// import Comp from './src/button.vue'
+// import Comp from './src/card.vue'
+// import Comp from './src/grid.vue'
+import Comp from './src/modal.vue'
 
-createApp(Grid).mount('#app')
+createApp(Comp).mount('#app')
