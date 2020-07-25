@@ -22,14 +22,13 @@ declare const props: {
 
 declare function emit(event: 'on-click'): void
 
-import {} from 'vue'
-
 export const handleClick = () => {
   (props.status ?? 'normal') === 'normal'
     ? emit('on-click')
     : undefined
 }
 
+export default {}
 </script>
 
 <style lang="scss">

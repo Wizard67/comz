@@ -13,13 +13,11 @@
 </template>
 
 <script setup="props, { emit }" lang="ts">
-
 declare const props: {
   shadow?: boolean
 }
 
-import {} from 'vue'
-
+export default {}
 </script>
 
 <style lang="scss">

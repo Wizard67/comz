@@ -16,6 +16,8 @@ declare const props: {
 export const name = props.name
 export const place = props.place || 'initial'
 export const border = inject(key) ? '0.5px rgba(0, 0, 0, .2) dashed': ''
+
+export default {}
 </script>
 
 <style vars="{ name, place, border }">

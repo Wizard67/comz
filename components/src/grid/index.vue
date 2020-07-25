@@ -18,6 +18,8 @@ declare const props: {
 
 export const gap = props.gap
 export const template = props.template
+
+export default {}
 </script>
 
 <style vars="{ gap, template }">
