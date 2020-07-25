@@ -22,10 +22,12 @@ export default {}
 
 <style lang="scss">
 %card {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: auto;
+  background-color: white;
   font-size: 14px;
 }
 
