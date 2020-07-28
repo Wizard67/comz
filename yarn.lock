@@ -3264,10 +3264,10 @@ type-is@^1.6.16:
     media-typer "0.3.0"
     mime-types "~2.1.24"
 
-typescript@^3.9.6:
-  version "3.9.6"
-  resolved "https://registry.npm.taobao.org/typescript/download/typescript-3.9.6.tgz?cache=0&sync_timestamp=1594795835921&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftypescript%2Fdownload%2Ftypescript-3.9.6.tgz#8f3e0198a34c3ae17091b35571d3afd31999365a"
-  integrity sha1-jz4BmKNMOuFwkbNVcdOv0xmZNlo=
+typescript@^4.0.0-dev.20200728:
+  version "4.0.0-dev.20200728"
+  resolved "https://registry.npm.taobao.org/typescript/download/typescript-4.0.0-dev.20200728.tgz?cache=0&sync_timestamp=1595920888379&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftypescript%2Fdownload%2Ftypescript-4.0.0-dev.20200728.tgz#31cf9dd9737eba2ba1f773f768502bf0866a4390"
+  integrity sha1-Mc+d2XN+uiuh93P3aFAr8IZqQ5A=
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
