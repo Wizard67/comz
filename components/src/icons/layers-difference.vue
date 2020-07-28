@@ -1,0 +1,29 @@
+<template>
+<div class="icon-wrap">
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layers-difference" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z"/>
+    <path d="M16 16v2a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h2v-2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-2" />
+    <polyline points="8 8 16 8 16 16 8 16 8 8" stroke-dasharray="4 4" stroke-dashoffset="2" />
+  </svg>
+  <span>
+    <slot></slot>
+  </span>
+</div>
+</template>
+
+<script setup="props, { emit }" lang="ts">
+export default {}
+</script>
+
+<style lang="scss">
+.icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  vertical-align: baseline;
+
+  svg ~ span {
+    margin-left: 2px;
+  }
+}
+</style>

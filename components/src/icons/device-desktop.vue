@@ -1,0 +1,31 @@
+<template>
+<div class="icon-wrap">
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-desktop" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z"/>
+    <rect x="3" y="4" width="18" height="12" rx="1" />
+    <line x1="7" y1="20" x2="17" y2="20" />
+    <line x1="9" y1="16" x2="9" y2="20" />
+    <line x1="15" y1="16" x2="15" y2="20" />
+  </svg>
+  <span>
+    <slot></slot>
+  </span>
+</div>
+</template>
+
+<script setup="props, { emit }" lang="ts">
+export default {}
+</script>
+
+<style lang="scss">
+.icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  vertical-align: baseline;
+
+  svg ~ span {
+    margin-left: 2px;
+  }
+}
+</style>

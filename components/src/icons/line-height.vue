@@ -1,0 +1,33 @@
+<template>
+<div class="icon-wrap">
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-line-height" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z"/>
+    <polyline points="3 8 6 5 9 8" />
+    <polyline points="3 16 6 19 9 16" />
+    <line x1="6" y1="5" x2="6" y2="19" />
+    <line x1="13" y1="6" x2="20" y2="6" />
+    <line x1="13" y1="12" x2="20" y2="12" />
+    <line x1="13" y1="18" x2="20" y2="18" />
+  </svg>
+  <span>
+    <slot></slot>
+  </span>
+</div>
+</template>
+
+<script setup="props, { emit }" lang="ts">
+export default {}
+</script>
+
+<style lang="scss">
+.icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  vertical-align: baseline;
+
+  svg ~ span {
+    margin-left: 2px;
+  }
+}
+</style>
