@@ -306,7 +306,7 @@
     postcss-selector-parser "^6.0.2"
     source-map "^0.6.1"
 
-"@vue/compiler-sfc@^3.0.0-rc.5":
+"@vue/compiler-sfc@^3.0.0-rc.4", "@vue/compiler-sfc@^3.0.0-rc.5":
   version "3.0.0-rc.5"
   resolved "https://registry.npm.taobao.org/@vue/compiler-sfc/download/@vue/compiler-sfc-3.0.0-rc.5.tgz#374e52a6fbf8fb9aee1213026050a0f1c496fecf"
   integrity sha1-N05Spvv4+5ruEhMCYFCg8cSW/s8=
@@ -2952,10 +2952,17 @@ rollup-pluginutils@^2.8.2:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@^2.11.2, rollup@^2.21.0:
+rollup@^2.11.2:
   version "2.21.0"
   resolved "https://registry.npm.taobao.org/rollup/download/rollup-2.21.0.tgz?cache=0&sync_timestamp=1594148592089&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Frollup%2Fdownload%2Frollup-2.21.0.tgz#d2e114533812043d5c9b7b0a83f1b2a242e4e1d6"
   integrity sha1-0uEUUzgSBD1cm3sKg/GyokLk4dY=
+  optionalDependencies:
+    fsevents "~2.1.2"
+
+rollup@^2.23.0:
+  version "2.23.0"
+  resolved "https://registry.npm.taobao.org/rollup/download/rollup-2.23.0.tgz?cache=0&sync_timestamp=1595563379870&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Frollup%2Fdownload%2Frollup-2.23.0.tgz#b7ab1fee0c0e60132fd0553c4df1e9cdacfada9d"
+  integrity sha1-t6sf7gwOYBMv0FU8TfHpzaz62p0=
   optionalDependencies:
     fsevents "~2.1.2"
 
