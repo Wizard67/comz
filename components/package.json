@@ -25,9 +25,9 @@
     "rollup-plugin-vue": "^6.0.0-beta.9",
     "sass": "^1.26.10",
     "typescript": "^4.0.0-dev.20200728",
-    "vue": "^3.0.0-rc.4"
+    "vue": "^3.0.0-rc.5"
   },
   "peerDependencies": {
-    "vue": "^3.0.0-rc.4"
+    "vue": "^3.0.0-rc.5"
   }
 }
