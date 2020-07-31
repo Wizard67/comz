@@ -14,7 +14,6 @@
 </template>
 
 <script setup="props, { emit }" lang="ts">
-
 declare const props: {
   status?: 'normal' | 'disabled' | 'loading'
   autofocus: boolean

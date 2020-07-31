@@ -6,7 +6,12 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 
 export default {
   input: {
-    'index': 'index.ts'
+    'index': 'index.ts',
+    'button': 'src/button/button.vue',
+    'card': 'src/card/card.vue',
+    'grid': 'src/grid/grid.vue',
+    'grid-item': 'src/grid/grid-item.vue',
+    'modal': 'src/modal/modal.vue',
   },
   output: [
     {
@@ -25,7 +30,9 @@ export default {
       preprocessStyles: true
     }),
     PostcssPlugin(),
-    Typescript(),
+    Typescript({
+      useTsconfigDeclarationDir: true
+    }),
     SvgPlugin()
   ]
 }

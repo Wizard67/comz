@@ -30,8 +30,8 @@
 </template>
 
 <script setup="props, { emit }" lang="ts">
-import Card from '../card/index.vue'
-import Button from '../button/index.vue'
+import Card from '../card/card.vue'
+import Button from '../button/button.vue'
 
 declare function emit(event: 'update:show', state: boolean): void
 declare function emit(event: 'on-close'): void
