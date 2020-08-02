@@ -12,6 +12,7 @@ export default {
     'grid': 'src/grid/grid.vue',
     'grid-item': 'src/grid/grid-item.vue',
     'modal': 'src/modal/modal.vue',
+    'alert': 'src/alert/alert.vue',
   },
   output: [
     {
