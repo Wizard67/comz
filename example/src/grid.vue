@@ -3,18 +3,21 @@
     <Grid
       class="grid"
       gap="4px"
-      template="'a   a   a' 40px
-                'b   c   c' auto
-                'b   c   c' auto /
-                1fr 1fr 1fr"
-      border
+      :template="template"
+      :border="border"
     >
       <GridItem name="a"></GridItem>
-      <GridItem name="b"></GridItem>
+      <GridItem name="b">
+        <div class="block"></div>
+      </GridItem>
       <GridItem name="c"></GridItem>
     </Grid>
 
     <br>
+
+    <Button @click="handleClick">Click</Button>
+
+    <!-- <br>
 
     <Grid
       class="grid"
@@ -45,18 +48,41 @@
       <GridItem name="a"></GridItem>
       <GridItem name="b"></GridItem>
       <GridItem name="c"></GridItem>
-    </Grid>
+    </Grid> -->
   </main>
 </template>
 
 <script>
 import { ref } from 'vue'
-import { Grid } from '@fe-tools/nui-ui'
-import { GridItem } from '@fe-tools/nui-ui'
+import { Button, Grid, GridItem } from '@fe-tools/nui-ui'
+// import Grid from './grid'
+// import GridItem from './grid-item'
+
+const genTemplate = v => `
+  'a   a   a' 40px
+  'b   c   c' auto
+  'b   c   c' auto /
+  ${v} 1fr 1fr
+`
 
 export default {
   components: {
-    Grid, GridItem
+    Grid, GridItem, Button
+  },
+  setup() {
+    const border = ref(true)
+    const template = ref(genTemplate('1fr'))
+
+    const handleClick = () => {
+      border.value = !border.value
+      template.value = border.value
+                         ? genTemplate('1fr')
+                         : genTemplate('.5fr')
+    }
+
+    return {
+      border, template, handleClick
+    }
   }
 }
 </script>
@@ -79,12 +105,12 @@ main {
 
 .grid {
   flex: none;
-  width: 300px;
-  height: 300px;
+  width: 500px;
+  height: 500px;
 }
 .block {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   background-color: lightskyblue;
 }
 </style>

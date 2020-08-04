@@ -1,6 +1,6 @@
-import { InjectionKey  } from 'vue'
+import { InjectionKey, Ref } from 'vue'
 
-export const key: InjectionKey<boolean> = Symbol()
+export const key: InjectionKey<Ref<boolean>> = Symbol()
 
 // TODO:
 export const useBorder = (value: boolean) => {

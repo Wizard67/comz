@@ -5,7 +5,7 @@
 </template>
 
 <script setup="props, { emit }" lang="ts">
-import { inject } from 'vue'
+import { inject, useCssVars } from 'vue'
 import { key } from './use'
 
 declare const props: {
@@ -13,17 +13,17 @@ declare const props: {
   place?: string
 }
 
-export const name = props.name
-export const place = props.place || 'initial'
-export const border = inject(key) ? '0.5px rgba(0, 0, 0, .2) dashed': ''
+useCssVars(() => ({ name: props.name }))
+useCssVars(() => ({ place: props.place || 'initial' }))
+useCssVars(() => ({ border: inject(key)?.value ? '0.5px rgba(0, 0, 0, .2) dashed': 'unset' }))
 
 export default {}
 </script>
 
-<style vars="{ name, place, border }">
+<style lang="scss">
 .grid-item {
-  border: var(--border, unset);
   grid-area: var(--name);
   place-self: var(--place);
+  outline: var(--border);
 }
 </style>
