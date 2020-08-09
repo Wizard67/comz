@@ -13,6 +13,7 @@ export default {
     'grid-item': 'src/grid/grid-item.vue',
     'modal': 'src/modal/modal.vue',
     'alert': 'src/alert/alert.vue',
+    'toast': 'src/toast/toast.vue',
   },
   output: [
     {
