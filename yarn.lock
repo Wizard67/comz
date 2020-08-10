@@ -2740,14 +2740,7 @@ resolve-path@^1.4.0:
     http-errors "~1.6.2"
     path-is-absolute "1.0.1"
 
-resolve@1.15.1:
-  version "1.15.1"
-  resolved "https://registry.npm.taobao.org/resolve/download/resolve-1.15.1.tgz#27bdcdeffeaf2d6244b95bb0f9f4b4653451f3e8"
-  integrity sha1-J73N7/6vLWJEuVuw+fS0ZTRR8+g=
-  dependencies:
-    path-parse "^1.0.6"
-
-resolve@^1.1.7, resolve@^1.11.0, resolve@^1.16.1, resolve@^1.17.0:
+resolve@1.17.0, resolve@^1.1.7, resolve@^1.11.0, resolve@^1.16.1, resolve@^1.17.0:
   version "1.17.0"
   resolved "https://registry.npm.taobao.org/resolve/download/resolve-1.17.0.tgz#b25941b54968231cc2d1bb76a79cb7f2c0bf8444"
   integrity sha1-sllBtUloIxzC0bt2p5y38sC/hEQ=
@@ -2825,16 +2818,16 @@ rollup-plugin-terser@^5.3.0:
     serialize-javascript "^2.1.2"
     terser "^4.6.2"
 
-rollup-plugin-typescript2@^0.27.1:
-  version "0.27.1"
-  resolved "https://registry.npm.taobao.org/rollup-plugin-typescript2/download/rollup-plugin-typescript2-0.27.1.tgz#4f27193408a8f040139eed3e3db7b0c7f3668200"
-  integrity sha1-TycZNAio8EATnu0+Pbewx/NmggA=
+rollup-plugin-typescript2@^0.27.2:
+  version "0.27.2"
+  resolved "https://registry.npm.taobao.org/rollup-plugin-typescript2/download/rollup-plugin-typescript2-0.27.2.tgz#871a7f5d2a774f9cef50d25da868eec72acc2ed8"
+  integrity sha1-hxp/XSp3T5zvUNJdqGjuxyrMLtg=
   dependencies:
-    "@rollup/pluginutils" "^3.0.8"
+    "@rollup/pluginutils" "^3.1.0"
     find-cache-dir "^3.3.1"
     fs-extra "8.1.0"
-    resolve "1.15.1"
-    tslib "1.11.2"
+    resolve "1.17.0"
+    tslib "2.0.1"
 
 rollup-plugin-vue@^6.0.0-beta.10:
   version "6.0.0-beta.10"
@@ -3170,10 +3163,10 @@ toidentifier@1.0.0:
   resolved "https://registry.npm.taobao.org/toidentifier/download/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
   integrity sha1-fhvjRw8ed5SLxD2Uo8j013UrpVM=
 
-tslib@1.11.2:
-  version "1.11.2"
-  resolved "https://registry.npm.taobao.org/tslib/download/tslib-1.11.2.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftslib%2Fdownload%2Ftslib-1.11.2.tgz#9c79d83272c9a7aaf166f73915c9667ecdde3cc9"
-  integrity sha1-nHnYMnLJp6rxZvc5Fclmfs3ePMk=
+tslib@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.npm.taobao.org/tslib/download/tslib-2.0.1.tgz?cache=0&sync_timestamp=1596751904317&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftslib%2Fdownload%2Ftslib-2.0.1.tgz#410eb0d113e5b6356490eec749603725b021b43e"
+  integrity sha1-QQ6w0RPltjVkkO7HSWA3JbAhtD4=
 
 tslib@^1.10.0:
   version "1.13.0"
