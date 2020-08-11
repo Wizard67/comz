@@ -4,16 +4,7 @@ import Typescript from 'rollup-plugin-typescript2'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 
 export default {
-  input: {
-    'index': 'index.ts',
-    'button': 'src/button/button.vue',
-    'card': 'src/card/card.vue',
-    'grid': 'src/grid/grid.vue',
-    'grid-item': 'src/grid/grid-item.vue',
-    'modal': 'src/modal/modal.vue',
-    'alert': 'src/alert/alert.vue',
-    'toast': 'src/toast/toast.vue',
-  },
+  input: { 'index': 'index.ts' },
   output: [
     {
       dir: 'dist',

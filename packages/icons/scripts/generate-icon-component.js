@@ -6,8 +6,9 @@ const { camelCase, camelCaseTransformMerge } = require('camel-case')
 
 const tasks = []
 
-const libPath = path.resolve(process.cwd(), '../', 'node_modules/tabler-icons/icons/')
-const distPath = path.resolve(process.cwd(), './src/icons/')
+const libPath = path.resolve(process.cwd(), '../../', 'node_modules/tabler-icons/icons/')
+const distPath = path.resolve(process.cwd(), './src/')
+const entryPath = path.resolve(process.cwd(), './')
 
 const handleFileName = name => camelCase(name, { transform: camelCaseTransformMerge })
 
@@ -48,7 +49,7 @@ const generateVueSFC = async (sourcePath, name) => {
 
     writeFile(componentPath, vueTemplate(svg), 'utf-8', err => {
       if (err) throw err
-      resolve(`export { default as ${ handleFileName(name) } } from './${ compoentName }'`)
+      resolve(`export { default as ${ handleFileName(name.replace('.svg', '')) } } from './src/${ compoentName }'`)
     })
   })
 }
@@ -63,7 +64,7 @@ files.forEach(file => tasks.push(generateVueSFC(file.path, file.name)))
 
 Promise.all(tasks).then(async res => {
   await writeFileSync(
-    path.resolve(distPath, './index.ts'),
+    path.resolve(entryPath, './index.ts'),
     res.join(os.EOL),
     'utf-8'
   )

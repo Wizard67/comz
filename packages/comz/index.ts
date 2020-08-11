@@ -6,6 +6,3 @@ export { default as GridItem } from './src/grid/grid-item.vue'
 export { default as Alert } from './src/alert/alert.vue'
 export { default as Toast } from './src/toast/toast.vue'
 
-// export { default as Ad } from './src/icons/ad.vue'
-// import * as Icons from './src/icons/index'
-// export { Icons }

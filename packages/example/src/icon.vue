@@ -8,14 +8,11 @@
 
 <script>
 import { ref } from 'vue'
-// import { Icons } from 'comz'
-import { Ad } from 'comz'
-
-// const { ad } = Icons
+import { ad } from '@comz/icons'
 
 export default {
   components: {
-    Ad
+    Ad: ad
   },
   setup() {
   }
