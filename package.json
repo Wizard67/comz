@@ -1,19 +1,18 @@
 {
   "version": "0.0.1",
-  "description": "vue3 ui toolkit",
   "private": true,
   "workspaces": [
-    "components", "example"
+    "packages/*"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fe-tools/nui-ui.git"
+    "url": "git+https://github.com/Wizard67/comz.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fe-tools/nui-ui/issues"
+    "url": "https://github.com/Wizard67/comz/issues"
   },
-  "homepage": "https://github.com/fe-tools/nui-ui#readme",
+  "homepage": "https://github.com/Wizard67/comz#readme",
   "devDependencies": {}
 }

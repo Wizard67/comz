@@ -1,5 +1,5 @@
 {
-  "name": "@fe-tools/nui-ui",
+  "name": "comz",
   "version": "0.0.1",
   "description": "vue3 ui toolkit",
   "main": "dist/index.js",

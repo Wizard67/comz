@@ -10,8 +10,8 @@
 
 <script>
 import { ref } from 'vue'
-import { Button } from '@fe-tools/nui-ui'
-import { Modal } from '@fe-tools/nui-ui'
+import { Button } from 'comz'
+import { Modal } from 'comz'
 
 export default {
   components: {

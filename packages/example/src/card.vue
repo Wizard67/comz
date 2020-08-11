@@ -40,7 +40,7 @@
 
 <script>
 import { ref } from 'vue'
-import { Card } from '@fe-tools/nui-ui'
+import { Card } from 'comz'
 
 export default {
   components: {

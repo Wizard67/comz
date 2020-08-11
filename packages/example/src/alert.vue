@@ -19,7 +19,7 @@
 
 <script>
 import { ref } from 'vue'
-import { Alert } from '@fe-tools/nui-ui'
+import { Alert } from 'comz'
 
 export default {
   components: {

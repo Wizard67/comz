@@ -54,7 +54,7 @@
 
 <script>
 import { ref } from 'vue'
-import { Button, Grid, GridItem } from '@fe-tools/nui-ui'
+import { Button, Grid, GridItem } from 'comz'
 // import Grid from './grid'
 // import GridItem from './grid-item'
 

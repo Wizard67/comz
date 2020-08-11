@@ -673,11 +673,6 @@ commondir@^1.0.1:
   resolved "https://registry.npm.taobao.org/commondir/download/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
   integrity sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=
 
-components@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.npm.taobao.org/components/download/components-0.1.0.tgz#2057c08e9c7bf2662feec95c49e5ff2a9ab85ed5"
-  integrity sha1-IFfAjpx78mYv7slcSeX/Kpq4XtU=
-
 concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.npm.taobao.org/concat-map/download/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"

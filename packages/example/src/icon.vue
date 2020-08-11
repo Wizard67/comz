@@ -8,8 +8,8 @@
 
 <script>
 import { ref } from 'vue'
-// import { Icons } from '@fe-tools/nui-ui'
-import { Ad } from '@fe-tools/nui-ui'
+// import { Icons } from 'comz'
+import { Ad } from 'comz'
 
 // const { ad } = Icons
 

@@ -12,7 +12,7 @@
 
 <script>
 import { ref } from 'vue'
-import { Toast, Button } from '@fe-tools/nui-ui'
+import { Toast, Button } from 'comz'
 
 export default {
   components: {
