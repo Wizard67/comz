@@ -14,6 +14,7 @@ export default {
     'alert': 'src/alert/alert.vue',
     'toast': 'src/toast/toast.vue',
     'input': 'src/input/input.vue',
+    'textarea': 'src/textarea/textarea.vue',
   },
   output: [
     {

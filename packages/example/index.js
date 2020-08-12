@@ -6,6 +6,7 @@ import { createApp } from 'vue'
 // import Comp from './src/modal.vue'
 // import Comp from './src/alert.vue'
 // import Comp from './src/toast.vue'
-import Comp from './src/input.vue'
+// import Comp from './src/input.vue'
+import Comp from './src/textarea.vue'
 
 createApp(Comp).mount('#app')
