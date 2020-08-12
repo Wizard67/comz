@@ -3,12 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --force",
     "build": "vite build"
   },
   "dependencies": {
-    "vue": "^3.0.0-rc.5",
-    "comz": "0.0.1"
+    "vue": "^3.0.0-rc.5"
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.0.0-rc.5",

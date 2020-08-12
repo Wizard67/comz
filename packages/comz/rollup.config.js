@@ -13,6 +13,7 @@ export default {
     'modal': 'src/modal/modal.vue',
     'alert': 'src/alert/alert.vue',
     'toast': 'src/toast/toast.vue',
+    'input': 'src/input/input.vue',
   },
   output: [
     {
