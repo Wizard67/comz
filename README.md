@@ -27,7 +27,7 @@ yarn add comz
 | Form           | Form       | I                | -          |
 | Input          | Form       | I                | -          |
 | Textarea       | Form       | I                | -          |
-| Radio          | Form       | -                | -          |
+| Radio          | Form       | I                | -          |
 | Checkbox       | Form       | -                | -          |
 | Select         | Form       | -                | -          |
 | Slider         | Form       | -                | -          |

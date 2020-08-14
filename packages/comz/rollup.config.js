@@ -15,6 +15,7 @@ export default {
     'toast': 'src/toast/toast.vue',
     'input': 'src/input/input.vue',
     'textarea': 'src/textarea/textarea.vue',
+    'radio': 'src/radio/radio.vue',
   },
   output: [
     {
