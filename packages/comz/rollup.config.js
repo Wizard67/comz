@@ -16,6 +16,7 @@ export default {
     'input': 'src/input/input.vue',
     'textarea': 'src/textarea/textarea.vue',
     'radio': 'src/radio/radio.vue',
+    'checkbox': 'src/checkbox/checkbox.vue',
   },
   output: [
     {
