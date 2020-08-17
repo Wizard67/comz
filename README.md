@@ -28,7 +28,7 @@ yarn add comz
 | Textarea       | Form       | I                | -          |
 | Radio          | Form       | I                | -          |
 | Checkbox       | Form       | I                | -          |
-| Select         | Form       | -                | -          |
+| Select         | Form       | I                | -          |
 
 |   component    |    type    |    state(i/e)    |    test    |
 |----------------|------------|:----------------:|:----------:|

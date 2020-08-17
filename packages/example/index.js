@@ -9,6 +9,7 @@ import { createApp } from 'vue'
 // import Comp from './src/input.vue'
 // import Comp from './src/textarea.vue'
 // import Comp from './src/radio.vue'
-import Comp from './src/checkbox.vue'
+// import Comp from './src/checkbox.vue'
+import Comp from './src/select.vue'
 
 createApp(Comp).mount('#app')

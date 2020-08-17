@@ -17,6 +17,8 @@ export default {
     'textarea': 'src/textarea/textarea.vue',
     'radio': 'src/radio/radio.vue',
     'checkbox': 'src/checkbox/checkbox.vue',
+    'select': 'src/select/select.vue',
+    'option': 'src/select/option.vue',
   },
   output: [
     {
