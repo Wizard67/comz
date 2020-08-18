@@ -1,5 +1,4 @@
 <template>
-<div class="icon-wrap">
   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cut" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path stroke="none" d="M0 0h24v24H0z"/>
     <circle cx="7" cy="17" r="3" />
@@ -7,25 +6,4 @@
     <line x1="9.15" y1="14.85" x2="18" y2="4" />
     <line x1="6" y1="4" x2="14.85" y2="14.85" />
   </svg>
-  <span>
-    <slot></slot>
-  </span>
-</div>
 </template>
-
-<script setup="props, { emit }" lang="ts">
-export default {}
-</script>
-
-<style lang="scss">
-.icon-wrap {
-  display: inline-flex;
-  align-items: center;
-  font-size: 14px;
-  vertical-align: baseline;
-
-  svg ~ span {
-    margin-left: 2px;
-  }
-}
-</style>
