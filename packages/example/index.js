@@ -1,4 +1,6 @@
 import { createApp } from 'vue'
+import 'comz/dist/style.css'
+
 // import Comp from './src/button.vue'
 // import Comp from './src/card.vue'
 // import Comp from './src/grid.vue'

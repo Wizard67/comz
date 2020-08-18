@@ -1,7 +1,10 @@
+import path from 'path'
 import VuePlugin from 'rollup-plugin-vue'
 import PostcssPlugin from 'rollup-plugin-postcss'
 import Typescript from 'rollup-plugin-typescript2'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
+
+const outputDir = 'dist'
 
 export default {
   input: {
@@ -22,7 +25,7 @@ export default {
   },
   output: [
     {
-      dir: 'dist',
+      dir: outputDir,
       format: 'esm',
       chunkFileNames: '[name].js',
       globals: {
@@ -36,7 +39,10 @@ export default {
     VuePlugin({
       preprocessStyles: true
     }),
-    PostcssPlugin(),
+    PostcssPlugin({
+      extract: true,
+      extract: path.resolve(outputDir, 'style.css')
+    }),
     Typescript({
       useTsconfigDeclarationDir: true
     })
