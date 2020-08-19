@@ -4,6 +4,7 @@
   "description": "vue3 ui toolkit",
   "main": "dist/index.js",
   "typings": "types/index.d.ts",
+  "sideEffects": false,
   "files": [
     "dist",
     "types"
