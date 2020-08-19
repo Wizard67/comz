@@ -1,22 +1,50 @@
 <template>
   <main>
-    <div>
-      <Ad>HELLO</Ad>
-    </div>
+    <Icon
+      color="green"
+      :size="size"
+      :stroke-width="2"
+    ><Ad/>HELLO WORLD</Icon>
+
+    <br>
+
+    <Icon
+      color="red"
+      :size="size"
+      :stroke-width="1"
+      spin
+    ><Refresh/></Icon>
+
+    <br>
+
+    <Button @on-click="handleClick">Change Size</Button>
   </main>
 </template>
 
 <script>
-import { ref } from 'vue'
-import { ad } from '@comz/icons'
+import { ref, defineComponent } from 'vue'
+import { Button, Icon } from 'comz'
+import { Ad, Refresh } from '@comz/icons'
 
-export default {
+export default defineComponent({
   components: {
-    Ad: ad
+    Button, Icon,
+    Ad, Refresh
   },
-  setup() {
+  setup(props, { slots }) {
+    const size = ref('16px')
+
+    const handleClick = () => {
+      size.value = size.value === '16px'? '32px': '16px'
+      console.log('out', size.value)
+    }
+    
+    return {
+      size,
+      handleClick
+    }
   }
-}
+})
 </script>
 
 <style>
@@ -31,5 +59,17 @@ main {
   align-items: center;
   width: 100vw;
   height: 100vh;
+}
+
+.iicon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 28px;
+  color: green;
+  stroke-width: 1;
+}
+
+.span {
+  display: inline-block;
 }
 </style>

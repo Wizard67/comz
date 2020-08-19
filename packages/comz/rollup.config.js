@@ -22,6 +22,7 @@ export default {
     'checkbox': 'src/checkbox/checkbox.vue',
     'select': 'src/select/select.vue',
     'option': 'src/select/option.vue',
+    'icon': 'src/icon/icon.vue',
   },
   output: [
     {

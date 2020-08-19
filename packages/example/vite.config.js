@@ -1,3 +1,6 @@
 module.exports = {
-  minify: false
+  minify: false,
+  rollupInputOptions: {
+    external: [ 'vue' ]
+  }
 }
