@@ -1,4 +1,3 @@
-const os = require('os')
 const path = require('path')
 const fs = require('fs-extra')
 const glob = require('fast-glob')
@@ -11,13 +10,29 @@ const tasks = []
 const libPath = path.resolve(process.cwd(), '../../', 'node_modules/tabler-icons/icons/')
 const distPath = path.resolve(process.cwd(), './src/')
 const entryPath = path.resolve(process.cwd(), './index.js')
+const typesPath = path.resolve(process.cwd(), './types/')
 const rollupEntriesPath = path.resolve(process.cwd(), './entries.js')
 
-const handleFileName = name => pascalCase(name, { transform: pascalCaseTransformMerge })
+const pascalCaseName = name => pascalCase(name,{ transform: pascalCaseTransformMerge })
 
-const vueTemplate = svg => `<template>
-${ svg.split(os.EOL).map(i => '  ' + i).join(os.EOL) }
-</template>`
+const vueTemplate = svg => 
+  "<template>\n" +
+    `${ svg.split('\n').map(i => `  ${ i }`).join('\n') }` + '\n' +
+  "</template>"
+
+const entriesTemplate = (enties) => enties.map(e => 
+  `export { default as ${ pascalCaseName(e.name) } } from '${ e.path }'`
+).join('\n')
+
+const rollupEntriesTemplate = (enties) => 
+  `export default ${JSON.stringify(enties, null, 2)}`
+
+const typesTemplate = (comps) => 
+  "declare module '@comz/icons' {\n" +
+  "  import { defineComponent } from 'vue'\n" +
+  "  type Vue = typeof defineComponent\n" + comps.map(c => 
+  `  export const ${ pascalCaseName(c) }: Vue`).join('\n') + '\n' +
+  "}"
 
 const generateVueSFC = async (sourcePath, name) => {
   const content = await fs.readFileSync(sourcePath, 'utf8')
@@ -48,6 +63,7 @@ if (!fs.existsSync(libPath)) {
 }
 
 fs.ensureDirSync(distPath)
+fs.ensureDirSync(typesPath)
 
 const files = glob.sync(`${ libPath }/*.svg`, { objectMode: true })
 
@@ -60,14 +76,17 @@ files.forEach(file => {
 })
 
 Promise.all(tasks).then(async res => {
-  const arr1 = []
-  const arr2 = {}
+  const enties = []
+  const rollupEntries = {}
+  const types = []
 
   res.forEach(file => {
-    arr1.push(`export { default as ${ handleFileName(file.name) } } from '${ file.path }'`)
-    arr2[file.name] = file.path
+    enties.push(file)
+    rollupEntries[file.name] = file.path
+    types.push(file.name)
   })
-  
-  await fs.writeFileSync(entryPath, arr1.join(os.EOL), 'utf-8')
-  await fs.writeFileSync(rollupEntriesPath, `export default ${JSON.stringify(arr2, null, 2)}`, 'utf-8')
+
+  await fs.writeFileSync(entryPath, entriesTemplate(enties), 'utf-8')
+  await fs.writeFileSync(rollupEntriesPath, rollupEntriesTemplate(rollupEntries), 'utf-8')
+  await fs.writeFileSync(path.resolve(typesPath, 'index.d.ts'), typesTemplate(types), 'utf-8')
 })
