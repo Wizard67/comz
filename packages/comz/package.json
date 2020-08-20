@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^8.4.0",
-    "@vue/compiler-sfc": "^3.0.0-rc.4",
+    "@vue/compiler-sfc": "^3.0.0-rc.6",
     "postcss-scss": "^2.1.1",
     "rollup": "^2.23.1",
     "rollup-plugin-postcss": "^3.1.3",
@@ -27,9 +27,9 @@
     "rollup-plugin-vue": "^6.0.0-beta.9",
     "sass": "^1.26.10",
     "typescript": "^4.0.0-dev.20200728",
-    "vue": "^3.0.0-rc.5"
+    "vue": "^3.0.0-rc.6"
   },
   "peerDependencies": {
-    "vue": "^3.0.0-rc.5"
+    "vue": "^3.0.0-rc.6"
   }
 }
