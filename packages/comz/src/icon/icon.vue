@@ -5,7 +5,8 @@
 </template>
 
 <script setup="props, { emit }" lang="ts">
-import { useCssVars, computed } from 'vue'
+import { computed } from 'vue'
+import { useClassName, useCssVars } from '../../vcas'
 
 declare const props: {
   size?: string
@@ -14,17 +15,15 @@ declare const props: {
   spin: boolean
 }
 
-export const iconClassName = computed(() => {
-  const classNameList = ['icon']
-
-  if (props.spin) classNameList.push('spin')
-
-  return classNameList.join('--')
+export const iconClassName = useClassName('icon', {
+  'spin': computed(() => props.spin)
 })
 
-useCssVars(() => ({ size: props.size || '' }))
-useCssVars(() => ({ color: props.color || '' }))
-useCssVars(() => ({ 'stroke-width': String(props.strokeWidth) || '' }))
+useCssVars({
+  'icon-size': computed(() => props.size),
+  'icon-color': computed(() => props.color),
+  'icon-stroke-width': computed(() => props.strokeWidth)
+})
 
 export default {}
 </script>
@@ -33,10 +32,10 @@ export default {}
 [class^=icon] {
   display: inline-flex;
   align-items: center;
-  color: var(--color, inhert);
-  font-size: var(--size, inhert);
-  line-height: var(--size, inhert);
-  stroke-width: var(--stroke-width, 1);
+  color: var(--icon-color, inhert);
+  font-size: var(--icon-size, inhert);
+  line-height: var(--icon-size, inhert);
+  stroke-width: var(--icon-stroke-width, 1);
 
   &[class*=--spin] {
     animation: icon-spin .85s linear infinite;

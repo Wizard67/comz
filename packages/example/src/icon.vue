@@ -12,12 +12,12 @@
       color="red"
       :size="size"
       :stroke-width="1"
-      spin
+      :spin="spin"
     ><Refresh/></Icon>
 
     <br>
 
-    <Button @on-click="handleClick">Change Size</Button>
+    <Button @on-click="handleClick">Change State</Button>
   </main>
 </template>
 
@@ -33,14 +33,15 @@ export default defineComponent({
   },
   setup(props, { slots }) {
     const size = ref('16px')
+    const spin = ref(true)
 
     const handleClick = () => {
       size.value = size.value === '16px'? '32px': '16px'
-      console.log('out', size.value)
+      spin.value = spin.value? false: true
     }
-    
+
     return {
-      size,
+      size, spin,
       handleClick
     }
   }
