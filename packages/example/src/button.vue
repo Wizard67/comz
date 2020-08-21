@@ -1,27 +1,32 @@
 <template>
   <main>
-    <Button @on-click="handleClick">按钮 normal</Button>
+    <div>
+      <Button @on-click="handleClick" disabled>按钮 disabled</Button>
+      <Button @on-click="handleClick" loading>按钮 loading</Button>
+      <Button @on-click="handleClick" loading disabled>按钮 loading&disabled</Button>
+    </div>
 
     <br>
 
-    <Button status="disabled" @on-click="handleClick">按钮 disabled</Button>
-
-    <br>
-
-    <Button status="loading" @on-click="handleClick">按钮 loading</Button>
+    <div>
+      <Button @on-click="handleClick">按钮 normal</Button>
+      <Button @on-click="handleClick"><Icon :stroke-width="2"><Bell/><span>按钮</span></Icon></Button>
+    </div>
   </main>
 </template>
 
 <script>
 import { ref } from 'vue'
-import { Button } from 'comz'
+import { Button, Icon } from 'comz'
+import { Bell } from '@comz/icons'
 
 export default {
   components: {
-    Button
+    Button,
+    Icon, Bell
   },
   setup() {
-    const handleClick = () => console.log('listen button click')
+    const handleClick = () => console.log('on button click')
 
     return {
       handleClick
