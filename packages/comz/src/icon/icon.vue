@@ -15,7 +15,7 @@ declare const props: {
   spin: boolean
 }
 
-export const iconClassName = useClassName('icon', {
+export const iconClassName = useClassName('c-icon', {
   'spin': computed(() => props.spin)
 })
 
@@ -29,20 +29,32 @@ export default {}
 </script>
 
 <style lang="scss">
-[class^=icon] {
+$block: ".c-icon";
+
+%icon {
   display: inline-flex;
   align-items: center;
   color: var(--icon-color, inhert);
   font-size: var(--icon-size, inhert);
-  line-height: var(--icon-size, inhert);
   stroke-width: var(--icon-stroke-width, 1);
 
-  &[class*=--spin] {
-    animation: icon-spin .85s linear infinite;
+  // aligns svg/image/font icon with text
+  // https://zhuanlan.zhihu.com/p/30624268
+  &::before {
+    content: '\200b'
   }
 }
 
-@keyframes icon-spin {
+#{$block} {
+  @extend %icon;
+}
+
+#{$block}--spin {
+  @extend %icon;
+  animation: c-icon-spin .85s linear infinite;
+}
+
+@keyframes c-icon-spin {
   100% {
     transform: rotate(-1turn);
   }
