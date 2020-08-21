@@ -6,7 +6,7 @@
 
 <script setup="props, { emit }" lang="ts">
 import { computed } from 'vue'
-import { useClassName, useCssVars } from '../../vcas'
+import { useClassName, useCssVars } from '@comz/vca'
 
 declare const props: {
   size?: string

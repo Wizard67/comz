@@ -1,0 +1,22 @@
+{
+  "name": "@comz/vca",
+  "version": "0.0.1",
+  "description": "comz vue-componition-api utils",
+  "main": "dist/index.js",
+  "typings": "types/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.0.2"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0-rc.6"
+  }
+}

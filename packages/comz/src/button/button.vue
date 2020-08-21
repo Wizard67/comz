@@ -12,7 +12,7 @@
 
 <script setup="props, { emit }" lang="ts">
 import { computed } from 'vue'
-import { useClassName } from '../../vcas'
+import { useClassName } from '@comz/vca'
 
 declare const props: {
   loading: boolean
