@@ -6,7 +6,9 @@ type Options = {
 
 type UseClassName = (
   name: string,
-  condition?: { [state: string]: ComputedRef<boolean> },
+  condition?: {
+    [state: string]: ComputedRef<boolean> | Ref<boolean>
+  },
   options?: Options
 ) => Ref<string>
 
