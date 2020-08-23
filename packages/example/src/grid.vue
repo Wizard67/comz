@@ -13,7 +13,6 @@
       <GridItem name="c">
         <Grid
           class="innergrid"
-          :template="template2"
         >
           <GridItem name="b">
             <div class="block"></div>

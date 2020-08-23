@@ -25,7 +25,7 @@ export const gridClassName = useClassName('c-grid', {
 useCssVars({
   'c-grid-gap': computed(() => props.gap),
   'c-grid-template': computed(() => props.template)
-})
+}, { scoped: false })
 
 export default {}
 </script>
@@ -36,7 +36,7 @@ $block: ".c-grid";
 %grid {
   display: grid;
   gap: var(--c-grid-gap, 0);
-  grid-template: var(--c-grid-template, unset);
+  grid-template: var(--c-grid-template);
 }
 
 #{$block} {
