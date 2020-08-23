@@ -13,10 +13,10 @@ yarn add comz
 
 |   component    |    type    |   state(I/E)     |    test    |
 |----------------|------------|:----------------:|:----------:|
-| Button         | General    | I                | -          |
-| Icon           | General    | I                | -          |
-| Grid           | Layout     | I                | -          |
-| GridItem       | Layout     | I                | -          |
+| Button         | General    | E                | -          |
+| Icon           | General    | E                | -          |
+| Grid           | Layout     | E                | -          |
+| GridItem       | Layout     | E                | -          |
 | Card           | Container  | I                | -          |
 | Table          | Container  | -                | -          |
 | Alert          | Feedback   | I                | -          |
