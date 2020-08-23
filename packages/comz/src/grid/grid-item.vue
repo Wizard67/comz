@@ -1,29 +1,46 @@
 <template>
-  <div class="grid-item">
+  <div :class="gridItemClassName">
     <slot></slot>
   </div>
 </template>
 
 <script setup="props, { emit }" lang="ts">
-import { inject, useCssVars } from 'vue'
-import { key } from './use'
+import { inject, ref, computed } from 'vue'
+import { useClassName, useCssVars } from '@comz/vca'
+
+import { key } from './utils'
 
 declare const props: {
   name: string
   place?: string
 }
 
-useCssVars(() => ({ name: props.name }))
-useCssVars(() => ({ place: props.place || 'initial' }))
-useCssVars(() => ({ border: inject(key)?.value ? '0.5px rgba(0, 0, 0, .2) dashed': 'unset' }))
+export const gridItemClassName = useClassName('c-grid-item', {
+  'border': inject(key, ref(false))
+})
+
+useCssVars({
+  'c-grid-item-name': computed(() => props.name),
+  'c-grid-item-place': computed(() => props.place)
+})
 
 export default {}
 </script>
 
 <style lang="scss">
-.grid-item {
-  grid-area: var(--name);
-  place-self: var(--place);
-  outline: var(--border);
+$block: ".c-grid-item";
+
+%item {
+  grid-area: var(--c-grid-item-name);
+  place-self: var(--c-grid-item-place);
+}
+
+#{$block} {
+  @extend %item;
+}
+
+#{$block}--border {
+  @extend %item;
+  outline: 0.5px rgba(0, 0, 0, .2) dashed;
 }
 </style>

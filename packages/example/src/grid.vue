@@ -1,62 +1,37 @@
 <template>
   <main>
     <Grid
-      class="grid"
+      class="outgrid"
       gap="4px"
       :template="template"
-      :border="border"
+      :border="true"
     >
-      <GridItem name="a"></GridItem>
       <GridItem name="b">
         <div class="block"></div>
       </GridItem>
-      <GridItem name="c"></GridItem>
+
+      <GridItem name="c">
+        <Grid
+          class="innergrid"
+          :template="template2"
+        >
+          <GridItem name="b">
+            <div class="block"></div>
+          </GridItem>
+        </Grid>
+      </GridItem>
+
     </Grid>
 
     <br>
 
     <Button @click="handleClick">Click</Button>
-
-    <!-- <br>
-
-    <Grid
-      class="grid"
-      gap="0"
-      template="'a   a   a' 20px
-                'b   c   c' auto
-                'b   d   d' 30px /
-                1fr 1fr 1fr"
-      border
-    >
-      <GridItem name="a"></GridItem>
-      <GridItem name="b"></GridItem>
-      <GridItem name="c" place="center center">
-        <div class="block"></div>
-      </GridItem>
-      <GridItem name="d"></GridItem>
-    </Grid>
-
-    <br>
-
-    <Grid
-      class="grid"
-      gap="4px"
-      template="'a   b   c' 80px /
-                1fr 1fr 1fr"
-      border
-    >
-      <GridItem name="a"></GridItem>
-      <GridItem name="b"></GridItem>
-      <GridItem name="c"></GridItem>
-    </Grid> -->
   </main>
 </template>
 
 <script>
 import { ref } from 'vue'
 import { Button, Grid, GridItem } from 'comz'
-// import Grid from './grid'
-// import GridItem from './grid-item'
 
 const genTemplate = v => `
   'a   a   a' 40px
@@ -72,6 +47,7 @@ export default {
   setup() {
     const border = ref(true)
     const template = ref(genTemplate('1fr'))
+    const template2 = ref(genTemplate('50px'))
 
     const handleClick = () => {
       border.value = !border.value
@@ -81,7 +57,7 @@ export default {
     }
 
     return {
-      border, template, handleClick
+      border, template, template2, handleClick
     }
   }
 }
@@ -103,10 +79,16 @@ main {
   padding: 20px 0;
 }
 
-.grid {
+.outgrid {
   flex: none;
-  width: 500px;
-  height: 500px;
+  width: calc(100% - 20px);
+  height: 400px;
+  margin: 10px;
+}
+.innergrid {
+  flex: none;
+  width: 100%;
+  height: 100%;
 }
 .block {
   width: 100%;
