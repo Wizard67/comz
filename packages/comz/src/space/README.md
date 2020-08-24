@@ -25,7 +25,7 @@ export default {
 
 | Attribute | Type                         | Default   | Description |
 |-----------|------------------------------|-----------|-------------|
-| gap       | \<length\>？                 | `''`      | 项的间距      |
+| gap       | \<length\>                   | `''`      | 项的间距     |
 | align     | 'start' \| 'center' \| 'end' | `'start'` | 项的对齐方式  |
 | vertical  | boolean                      | `false`   | 是否垂直排列  |
 
