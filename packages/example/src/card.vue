@@ -22,8 +22,8 @@
 
       <Card shadow>
         <template #header>
-          <div>title</div>
-          <div>helper</div>
+          <div>Card</div>
+          <Icon @on-click="handleClick" link><X/></Icon>
         </template>
 
         <template #default>
@@ -31,7 +31,7 @@
         </template>
 
         <template #footer>
-          footer
+          <Button>BUTTON</Button>
         </template>
       </Card>
     </div>
@@ -40,14 +40,18 @@
 
 <script>
 import { ref } from 'vue'
-import { Card } from 'comz'
+import { Card, Icon, Button } from 'comz'
+import { X } from '@comz/icons'
 
 export default {
   components: {
-    Card
+    Card,
+    Button, Icon, X
   },
   setup() {
-    const handleClick = () => console.log('listen button click')
+    const handleClick = () => {
+      console.log('listen icon click')
+    }
 
     return {
       handleClick

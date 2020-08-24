@@ -17,7 +17,7 @@ yarn add comz
 | Icon           | General    | E                | -          |
 | Grid           | Layout     | E                | -          |
 | GridItem       | Layout     | E                | -          |
-| Card           | Container  | I                | -          |
+| Card           | Container  | E                | -          |
 | Table          | Container  | -                | -          |
 | Alert          | Feedback   | I                | -          |
 | Toast          | Feedback   | I                | -          |
