@@ -32,7 +32,7 @@ yarn add comz
 
 |   component    |    type    |    state(i/e)    |    test    |
 |----------------|------------|:----------------:|:----------:|
-| Space          | Layout     | -                | -          |
+| Space          | Layout     | I                | -          |
 | Article        | General    | -                | -          |
 | Tree           | Container  | -                | -          |
 | Divider        | Layout     | -                | -          |

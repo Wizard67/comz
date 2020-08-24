@@ -23,6 +23,7 @@ export default {
     'select': 'src/select/select.vue',
     'option': 'src/select/option.vue',
     'icon': 'src/icon/icon.vue',
+    'space': 'src/space/space.vue',
   },
   output: [
     {
