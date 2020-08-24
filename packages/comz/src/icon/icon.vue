@@ -1,5 +1,5 @@
 <template>
-  <div :class="iconClassName">
+  <div :class="iconClassName" @click="handleClick">
     <slot></slot>
   </div>
 </template>
@@ -13,10 +13,16 @@ declare const props: {
   color?: string
   strokeWidth?: number
   spin: boolean
+  link: boolean
 }
 
+declare function emit(event: 'on-click'): void
+
+export const handleClick = () => emit('on-click')
+
 export const iconClassName = useClassName('c-icon', {
-  'spin': computed(() => props.spin)
+  'spin': computed(() => props.spin),
+  'link': computed(() => props.link)
 })
 
 useCssVars({
@@ -52,6 +58,16 @@ $block: ".c-icon";
 #{$block}--spin {
   @extend %icon;
   animation: c-icon-spin .85s linear infinite;
+}
+
+#{$block}--link {
+  @extend %icon;
+  cursor: pointer;
+}
+
+#{$block}--spin--link {
+  @extend #{$block}--spin;
+  @extend #{$block}--link;
 }
 
 @keyframes c-icon-spin {

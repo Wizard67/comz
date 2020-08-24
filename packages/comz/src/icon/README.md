@@ -26,11 +26,12 @@ export default {
 | color       | \<color\>  | `inherit` | 图标颜色       |
 | strokeWidth | \<number\> | `1`       | SVG 轮廓线宽度 |
 | spin        | boolean    | `false`   | 是否旋转       |
+| link        | boolean    | `false`   | 是否可点击     |
 
 | Slot    | Description        |
 |---------|--------------------|
 | default | 默认插槽，放置图标组件 |
 
-| Event | Type | Description |
-|-------|------|-------------|
-| -     | -    | -           |
+| Event    | Type          | Description |
+|----------|---------------|-------------|
+| on-click | () => void    | 监听点击事件  |
