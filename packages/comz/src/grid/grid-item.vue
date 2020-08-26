@@ -1,5 +1,8 @@
 <template>
-  <div :class="gridItemClassName">
+  <div
+    :class="gridItemClassName"
+    :style="cssStyle"
+  >
     <slot></slot>
   </div>
 </template>
@@ -19,9 +22,9 @@ export const gridItemClassName = useClassName('c-grid-item', {
   'border': inject(key, ref(false))
 })
 
-useCssVars({
-  'c-grid-item-name': computed(() => props.name),
-  'c-grid-item-place': computed(() => props.place)
+export const cssStyle = useCssVars({
+  '--c-grid-item-name': computed(() => props.name),
+  '--c-grid-item-place': computed(() => props.place)
 })
 
 export default {}

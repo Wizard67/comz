@@ -1,5 +1,9 @@
 <template>
-  <div :class="iconClassName" @click="handleClick">
+  <div
+    :class="iconClassName"
+    :style="cssVars"
+    @click="handleClick"
+  >
     <slot></slot>
   </div>
 </template>
@@ -25,10 +29,10 @@ export const iconClassName = useClassName('c-icon', {
   'link': computed(() => props.link)
 })
 
-useCssVars({
-  'icon-size': computed(() => props.size),
-  'icon-color': computed(() => props.color),
-  'icon-stroke-width': computed(() => props.strokeWidth)
+export const cssVars = useCssVars({
+  '--c-icon-size': computed(() => props.size),
+  '--c-icon-color': computed(() => props.color),
+  '--c-icon-stroke-width': computed(() => props.strokeWidth)
 })
 
 export default {}
@@ -40,9 +44,9 @@ $block: ".c-icon";
 %icon {
   display: inline-flex;
   align-items: center;
-  color: var(--icon-color, inhert);
-  font-size: var(--icon-size, inhert);
-  stroke-width: var(--icon-stroke-width, 1);
+  color: var(--c-icon-color, inhert);
+  font-size: var(--c-icon-size, inhert);
+  stroke-width: var(--c-icon-stroke-width, 2);
 
   // aligns svg/image/font icon with text
   // https://zhuanlan.zhihu.com/p/30624268

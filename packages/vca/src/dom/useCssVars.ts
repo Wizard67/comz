@@ -1,8 +1,6 @@
 import {
-  reactive,
-  computed,
-  useCssVars as useNativeCssVars,
-  ComputedRef
+  computed, reactive,
+  Ref, ComputedRef, UnwrapRef
 } from 'vue'
 
 type Value = number | string | undefined
@@ -10,24 +8,24 @@ type Value = number | string | undefined
 type TransValueToString = (value: Value, scoped: boolean) => string
 
 type UseCssVars = (
-  vars: {
-    [property: string]: ComputedRef<Value>
-  },
+  vars: { [property: string]: ComputedRef<Value> | Ref<Value> },
   options?: {
     scoped?: boolean
   }
-) => void
+) => UnwrapRef<Record<string, string>>
 
-const InvalidValue = 'invalid'
+const INVALID_VALUE = 'initial'
 
 const transValueToString: TransValueToString = (value, scoped) => {
   switch (typeof value) {
     case 'undefined':
-      return scoped ? InvalidValue: ''
+      return scoped ? INVALID_VALUE : ''
     case 'number':
       return String(value)
     case 'string':
-      return value || (scoped ? InvalidValue: '')
+      return value || (scoped ? INVALID_VALUE : '')
+    default:
+      throw Error(`useCssVars expected undefined, number or string, but get ${typeof value}`)
   }
 }
 
@@ -35,13 +33,13 @@ export const useCssVars: UseCssVars = (vars, options) => {
   const varTrans = reactive({})
 
   for (const property in vars) {
-    varTrans[property] = computed(() =>
-      transValueToString(
+    varTrans[property] = computed(() => {
+      return transValueToString(
         vars[property].value,
         options?.scoped || false
-      )
+      )}
     )
   }
 
-  useNativeCssVars(() => varTrans)
+  return varTrans
 }

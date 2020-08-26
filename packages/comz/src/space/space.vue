@@ -1,5 +1,8 @@
 <template>
-  <section :class="spaceClassName">
+  <section
+    :class="spaceClassName"
+    :style="cssVars"
+  >
     <slot></slot>
   </section>
 </template>
@@ -18,9 +21,9 @@ export const spaceClassName = useClassName('c-space', {
   'vertical': computed(() => props.vertical)
 })
 
-useCssVars({
-  'c-space-gap': computed(() => props.gap),
-  'c-space-align': computed(() => props.align),
+export const cssVars = useCssVars({
+  '--c-space-gap': computed(() => props.gap),
+  '--c-space-align': computed(() => props.align)
 }, { scoped: true })
 
 export default {}

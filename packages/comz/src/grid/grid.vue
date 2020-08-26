@@ -1,5 +1,8 @@
 <template>
-  <div :class="gridClassName">
+  <div
+    :class="gridClassName"
+    :style="cssVars"
+  >
     <slot></slot>
   </div>
 </template>
@@ -11,8 +14,8 @@ import { useClassName, useCssVars } from '@comz/vca'
 import { key } from './utils'
 
 declare const props: {
-  gap: string
-  template: string
+  gap?: string
+  template?: string
   border: boolean
 }
 
@@ -22,10 +25,10 @@ export const gridClassName = useClassName('c-grid', {
   'border': computed(() => props.border)
 })
 
-useCssVars({
-  'c-grid-gap': computed(() => props.gap),
-  'c-grid-template': computed(() => props.template)
-}, { scoped: false })
+export const cssVars = useCssVars({
+  '--c-grid-gap': computed(() => props.gap),
+  '--c-grid-template': computed(() => props.template)
+}, { scoped: true })
 
 export default {}
 </script>
