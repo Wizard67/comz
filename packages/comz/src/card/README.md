@@ -34,7 +34,7 @@ export default {
 |---------|-------------------------- |
 | header  | 标题栏插槽（space-between） |
 | default | 默认插槽                   |
-| default | 默认插槽 (flex-end)        |
+| footer  | 底部插槽 (flex-end)        |
 
 | Event | Type | Description |
 |-------|------|-------------|
