@@ -1,44 +1,63 @@
 <template>
-  <transition name="modal-fade">
-    <div
-      class="modal"
-      v-if="show"
-      @click.self="handleModalClose"
-    >
-      <div class="modal__content">
-        <Card shadow>
-          <template #header>
-            <slot name="header">
-              {{ title || '提示' }}
-            </slot>
-          </template>
-          <template #default>
-            <slot></slot>
-          </template>
-          <template #footer>
-            <slot name="footer">
-              <Button @on-click="handleModalClose">关闭</Button>
-            </slot>
-          </template>
-        </Card>
+  <teleport to="body">
+    <transition name="modal-fade">
+      <div
+        v-if="show"
+        class="c-modal"
+        :style="cssVars"
+        @click.self="closable ? handleModalClose() : void 0"
+      >
+        <div class="c-modal__content">
+
+          <Card shadow>
+            <template #header>
+              <slot
+                name="header"
+                :close="handleModalClose"
+              >
+                <template v-if="true">{{ title || '提示' }}</template>
+                <Icon v-if="closable" @on-click="handleModalClose" link><X/></Icon>
+              </slot>
+            </template>
+
+            <template #default>
+              <slot></slot>
+            </template>
+
+            <template #footer>
+              <slot
+                name="footer"
+                :close="handleModalClose"
+              >
+                <Button @on-click="handleModalClose">关闭</Button>
+              </slot>
+            </template>
+          </Card>
+
+        </div>
       </div>
-    </div>
-  </transition>
-  <transition name="modal-backdrop-fade">
-    <div v-if="show" class="modal-backdrop"></div>
-  </transition>
+    </transition>
+  </teleport>
 </template>
 
 <script setup="props, { emit }" lang="ts">
+import { computed } from 'vue'
+import { useCssVars } from '@comz/vca'
+
 import Card from '../card/card.vue'
 import Button from '../button/button.vue'
+import Icon from '../icon/icon.vue'
+
+import { X } from '@comz/icons'
 
 declare function emit(event: 'update:show', state: boolean): void
 declare function emit(event: 'on-close'): void
 
 declare const props: {
+  title?: string
+  width?: string
   show: boolean
-  title?: String
+  closable: boolean
 }
 
 export const handleModalClose = () => {
@@ -46,16 +65,21 @@ export const handleModalClose = () => {
   emit('on-close')
 }
 
+export const cssVars = useCssVars({
+  '--c-modal-width': computed(() => props.width)
+})
+
 export default {
   components: {
-    Card,
-    Button
+    Card, Button, Icon, X
   }
 }
 </script>
 
 <style lang="scss">
-.modal {
+$block: '.c-modal';
+
+%modal {
   box-sizing: border-box;
   position: fixed;
   top: 0;
@@ -65,78 +89,32 @@ export default {
   align-items: flex-start;
   width: 100%;
   height: 100%;
-  z-index: 200;
-
-  &__content {
-    flex: none;
-    width: 300px;
-    margin-top: 100px;
-  }
-}
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-  background-color: rgba(0, 0, 0, .5);
-  transform: translate3d(0, 0, 0);
+  z-index: 600;
 }
 
-.modal-fade-enter-active {
-  animation: modal-fade-in .3s;
+%modal-content {
+  position: relative;
+  top: 100px;
+  flex: none;
+  width: var(--c-modal-width, 300px);
 }
 
-.modal-fade-leave-active {
-  animation: modal-fade-out .3s;
+
+#{$block} {
+  @extend %modal;
+
+  &__content { @extend %modal-content; }
 }
+
+.modal-fade-enter-active { animation: modal-fade-in .3s; }
+.modal-fade-leave-active { animation: modal-fade-out .3s; }
 
 @keyframes modal-fade-in {
-  0% {
-    transform: translate3d(0, -20px, 0);
-    opacity: 0;
-  }
-  100% {
-    transform: translate3d(0, 0, 0);
-    opacity: 1;
-  }
+  0% { transform: translate3d(0, -20px, 0); opacity: 0; }
+  100% { transform: translate3d(0, 0, 0); opacity: 1; }
 }
-
 @keyframes modal-fade-out {
-  0% {
-    transform: translate3d(0, 0, 0);
-    opacity: 1;
-  }
-  100% {
-    transform: translate3d(0, -20px, 0);
-    opacity: 0;
-  }
-}
-
-.modal-backdrop-fade-enter-active {
-  animation: modal-backdrop-fade-in .3s;
-}
-
-.modal-backdrop-fade-leave-active {
-  animation: modal-backdrop-fade-out .3s;
-}
-
-@keyframes modal-backdrop-fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes modal-backdrop-fade-out {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+  0% { transform: translate3d(0, 0, 0); opacity: 1; }
+  100% { transform: translate3d(0, -20px, 0); opacity: 0; }
 }
 </style>
