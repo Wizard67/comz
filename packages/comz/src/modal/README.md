@@ -44,4 +44,4 @@ export default {
 
 | Event    | Type       | Description |
 |----------|------------|-------------|
-| on-close | () => void | 监听点击事件  |
+| on-close | () => void | 监听关闭事件  |
