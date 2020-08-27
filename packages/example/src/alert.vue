@@ -1,31 +1,50 @@
 <template>
   <main>
-    <Alert>Somen Text</Alert>
+    <Alert v-model:show="showAlert1">Somen Text</Alert>
 
     <br>
 
-    <Alert color="lightpink">Somen Text Somen Text</Alert>
-
-    <br>
-
-    <Alert color="lightpink">
-      <template #pre>pre</template>
-      <template #default>Somen Text Somen Text Somen Text Somen Text</template>
-      <template #next>next</template>
-    </Alert>
+    <template v-if="showAlert2">
+      <Alert
+        v-model:show="showAlert2"
+        color="lightpink"
+      >
+        <template #default>Somen Text Somen Text Somen Text Somen Text</template>
+        <template #extra="{ close }">
+          <Icon @on-click="close" link><Click/></Icon>
+        </template>
+      </Alert>
+    </template>
+    <template v-else>
+      <Button @on-click="handleClick">show alert</Button>
+    </template>
 
   </main>
 </template>
 
 <script>
 import { ref } from 'vue'
-import { Alert } from 'comz'
+import { Alert, Icon, Button } from 'comz'
+
+import { Click } from '@comz/icons'
 
 export default {
   components: {
-    Alert
+    Alert, Icon, Click, Button
   },
   setup() {
+    const showAlert1 = ref(true)
+    const showAlert2 = ref(true)
+
+    const handleClick = () => {
+      showAlert2.value = true
+    }
+
+    return  {
+      showAlert1,
+      showAlert2,
+      handleClick
+    }
   }
 }
 </script>
