@@ -19,10 +19,9 @@ yarn add comz
 | GridItem       | Layout     | E                | -          |
 | Card           | Container  | E                | -          |
 | Table          | Container  | -                | -          |
-| Alert          | Feedback   | I                | -          |
-| Toast          | Feedback   | I                | -          |
-| Modal          | Feedback   | I                | -          |
-| Toast          | Feedback   | I                | -          |
+| Alert          | Feedback   | E                | -          |
+| Toast          | Feedback   | E                | -          |
+| Modal          | Feedback   | E                | -          |
 | Form           | Form       | -                | -          |
 | Input          | Form       | I                | -          |
 | Textarea       | Form       | I                | -          |
@@ -32,7 +31,7 @@ yarn add comz
 
 |   component    |    type    |    state(i/e)    |    test    |
 |----------------|------------|:----------------:|:----------:|
-| Space          | Layout     | I                | -          |
+| Space          | Layout     | E                | -          |
 | Article        | General    | -                | -          |
 | Tree           | Container  | -                | -          |
 | Divider        | Layout     | -                | -          |
