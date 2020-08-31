@@ -1,7 +1,11 @@
 <template>
   <teleport to="body">
     <transition name="toast-fade">
-      <div v-if="show" class="toast">
+      <div
+        v-if="show"
+        class="c-toast"
+        :style="cssVars"
+      >
         <slot></slot>
       </div>
     </transition>
@@ -9,30 +13,40 @@
 </template>
 
 <script setup="props, { emit }" lang="ts">
-
-import { watch } from 'vue'
+import { computed } from 'vue'
+import { useOverlay, useCssVars } from '@comz/vca'
 
 declare const props: {
   show: boolean
+  duration?: number
 }
 
 declare function emit(event: 'update:show', state: boolean): void
 
-watch(() => props.show, state => {
-  if (state) {
-    setTimeout(() => emit('update:show', false), 2000)
+const { index } = useOverlay({
+  namespace: 'toase',
+  track: computed(() => props.show),
+  duration: props.duration ?? 3000,
+  onChange(state) {
+    state && emit('update:show', false)
   }
+})
+
+export const cssVars = useCssVars({
+  '--c-toast-top': computed(() => `${(index.value - 1) * 50 + 12}px`)
 })
 
 export default {}
 </script>
 
 <style lang="scss">
-.toast {
+$block: '.c-toast';
+
+#{$block} {
   position: fixed;
-  top: 40px;
+  top: 0;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, var(--c-toast-top));
   display: flex;
   min-width: 200px;
   max-width: 100%;
@@ -40,6 +54,7 @@ export default {}
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, .2);
   color: rgb(51, 51, 51);
   background-color: white;
+  transition: transform .3s ease-in-out;
 }
 
 .toast-fade-enter-active {
@@ -52,22 +67,22 @@ export default {}
 
 @keyframes toast-fade-in {
   0% {
-    transform: translate3d(-50%, -20px, 0);
+    transform: translate3d(-50%, -100%, 0);
     opacity: 0;
   }
   100% {
-    transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, var(--c-toast-top), 0);
     opacity: 1;
   }
 }
 
 @keyframes toast-fade-out {
   0% {
-    transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, var(--c-toast-top), 0);
     opacity: 1;
   }
   100% {
-    transform: translate3d(-50%, -20px, 0);
+    transform: translate3d(-50%, -100%, 0);
     opacity: 0;
   }
 }
