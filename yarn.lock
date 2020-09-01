@@ -3018,10 +3018,10 @@ rollup@^2.20.0:
   optionalDependencies:
     fsevents "~2.1.2"
 
-rollup@^2.23.1:
-  version "2.23.1"
-  resolved "https://registry.npm.taobao.org/rollup/download/rollup-2.23.1.tgz?cache=0&sync_timestamp=1596828069308&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Frollup%2Fdownload%2Frollup-2.23.1.tgz#d458d28386dc7660c2e8a4978bea6f9494046c20"
-  integrity sha1-1FjSg4bcdmDC6KSXi+pvlJQEbCA=
+rollup@^2.26.9:
+  version "2.26.9"
+  resolved "https://registry.npmjs.org/rollup/-/rollup-2.26.9.tgz#4b6ce4e9044dd257d7314d8ed9b4d4d8a7d166c9"
+  integrity sha512-XIiWYLayLqV+oY4S2Lub/shJq4uk/QQLwWToYCL4LjZbYHbFK3czea4UDVRUJu+zNmKmxq5Zb/OG7c5HSvH2TQ==
   optionalDependencies:
     fsevents "~2.1.2"
 
