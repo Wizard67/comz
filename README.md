@@ -23,7 +23,7 @@ yarn add comz
 | Toast          | Feedback   | E                | -          |
 | Modal          | Feedback   | E                | -          |
 | Form           | Form       | -                | -          |
-| Input          | Form       | I                | -          |
+| Input          | Form       | E                | -          |
 | Textarea       | Form       | I                | -          |
 | Radio          | Form       | I                | -          |
 | Checkbox       | Form       | I                | -          |

@@ -1,28 +1,63 @@
 <template>
   <main>
-    <div>normal: <Input v-model="value"></Input></div>
+    <Space vertical>
+      normal:
+      <Input
+        v-model="value"
+        placeholder="normal"
+        clearable
+      ></Input>
+    </Space>
 
     <br>
 
-    <div>disabled: <Input v-model="value" disabled></Input></div>
+    <Space vertical>
+      disabled:
+      <Input
+        v-model="value"
+        placeholder="disabled"
+        disabled>
+      </Input>
+    </Space>
 
     <br>
 
-    <div>readonly: <Input v-model="value" readonly></Input></div>
+    <Space vertical>
+      readonly:
+      <Input
+        v-model="value"
+        readonly
+      ></Input>
+    </Space>
 
     <br>
 
-    {{ value }}
+    <Space vertical>
+      readonly & disabled:
+      <Input
+        v-model="value"
+        readonly
+        disabled
+      ></Input>
+    </Space>
+
+    <br>
+
+    <div>
+      <div>{{ value }}</div>
+      <div>{{ typeof value }}</div>
+    </div>
+
   </main>
 </template>
 
 <script>
 import { ref } from 'vue'
-import { Input } from 'comz'
+import { Space, Input } from 'comz'
 
 export default {
   components: {
-    Input
+    Space, Input
   },
   setup() {
     const value = ref('ok')
