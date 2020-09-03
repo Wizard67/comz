@@ -23,6 +23,7 @@ export default {
 |-------------|---------|---------|-------------|
 | modelValue  | string  | ``      | 输入值       |
 | placeholder | string  | ``      | 占位文本     |
+| width       | string  | ``      | 组件宽度     |
 | readonly    | boolean | `false` | 是否只读     |
 | disabled    | boolean | `false` | 是否禁用     |
 | clearable   | boolean | `false` | 展示清空按钮  |

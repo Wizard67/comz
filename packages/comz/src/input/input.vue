@@ -3,6 +3,7 @@
     <input
       type="text"
       :class="inputClassName"
+      :style="inputCssVars"
       :value="modelValue"
       :placeholder="placeholder"
       :readonly="readonly"
@@ -10,29 +11,24 @@
       @input="handleInput"
     >
     <div
-      v-if="showClearButton"
       class="c-input__clear"
-    >
-      <Icon
-        color="rgba(0, 0, 0, .2)"
-        :stroke-width="3"
-        @on-click="handleClear"
-        link
-      ><CircleX/></Icon>
+      v-if="showClearButton"
+    ><Icon @on-click="handleClear" link><X/></Icon>
     </div>
   </div>
 </template>
 
 <script setup="props, { emit }" lang="ts">
 import { computed } from 'vue'
-import { useClassName } from '@comz/vca'
+import { useClassName, useCssVars } from '@comz/vca'
 
 import Icon from '../icon/icon.vue'
-import { CircleX } from '@comz/icons'
+import { X } from '@comz/icons'
 
 declare const props: {
   modelValue: string
   placeholder?: string
+  width?: string
   readonly: boolean
   disabled: boolean
   clearable: boolean
@@ -41,8 +37,12 @@ declare const props: {
 declare function emit (event: 'update:modelValue', value: any): void
 
 export const inputClassName = useClassName('c-input__field', {
-  'readonly': computed(() => props.readonly),
   'disabled': computed(() => props.disabled)
+})
+
+export const inputCssVars = useCssVars({
+  '--c-input-width': computed(() => props.width),
+  '--c-input-field-rpadding': computed(() => props.clearable ? '24px' : '')
 })
 
 export const handleInput = (event: InputEvent) => {
@@ -60,7 +60,7 @@ export const handleClear = () => {
 
 export default {
   components: {
-    Icon, CircleX
+    Icon, X
   }
 }
 </script>
@@ -69,10 +69,14 @@ export default {
 $block: '.c-input';
 
 %input-field {
+  box-sizing: border-box;
   position: relative;
   box-sizing: border-box;
   display: inline-flex;
+  width: 100%;
+  height: 100%;
   padding: 4px 8px;
+  padding-right: var(--c-input-field-rpadding, 8px);
   border: 1px rgba(0, 0, 0, .2) solid;
   color: rgb(51, 51, 51);
 
@@ -83,15 +87,11 @@ $block: '.c-input';
 
 #{$block} {
   position: relative;
+  width: var(--c-input-width, 200px);
 }
 
 #{$block}__field {
   @extend %input-field;
-}
-
-#{$block}__field--readonly {
-  @extend %input-field;
-  background-color: rgb(235, 235, 235);
 }
 
 #{$block}__field--disabled {
@@ -99,11 +99,6 @@ $block: '.c-input';
   color: rgba(0, 0, 0, .2);
   background-color: rgb(235, 235, 235);
   cursor: not-allowed;
-}
-
-#{$block}__field--readonly--disabled {
-  @extend #{$block}__field--readonly;
-  @extend #{$block}__field--disabled;
 }
 
 #{$block}__clear {
@@ -115,5 +110,6 @@ $block: '.c-input';
   justify-content: center;
   align-items: center;
   width: 1.5em;
+  height: 100%;
 }
 </style>
