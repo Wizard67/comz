@@ -3,39 +3,44 @@
     {{ value }}
 
     <br>
-
-    <div>
+    
+    <Space gap="10px" align="center">
       normal:
-      <Radio v-model="value" value="A" style="marginRight: 10px;">A</Radio>
-      <Radio v-model="value" value="B">B</Radio>
-    </div>
+      <Space gap="10px">
+        <Radio v-model="value" value="A">A</Radio>
+        <Radio v-model="value" value="B">B</Radio>
+      </Space>
+    </Space>
 
     <br>
 
-    <div>
+    <Space gap="10px" align="center">
       disabled:
-      <Radio v-model="value" value="A" style="marginRight: 10px;" disabled>A</Radio>
-      <Radio v-model="value" value="B" disabled>B</Radio>
-    </div>
+      <Space gap="10px">
+        <Radio v-model="value" value="A" disabled>A</Radio>
+        <Radio v-model="value" value="B" disabled>B</Radio>
+      </Space>
+    </Space>
 
     <br>
 
-    <div>
+    <Space gap="10px" align="center">
       fontsize 18px:
-      <Radio v-model="value" value="A" style="marginRight: 10px;fontSize: 18px;">A</Radio>
-      <Radio v-model="value" value="B" style="fontSize: 18px;">B</Radio>
-    </div>
-
+      <Space gap="10px">
+        <Radio v-model="value" value="A" style="fontSize: 18px;">A</Radio>
+        <Radio v-model="value" value="B" style="fontSize: 18px;">B</Radio>
+      </Space>
+    </Space>
   </main>
 </template>
 
 <script>
 import { ref } from 'vue'
-import { Radio } from 'comz'
+import { Space, Radio } from 'comz'
 
 export default {
   components: {
-    Radio
+    Space, Radio
   },
   setup() {
     const value = ref('A')
