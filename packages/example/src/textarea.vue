@@ -1,9 +1,33 @@
 <template>
   <main>
-    <Textarea
-      v-model="value"
-      readonly
-    ></Textarea>
+    <Space vertical>
+      normal:
+      <Textarea
+        v-model="value"
+        :rows="5"
+        placeholder="something"
+      ></Textarea>
+    </Space>
+
+    <br>
+
+    <Space vertical>
+      readonly:
+      <Textarea
+        v-model="value"
+        readonly
+      ></Textarea>
+    </Space>
+
+    <br>
+
+    <Space vertical>
+      disabled:
+      <Textarea
+        v-model="value"
+        disabled
+      ></Textarea>
+    </Space>
 
     <br>
 
@@ -13,11 +37,11 @@
 
 <script>
 import { ref } from 'vue'
-import { Textarea } from 'comz'
+import { Space, Textarea } from 'comz'
 
 export default {
   components: {
-    Textarea
+    Space, Textarea
   },
   setup() {
     const value = ref('ok')
