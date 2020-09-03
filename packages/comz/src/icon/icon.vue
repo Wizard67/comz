@@ -44,14 +44,17 @@ $block: ".c-icon";
 %icon {
   display: inline-flex;
   align-items: center;
-  color: var(--c-icon-color, inhert);
-  font-size: var(--c-icon-size, inhert);
-  stroke-width: var(--c-icon-stroke-width, 2);
 
   // aligns svg/image/font icon with text
   // https://zhuanlan.zhihu.com/p/30624268
   &::before {
     content: '\200b'
+  }
+
+  & > svg {
+    color: var(--c-icon-color, inhert);
+    font-size: var(--c-icon-size, inhert);
+    stroke-width: var(--c-icon-stroke-width, 2);
   }
 }
 

@@ -24,7 +24,7 @@ export default {
 |-------------|------------|-----------|---------------|
 | size        | \<length\> | `inherit` | 图标尺寸       |
 | color       | \<color\>  | `inherit` | 图标颜色       |
-| strokeWidth | \<number\> | `1`       | SVG 轮廓线宽度 |
+| strokeWidth | \<number\> | `2`       | SVG 轮廓线宽度 |
 | spin        | boolean    | `false`   | 是否旋转       |
 | link        | boolean    | `false`   | 是否可点击     |
 
