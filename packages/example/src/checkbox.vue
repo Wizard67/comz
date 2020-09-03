@@ -4,41 +4,46 @@
 
     <br>
 
-    <div>
+    <Space gap="10px" align="center">
       normal:
-      <Checkbox v-model="value" value="A" style="marginRight: 10px;">A</Checkbox>
-      <Checkbox v-model="value" value="B">B</Checkbox>
-    </div>
+      <Space gap="10px">
+        <Checkbox v-model="value" value="A">A</Checkbox>
+        <Checkbox v-model="value" value="B">B</Checkbox>
+      </Space>
+    </Space>
 
     <br>
 
-    <div>
+    <Space gap="10px" align="center">
       disabled:
-      <Checkbox v-model="value" value="A" style="marginRight: 10px;" disabled>A</Checkbox>
-      <Checkbox v-model="value" value="B" disabled>B</Checkbox>
-    </div>
+      <Space gap="10px">
+        <Checkbox v-model="value" value="A" disabled>A</Checkbox>
+        <Checkbox v-model="value" value="B" disabled>B</Checkbox>
+      </Space>
+    </Space>
 
     <br>
 
-    <div>
+    <Space gap="10px" align="center">
       fontsize 18px:
-      <Checkbox v-model="value" value="A" style="marginRight: 10px;fontSize:18px;">A</Checkbox>
-      <Checkbox v-model="value" value="B" style="fontSize:18px;">B</Checkbox>
-    </div>
-
+      <Space gap="10px">
+        <Checkbox v-model="value" value="A" style="fontSize:18px;">A</Checkbox>
+        <Checkbox v-model="value" value="B" style="fontSize:18px;">B</Checkbox>
+      </Space>
+    </Space>
   </main>
 </template>
 
 <script>
-import { ref } from 'vue'
-import { Checkbox } from 'comz'
+import { reactive } from 'vue'
+import { Space, Checkbox } from 'comz'
 
 export default {
   components: {
-    Checkbox
+    Space, Checkbox
   },
   setup() {
-    const value = ref(['A'])
+    const value = reactive(['A'])
 
     return {
       value

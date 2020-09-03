@@ -1,9 +1,9 @@
 <template>
-  <label :class="inputClassName">
+  <label :class="checkboxClassName">
     <input
       type="checkbox"
       :value="value"
-      :checked="modelValue.includes(value)"
+      :checked="checked"
       :disabled="disabled"
       @change="handleInput"
     />
@@ -12,7 +12,8 @@
 </template>
 
 <script setup="props, { emit }" lang="ts">
-import { computed, reactive } from 'vue'
+import { reactive, computed } from 'vue'
+import { useClassName } from '@comz/vca'
 
 declare const props: {
   value: string
@@ -20,18 +21,16 @@ declare const props: {
   disabled: boolean
 }
 
-declare function emit (event: 'update:modelValue', value: any): void
+declare function emit (event: 'update:modelValue', value: string[]): void
 
-export const inputClassName = computed(() => {
-  const classNameList = ['checkbox']
+export const checked = computed(() => props.modelValue.includes(props.value))
 
-  if (props.disabled) classNameList.push('disabled')
-  if (props.modelValue.includes(props.value)) classNameList.push('checked')
-
-  return classNameList.join('--')
+export const checkboxClassName = useClassName('c-checkbox', {
+  'checked': checked,
+  'disabled': computed(() => props.disabled)
 })
 
-const checkeds = reactive<string[]>(props.modelValue)
+const checkeds = reactive(props.modelValue)
 
 export const handleInput = (event: InputEvent) => {
   const value = (<HTMLInputElement>event.target).value
@@ -48,17 +47,22 @@ export default {}
 </script>
 
 <style lang="scss">
+$block: '.c-checkbox';
+
 %checkbox {
   position: relative;
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
-  margin: 4px 0;
   padding: 0;
   transform: translate3d(0, 0, 0);
   color: rgb(51, 51, 51);
   font-size: 14px;
   cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
 
   &::before {
     content: "";
@@ -71,6 +75,24 @@ export default {}
     height: 1em;
     border: 1px rgb(52, 142, 199) solid;
     cursor: inherit;
+    transition: background-color .1s ease-in-out;
+  }
+
+  &::after {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: calc(.5em - .1725em);
+    transform: translateY(-57%) rotate(45deg);
+    transform-origin: center;
+    width: .4em;
+    height: .7em;
+    border: .2em solid white;
+    border-top: 0;
+    border-left: 0;
+    opacity: 0;
+    transition: opacity .2s ease-in-out .1s;
   }
 
   input[type="checkbox"] {
@@ -83,45 +105,34 @@ export default {}
   }
 }
 
-[class^="checkbox"] {
+#{$block} {
+  @extend %checkbox;
+}
+
+#{$block}--checked {
   @extend %checkbox;
 
-  &:focus {
-    outline: none;
+  &::before {
+    background-color: rgb(52, 142, 199);
   }
-
-  &[class*="--checked"] {
-    @extend %checkbox;
-
-    &::before {
-      background-color: rgb(52, 142, 199);
-    }
-    &::after {
-      content: "";
-      box-sizing: border-box;
-      position: absolute;
-      top: .65em;
-      left: .125em;
-      transform: translate(50%, -50%) rotate(45deg) scale(.8);
-      width: .4em;
-      height: .8em;
-      border-right: .21em white solid;
-      border-bottom: .21em white solid;
-    }
+  &::after {
+    opacity: 1;
   }
+}
 
-  &[class*="--disabled"] {
-    @extend %checkbox;
-    color: rgba(0, 0, 0, .2);
-    cursor: not-allowed;
+#{$block}--disabled {
+  @extend %checkbox;
+  color: rgba(0, 0, 0, .2);
+  cursor: not-allowed;
 
-    &::before {
-      border: 1px rgba(0, 0, 0, .2) solid;
-      background-color: rgba(0, 0, 0, .2);
-    }
-    &::after {
-      // background-color: rgba(0, 0, 0, .2);
-    }
+  &::before {
+    border: 1px rgba(0, 0, 0, .2) solid;
+    background-color: rgba(0, 0, 0, .2);
   }
+}
+
+#{$block}--checked--disabled {
+  @extend #{$block}--checked; 
+  @extend #{$block}--disabled; 
 }
 </style>
