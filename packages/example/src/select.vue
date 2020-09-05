@@ -5,15 +5,22 @@
     <br>
 
     <Select v-model="value" placeholder="something">
-      <Option value="test">Test</Option>
-      <Option value="ok">Okkk</Option>
+      <Option value="test" label="TestLabel">
+        Test
+      </Option>
+      <Option :value="{ value: 'ok' }" label="OkkkLabel">
+        Okkk
+      </Option>
+      <Option :value="optionvalue" :label="optionlabel">
+        {{ aa }}
+      </Option>
     </Select>
 
   </main>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { Select, Option } from 'comz'
 
 export default {
@@ -22,9 +29,22 @@ export default {
   },
   setup() {
     const value = ref('')
+    const aa = ref('aa')
+    const optionvalue = ref('optionvalue')
+    const optionlabel = ref('optionlabel')
+
+    onMounted(() => {
+      // setTimeout(() => {
+      //   value.value = 'test1'
+      //   aa.value = 'bb'
+      //   optionvalue.value = 'dynamic'
+      //   optionlabel.value = 'dynamic'
+      // }, 3000)
+    })
 
     return {
-      value
+      value,
+      aa, optionvalue, optionlabel
     }
   }
 }
@@ -42,5 +62,11 @@ main {
   align-items: center;
   width: 100vw;
   height: 100vh;
+}
+
+.block {
+  width: 100%;
+  height: 200px;
+  padding: 10px 0;
 }
 </style>
