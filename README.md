@@ -24,10 +24,10 @@ yarn add comz
 | Modal          | Feedback   | E                | -          |
 | Form           | Form       | -                | -          |
 | Input          | Form       | E                | -          |
-| Textarea       | Form       | I                | -          |
-| Radio          | Form       | I                | -          |
-| Checkbox       | Form       | I                | -          |
-| Select         | Form       | I                | -          |
+| Textarea       | Form       | E                | -          |
+| Radio          | Form       | E                | -          |
+| Checkbox       | Form       | E                | -          |
+| Select         | Form       | E                | -          |
 
 |   component    |    type    |    state(i/e)    |    test    |
 |----------------|------------|:----------------:|:----------:|
