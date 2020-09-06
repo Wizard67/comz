@@ -14,5 +14,20 @@
     "url": "https://github.com/Wizard67/comz/issues"
   },
   "homepage": "https://github.com/Wizard67/comz#readme",
-  "devDependencies": {}
+  "scripts": {
+    "build": "yarn workspaces run build"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@vue/compiler-sfc": "^3.0.0-rc.10",
+    "postcss-scss": "^2.1.1",
+    "rollup": "^2.26.10",
+    "rollup-plugin-postcss": "^3.1.8",
+    "rollup-plugin-typescript2": "^0.27.2",
+    "rollup-plugin-vue": "^6.0.0-beta.10",
+    "sass": "^1.26.10",
+    "typescript": "^4.0.2",
+    "vue": "^3.0.0-rc.10"
+  },
+  "dependencies": {}
 }
