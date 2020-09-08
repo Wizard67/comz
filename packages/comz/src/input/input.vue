@@ -50,7 +50,7 @@ export const handleInput = (event: InputEvent) => {
 }
 
 export const showClearButton = computed(() =>
-  props.modelValue.length > 0 &&
+  props.modelValue?.length > 0 &&
   props.clearable
 )
 
