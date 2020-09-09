@@ -129,6 +129,8 @@ $block: '.c-select';
   left: -1px;
   width: calc(100% + 2px);
   border: 1px rgba(0, 0, 0, .2) solid;
+  background-color: white;
   line-height: 28px;
+  z-index: 200;
 }
 </style>
