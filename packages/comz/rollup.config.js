@@ -24,6 +24,8 @@ export default {
     'option': 'src/select/option.vue',
     'icon': 'src/icon/icon.vue',
     'space': 'src/space/space.vue',
+    'form': 'src/form/form.vue',
+    'form-item': 'src/form/form-item.vue',
   },
   output: [
     {

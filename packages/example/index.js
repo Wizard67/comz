@@ -12,7 +12,8 @@ import 'comz/dist/style.css'
 // import Comp from './src/textarea.vue'
 // import Comp from './src/radio.vue'
 // import Comp from './src/checkbox.vue'
-import Comp from './src/select.vue'
+// import Comp from './src/select.vue'
 // import Comp from './src/space.vue'
+import Comp from './src/form.vue'
 
 createApp(Comp).mount('#app')
