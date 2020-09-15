@@ -3321,10 +3321,10 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-tabler-icons@^1.10.0:
-  version "1.10.0"
-  resolved "https://registry.npm.taobao.org/tabler-icons/download/tabler-icons-1.10.0.tgz#9d8bbbf3baf78ffa4d42c10cc9948918b4c90587"
-  integrity sha1-nYu787r3j/pNQsEMyZSJGLTJBYc=
+tabler-icons@1.16.0:
+  version "1.16.0"
+  resolved "https://registry.npmjs.org/tabler-icons/-/tabler-icons-1.16.0.tgz#b90b36f3defaa91b49f166ad96a0af365f74b210"
+  integrity sha512-10BVBO5tIaodggRNCXOMa93tffPoJTEXvoTU8nMUWbBnSdZvAxSTU6GddS/wbsXkqF9Bi0E6JkBHjMfE1auIEA==
 
 terser@^4.6.2:
   version "4.8.0"
