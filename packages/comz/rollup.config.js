@@ -26,6 +26,7 @@ export default {
     'space': 'src/space/space.vue',
     'form': 'src/form/form.vue',
     'form-item': 'src/form/form-item.vue',
+    'panel': 'src/panel/panel.vue',
   },
   output: [
     {
