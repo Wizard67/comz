@@ -31,7 +31,7 @@ export const radioClassName = useClassName('c-radio', {
 })
 
 export const handleInput = (event: InputEvent) => {
-  emit('update:modelValue', (<HTMLInputElement>event.target).value)
+  emit('update:modelValue', (event.target as HTMLInputElement).value)
 }
 
 export default {}

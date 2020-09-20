@@ -39,7 +39,7 @@ export const textareaCssVars = useCssVars({
 })
 
 export const handleInput = (event: InputEvent) => {
-  emit('update:modelValue', (<HTMLTextAreaElement>event.target).value)
+  emit('update:modelValue', (event.target as HTMLTextAreaElement).value)
 }
 
 export default {}

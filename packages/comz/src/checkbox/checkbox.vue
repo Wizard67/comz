@@ -33,7 +33,7 @@ export const checkboxClassName = useClassName('c-checkbox', {
 const checkeds = reactive(props.modelValue)
 
 export const handleInput = (event: InputEvent) => {
-  const value = (<HTMLInputElement>event.target).value
+  const value = (event.target as HTMLInputElement).value
   const index = props.modelValue.indexOf(value)
 
   index >= 0

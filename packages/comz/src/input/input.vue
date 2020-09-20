@@ -46,7 +46,7 @@ export const inputCssVars = useCssVars({
 })
 
 export const handleInput = (event: InputEvent) => {
-  emit('update:modelValue', (<HTMLInputElement>event.target).value)
+  emit('update:modelValue', (event.target as HTMLInputElement).value)
 }
 
 export const showClearButton = computed(() =>
