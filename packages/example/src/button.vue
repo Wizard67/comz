@@ -1,16 +1,18 @@
 <template>
   <main>
     <div>
-      <Button @on-click="handleClick" disabled>按钮 disabled</Button>
-      <Button @on-click="handleClick" loading>按钮 loading</Button>
-      <Button @on-click="handleClick" loading disabled>按钮 loading&disabled</Button>
+      <Button @on-click="handleClick" disabled>disabled</Button>
+      <Button @on-click="handleClick" loading>loading</Button>
+      <Button @on-click="handleClick" loading disabled>loading & disabled</Button>
     </div>
 
     <br>
 
     <div>
-      <Button @on-click="handleClick">按钮 normal</Button>
-      <Button @on-click="handleClick"><Icon :stroke-width="2"><Bell/><span>按钮</span></Icon></Button>
+      <Button @on-click="handleClick">normal</Button>
+      <Button @on-click="handleClick">
+        <Icon><Bell />Button</Icon>
+      </Button>
     </div>
   </main>
 </template>

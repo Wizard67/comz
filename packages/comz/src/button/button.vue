@@ -1,17 +1,17 @@
 <template>
   <button
     type="button"
-    :class="buttonClassName"
+    :class="cbutton"
     :autofocus="autofocus"
     :disabled="disabled"
     @click="handleClick"
   >
-    <slot></slot>
+    <slot />
   </button>
 </template>
 
 <script setup="props, { emit }" lang="ts">
-import { computed } from 'vue'
+import { toRefs } from 'vue'
 import { useClassName } from '@comz/vca'
 
 declare const props: {
@@ -22,9 +22,11 @@ declare const props: {
 
 declare function emit(event: 'on-click'): void
 
-export const buttonClassName = useClassName('c-button', {
-  'loading': computed(() => props.loading),
-  'disabled': computed(() => props.disabled)
+const { loading, disabled } = toRefs(props)
+
+export const cbutton = useClassName('cbutton', {
+  'loading': loading,
+  'disabled': disabled
 })
 
 export const handleClick = () => emit('on-click')
@@ -33,22 +35,23 @@ export default {}
 </script>
 
 <style lang="scss">
-$block: ".c-button";
+$block: ".cbutton";
 
 %button {
   position: relative;
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
-  height: 2em;
   padding: 4px 16px;
-  color: white;
   border: none;
+  border-radius: 4px;
+  color: white;
   background-color: rgb(52, 142, 199);
   font-size: 14px;
   letter-spacing: 1px;
+  line-height: 1.2em;
   user-select: none;
-  box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, .2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: box-shadow .1s ease-in-out;
   overflow: hidden;
 }
@@ -94,32 +97,30 @@ $block: ".c-button";
     width: 50%;
     height: 4px;
     background-color: rgb(32, 123, 180);
-    animation: c-button-loading .5s linear infinite forwards;
+    animation: cbutton-loading .5s linear infinite forwards;
   }
 }
 
 #{$block}--disabled {
   @extend %button;
-  cursor: not-allowed;
+  box-shadow: inset 0 0 20px 2px rgba(241, 241, 241, .3);
   color: #b1b1b1;
-  background-color: rgb(225, 239, 248);
+  background-color: rgb(238, 238, 238);
+  cursor: not-allowed;
 }
 
 #{$block}--loading--disabled {
   @extend #{$block}--loading;
   @extend #{$block}--disabled;
+  box-shadow: inset 0 0 20px 2px rgba(241, 241, 241, .3);
 
   &::after {
-    background-color: rgb(102, 188, 241);
+    background-color: rgb(189, 189, 189);
   }
 }
 
-@keyframes c-button-loading {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(200%);
-  }
+@keyframes cbutton-loading {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(200%); }
 }
 </style>
