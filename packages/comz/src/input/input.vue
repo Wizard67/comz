@@ -1,29 +1,30 @@
 <template>
-  <div class="c-input">
+  <div
+    class="cinput"
+    :style="inputCssVars"
+  >
     <input
       type="text"
-      :class="inputClassName"
-      :style="inputCssVars"
+      :class="cinput__field"
+      :style="inputFieldCssVars"
       :value="modelValue"
       :placeholder="placeholder"
       :readonly="readonly"
       :disabled="disabled"
       @input="handleInput"
     >
-    <div
-      class="c-input__clear"
-      v-if="showClearButton"
-    ><Icon @on-click="handleClear" link><X/></Icon>
+    <div v-if="showClearButton" class="cinput__clear">
+      <Icon @on-click="handleClear" link><X/></Icon>
     </div>
   </div>
 </template>
 
 <script setup="props, { emit }" lang="ts">
-import { computed } from 'vue'
+import { computed, toRefs } from 'vue'
 import { useClassName, useCssVars } from '@comz/vca'
 
-import Icon from '../icon/icon.vue'
-import { X } from '@comz/icons'
+export { default as Icon } from '../icon/icon.vue'
+export { X } from '@comz/icons'
 
 declare const props: {
   modelValue: string
@@ -36,58 +37,75 @@ declare const props: {
 
 declare function emit (event: 'update:modelValue', value: any): void
 
-export const inputClassName = useClassName('c-input__field', {
-  'disabled': computed(() => props.disabled)
+const { disabled, width } = toRefs(props)
+
+export const cinput__field = useClassName('cinput__field', {
+  'disabled': disabled
 })
 
 export const inputCssVars = useCssVars({
-  '--c-input-width': computed(() => props.width),
-  '--c-input-field-rpadding': computed(() => props.clearable ? '24px' : '')
+  '--cinput-width': width
 })
+
+export const inputFieldCssVars = useCssVars({
+  '--cinput-field-rpadding': computed(() => 
+    showClearButton.value ? '1.5em': undefined
+  )
+}, { scoped: true })
+
+export const showClearButton = computed(() =>
+  props.modelValue?.length > 0 &&
+  props.clearable &&
+  !props.readonly &&
+  !props.disabled
+)
 
 export const handleInput = (event: InputEvent) => {
   emit('update:modelValue', (event.target as HTMLInputElement).value)
 }
 
-export const showClearButton = computed(() =>
-  props.modelValue?.length > 0 &&
-  props.clearable
-)
-
 export const handleClear = () => {
   emit('update:modelValue', '')
 }
 
-export default {
-  components: {
-    Icon, X
-  }
-}
+export default {}
 </script>
 
 <style lang="scss">
-$block: '.c-input';
+$block: '.cinput';
+
+#{$block} {
+  position: relative;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  width: var(--cinput-width, 100%);
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
 
 %input-field {
   box-sizing: border-box;
+  flex: 1;
   position: relative;
-  box-sizing: border-box;
-  display: inline-flex;
-  width: 100%;
+  width: 160px;
+  max-width: 100%;
   height: 100%;
   padding: 4px 8px;
-  padding-right: var(--c-input-field-rpadding, 8px);
-  border: 1px rgba(0, 0, 0, .2) solid;
+  padding-right: var(--cinput-field-rpadding, 8px);
+  border: none;
   color: rgb(51, 51, 51);
+  font-size: 14px;
+  line-height: 1.2em;
 
   &:focus {
     outline: none;
   }
-}
 
-#{$block} {
-  position: relative;
-  width: var(--c-input-width, 200px);
+  &:read-only {
+    color: rgba(0, 0, 0, .3);
+  }
 }
 
 #{$block}__field {
@@ -102,6 +120,7 @@ $block: '.c-input';
 }
 
 #{$block}__clear {
+  flex: none;
   position: absolute;
   top: 50%;
   right: 0;
@@ -110,6 +129,5 @@ $block: '.c-input';
   justify-content: center;
   align-items: center;
   width: 1.5em;
-  height: 100%;
 }
 </style>

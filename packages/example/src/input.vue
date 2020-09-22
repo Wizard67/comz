@@ -22,7 +22,7 @@
 
     <br>
 
-    <Space vertical>
+    <Space vertical style="width: 100px">
       readonly:
       <Input
         v-model="value"
@@ -32,12 +32,13 @@
 
     <br>
 
-    <Space vertical>
+    <Space vertical style="width: 300px">
       readonly & disabled:
       <Input
         v-model="value"
         readonly
         disabled
+        clearable
       ></Input>
     </Space>
 
