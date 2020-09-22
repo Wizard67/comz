@@ -8,7 +8,7 @@ type Value = number | string | undefined
 type TransValueToString = (value: Value, scoped: boolean) => string
 
 type UseCssVars = (
-  vars: { [property: string]: ComputedRef<Value> | Ref<Value> },
+  vars: { [property: string]: ComputedRef<Value> | Ref<Value> | undefined },
   options?: {
     scoped?: boolean
   }
@@ -35,7 +35,7 @@ export const useCssVars: UseCssVars = (vars, options) => {
   for (const property in vars) {
     varTrans[property] = computed(() => {
       return transValueToString(
-        vars[property].value,
+        vars[property]?.value,
         options?.scoped || false
       )}
     )
