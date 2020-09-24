@@ -21,9 +21,10 @@
 </template>
 
 <script setup="props, { emit }" lang="ts">
-import { computed } from 'vue'
 export { default as Icon } from '../icon/icon.vue'
 export { Direction, DirectionHorizontal } from '@comz/icons'
+
+import { toRefs } from 'vue'
 
 import { useClassName, useHeightToggle } from '@comz/vca'
 
@@ -34,19 +35,21 @@ declare const props: {
 
 declare function emit (event: 'update:expand', value: boolean): void
 
+const { expand } = toRefs(props)
+
 export const cpanel__wrap = useClassName('cpanel__wrap', {
-  'expand': computed(() => props.expand)
+  'expand': expand
 })
 
 export const togglePanelState = () => {
-  emit('update:expand', !props.expand)
+  emit('update:expand', !expand.value)
 }
 
 export const {
   wrapRef: panelWrapRef,
   bodyRef: panelBodyRef,
   height: panelWrapHeight
-} = useHeightToggle(computed(() => props.expand), {
+} = useHeightToggle(expand, {
   wrapPadding: 8
 })
 
@@ -59,8 +62,8 @@ $block: '.cpanel';
 #{$block} {
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  color: #c8cad0;
-  background-color: #2f3137;
+  color: rgb(51, 51, 51);
+  background-color: white;
   font-size: 14px;
 }
 
@@ -69,7 +72,7 @@ $block: '.cpanel';
   align-items: center;
   height: 22px;
   padding: 0 4px;
-  background-color: rgba(200, 202, 208, 0.1);
+  background-color: rgba(200, 202, 208, 0.5);
   user-select: none;
   cursor: pointer;
 }
@@ -79,12 +82,12 @@ $block: '.cpanel';
 
   &:hover {
     @extend #header;
-    background-color: rgba(200, 202, 208, 0.15);
+    background-color: rgba(200, 202, 208, 0.4);
   }
 
   &:active {
     @extend #header;
-    background-color: rgba(200, 202, 208, 0.2);
+    background-color: rgba(200, 202, 208, 0.6);
   }
 }
 
