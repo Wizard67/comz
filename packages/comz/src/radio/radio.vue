@@ -1,18 +1,19 @@
 <template>
-  <label :class="radioClassName">
+  <label :class="cradio">
     <input
+      class="cradio__field"
       type="radio"
       :value="value"
       :checked="checked"
       :disabled="disabled"
-      @change="handleInput"
+      @change="handleValueChange"
     />
-    <slot></slot>
+    <slot />
   </label>
 </template>
 
 <script setup="props, { emit }" lang="ts">
-import { computed } from 'vue'
+import { computed, toRefs } from 'vue'
 import { useClassName } from '@comz/vca'
 
 declare const props: {
@@ -23,14 +24,15 @@ declare const props: {
 
 declare function emit (event: 'update:modelValue', value: any): void
 
+export const { disabled } = toRefs(props)
 export const checked = computed(() => props.value === props.modelValue)
 
-export const radioClassName = useClassName('c-radio', {
+export const cradio = useClassName('cradio', {
   'checked': checked,
-  'disabled': computed(() => props.disabled)
+  'disabled': disabled
 })
 
-export const handleInput = (event: InputEvent) => {
+export const handleValueChange = (event: InputEvent) => {
   emit('update:modelValue', (event.target as HTMLInputElement).value)
 }
 
@@ -38,88 +40,91 @@ export default {}
 </script>
 
 <style lang="scss">
-$block: '.c-radio';
+$block: '.cradio';
 
 %radio {
   position: relative;
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
-  padding: 0;
-  transform: translate3d(0, 0, 0);
+  padding: 4px 0;
   color: rgb(51, 51, 51);
   font-size: 14px;
+  line-height: 1.2em;
   cursor: pointer;
 
   &:focus {
     outline: none;
   }
 
-  &::before {
-    content: "";
-    box-sizing: border-box;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 1em;
-    height: 1em;
-    border-radius: 50%;
-    border: 1px rgb(52, 142, 199) solid;
-    cursor: inherit;
-  }
-
+  &::before,
   &::after {
     content: "";
     box-sizing: border-box;
     position: absolute;
     top: 50%;
     left: 0;
-    transform: translate(50%, -50%);
-    width: .5em;
-    height: .5em;
-    border-radius: 50%;
-    background-color: rgb(52, 142, 199);
-    opacity: 0;
-    transition: opacity .3s ease-in-out;
-  }
-
-  input[type="radio"] {
     width: 1em;
     height: 1em;
-    margin: 0 .25em 0 0;
-    opacity: 0;
-    font-size: inherit;
+    border-radius: 50%;
+  }
+  &::before {
+    transform: translateY(-50%) translateZ(0);
+    border: 2px rgb(52, 142, 199) solid;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     cursor: inherit;
+  }
+
+  &::after {
+    transform: translateY(-50%) translateZ(0) scale(.1);
+    transform-origin: center;
+    background-color: rgb(52, 142, 199);
+    opacity: 0;
+    transition: background-color .2s ease-in-out,
+                transform .15s ease-in-out,
+                opacity .1s ease-in-out;
   }
 }
 
 #{$block} {
   @extend %radio;
-}
 
-#{$block}--checked {
-  @extend %radio;
-  &::after {
-    opacity: 1;
+  &--checked {
+    @extend %radio;
+
+    &::after {
+      transform: translateY(-50%) translateZ(0) scale(.52);
+      opacity: 1;
+    }
+  }
+
+  &--disabled {
+    @extend %radio;
+
+    color: rgba(0, 0, 0, .3);
+    cursor: not-allowed;
+
+    &::before {
+      border: 2px rgba(0, 0, 0, .2) solid;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    &::after {
+      background-color: rgba(0, 0, 0, .2);
+    }
+  }
+
+  &--checked--disabled {
+    @extend #{$block}--checked; 
+    @extend #{$block}--disabled; 
   }
 }
 
-#{$block}--disabled {
-  @extend %radio;
-  color: rgba(0, 0, 0, .2);
-  cursor: not-allowed;
-
-  &::before {
-    border: 1px rgba(0, 0, 0, .2) solid;
-  }
-  &::after {
-    background-color: rgba(0, 0, 0, .2);
-  }
-}
-
-#{$block}--checked--disabled {
-  @extend #{$block}--checked; 
-  @extend #{$block}--disabled; 
+#{$block}__field {
+  width: 1em;
+  height: 1em;
+  margin: 0 .25em 0 0;
+  opacity: 0;
+  font-size: inherit;
+  cursor: inherit;
 }
 </style>

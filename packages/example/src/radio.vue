@@ -22,15 +22,6 @@
       </Space>
     </Space>
 
-    <br>
-
-    <Space gap="10px" align="center">
-      fontsize 18px:
-      <Space gap="10px">
-        <Radio v-model="value" value="A" style="fontSize: 18px;">A</Radio>
-        <Radio v-model="value" value="B" style="fontSize: 18px;">B</Radio>
-      </Space>
-    </Space>
   </main>
 </template>
 
