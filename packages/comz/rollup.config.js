@@ -27,6 +27,7 @@ export default {
     'form': 'src/form/form.vue',
     'form-item': 'src/form/form-item.vue',
     'panel': 'src/panel/panel.vue',
+    'switch': 'src/switch/switch.vue',
   },
   output: [
     {

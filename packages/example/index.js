@@ -15,6 +15,7 @@ import 'comz/dist/style.css'
 // import Comp from './src/select.vue'
 // import Comp from './src/space.vue'
 // import Comp from './src/form.vue'
-import Comp from './src/panel.vue'
+// import Comp from './src/panel.vue'
+import Comp from './src/switch.vue'
 
 createApp(Comp).mount('#app')
