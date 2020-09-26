@@ -39,7 +39,7 @@ export const useHeightToggle = (
   })
 
   onUnmounted(() => {
-    wrapRef.value!.removeEventListener('transitionend', transHeightToAuto, false)
+    wrapRef.value?.removeEventListener('transitionend', transHeightToAuto, false)
   })
 
   return {
