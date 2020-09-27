@@ -1,136 +1,137 @@
 <template>
-  <div
-    class="c-select"
-    ref="selectRef"
-  >
+  <div class="cselect" ref="selectRef">
     <div
-      class="c-select__selector"
-      @click="handleSelectClick"
+      class="cselect__selector"
+      @click.stop="togglePanelState"
     >
-      <div :class="fieldClassName">
-        {{ label || modelValue || placeholder }}
-      </div>
+      <div :class="cselect__field">{{ currentText }}</div>
 
-      <div class="c-select__helper">
+      <div class="cselect__icon">
         <Icon link>
-          <ChevronDown v-if="state === 'normal'" />
-          <ChevronUp v-else />
+          <ChevronUp v-if="expand" />
+          <ChevronDown v-else />
         </Icon>
       </div>
     </div>
 
-    <div :class="optionsClassName">
-      <slot></slot>
+    <div :class="cselect__options">
+      <slot />
     </div>
   </div>
 </template>
 
 <script setup="props, { emit }" lang="ts">
-import { ref, computed, provide } from 'vue'
-import Icon from '../icon/icon.vue'
-import { ChevronDown, ChevronUp } from '@comz/icons'
+export { default as Icon } from '../icon/icon.vue'
+export { ChevronDown, ChevronUp } from '@comz/icons'
+
+import { ref, toRefs, computed, provide } from 'vue'
 import { useClassName } from '@comz/vca'
 
-import { handler, current, useClickOutSide } from './utils'
+import { handler, current, useClickOutSide, isEmpty } from './utils'
 
 declare const props: {
   placeholder?: string,
   modelValue: unknown
 }
 
-declare function emit (event: 'update:modelValue', value: any): void
+declare function emit (event: 'update:modelValue', value: unknown): void
 
-export const selectRef = ref<HTMLElement | null>(null)
-export const state = ref('normal')
+export const expand = ref(false)
 export const label = ref('')
 
-provide(current, computed(() => props.modelValue))
+export const { modelValue, placeholder } = toRefs(props)
+
+provide(current, modelValue)
 provide(handler, payload => {
   label.value = payload.label
+  togglePanelState()
   emit('update:modelValue', payload.value)
 })
 
-export const fieldClassName = useClassName(
-  'c-select__field',
-  { 'empty': computed(() => props.modelValue === '') }
-)
-export const optionsClassName = useClassName(
-  'c-select__options',
-  { 'open': computed(() => state.value === 'open') }
-)
+export const cselect__field = useClassName('cselect__field', {
+  'empty': computed(() => isEmpty(modelValue.value))
+})
+
+export const cselect__options = useClassName('cselect__options', {
+  'open': expand
+})
+
+export const selectRef = ref<HTMLElement | null>(null)
 
 useClickOutSide(
-  computed(() => state.value === 'open'),
+  expand,
   selectRef,
-  result => state.value = result ? 'open' : 'normal'
+  result => expand.value = result
 )
 
-export const handleSelectClick = () => {
-  state.value = state.value === 'open'? 'normal': 'open'
+export const currentText = computed(() => {
+  return label.value || modelValue.value || placeholder?.value
+})
+
+export const togglePanelState = () => {
+  expand.value = !expand.value
 }
 
-export default {
-  components: {
-    Icon, ChevronDown, ChevronUp
-  }
-}
+export default {}
 </script>
 
 <style lang="scss">
-$block: '.c-select';
+$block: '.cselect';
 
 #select {
   box-sizing: border-box;
   position: relative;
   display: inline-flex;
-  display: flex;
-  min-width: 200px;
-  height: 28px;
-  padding: 0 8px;
-  border: 1px rgba(0, 0, 0, .2) solid;
+  width: var(--cinput-width, 100%);
+  padding: 4px 8px;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   color: rgb(51, 51, 51);
   font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2em;
   cursor: pointer;
 }
 
 #{$block} {
   @extend #select;
-}
 
-#{$block}__selector {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
+  &__selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
 
-#{$block}__field {
-  flex: auto;
-}
-#{$block}__field--empty {
-  flex: auto;
-  color: rgba(0, 0, 0, .3);
-}
+  &__field {
+    flex: auto;
 
-#{$block}__helper {
-  flex: none;
-}
+    &--empty {
+      flex: auto;
+      color: rgba(0, 0, 0, .3);
+    }
+  }
 
-#{$block}__options {
-  display: none;
-}
+  &__icon {
+    flex: none;
+  }
 
-#{$block}__options--open {
-  display: block;
-  box-sizing: border-box;
-  position: absolute;
-  top: 100%;
-  left: -1px;
-  width: calc(100% + 2px);
-  border: 1px rgba(0, 0, 0, .2) solid;
-  background-color: white;
-  line-height: 28px;
-  z-index: 200;
+  &__options {
+    display: none;
+
+    &--open {
+      display: block;
+      box-sizing: border-box;
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      width: 100%;
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      background-color: white;
+      z-index: 200;
+    }
+  }
 }
 </style>

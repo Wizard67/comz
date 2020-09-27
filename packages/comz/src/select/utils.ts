@@ -18,7 +18,6 @@ export const useClickOutSide = (
 ) => {
   const handler = async (event: MouseEvent) => {
     await nextTick()
-
     if (elementRef.value === undefined) {
       return callback(false)
     }
@@ -53,7 +52,7 @@ export const useOptionState = (
   let lock = false
 
   const state = computed<'normal' | 'selected'>(() => {
-    const isCurrent = JSON.stringify(option.value) === JSON.stringify(target.value)
+    const isCurrent = JSON.stringify(option?.value) === JSON.stringify(target?.value)
   
     !lock && isCurrent && handler({
       value: option.value,
@@ -80,4 +79,10 @@ export const useOptionState = (
     state,
     changeState
   }
+}
+
+export const isEmpty = (value: unknown) => {
+  return value === null ||
+         value === undefined ||
+         value === ''
 }

@@ -1,9 +1,9 @@
 <template>
   <div
-    :class="selectorClassName"
+    :class="coption"
     @click="changeState"
   >
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
@@ -18,15 +18,16 @@ declare const props: {
   label: string
 }
 
+const currentValue = inject(current)
 const { value, label } = toRefs(props)
 
 export const { state, changeState } = useOptionState(
-  inject(current)!,
+  currentValue!,
   reactive({ value, label }),
   inject(handler)!
 )
 
-export const selectorClassName = useClassName('c-option', {
+export const coption = useClassName('coption', {
   'selected': computed(() => state.value === 'selected')
 })
 
@@ -34,11 +35,25 @@ export default {}
 </script>
 
 <style lang="scss">
-$block: '.c-option';
+$block: '.coption';
 
 #option {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 24px;
   padding: 0 8px;
   color: rgb(51, 51, 51);
+
+  &:first-child {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+  }
+  &:last-child {
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
 }
 
 #{$block} {
@@ -53,6 +68,6 @@ $block: '.c-option';
   @extend #option;
   color: white;
   background-color: rgb(52, 142, 199);
-  transition: background-color .3s ease-in-out;
+  transition: background-color .2s ease-in-out;
 }
 </style>
