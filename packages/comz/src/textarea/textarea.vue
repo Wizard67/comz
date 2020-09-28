@@ -1,11 +1,10 @@
 <template>
-  <div class="c-textarea">
+  <div class="ctextarea">
     <textarea
-      :class="textareaClassName"
-      :style="textareaCssVars"
+      :class="ctextarea__field"
+      :style="cssVars"
       :value="modelValue"
       :rows="textareaRows"
-      :placeholder="placeholder"
       :readonly="readonly"
       :disabled="disabled"
       @input="handleInput"
@@ -14,7 +13,7 @@
 </template>
 
 <script setup="props, { emit }" lang="ts">
-import { computed } from 'vue'
+import { computed, toRefs } from 'vue'
 import { useClassName, useCssVars } from '@comz/vca'
 
 declare const props: {
@@ -28,14 +27,16 @@ declare const props: {
 
 declare function emit (event: 'update:modelValue', value: any): void
 
-export const textareaRows = computed(() => props.rows || 2)
+const { rows, disabled, width } = toRefs(props)
 
-export const textareaClassName = useClassName('c-textarea__field', {
-  'disabled': computed(() => props.disabled)
+export const textareaRows = computed(() => rows?.value || 2)
+
+export const ctextarea__field = useClassName('ctextarea__field', {
+  'disabled': disabled
 })
 
-export const textareaCssVars = useCssVars({
-  '--c-textarea-width': computed(() => props.width)
+export const cssVars = useCssVars({
+  '--ctextarea-width': width
 })
 
 export const handleInput = (event: InputEvent) => {
@@ -46,17 +47,24 @@ export default {}
 </script>
 
 <style lang="scss">
-$block: '.c-textarea';
+$block: '.ctextarea';
 
 %textarea-field {
-  position: relative;
   box-sizing: border-box;
-  display: flex;
+  position: relative;
+  flex: 1;
+  display: block;
   width: 100%;
-  min-height: 2em;
+  min-height: 24px;
   padding: 4px 8px;
-  border: 1px rgba(0, 0, 0, .2) solid;
+  border: none;
   color: rgb(51, 51, 51);
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+               Helvetica Neue, Arial, Noto Sans, sans-serif,
+               Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 14px;
+  line-height: 1.2em;
+  white-space: pre-wrap;
   resize: vertical;
 
   &:focus {
@@ -66,22 +74,32 @@ $block: '.c-textarea';
 
 #{$block} {
   position: relative;
-  width: var(--c-textarea-width, 200px);
-}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: var(--ctextarea-width, 100%);
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 
-#{$block}__field {
-  @extend %textarea-field;
-}
+  &__field {
+    @extend %textarea-field;
 
-#{$block}__field[readonly] {
-  @extend %textarea-field;
-  background-color: rgb(235, 235, 235);
-}
+    &::placeholder {
+      color: rgba(0, 0, 0, .3);
+    }
 
-#{$block}__field--disabled {
-  @extend %textarea-field;
-  color: rgba(0, 0, 0, .2);
-  background-color: rgb(235, 235, 235);
-  cursor: not-allowed;
+    &:read-only {
+      @extend %textarea-field;
+      background-color: rgb(235, 235, 235);
+    }
+
+    &--disabled {
+      @extend %textarea-field;
+      color: rgba(0, 0, 0, .2);
+      background-color: rgb(235, 235, 235);
+      cursor: not-allowed;
+    }
+  }
 }
 </style>
