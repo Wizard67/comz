@@ -1,19 +1,19 @@
 <template>
   <teleport to="body">
-    <transition name="toast-fade">
+    <transition name="ctoast-fade">
       <div
         v-if="show"
-        class="c-toast"
+        class="ctoast"
         :style="cssVars"
       >
-        <slot></slot>
+        <slot />
       </div>
     </transition>
   </teleport>
 </template>
 
 <script setup="props, { emit }" lang="ts">
-import { computed } from 'vue'
+import { computed, toRefs } from 'vue'
 import { useOverlay, useCssVars } from '@comz/vca'
 
 declare const props: {
@@ -23,62 +23,67 @@ declare const props: {
 
 declare function emit(event: 'update:show', state: boolean): void
 
+const { show, duration } = toRefs(props)
+
 const { index } = useOverlay({
-  namespace: 'toase',
-  track: computed(() => props.show),
-  duration: props.duration ?? 3000,
+  namespace: 'toast',
+  track: show,
+  duration: duration?.value ?? 3000,
   onChange(state) {
     state && emit('update:show', false)
   }
 })
 
 export const cssVars = useCssVars({
-  '--c-toast-top': computed(() => `${(index.value - 1) * 50 + 12}px`)
+  '--ctoast-top': computed(() => `${(index.value - 1) * 50 + 12}px`)
 })
 
 export default {}
 </script>
 
 <style lang="scss">
-$block: '.c-toast';
+$block: '.ctoast';
 
 #{$block} {
+  box-sizing: border-box;
   position: fixed;
   top: 0;
   left: 50%;
-  transform: translate(-50%, var(--c-toast-top));
+  transform: translate(-50%, var(--ctoast-top));
   display: flex;
   min-width: 200px;
-  max-width: 100%;
-  padding: 6px 16px;
-  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, .2);
+  max-width: 500px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   color: rgb(51, 51, 51);
   background-color: white;
+  font-size: 14px;
+  line-height: 1.2em;
   transition: transform .3s ease-in-out;
 }
 
-.toast-fade-enter-active {
-  animation: toast-fade-in .3s;
+.ctoast-fade-enter-active {
+  animation: ctoast-fade-in .3s ease-in-out;
+}
+.ctoast-fade-leave-active {
+  animation: ctoast-fade-out .3s ease-in-out;
 }
 
-.toast-fade-leave-active {
-  animation: toast-fade-out .3s;
-}
-
-@keyframes toast-fade-in {
+@keyframes ctoast-fade-in {
   0% {
     transform: translate3d(-50%, -100%, 0);
     opacity: 0;
   }
   100% {
-    transform: translate3d(-50%, var(--c-toast-top), 0);
+    transform: translate3d(-50%, var(--ctoast-top), 0);
     opacity: 1;
   }
 }
 
-@keyframes toast-fade-out {
+@keyframes ctoast-fade-out {
   0% {
-    transform: translate3d(-50%, var(--c-toast-top), 0);
+    transform: translate3d(-50%, var(--ctoast-top), 0);
     opacity: 1;
   }
   100% {
