@@ -1,84 +1,111 @@
 <template>
   <main>
-    <Space gap="8px" vertical>
-      <Space>
-        <Button>Button1</Button>
-        <Button>Button2</Button>
-        <Button><Icon><Bell/>Button3</Icon></Button>
-      </Space>
-
-      <Space gap="2px">
-        <Button>Button1</Button>
-        <Button>Button2</Button>
-        <Button><Icon><Bell/>Button3</Icon></Button>
-        <div class="block">Block</div>
-      </Space>
-
-      <Space gap="4px" align="start">
-        <Button>Button1</Button>
-        <Button>Button2</Button>
-        <Button>Button3</Button>
-        <div class="block">Block</div>
-      </Space>
-
-      <Space gap="6px" align="center">
-        <Button>Button1</Button>
-        <Button>Button2</Button>
-        <Button>Button3</Button>
-        <div class="block">Block</div>
-      </Space>
-
-      <Space gap="8px" align="end">
-        <Button>Button1</Button>
-        <Button>Button2</Button>
-        <Button>Button3</Button>
-        <div class="block">Block</div>
-      </Space>
+    <h3>正常情况</h3>
+    <div style="width: 400px; outline: red solid 1px;">
+    <Space gap="8px">
+      <Button>one</Button>
+      <Button>two</Button>
+      <Button>three</Button>
+      <Button>four</Button>
+      <Button>five</Button>
+      <Button>six</Button>
     </Space>
+    </div>
 
     <br>
 
+    <h3>容器宽度小于内容 space 宽度</h3>
+    <div style="width: 300px; outline: red solid 1px;">
     <Space gap="8px">
-      <Space align="start" vertical>
-        <Button>Button1</Button>
-        <Button>Button2</Button>
-        <Button>Button3</Button>
-        <div class="block">Block</div>
-      </Space>
-
-      <Space gap="2px" align="start" vertical>
-        <Button>Button1</Button>
-        <Button>Button2</Button>
-        <Button>Button3</Button>
-        <div class="block">Block</div>
-      </Space>
-
-      <Space gap="4px" align="center" vertical>
-        <Button>Button1</Button>
-        <Button>Button2</Button>
-        <Button>Button3</Button>
-        <div class="block">Block</div>
-      </Space>
-
-      <Space gap="8px" align="end" vertical>
-        <Button>Button1</Button>
-        <Button>Button2</Button>
-        <Button>Button3</Button>
-        <div class="block">Block</div>
-      </Space>
+      <Button>one</Button>
+      <Button>two</Button>
+      <Button>three</Button>
+      <Button>four</Button>
+      <Button>five</Button>
+      <Button>six</Button>
     </Space>
+    </div>
+
+    <h3>容器宽度小于内容 space 宽度，允许换行</h3>
+    <div style="width: 300px; outline: red solid 1px;">
+    <Space gap="8px" align="center" wrap>
+      <Button>one</Button>
+      <Button>two</Button>
+      <Button>three</Button>
+      <Button>four</Button>
+      <Button>five</Button>
+      <Button>six</Button>
+    </Space>
+    </div>
+
+    <h3>容器宽度小于内容 space 宽度，允许换行, 设置项宽度</h3>
+    <div style="width: 300px; outline: red solid 1px;">
+    <Space gap="8px" wrap item-width="100px">
+      <Button>one</Button>
+      <Button>two</Button>
+      <Button>three</Button>
+      <Button>four</Button>
+      <Button>five</Button>
+      <Button>six</Button>
+    </Space>
+    </div>
+
+    <br>
+
+    <Space gap="16px">
+      <section>
+        <h3>纵向排列</h3>
+        <div style="width: 300px; outline: red solid 1px;">
+        <Space gap="8px" vertical>
+          <Button>one</Button>
+          <Button>two</Button>
+          <Button>three</Button>
+          <Button>four</Button>
+          <Button>five</Button>
+          <Button>six</Button>
+        </Space>
+        </div>
+      </section>
+
+      <section>
+        <h3>纵向排列, 容器高度小于内容高度</h3>
+        <div style="height: 100px; outline: red solid 1px;">
+        <Space gap="8px" vertical>
+          <Button>one</Button>
+          <Button>two</Button>
+          <Button>three</Button>
+          <Button>four</Button>
+          <Button>five</Button>
+          <Button>six</Button>
+        </Space>
+        </div>
+      </section>
+
+      <section>
+        <h3>纵向排列, 容器高度小于内容高度, 换行无效</h3>
+        <div style="height: 100px; outline: red solid 1px;">
+        <Space gap="8px" align="center" vertical wrap>
+          <Button>one</Button>
+          <Button>two</Button>
+          <Button>three</Button>
+          <Button>four</Button>
+          <Button>five</Button>
+          <Button>six</Button>
+        </Space>
+        </div>
+      </section>
+    </Space>
+
   </main>
 </template>
 
 <script>
 import { ref } from 'vue'
-import { Space, Button, Icon } from 'comz'
-import { Bell } from '@comz/icons'
+import { Space, Button } from 'comz'
 
 export default {
   components: {
-    Space, Button,
-    Icon, Bell
+    Space, Button
   },
   setup() {
   }
@@ -97,15 +124,5 @@ main {
   align-items: center;
   width: 100vw;
   height: 100vh;
-}
-
-.block {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 40px;
-  color: white;
-  background-color: lightcoral;
 }
 </style>
