@@ -28,6 +28,7 @@ export default {
     'form-item': 'src/form/form-item.vue',
     'panel': 'src/panel/panel.vue',
     'switch': 'src/switch/switch.vue',
+    'ruler': 'src/ruler/ruler.vue',
   },
   output: [
     {
