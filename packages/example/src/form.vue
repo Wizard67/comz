@@ -10,25 +10,29 @@
       </FormItem>
 
       <FormItem label="checkbox" name="checkbox">
-        <Checkbox v-model="form.checkbox" value="A">A</Checkbox>
-        <Checkbox v-model="form.checkbox" value="B">B</Checkbox>
+        <Space gap="4px" item-width="50%">
+          <Checkbox v-model="form.checkbox" value="A">A</Checkbox>
+          <Checkbox v-model="form.checkbox" value="B">B</Checkbox>
+        </Space>
       </FormItem>
 
       <FormItem label="radio" name="radio">
-        <Radio v-model="form.radio" value="A">A</Radio>
-        <Radio v-model="form.radio" value="B">B</Radio>
+        <Space gap="4px" item-width="50%">
+          <Radio v-model="form.radio" value="A">A</Radio>
+          <Radio v-model="form.radio" value="B">B</Radio>
+        </Space>
       </FormItem>
 
-      <FormItem label="select" name="select">
+      <!-- <FormItem label="select" name="select">
         <Select v-model="form.select" placeholder="蔬菜">
           <Option label="土豆" value="potato">土豆</Option>
           <Option label="洋葱" value="onion">洋葱</Option>
         </Select>
-      </FormItem>
+      </FormItem> -->
 
-      <FormItem label="textarea" name="textarea">
+      <!-- <FormItem label="textarea" name="textarea">
         <Textarea v-model="form.textarea" placeholder="textarea"></Textarea>
-      </FormItem>
+      </FormItem> -->
     </Form>
   </main>
 </template>
@@ -37,6 +41,7 @@
 import { reactive, ref, watch, nextTick, toRef, computed, onMounted, watchEffect } from 'vue'
 
 export {
+  Space,
   Form, FormItem,
   Input as CInput, Checkbox, Radio, Select, Option, Textarea
 } from 'comz'

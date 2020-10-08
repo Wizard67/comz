@@ -1,76 +1,76 @@
 <template>
-  <div class="c-form-item">
-    <div class="c-form-item__label">{{ label }}</div>
-    <div :class="fieldClassName">
-      <Space gap="8px">
-        <slot></slot>
-      </Space>
-      <div
-        v-if="errorMsg"
-        class="c-form-item__error"
-      >{{ errorMsg }}</div>
+  <div class="cformitem">
+    <div class="cformitem__label" :style="cssVars">{{ label }}</div>
+    <div :class="cformitem__field">
+      <slot />
+      <div v-if="errorMsg" class="cformitem__error">
+        {{ errorMsg }}
+      </div>
     </div>
   </div>
 </template>
 
 <script setup="props, { emit }" lang="ts">
 import { inject, ref, computed } from 'vue'
-import { key } from './utils'
+import { SET_MSG_METHOD, LABEL_WIDTH } from './utils'
 
-import { useClassName } from '@comz/vca'
+import { useClassName, useCssVars } from '@comz/vca'
 
 export { default as Space } from '../space/space.vue'
 
 declare const props: {
   label: string
-  name: string
+  name?: string
 }
 
 export const errorMsg = ref('')
 
-inject(key)?.(props.name, errorMsg)
+props.name && inject(SET_MSG_METHOD)?.(props.name, errorMsg)
 
-export const fieldClassName = useClassName('c-form-item__field', {
+export const labelWidth = inject(LABEL_WIDTH)
+
+export const cformitem__field = useClassName('cformitem__field', {
   'error': computed(() => errorMsg.value !== '')
 })
 
+export const cssVars = useCssVars({
+  '--cformitem-width': computed(() => labelWidth?.value)
+})
+
+export default {}
 </script>
 
 <style lang="scss">
-$block: '.c-form-item';
+$block: '.cformitem';
 
 #{$block} {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 8px 0 22px 0;
+  align-items: flex-start;
+  margin: 4px 0;
 }
 
 #{$block}__label {
-  width: 80px;
+  flex: none;
+  width: var(--cformitem-width, 80px);
+  padding: 4px 0;
+  color: rgb(51, 51, 51);
+  font-size: 14px;
+  line-height: 1.2em;
 }
 
 #{$block}__field {
   position: relative;
-  flex: auto;
-}
-#{$block}__field--error {
-  @extend #{$block}__field;
-  // outline: 1px rgb(252, 92, 92) solid;
+  flex: 1;
+  width: calc(100% - 80%);
+
+  &--error {
+    @extend #{$block}__field;
+  }
 }
 
 #{$block}__error {
   box-sizing: border-box;
-  position: absolute;
-  bottom: 0;
-  left: -1px;
-  transform: translateY(100%);
-  width: calc(100% + 2px);
-  // padding: 0 8px;
   color: rgb(252, 92, 92);
-  // border: 1px rgb(252, 92, 92) solid;
-  // background-color: rgb(252, 92, 92);
   font-size: 14px;
-  z-index: 200;
 }
 </style>
