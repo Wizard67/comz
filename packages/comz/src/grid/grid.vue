@@ -38,8 +38,10 @@ $block: ".c-grid";
 
 %grid {
   display: grid;
-  gap: var(--c-grid-gap, 0);
+  grid-gap: var(--c-grid-gap, 0 0);
   grid-template: var(--c-grid-template);
+  width: 100%;
+  height: 100%;
 }
 
 #{$block} {
