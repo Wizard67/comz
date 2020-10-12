@@ -10,7 +10,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": false,
     "suppressImplicitAnyIndexErrors": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true
   },
   "include": [
     "defines",

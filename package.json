@@ -15,19 +15,27 @@
   },
   "homepage": "https://github.com/Wizard67/comz#readme",
   "scripts": {
-    "build": "yarn workspaces run build"
+    "build": "yarn workspaces run build",
+    "test": "jest"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
     "@rollup/plugin-node-resolve": "^9.0.0",
+    "@types/jest": "^26.0.13",
     "@vue/compiler-sfc": "^3.0.0",
+    "babel-jest": "^26.3.0",
+    "jest": "^26.5.3",
     "postcss-scss": "^2.1.1",
     "rollup": "^2.26.10",
     "rollup-plugin-postcss": "^3.1.8",
     "rollup-plugin-typescript2": "^0.27.2",
     "rollup-plugin-vue": "^6.0.0-beta.10",
     "sass": "^1.26.10",
+    "ts-jest": "^26.4.1",
     "typescript": "^4.0.3",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "vue-jest": "^5.0.0-alpha.5"
   },
   "dependencies": {}
 }
