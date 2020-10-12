@@ -1,8 +1,8 @@
-export * from './src/base/useEvent'
+export * from './src/useEvent'
 
-export * from './src/dom/useClassName'
-export * from './src/dom/useCssVars'
-export * from './src/dom/useOverlay'
-export * from './src/dom/useHeightToggle'
+export * from './src/useClassName'
+export * from './src/useCssVars'
+export * from './src/useOverlay'
+export * from './src/useHeightToggle'
 
-export * from './src/component/useForm'
+export * from './src/useForm'
