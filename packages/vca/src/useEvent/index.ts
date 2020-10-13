@@ -6,9 +6,9 @@ export const useEvent = (
   listener: EventListenerOrEventListenerObject,
   options?: boolean | AddEventListenerOptions
 ) => {
-  const tragetRef = isRef(target) ? target : ref(target)
+  const targetRef = isRef(target) ? target : ref(target)
 
-  const stopWatch = watch(tragetRef, (element, _, cleanUp) => {
+  const stopWatch = watch(targetRef, (element, _, cleanUp) => {
     element.addEventListener(type, listener, options)
     cleanUp(() => element.removeEventListener(type, listener))
   }, { immediate: true })
