@@ -1,7 +1,7 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
-  testMatch: [ '**/__tests__/*.spec.ts' ],
+  testMatch: [ '**/*.spec.ts' ],
   transform: {
     "^.+\\.vue$": "vue-jest",
     "^.+\\js$": "babel-jest"
