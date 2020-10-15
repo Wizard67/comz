@@ -3,7 +3,7 @@ import { ref, Ref, isRef, watch } from 'vue'
 export const useEvent = <
   K extends (keyof WindowEventMap | DocumentEventMap)
 >(
-  target: EventTarget | Ref<EventTarget>,
+  target: EventTarget | Ref<EventTarget | null>,
   type: K,
   listener: EventListenerOrEventListenerObject,
   options?: boolean | AddEventListenerOptions
@@ -11,11 +11,11 @@ export const useEvent = <
   const targetRef = isRef(target) ? target : ref(target)
 
   const stopWatch = watch(targetRef, (element, _, cleanUp) => {
-    element.addEventListener(type as string, listener, options)
-    cleanUp(() => element.removeEventListener(type as string, listener))
+    if (element) {
+      element.addEventListener(type as string, listener, options)
+      cleanUp(() => element.removeEventListener(type as string, listener))
+    }
   }, { immediate: true })
 
-  return () => {
-    stopWatch()
-  }
+  return stopWatch
 }
