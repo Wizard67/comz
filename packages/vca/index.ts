@@ -1,4 +1,5 @@
 export * from './src/useEvent'
+export * from './src/useToggle'
 
 export * from './src/useClassName'
 export * from './src/useCssVars'
