@@ -19,6 +19,7 @@
   ],
   "exclude": [
     "node_modules",
-    "vue"
+    "vue",
+    "src/**/index.spec.ts"
   ]
 }
