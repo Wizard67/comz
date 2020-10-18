@@ -15,7 +15,7 @@ export const useEvent = <
       element.addEventListener(type as string, listener, options)
       cleanUp(() => element.removeEventListener(type as string, listener))
     }
-  }, { immediate: true })
+  }, { immediate: true, flush: 'post' })
 
   return stopWatch
 }
