@@ -16,7 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "@comz/icons": "0.0.1",
-    "@comz/vca": "0.0.1"
+    "@comz/vca": "0.0.1",
+    "@popperjs/core": "^2.5.3"
   },
   "peerDependencies": {
     "vue": "^3.0.0"

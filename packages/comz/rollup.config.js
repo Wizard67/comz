@@ -29,6 +29,7 @@ export default {
     'panel': 'src/panel/panel.vue',
     'switch': 'src/switch/switch.vue',
     'ruler': 'src/ruler/ruler.vue',
+    'tooltip': 'src/tooltip/tooltip.vue',
   },
   output: [
     {

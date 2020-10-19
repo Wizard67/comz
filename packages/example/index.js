@@ -18,5 +18,6 @@ import 'comz/dist/style.css'
 // import Comp from './src/panel.vue'
 // import Comp from './src/switch.vue'
 // import Comp from './src/ruler.vue'
+import Comp from './src/tooltip.vue'
 
 createApp(Comp).mount('#app')
