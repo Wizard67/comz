@@ -1,140 +1,143 @@
-import { h, render, ref, nextTick, Ref } from 'vue'
+import { defineComponent, h, ref, nextTick } from 'vue'
+import { mount } from '@vue/test-utils'
 import { useEvent } from './index'
 
 describe('useEvent', () => {
 
-  const genElement = () => {
-    const button: HTMLElement = document.createElement('button')
-    const event: Event = new CustomEvent('click', {
+  it('should work.', async () => {
+    const handler = jest.fn()
+    mount(defineComponent({
+      setup() {
+        useEvent(window, 'click', handler)
+      },
+      render: () => h('div')
+    }))
+
+    await nextTick()
+    expect(handler).toBeCalledTimes(0)
+
+    window.dispatchEvent(new CustomEvent('click', {
       detail: null,
       bubbles: false,
       cancelable: true
-    })
+    }))
+    expect(handler).toBeCalledTimes(1)
+  })
 
-    const dispatch = () => button.dispatchEvent(event)
-
-    return {
-      element: button,
-      dispatch
-    }
-  }
-
-  const genApp = (setup: () => void) => {
-    return {
-      setup,
-      render: () => h('div')
-    }
-  }
-
-  it('should work.', () => {
-    const { element, dispatch } = genElement()
+  it('should accept ref element.', async () => {
     const time = ref(0)
+    const wrapper = mount(defineComponent({
+      setup() {
+        const elementRef = ref(null)
 
-    const App = genApp(() => {
-      useEvent(element, 'click', () => time.value++)
-    })
-    render(h(App), document.createElement('div'))
+        useEvent(elementRef, 'click', () => {
+          time.value++
+        })
 
+        return { elementRef }
+      },
+      render: () => h('div', { ref: 'elementRef' })
+    }))
+
+    await nextTick()
     expect(time.value).toBe(0)
-    dispatch()
+
+    await wrapper.trigger('click')
     expect(time.value).toBe(1)
   })
 
-  it('should accept ref element.', () => {
-    const { element, dispatch } = genElement()
-
-    const elementRef = ref(element)
+  it('should work with options.', async () => {
     const handler = jest.fn()
+    const wrapper = mount(defineComponent({
+      setup() {
+        const elementRef = ref(null)
 
-    const App = genApp(() => {
-      useEvent(elementRef, 'click', handler)
-    })
-    render(h(App), document.createElement('div'))
+        useEvent(elementRef, 'click', handler, { once: true })
 
-    dispatch()
-    expect(handler).toHaveBeenCalled()
-  })
+        return { elementRef }
+      },
+      render: () => h('div', { ref: 'elementRef' })
+    }))
 
-  it('should work with options.', () => {
-    const { element, dispatch } = genElement()
-    const handler = jest.fn()
-
-    const App = genApp(() => {
-      useEvent(element, 'click', handler, { once: true })
-    })
-    render(h(App), document.createElement('div'))
-
-    dispatch()
-    dispatch()
+    await nextTick()
+    await wrapper.trigger('click')
+    await wrapper.trigger('click')
     expect(handler).toHaveBeenCalledTimes(1)
   })
 
   it('should remove event listener if element ref changes.', async () => {
-    const { element: el1, dispatch: dispatch1 } = genElement()
-    const { element: el2, dispatch: dispatch2 } = genElement()
-
-    const elmentRef: Ref<HTMLElement | null> = ref(el1)
     const time = ref(0)
+    const elementRef = ref(null)
+    const wrapper = mount(defineComponent({
+      setup() {
+        useEvent(elementRef, 'click', () => time.value++)
 
-    const App = genApp(() => {
-      useEvent(elmentRef, 'click', () => time.value++)
-    })
-    render(h(App), document.createElement('div'))
+        return { elementRef }
+      },
+      render: () => h('div', { ref: 'elementRef' })
+    }))
 
-    dispatch1()
+    await nextTick()
+    await wrapper.trigger('click')
     expect(time.value).toBe(1)
 
-    elmentRef.value = el2
+    elementRef.value = null
     await nextTick()
-    dispatch1()
+    await wrapper.trigger('click')
     expect(time.value).toBe(1)
-    dispatch2()
-    expect(time.value).toBe(2)
 
-    elmentRef.value = null
+    elementRef.value = document.createElement('div')
     await nextTick()
-    dispatch1()
-    dispatch2()
+    await wrapper.trigger('click')
+    expect(time.value).toBe(1)
+    await elementRef.value.click()
     expect(time.value).toBe(2)
   })
+
 
   it('should remove event listener when component destroyed.', async () => {
-    const { element, dispatch } = genElement()
-
-    const root = document.createElement('div')
     const handler = jest.fn()
+    const wrapper = mount(defineComponent({
+      setup() {
+        const elementRef = ref(null)
 
-    const App = genApp(() => {
-      useEvent(element, 'click', handler)
-    })
-    render(h(App), root)
+        useEvent(elementRef, 'click', handler)
 
-    dispatch()
-    expect(handler).toBeCalledTimes(1)
-    
-    render(null, root)
+        return { elementRef }
+      },
+      render: () => h('div', { ref: 'elementRef' })
+    }))
+
     await nextTick()
-    dispatch()
+    await wrapper.trigger('click')
+    expect(handler).toBeCalledTimes(1)
+
+    wrapper.unmount()
+    await nextTick()
+    await wrapper.trigger('click')
     expect(handler).toBeCalledTimes(1)
   })
 
-  it('should remove event listener when stop function invoke.', () => {
-    const { element, dispatch } = genElement()
-
-    let stop: () => void
+  it('should remove event listener when stop function invoke.', async () => {
+    let stop = () => {}
     const handler = jest.fn()
+    const wrapper = mount(defineComponent({
+      setup() {
+        const elementRef = ref(null)
 
-    const App = genApp(() => {
-      stop = useEvent(element, 'click', handler)
-    })
-    render(h(App), document.createElement('div'))
+        stop = useEvent(elementRef, 'click', handler)
 
-    dispatch()
+        return { elementRef }
+      },
+      render: () => h('div', { ref: 'elementRef' })
+    }))
+
+    await nextTick()
+    await wrapper.trigger('click')
     expect(handler).toBeCalledTimes(1)
 
-    stop!()
-    dispatch()
+    stop()
+    await wrapper.trigger('click')
     expect(handler).toBeCalledTimes(1)
   })
-
 })
