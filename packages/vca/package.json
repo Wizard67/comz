@@ -13,8 +13,11 @@
     "build": "tsc"
   },
   "license": "ISC",
-  "devDependencies": {},
+  "devDependencies": {
+    "@popperjs/core": "^2.5.3"
+  },
   "peerDependencies": {
-    "vue": "^3.0.1"
+    "vue": "^3.0.1",
+    "@popperjs/core": "^2.5.3"
   }
 }
