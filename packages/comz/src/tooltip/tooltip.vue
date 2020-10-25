@@ -46,6 +46,7 @@ useEvent(slotRef, 'mouseleave', () => {
   popper.value?.destroy()
 })
 
+export default {}
 </script>
 
 <style lang="scss">
