@@ -5,6 +5,7 @@ export * from './src/useClassName'
 export * from './src/useCssVars'
 export * from './src/useOverlay'
 export * from './src/useHeightToggle'
+export * from './src/useMouse'
 
 export * from './src/useForm'
 
