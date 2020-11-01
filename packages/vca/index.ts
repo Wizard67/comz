@@ -1,6 +1,7 @@
 export * from './src/useEvent'
 export * from './src/useToggle'
 
+export * from './src/useBEM'
 export * from './src/useClassName'
 export * from './src/useCssVars'
 export * from './src/useOverlay'
