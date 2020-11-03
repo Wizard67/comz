@@ -1,5 +1,17 @@
-import { ref, computed, reactive, isRef, watch, Ref } from 'vue'
+import { ref, computed, reactive, isRef, watch, Ref, UnwrapRef } from 'vue'
 import { useEvent } from '../useEvent'
+
+export interface MouseState {
+  x: number,
+  y: number,
+  offsetX: number,
+  offsetY: number,
+  inner: boolean,
+  target: {
+    width: number,
+    height: number
+  }
+}
 
 export const useMouse = (
   target: Ref<HTMLElement | null> | HTMLElement = document.body
@@ -13,7 +25,7 @@ export const useMouse = (
     height: 0
   })
 
-  const state = reactive({
+  const state: UnwrapRef<MouseState> = reactive({
     x: 0,
     y: 0,
     offsetX: 0,
