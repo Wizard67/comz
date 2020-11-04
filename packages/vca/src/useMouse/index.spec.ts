@@ -89,7 +89,6 @@ describe('useMouse', () => {
     await nextTick()
     expect(mouseState.target.width).toBe(0)
     expect(mouseState.target.height).toBe(0)
-    expect(mouseState.inner).toBe(false)
 
     targetRef.value = document.body
     await nextTick()
@@ -143,6 +142,35 @@ describe('useMouse', () => {
     await nextTick()
     document.dispatchEvent(mouseMoveEvent({ pageX: 10, pageY: 10 }))
     expect(mouseState.x).not.toBe(10)
+  })
+
+  it('hooks should be work.', async () => {
+    let mouseState = null
+
+    mount(defineComponent({
+      setup() {
+        const { state } = useMouse(document.body, {
+          onBefore: () => ({
+            pageX: 1,
+            pageY: 2
+          }),
+          onUpdate: (event) => ({
+            pageX: event.pageX + 10,
+            pageY: event.pageY + 10
+          })
+        })
+        mouseState = state
+      },
+      render: () => h('div')
+    }))
+
+    await nextTick()
+    expect(mouseState.x).toBe(11)
+    expect(mouseState.y).toBe(12)
+
+    document.dispatchEvent(mouseMoveEvent({ pageX: 10, pageY: 10 }))
+    expect(mouseState.x).toBe(20)
+    expect(mouseState.y).toBe(20)
   })
 
 })

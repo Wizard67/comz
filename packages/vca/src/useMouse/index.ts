@@ -1,44 +1,67 @@
-import { ref, computed, reactive, isRef, watch, Ref, UnwrapRef } from 'vue'
+import { ref, toRef, computed, reactive, isRef, watch, Ref, UnwrapRef } from 'vue'
 import { useEvent } from '../useEvent'
 
+type MouseEventPagePosition = {
+  pageX: number
+  pageY: number
+}
+
+interface Rect {
+  left: number
+  top: number
+  width: number
+  height: number
+}
+
+interface Hooks <T extends MouseEventPagePosition>{
+  onBefore?: () => T,
+  onUpdate?: (event: T & Pick<Rect, 'width' | 'height'>) => T
+}
+
 export interface MouseState {
-  x: number,
-  y: number,
-  offsetX: number,
-  offsetY: number,
-  inner: boolean,
+  x: number
+  y: number
+  offsetX: number
+  offsetY: number
+  inner: boolean
   target: {
-    width: number,
+    width: number
     height: number
   }
 }
 
 export const useMouse = (
-  target: Ref<HTMLElement | null> | HTMLElement = document.body
+  target: Ref<HTMLElement | null> | HTMLElement = document.body,
+  hooks?: Hooks<MouseEventPagePosition>
 ) => {
-  const targetRef = isRef(target) ? target : ref(target)
-
-  const targetRect = reactive({
+  const targetRect = reactive<Rect>({
     left: 0,
     top: 0,
     width: 0,
     height: 0
   })
 
+  const initState = hooks?.onBefore?.()
+
+  const pageX = ref(initState?.pageX ?? 0)
+  const pageY = ref(initState?.pageY ?? 0)
+
   const state: UnwrapRef<MouseState> = reactive({
-    x: 0,
-    y: 0,
-    offsetX: 0,
-    offsetY: 0,
-    inner: false,
+    x: pageX,
+    y: pageY,
+    offsetX: computed(() => state.x - targetRect.left - window.pageXOffset),
+    offsetY: computed(() => state.y - targetRect.top - window.pageYOffset),
+    inner: computed(() => (
+      state.offsetX >= 0 &&
+      state.offsetY >= 0 &&
+      state.offsetX <= targetRect.width &&
+      state.offsetY <= targetRect.height
+    )),
     target: {
-      width: computed(() => targetRect.width),
-      height: computed(() => targetRect.height)
+      width: toRef(targetRect, 'width'),
+      height: toRef(targetRect, 'height')
     }
   })
-
-  const positionX = computed(() => targetRect.left + window.pageXOffset)
-  const positionY = computed(() => targetRect.top + window.pageYOffset)
 
   const updateTargetRect = (element: HTMLElement) => {
     const { left, top, width, height } = element.getBoundingClientRect()
@@ -49,32 +72,37 @@ export const useMouse = (
     targetRect.width = width
   }
 
+  const updateMouseState = (event: MouseEventPagePosition) => {
+    const mouseEvent = hooks?.onUpdate?.({
+      pageX: event.pageX,
+      pageY: event.pageY,
+      width: targetRect.width,
+      height: targetRect.height
+    }) ?? event
+
+    pageX.value = mouseEvent.pageX
+    pageY.value = mouseEvent.pageY
+  }
+
+  const targetRef = isRef(target) ? target : ref(target)
+
   const stop = watch(targetRef, (element, _, cleanUp) => {
     if (!element) return
 
     updateTargetRect(element)
+
+    initState && updateMouseState(initState)
 
     const observer = new MutationObserver(() => {
       updateTargetRect(element)
     })
     observer.observe(element, { attributes: true })
 
-    const stopEvent = useEvent(document, 'mousemove', event => {
-      state.x = event.pageX
-      state.y = event.pageY
-
-      state.offsetX = state.x - positionX.value
-      state.offsetY = state.y - positionY.value
-      
-      state.inner = state.offsetX >= 0 &&
-                    state.offsetY >= 0 &&
-                    state.offsetX <= targetRect.width &&
-                    state.offsetY <= targetRect.height
-    })
+    const stopMoveEvent = useEvent(document, 'mousemove', updateMouseState)
 
     cleanUp(() => {
       observer.disconnect()
-      stopEvent()
+      stopMoveEvent()
     })
 
   }, { immediate: true, flush: 'post' })
