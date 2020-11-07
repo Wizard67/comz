@@ -1,4 +1,4 @@
-import { ref, toRef, computed, reactive, isRef, watch, Ref, UnwrapRef, watchEffect } from 'vue'
+import { ref, toRef, computed, reactive, isRef, watch, Ref, UnwrapRef } from 'vue'
 import { useEvent } from '../useEvent'
 
 type MouseEventPagePosition = {
