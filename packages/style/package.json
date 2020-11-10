@@ -1,0 +1,11 @@
+{
+  "name": "@comz/style",
+  "version": "0.0.1",
+  "description": "comz style theme",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "gulp build"
+  }
+}
