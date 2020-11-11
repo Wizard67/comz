@@ -43,7 +43,10 @@ export const useBEM: UseBEM = (conditions, configs) => {
   }
 
   const BEMClassName = computed(() => {
-    const blockElement = [scopedBlock.value, scopedElement.value].join('__')
+    const blockElement = scopedElement.value
+                         ? [scopedBlock.value, scopedElement.value].join('__')
+                         : scopedBlock.value
+
     const modifiers: string[] = []
 
     Array.from(scopedModifiers.value).forEach(key => {

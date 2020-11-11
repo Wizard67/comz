@@ -14,6 +14,23 @@ describe('useBEM', () => {
     expect(className.value).toBe('card__title card__title--disabled')
   })
 
+  it('test `block` with `modifier`.', () => {
+    const className = useBEM(({b, e, m}) => ({
+      [b('card')]: ref(true),
+      [m('disabled')]: ref(true)
+    }))
+
+    expect(className.value).toBe('card card--disabled')
+  })
+
+  it('test `block` only.', () => {
+    const className = useBEM(({b, e, m}) => ({
+      [b('card')]: ref(true)
+    }))
+
+    expect(className.value).toBe('card')
+  })
+
   it('blockPerfix config.', () => {
     const className = useBEM(({b, e, m}) => ({
       [b('card')]: ref(true),
