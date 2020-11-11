@@ -14,13 +14,17 @@ type Condition = (content: BEM) => {
   [key: string]: Ref<boolean>
 }
 
-type UseBEM = (condition: Condition) => Ref<string>
+interface Configs {
+  blockPrefix?: boolean
+}
+
+type UseBEM = (condition: Condition, configs?: Configs) => Ref<string>
 
 const BLOCK_PRE = 'b:'
 const ELEMENT_PRE = 'e:'
 const MODIFIERS_PRE = 'm:'
 
-export const useBEM: UseBEM = conditions => {
+export const useBEM: UseBEM = (conditions, configs) => {
 
   const scopedBlock: Ref<string> = ref('')
   const scopedElement: Ref<string> = ref('')
@@ -46,7 +50,9 @@ export const useBEM: UseBEM = conditions => {
       modifiers.push([blockElement, key].join('--'))
     })
 
-    return [blockElement, ...modifiers].join(' ')
+    return configs?.blockPrefix ?? true
+           ? [blockElement, ...modifiers].join(' ')
+           : modifiers.join(' ')
   })
 
   watchEffect(cleanUp => {

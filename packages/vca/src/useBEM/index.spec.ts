@@ -14,6 +14,16 @@ describe('useBEM', () => {
     expect(className.value).toBe('card__title card__title--disabled')
   })
 
+  it('blockPerfix config.', () => {
+    const className = useBEM(({b, e, m}) => ({
+      [b('card')]: ref(true),
+      [e('title')]: ref(true),
+      [m('disabled')]: ref(true)
+    }), { blockPrefix: false })
+
+    expect(className.value).toBe('card__title--disabled')
+  })
+
   it('should update when reactive value changed.', async () => {
     const disabled = ref(true)
 
