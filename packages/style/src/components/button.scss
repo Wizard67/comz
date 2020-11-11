@@ -5,7 +5,7 @@
 .cbutton.cbutton--loading { @extend %button--loading; }
 .cbutton.cbutton--disabled { @extend %button--disabled; }
 
-$animation: uuid('button-animation');
+$animation: unique-id();
 
 %button {
   box-sizing: border-box;

@@ -1,6 +1,0 @@
-$uuid-count: 0;
-
-@function uuid($namespace) {
-  $uuid-count: $uuid-count + 1;
-  @return #{$namespace}-#{$uuid-count};
-}
