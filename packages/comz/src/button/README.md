@@ -23,7 +23,6 @@ export default {
 |-----------|---------|-----------|---------------|
 | loading   | boolean | `false`   | 是否处于载入状态 |
 | disabled  | boolean | `false`   | 是否处于禁用状态 |
-| autofocus | boolean | `false`   | 渲染完成后聚焦   |
 
 | Slot    | Description |
 |---------|-------------|

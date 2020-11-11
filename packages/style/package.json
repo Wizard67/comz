@@ -2,6 +2,7 @@
   "name": "@comz/style",
   "version": "0.0.1",
   "description": "comz style theme",
+  "main": "dist/comz.css",
   "files": [
     "dist"
   ],
