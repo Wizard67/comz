@@ -1,0 +1,45 @@
+@import "../variables/global";
+@import "../mixins/function";
+
+.ccard { @extend %card; }
+.ccard.ccard--shadow { @extend %card--shadow; }
+
+.ccard__header { @extend %card__header; }
+.ccard__body { @extend %card__body; }
+.ccard__footer { @extend %card__footer; }
+
+%card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  border: 1px rgba(0, 0, 0, .08) solid;
+  background-color: white;
+  font-size: 14px;
+}
+
+%card--shadow {
+  border: none;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, .2);
+}
+
+%card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  border-bottom: 1px rgba(0, 0, 0, .08) solid;
+}
+
+%card__body {
+  padding: 16px 16px;
+}
+
+%card__footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 8px 16px;
+  border-top: 1px rgba(0, 0, 0, .08) solid;
+}
