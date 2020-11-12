@@ -1,0 +1,58 @@
+@import "../variables/global";
+@import "../mixins/function";
+
+.ctoast { @extend %toast; }
+
+$width: var(--ctoast-top);
+
+$toast-in: unique-id();
+$toast-out: unique-id();
+
+%toast {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, $width);
+  display: flex;
+  min-width: 200px;
+  max-width: 500px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  color: rgb(51, 51, 51);
+  background-color: white;
+  font-size: 14px;
+  line-height: 1.2em;
+  transition: transform .3s ease-in-out;
+}
+
+// vue-transition
+.ctoast-enter-active {
+  animation: #{$toast-in} .3s ease-in-out;
+}
+.ctoast-leave-active {
+  animation: #{$toast-out} .3s ease-in-out;
+}
+
+@keyframes #{$toast-in} {
+  0% {
+    transform: translate3d(-50%, -100%, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(-50%, $width, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes #{$toast-out} {
+  0% {
+    transform: translate3d(-50%, $width, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-50%, -100%, 0);
+    opacity: 0;
+  }
+}
