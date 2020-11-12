@@ -1,0 +1,62 @@
+@import "../variables/global";
+@import "../mixins/function";
+
+.cinput { @extend %input; }
+.cinput__field { @extend %input__field; }
+.cinput__field.cinput__field--disabled { @extend %input__field--disabled; }
+.cinput__clear { @extend %input__clear; }
+
+$width: var(--cinput-width, 100%);
+$rpadding: var(--cinput-field-rpadding, 8px);
+
+%input {
+  position: relative;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  width: $width;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+%input__field {
+  box-sizing: border-box;
+  flex: 1;
+  position: relative;
+  width: 160px;
+  max-width: 100%;
+  height: 100%;
+  padding: 4px 8px;
+  padding-right: $rpadding;
+  border: none;
+  color: rgb(51, 51, 51);
+  font-size: 14px;
+  line-height: 1.2em;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:read-only {
+    color: rgba(0, 0, 0, .3);
+  }
+}
+
+%input__field--disabled {
+  color: rgba(0, 0, 0, .2);
+  background-color: rgb(235, 235, 235);
+  cursor: not-allowed;
+}
+
+%input__clear {
+  flex: none;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5em;
+}
