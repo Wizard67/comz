@@ -25,10 +25,10 @@ export default {
 
 ## API
 
-| Attribute | Type    | Default       | Description |
-|-----------|---------|---------------|-------------|
-| color     | string  | `transparent` | 背景色       |
-| show      | boolean | `false`       | 是否展示      |
+| Attribute | Type    | Default | Description |
+|-----------|---------|---------|-------------|
+| color     | string  | `white` | 背景色       |
+| show      | boolean | `false` | 是否展示      |
 
 | Slot    | scoped            | Description |
 |---------|-------------------|-------------|
@@ -37,6 +37,6 @@ export default {
 
 > `close` 关闭提示栏
 
-| Event    | Type       | Description |
-|----------|------------|-------------|
-| on-close | () => void | 监听关闭事件  |
+| Event    | Type              | Description |
+|----------|-------------------|-------------|
+| on-close | close: () => void | 监听关闭事件  |

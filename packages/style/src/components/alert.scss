@@ -1,0 +1,28 @@
+@import "../variables/global";
+@import "../mixins/function";
+
+.calert { @extend %alert; }
+.calert__content { @extend %alert__content; }
+.calert__extra { @extend %alert__extra; }
+
+$alert-color: var(--calert-color, white);
+
+%alert {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 200px;
+  max-width: 100%;
+  padding: 6px 16px;
+  color: rgb(51, 51, 51);
+  background-color: $alert-color;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, .2);
+}
+
+%alert__content {
+
+}
+
+%alert__extra {
+  margin-left: 16px;
+}
