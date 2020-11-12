@@ -1,0 +1,43 @@
+@import "../variables/global";
+@import "../mixins/function";
+
+.cicon { @extend %icon; }
+.cicon.cicon--spin { @extend %icon--spin; }
+.cicon.cicon--link { @extend %icon--link; }
+
+$color: var(--cicon-color, inhert);
+$size: var(--cicon-size, inhert);
+$width: var(--cicon-stroke-width, 2);
+
+$animation: unique-id();
+
+%icon {
+  display: inline-flex;
+  align-items: center;
+
+  // aligns svg/image/font icon with text
+  // https://zhuanlan.zhihu.com/p/30624268
+  &::before {
+    content: '\200b'
+  }
+
+  & > svg {
+    color: $color;
+    font-size: $size;
+    stroke-width: $width;
+  }
+}
+
+%icon--spin {
+  animation: #{$animation} .85s linear infinite;
+}
+
+%icon--link {
+  cursor: pointer;
+}
+
+@keyframes #{$animation} {
+  100% {
+    transform: rotate(-1turn);
+  }
+}
