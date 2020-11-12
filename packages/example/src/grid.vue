@@ -4,7 +4,7 @@
       class="outgrid"
       gap="4px"
       :template="template"
-      :border="true"
+      :border="border"
     >
       <GridItem name="b">
         <div class="block"></div>

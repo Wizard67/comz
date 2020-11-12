@@ -1,55 +1,37 @@
 <template>
   <div
-    :class="gridClassName"
+    class="cgrid"
+    :class="className"
     :style="cssVars"
   >
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script setup="props, { emit }" lang="ts">
-import { computed, provide } from 'vue'
-import { useClassName, useCssVars } from '@comz/vca'
-
-import { key } from './utils'
-
 declare const props: {
   gap?: string
   template?: string
   border: boolean
 }
 
-provide(key, computed(() => props.border ?? false))
+import { provide, ref, toRefs } from 'vue'
+import { useBEM, useCssVars } from '@comz/vca'
+import { key } from './utils'
 
-export const gridClassName = useClassName('c-grid', {
-  'border': computed(() => props.border)
-})
+const { border, gap, template } = toRefs(props)
+
+provide(key, border)
+
+export const className = useBEM(({ b, m }) => ({
+  [b('cgird')]: ref(true),
+  [m('border')]: border
+}), { blockPrefix: false })
 
 export const cssVars = useCssVars({
-  '--c-grid-gap': computed(() => props.gap),
-  '--c-grid-template': computed(() => props.template)
+  '--cgrid-gap': gap,
+  '--cgrid-template': template
 }, { scoped: true })
 
 export default {}
 </script>
-
-<style lang="scss">
-$block: ".c-grid";
-
-%grid {
-  display: grid;
-  grid-gap: var(--c-grid-gap, 0 0);
-  grid-template: var(--c-grid-template);
-  width: 100%;
-  height: 100%;
-}
-
-#{$block} {
-  @extend %grid;
-}
-
-#{$block}--border {
-  @extend %grid;
-  outline: 0.5px rgba(0, 0, 0, .2) dashed;
-}
-</style>

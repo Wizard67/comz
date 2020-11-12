@@ -1,0 +1,35 @@
+@import "../variables/global";
+@import "../mixins/function";
+
+.cgrid { @extend %grid; }
+.cgrid.cgrid--border { @extend %grid--border; }
+
+$grid-gap: var(--cgrid-gap, 0 0);
+$grid-template: var(--cgrid-template);
+
+.cgrid-item { @extend %grid-item; }
+.cgrid-item.cgrid-item--border { @extend %grid-item--border; }
+
+$grid-item-area: var(--cgrid-item-name);
+$grid-item-place: var(--cgrid-item-place);
+
+%grid {
+  display: grid;
+  grid-gap: $grid-gap;
+  grid-template: $grid-template;
+  width: 100%;
+  height: 100%;
+}
+
+%grid--border {
+  outline: 0.5px rgba(0, 0, 0, .2) dashed;
+}
+
+%grid-item {
+  grid-area: $grid-item-area;
+  place-self: $grid-item-place;
+}
+
+%grid-item--border {
+  outline: 0.5px rgba(0, 0, 0, .2) dashed;
+}
