@@ -1,0 +1,56 @@
+@import "../variables/global";
+@import "../mixins/function";
+
+.ctextarea { @extend %textarea; }
+.ctextarea__field { @extend %textarea__field; }
+.ctextarea__field.ctextarea__field--disabled { @extend %textarea__field--disabled; }
+
+$width: var(--ctextarea-width, 100%);
+
+%textarea {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: $width;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+%textarea__field {
+  box-sizing: border-box;
+  position: relative;
+  flex: 1;
+  display: block;
+  width: 100%;
+  min-height: 24px;
+  padding: 4px 8px;
+  border: none;
+  color: rgb(51, 51, 51);
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+               Helvetica Neue, Arial, Noto Sans, sans-serif,
+               Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 14px;
+  line-height: 1.2em;
+  white-space: pre-wrap;
+  resize: vertical;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: rgba(0, 0, 0, .3);
+  }
+
+  &:read-only {
+    background-color: rgb(235, 235, 235);
+  }
+}
+
+%textarea__field--disabled {
+  color: rgba(0, 0, 0, .2);
+  background-color: rgb(235, 235, 235);
+  cursor: not-allowed;
+}
