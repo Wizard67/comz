@@ -4,17 +4,19 @@
 
     <br>
 
-    <Select v-model="value" placeholder="something">
-      <Option value="test" label="TestLabel">
-        Test
-      </Option>
-      <Option :value="{ value: 'ok' }" label="OkkkLabel">
-        Okkk
-      </Option>
-      <Option :value="optionvalue" :label="optionlabel">
-        {{ aa }}
-      </Option>
-    </Select>
+    <div class="wrap">
+      <Select v-model="value" placeholder="something">
+        <Option value="test" label="TestLabel">
+          Test
+        </Option>
+        <Option :value="{ value: 'ok' }" label="OkkkLabel">
+          Okkk
+        </Option>
+        <Option :value="optionvalue" :label="optionlabel">
+          {{ aa }}
+        </Option>
+      </Select>
+    </div>
 
   </main>
 </template>
@@ -68,5 +70,9 @@ main {
   width: 100%;
   height: 200px;
   padding: 10px 0;
+}
+
+.wrap {
+  width: 200px;
 }
 </style>
