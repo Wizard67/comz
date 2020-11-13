@@ -1,6 +1,4 @@
-import path from 'path'
 import VuePlugin from 'rollup-plugin-vue'
-import PostcssPlugin from 'rollup-plugin-postcss'
 import Typescript from 'rollup-plugin-typescript2'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 
@@ -46,10 +44,6 @@ export default {
     nodeResolve(),
     VuePlugin({
       preprocessStyles: true
-    }),
-    PostcssPlugin({
-      extract: true,
-      extract: path.resolve(outputDir, 'style.css')
     }),
     Typescript({
       useTsconfigDeclarationDir: true

@@ -1,5 +1,4 @@
 import { createApp } from 'vue'
-import 'comz/dist/style.css'
 import '@comz/style'
 
 // import Comp from './src/button.vue'
