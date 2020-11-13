@@ -1,13 +1,14 @@
 <template>
-  <section :class="cspace" :style="cssVars">
+  <section
+    class="cspace"
+    :class="className"
+    :style="cssVars"
+  >
     <slot />
   </section>
 </template>
 
 <script setup="props, { emit }" lang="ts">
-import { toRefs } from 'vue'
-import { useClassName, useCssVars } from '@comz/vca'
-
 declare const props: {
   gap?: string
   align?: 'start' | 'center' | 'end'
@@ -16,12 +17,17 @@ declare const props: {
   wrap: boolean
 }
 
-export const { vertical, wrap, gap, align, itemWidth } = toRefs(props)
+import { ref, toRefs, computed } from 'vue'
+import { useBEM, useCssVars } from '@comz/vca'
 
-export const cspace = useClassName('cspace', {
-  'vertical': vertical,
-  'wrap': wrap
-})
+const { vertical, wrap, gap, align, itemWidth } = toRefs(props)
+
+export const className = useBEM(({b, m}) => ({
+  [b('cspace')]: ref(true),
+  [m('wrap')]: computed(() => !vertical.value && wrap.value),
+  [m('vertical')]: computed(() => vertical.value && !wrap.value),
+  [m('vertical-wrap')]: computed(() => vertical.value && wrap.value)
+}), { blockPrefix: false })
 
 export const cssVars = useCssVars({
   '--cspace-gap': gap,
@@ -31,33 +37,3 @@ export const cssVars = useCssVars({
 
 export default {}
 </script>
-
-<style lang="scss">
-$block: '.cspace';
-
-%space {
-  display: grid;
-  grid-gap: var(--cspace-gap, 0 0);
-  place-items: start var(--cspace-align, start);
-}
-
-#{$block} {
-  @extend %space;
-  grid-auto-flow: column;
-
-  &--wrap {
-    @extend #{$block};
-    grid-auto-flow: inherit;
-    grid-template-columns: repeat(auto-fit, minmax(var(--cspace-item-width, 60px), auto));
-  }
-}
-
-#{$block}--vertical {
-  @extend %space;
-  grid-auto-flow: row;
-
-  &--wrap {
-    @extend #{$block}--vertical;
-  }
-}
-</style>
