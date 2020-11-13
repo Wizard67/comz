@@ -1,0 +1,49 @@
+@import "../variables/global";
+@import "../mixins/function";
+
+.cform { @extend %form; }
+
+.cform-item { @extend %form-item; }
+.cform-item__label { @extend %form-item__label; }
+.cform-item__field { @extend %form-item__field; }
+.cform-item__field.cform-item__field--error { @extend %form-item__field--error; }
+.cform-item__error { @extend %form-item__error; }
+
+$width: var(--cformitem-width, 80px);
+
+%form {
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+}
+
+%form-item {
+  display: flex;
+  align-items: flex-start;
+  margin: 4px 0;
+}
+
+%form-item__label {
+  flex: none;
+  width: $width;
+  padding: 4px 0;
+  color: rgb(51, 51, 51);
+  font-size: 14px;
+  line-height: 1.2em;
+}
+
+%form-item__field {
+  position: relative;
+  flex: 1;
+  width: calc(100% - 80%);
+}
+
+%form-item__field--error {
+
+}
+
+%form-item__error {
+  box-sizing: border-box;
+  color: rgb(252, 92, 92);
+  font-size: 14px;
+}
