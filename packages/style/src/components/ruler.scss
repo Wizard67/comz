@@ -1,0 +1,23 @@
+@import "../variables/global";
+@import "../mixins/function";
+
+.cruler { @extend %ruler; }
+.cruler.cruler--grid { @extend %ruler--grid; }
+
+$color: var(--cruler-border-color, rgb(247, 247, 247));
+$background-color: var(--cruler-background-color, white);
+
+%ruler {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+%ruler--grid {
+  background-color: $background-color;
+  background-image: linear-gradient($color 1px, transparent 0),
+                    linear-gradient(90deg, $color 1px, transparent 0),
+                    linear-gradient($color 1px, transparent 0),
+                    linear-gradient(90deg, $color 1px, transparent 0);
+  background-size: 10px 10px, 10px 10px, 70px 70px, 70px 70px;
+}
