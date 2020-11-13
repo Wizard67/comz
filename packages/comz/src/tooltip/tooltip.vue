@@ -4,7 +4,9 @@
       v-show="show"
       class="ctooltip__text"
       ref="textRef"
-    >{{ text }}</div>
+    >
+      {{ text }}
+    </div>
     <div class="ctooltip__slot" ref="slotRef">
       <slot />
     </div>
@@ -12,20 +14,21 @@
 </template>
 
 <script setup="props, { emit }" lang="ts">
-import { ref, Ref } from 'vue'
-import { Placement, Instance } from '@popperjs/core'
-import { useEvent, useToggle, usePopper } from '@comz/vca'
-
 declare const props: {
   text?: String
   placement?: Placement
 }
 
+import { ref, Ref } from 'vue'
+import { Placement, Instance } from '@popperjs/core'
+import { useEvent, useToggle, usePopper } from '@comz/vca'
+
 export const textRef = ref<HTMLElement | null>(null)
 export const slotRef = ref<HTMLElement | null>(null)
-let popper: Ref<Instance | null>
 
 export const { state: show, toggle } = useToggle()
+
+let popper: Ref<Instance | null>
 
 useEvent(slotRef, 'mouseenter', () => {
   toggle()
@@ -48,28 +51,3 @@ useEvent(slotRef, 'mouseleave', () => {
 
 export default {}
 </script>
-
-<style lang="scss">
-$block: '.ctooltip';
-
-#{$block} {
-  position: relative;
-  display: inline-block;
-
-  &__text {
-    position: absolute;
-    display: inline-flex;
-    align-items: center;
-    max-width: 160px;
-    padding: 4px 16px;
-    border-radius: 4px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-    color: white;
-    background-color: rgb(47, 49, 55);
-    font-size: 14px;
-    line-height: 1.2em;
-    z-index: 100;
-    pointer-events: none;
-  }
-}
-</style>

@@ -1,0 +1,32 @@
+@import "../variables/global";
+@import "../mixins/function";
+
+.ctooltip { @extend %tooltip; }
+.ctooltip__text { @extend %tooltip__text; }
+.ctooltip__slot { @extend %tooltip__slot; }
+
+
+%tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+%tooltip__text {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  max-width: 160px;
+  padding: 4px 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  color: white;
+  background-color: rgb(47, 49, 55);
+  font-size: 14px;
+  line-height: 1.2em;
+  z-index: 100;
+  pointer-events: none;
+}
+
+%tooltip__slot {
+  
+}
