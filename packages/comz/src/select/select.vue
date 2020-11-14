@@ -27,7 +27,7 @@ declare const props: {
 declare function emit (event: 'update:modelValue', value: unknown): void
 
 import { ref, toRefs, computed, provide } from 'vue'
-import { useClassName, useBEM } from '@comz/vca'
+import { useBEM } from '@comz/vca'
 import { handler, current, useClickOutSide, isEmpty } from './utils'
 
 export { default as Icon } from '../icon/icon.vue'
@@ -43,10 +43,6 @@ provide(handler, payload => {
   label.value = payload.label
   togglePanelState()
   emit('update:modelValue', payload.value)
-})
-
-export const cselect__field = useClassName('cselect__field', {
-  'empty': computed(() => isEmpty(modelValue.value))
 })
 
 export const fieldClassName = useBEM(({b, e, m}) => ({
