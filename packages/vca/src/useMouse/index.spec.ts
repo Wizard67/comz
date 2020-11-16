@@ -150,10 +150,13 @@ describe('useMouse', () => {
     mount(defineComponent({
       setup() {
         const { state } = useMouse(document.body, {
-          onBefore: () => ({
-            pageX: 1,
-            pageY: 2
-          }),
+          onBefore: (rect) => {
+            expect(rect).toStrictEqual(expect.any(Object))
+            return {
+              pageX: 1,
+              pageY: 2
+            }
+          },
           onUpdate: (event) => ({
             pageX: event.pageX + 10,
             pageY: event.pageY + 10

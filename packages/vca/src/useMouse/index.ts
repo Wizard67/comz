@@ -1,4 +1,4 @@
-import { ref, toRef, computed, reactive, isRef, watch, Ref, UnwrapRef } from 'vue'
+import { ref, toRef, computed, reactive, isRef, watch, toRaw, Ref, UnwrapRef } from 'vue'
 import { useEvent } from '../useEvent'
 
 type MouseEventPagePosition = {
@@ -26,7 +26,7 @@ export interface MouseState {
 }
 
 interface Hooks <T extends MouseEventPagePosition>{
-  onBefore?: () => T,
+  onBefore?: (rect: Rect) => T,
   onUpdate?: (event: T & Rect) => T
 }
 
@@ -41,10 +41,10 @@ export const useMouse = (
     height: 0
   })
 
-  const initState = hooks?.onBefore?.()
+  // const initState = hooks?.onBefore?.()
 
-  const pageX = ref(initState?.pageX ?? 0)
-  const pageY = ref(initState?.pageY ?? 0)
+  const pageX = ref(0)
+  const pageY = ref(0)
 
   const state: UnwrapRef<MouseState> = reactive({
     x: pageX,
@@ -92,6 +92,11 @@ export const useMouse = (
     if (!element) return
 
     updateTargetRect(element)
+
+    const initState = hooks?.onBefore?.(toRaw(targetRect))
+
+    pageX.value = initState?.pageX || pageX.value
+    pageY.value = initState?.pageY || pageY.value
 
     initState && updateMouseState(initState)
 
