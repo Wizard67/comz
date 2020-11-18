@@ -28,6 +28,7 @@ export default {
     'switch': 'src/switch/switch.vue',
     'ruler': 'src/ruler/ruler.vue',
     'tooltip': 'src/tooltip/tooltip.vue',
+    'slider': 'src/slider/slider.vue',
   },
   output: [
     {
