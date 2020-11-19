@@ -1,24 +1,24 @@
 import { reactive,toRefs, watch, Ref } from 'vue'
 
-export const getRang = (value: number, rang: number[]) => {
+export const getRange = (value: number, range: number[]) => {
   let left = 0
-  let right = rang.length
+  let right = range.length
 
   while (left + 1 < right) {
     const mid = Math.floor((left + right) / 2)
 
-    if (rang[mid] <= value) {
+    if (range[mid] <= value) {
       left = mid
     } else {
       right = mid
     }
   }
 
-  return [ rang[left], rang[left + 1] ]
+  return [ range[left], range[left + 1] ]
 }
 
-export const getPointValue = (value: number, rang: number[]) => {
-  const [min, max] = getRang(value, rang)
+export const getPointValue = (value: number, range: number[]) => {
+  const [min, max] = getRange(value, range)
   
   return (value - min) > (max - value) ? max : min
 }
@@ -55,7 +55,6 @@ export const useElementRect = (targetRef: Ref<HTMLElement | null>) => {
 
     const observer = new MutationObserver(() => {
       updateTargetRect(element)
-      console.log('change')
     })
     observer.observe(element, { attributes: true })
 
