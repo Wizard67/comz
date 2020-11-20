@@ -1,0 +1,12 @@
+{
+  "name": "docs",
+  "version": "0.0.1",
+  "description": "comz document",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vitepress",
+    "build": "vitepress build"
+  }
+}
