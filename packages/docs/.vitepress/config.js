@@ -13,10 +13,12 @@ module.exports = {
     ],
 
     sidebar: {
-      '/components/': [
+      '/': [
         {
           text: '组件',
-          children: [ ]
+          children: [
+            { text: 'Button', link: '/components/button/'}
+          ]
         }
       ]
     }
