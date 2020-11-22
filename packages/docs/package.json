@@ -8,5 +8,8 @@
   "scripts": {
     "dev": "vitepress",
     "build": "vitepress build"
+  },
+  "devDependencies": {
+    "vitepress": "^0.8.1"
   }
 }
