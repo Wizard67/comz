@@ -1,8 +1,6 @@
 # Button 按钮
 
-## 状态
-
-### 默认状态
+## 默认状态
 
 渲染普通按钮样式
 
@@ -10,7 +8,7 @@
 
 <<< ./components/button/default.vue
 
-### 禁用状态
+## 禁用状态
 
 对按钮设置禁用状态
 
@@ -18,7 +16,7 @@
 
 <<< ./components/button/disabled.vue
 
-### 加载状态
+## 加载状态
 
 对按钮设置加载状态
 
@@ -26,7 +24,7 @@
 
 <<< ./components/button/loading.vue
 
-### 复合状态
+## 复合状态
 
 处于加载与禁用状态的按钮
 
@@ -34,22 +32,20 @@
 
 <<< ./components/button/loading-disabled.vue
 
-## API
-
-### 属性 Attributes
+## 属性 Attributes
 
 | Attribute | Type    | Default | Description   |
 |-----------|---------|---------|---------------|
 | loading   | boolean | `false` | 是否处于加载状态 |
 | disabled  | boolean | `false` | 是否处于禁用状态 |
 
-### 事件 Event
+## 事件 Event
 
 | Event    | Type        | Description |
 |----------|-------------|-------------|
 | on-click | () => void  | 监听点击事件  |
 
-### 插槽 Slot
+## 插槽 Slot
 
 | Slot    | Description |
 |---------|-------------|
