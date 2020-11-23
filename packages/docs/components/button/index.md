@@ -4,33 +4,33 @@
 
 渲染普通按钮样式
 
-<ButtonDefault/>
-
+::: component <ButtonDefault/>
 <<< ./components/button/default.vue
+:::
 
 ## 禁用状态
 
 对按钮设置禁用状态
 
-<ButtonDisabled/>
-
+::: component <ButtonDisabled/>
 <<< ./components/button/disabled.vue
+:::
 
 ## 加载状态
 
 对按钮设置加载状态
 
-<ButtonLoading/>
-
+::: component <ButtonLoading/>
 <<< ./components/button/loading.vue
+:::
 
 ## 复合状态
 
 处于加载与禁用状态的按钮
 
-<ButtonLoadingDisabled/>
-
+::: component <ButtonLoadingDisabled/>
 <<< ./components/button/loading-disabled.vue
+:::
 
 ## 属性 Attributes
 

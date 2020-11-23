@@ -1,7 +1,15 @@
+const componentDemoPlugin = require('./markdown/componentDemo')
+
 module.exports = {
   lang: 'zh-CN',
   title: 'COMZ',
   description: 'A UI components base on Vue3.',
+
+  markdown: {
+    config(md) {
+      componentDemoPlugin(md)
+    }
+  },
 
   themeConfig: {
     repo: 'Wizard67/comz',
