@@ -1,6 +1,8 @@
 import DefaultTheme from 'vitepress/dist/client/theme-default'
 
 import '@comz/style'
+import './styles/custom.css'
+import './styles/highlight-theme.css'
 
 import ButtonDefault from '../../components/button/default.vue'
 import ButtonDisabled from '../../components/button/disabled.vue'

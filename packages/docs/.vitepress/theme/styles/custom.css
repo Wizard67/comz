@@ -1,0 +1,105 @@
+:root {
+  --c-brand: rgb(52, 142, 199);
+
+  --sidebar-width: 200px;
+  --code-bg-color: transparent;
+}
+
+/* 
+ *
+ *  aside
+ *
+ */
+.theme aside {
+  border-right: none;
+}
+
+/* 
+ *
+ *  h
+ *
+ */
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  border-bottom: none;
+  font-weight: 400;
+}
+
+/* 
+ *
+ *  code
+ *
+ */
+.content [class~='language-vue'] code {
+  color: inherit;
+  background-color: transparent;
+}
+
+.content [class~='language-vue']:before {
+  content: 'vue';
+}
+
+/* 
+ *
+ *  table
+ *
+ */
+.content table {
+  display: table;
+  width: 100%;
+
+  border-spacing: 0;
+  border-bottom: 0;
+
+  text-align: left;
+  overflow: scroll;
+}
+
+.content table thead tr {
+  border: none;
+}
+
+.content table tbody {
+  border-bottom: 1px solid var(--c-divider-light);
+}
+
+.content table th,
+.content table td {
+  border: unset;
+}
+
+.content table tr:nth-child(2n) {
+  background-color: unset;
+}
+
+@media (max-width: 719px) {
+  .content table {
+    display: block;
+  }
+}
+
+/* 
+ *
+ *  demo
+ *
+ */
+.demo {
+  border: 1px solid var(--c-divider-light);
+}
+
+.demo-component {
+  padding: 2.55rem 0.85rem;
+  border-bottom: 1px solid var(--c-divider-light);
+}
+
+.demo-code {
+  background-color: #fafafa;
+}
+
+.demo-code [class *='language'] {
+  margin: 0;
+}
