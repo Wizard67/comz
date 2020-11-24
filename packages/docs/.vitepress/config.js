@@ -30,6 +30,7 @@ module.exports = {
             { text: 'Card', link: '/components/card/'},
             { text: 'Modal', link: '/components/modal/'},
             { text: 'Alert', link: '/components/alert/'},
+            { text: 'Toast', link: '/components/toast/'},
           ]
         }
       ]
