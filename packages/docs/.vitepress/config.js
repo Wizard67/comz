@@ -25,7 +25,8 @@ module.exports = {
         {
           text: '组件',
           children: [
-            { text: 'Button', link: '/components/button/'}
+            { text: 'Grid', link: '/components/grid/'},
+            { text: 'Button', link: '/components/button/'},
           ]
         }
       ]

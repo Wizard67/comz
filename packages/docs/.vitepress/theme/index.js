@@ -4,6 +4,12 @@ import '@comz/style'
 import './styles/custom.css'
 import './styles/highlight-theme.css'
 
+import GridDefault from '../../components/grid/default.vue'
+import GridGap from '../../components/grid/gap.vue'
+import GridBorder from '../../components/grid/border.vue'
+import GridNested from '../../components/grid/nested.vue'
+import GridPlace from '../../components/grid/place.vue'
+
 import ButtonDefault from '../../components/button/default.vue'
 import ButtonDisabled from '../../components/button/disabled.vue'
 import ButtonLoading from '../../components/button/loading.vue'
@@ -12,6 +18,12 @@ import ButtonLoadingDisabled from '../../components/button/loading-disabled.vue'
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
+    app.component('GridDefault', GridDefault)
+    app.component('GridGap', GridGap)
+    app.component('GridBorder', GridBorder)
+    app.component('GridNested', GridNested)
+    app.component('GridPlace', GridPlace)
+
     app.component('ButtonDefault', ButtonDefault)
     app.component('ButtonDisabled', ButtonDisabled)
     app.component('ButtonLoading', ButtonLoading)
