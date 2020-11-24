@@ -24,7 +24,7 @@ const { border, gap, template } = toRefs(props)
 provide(key, border)
 
 export const className = useBEM(({ b, m }) => ({
-  [b('cgird')]: ref(true),
+  [b('cgrid')]: ref(true),
   [m('border')]: border
 }), { blockPrefix: false })
 
