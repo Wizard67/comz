@@ -6,6 +6,7 @@
       :style="cssVars"
       :value="modelValue"
       :rows="textareaRows"
+      :placeholder="placeholder"
       :readonly="readonly"
       :disabled="disabled"
       @input="handleInput"
