@@ -39,6 +39,9 @@ import TextareaReadonly from '../../components/textarea/readonly.vue'
 import RadioDefault from '../../components/radio/default.vue'
 import RadioDisabled from '../../components/radio/disabled.vue'
 
+import CheckboxDefault from '../../components/checkbox/default.vue'
+import CheckboxDisabled from '../../components/checkbox/disabled.vue'
+
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
@@ -76,5 +79,8 @@ export default {
 
     app.component('RadioDefault', RadioDefault)
     app.component('RadioDisabled', RadioDisabled)
+
+    app.component('CheckboxDefault', CheckboxDefault)
+    app.component('CheckboxDisabled', CheckboxDisabled)
   }
 }

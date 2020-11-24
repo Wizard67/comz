@@ -34,6 +34,7 @@ module.exports = {
             { text: 'Input', link: '/components/input/'},
             { text: 'Textarea', link: '/components/textarea/'},
             { text: 'Radio', link: '/components/radio/'},
+            { text: 'Checkbox', link: '/components/checkbox/'},
           ]
         }
       ]
