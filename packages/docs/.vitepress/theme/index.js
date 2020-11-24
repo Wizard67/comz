@@ -15,6 +15,10 @@ import ButtonDisabled from '../../components/button/disabled.vue'
 import ButtonLoading from '../../components/button/loading.vue'
 import ButtonLoadingDisabled from '../../components/button/loading-disabled.vue'
 
+import CardDefault from '../../components/card/default.vue'
+import CardSlot from '../../components/card/slot.vue'
+import CardShadow from '../../components/card/shadow.vue'
+
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
@@ -28,5 +32,9 @@ export default {
     app.component('ButtonDisabled', ButtonDisabled)
     app.component('ButtonLoading', ButtonLoading)
     app.component('ButtonLoadingDisabled', ButtonLoadingDisabled)
+
+    app.component('CardDefault', CardDefault)
+    app.component('CardSlot', CardSlot)
+    app.component('CardShadow', CardShadow)
   }
 }
