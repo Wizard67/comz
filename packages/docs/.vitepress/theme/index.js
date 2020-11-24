@@ -19,6 +19,9 @@ import CardDefault from '../../components/card/default.vue'
 import CardSlot from '../../components/card/slot.vue'
 import CardShadow from '../../components/card/shadow.vue'
 
+import ModalDefault from '../../components/modal/default.vue'
+import ModalAsync from '../../components/modal/async.vue'
+
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
@@ -36,5 +39,8 @@ export default {
     app.component('CardDefault', CardDefault)
     app.component('CardSlot', CardSlot)
     app.component('CardShadow', CardShadow)
+
+    app.component('ModalDefault', ModalDefault)
+    app.component('ModalAsync', ModalAsync)
   }
 }
