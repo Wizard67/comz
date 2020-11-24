@@ -25,6 +25,7 @@ $toast-out: unique-id();
   font-size: 14px;
   line-height: 1.2em;
   transition: transform .3s ease-in-out;
+  z-index: 600;
 }
 
 // vue-transition
