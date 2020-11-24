@@ -34,13 +34,13 @@
  *  code
  *
  */
-.content [class~='language-vue'] code {
+.content [class*='language'] code {
   color: inherit;
   background-color: transparent;
 }
 
-.content [class~='language-vue']:before {
-  content: 'vue';
+.content [class*='language']:before {
+  content: '';
 }
 
 /* 
