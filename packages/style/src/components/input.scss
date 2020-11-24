@@ -6,7 +6,7 @@
 .cinput__field.cinput__field--disabled { @extend %input__field--disabled; }
 .cinput__clear { @extend %input__clear; }
 
-$width: var(--cinput-width, 100%);
+$width: var(--cinput-width, inherit);
 $rpadding: var(--cinput-field-rpadding, 8px);
 
 %input {
