@@ -29,6 +29,7 @@ module.exports = {
             { text: 'Button', link: '/components/button/'},
             { text: 'Card', link: '/components/card/'},
             { text: 'Modal', link: '/components/modal/'},
+            { text: 'Alert', link: '/components/alert/'},
           ]
         }
       ]

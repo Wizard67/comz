@@ -22,6 +22,9 @@ import CardShadow from '../../components/card/shadow.vue'
 import ModalDefault from '../../components/modal/default.vue'
 import ModalAsync from '../../components/modal/async.vue'
 
+import AlertDefault from '../../components/alert/default.vue'
+import AlertExtra from '../../components/alert/extra.vue'
+
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
@@ -42,5 +45,8 @@ export default {
 
     app.component('ModalDefault', ModalDefault)
     app.component('ModalAsync', ModalAsync)
+
+    app.component('AlertDefault', AlertDefault)
+    app.component('AlertExtra', AlertExtra)
   }
 }
