@@ -32,6 +32,7 @@ module.exports = {
             { text: 'Alert', link: '/components/alert/'},
             { text: 'Toast', link: '/components/toast/'},
             { text: 'Input', link: '/components/input/'},
+            { text: 'Textarea', link: '/components/textarea/'},
           ]
         }
       ]

@@ -32,6 +32,10 @@ import InputDisabled from '../../components/input/disabled.vue'
 import InputReadonly from '../../components/input/readonly.vue'
 import InputClearable from '../../components/input/clearable.vue'
 
+import TextareaDefault from '../../components/textarea/default.vue'
+import TextareaDisabled from '../../components/textarea/disabled.vue'
+import TextareaReadonly from '../../components/textarea/readonly.vue'
+
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
@@ -62,5 +66,9 @@ export default {
     app.component('InputDisabled', InputDisabled)
     app.component('InputReadonly', InputReadonly)
     app.component('InputClearable', InputClearable)
+
+    app.component('TextareaDefault', TextareaDefault)
+    app.component('TextareaDisabled', TextareaDisabled)
+    app.component('TextareaReadonly', TextareaReadonly)
   }
 }
