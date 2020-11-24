@@ -27,6 +27,11 @@ import AlertExtra from '../../components/alert/extra.vue'
 
 import ToastDefault from '../../components/toast/default.vue'
 
+import InputDefault from '../../components/input/default.vue'
+import InputDisabled from '../../components/input/disabled.vue'
+import InputReadonly from '../../components/input/readonly.vue'
+import InputClearable from '../../components/input/clearable.vue'
+
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
@@ -52,5 +57,10 @@ export default {
     app.component('AlertExtra', AlertExtra)
 
     app.component('ToastDefault', ToastDefault)
+
+    app.component('InputDefault', InputDefault)
+    app.component('InputDisabled', InputDisabled)
+    app.component('InputReadonly', InputReadonly)
+    app.component('InputClearable', InputClearable)
   }
 }
