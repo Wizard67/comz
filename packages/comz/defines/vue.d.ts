@@ -1,9 +1,5 @@
 declare module '*.vue' {
-  import { Component, ComponentPublicInstance } from 'vue'
-
-  const component: Component & {
-    new (): ComponentPublicInstance<any>
-  }
-
+  import { DefineComponent } from 'vue'
+  const component: DefineComponent
   export default component
 }
