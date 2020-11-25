@@ -2,6 +2,6 @@
 
 ## 基础用法
 
-::: component <RulerDefault>
+::: component <RulerDefault/>
 <<< ./components/ruler/default.vue
 :::
