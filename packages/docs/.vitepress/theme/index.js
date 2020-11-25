@@ -42,6 +42,8 @@ import RadioDisabled from '../../components/radio/disabled.vue'
 import CheckboxDefault from '../../components/checkbox/default.vue'
 import CheckboxDisabled from '../../components/checkbox/disabled.vue'
 
+import SelectDefault from '../../components/select/default.vue'
+
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
@@ -82,5 +84,7 @@ export default {
 
     app.component('CheckboxDefault', CheckboxDefault)
     app.component('CheckboxDisabled', CheckboxDisabled)
+
+    app.component('SelectDefault', SelectDefault)
   }
 }

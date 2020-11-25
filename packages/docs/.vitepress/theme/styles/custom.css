@@ -4,6 +4,8 @@
   --sidebar-width: 200px;
   --c-divider: transparent;
   --code-bg-color: transparent;
+
+  --z-index-navbar: 500;
 }
 
 /* 

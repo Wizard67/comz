@@ -11,6 +11,7 @@ const components = [
   { text: 'Textarea', link: '/components/textarea/'},
   { text: 'Radio', link: '/components/radio/'},
   { text: 'Checkbox', link: '/components/checkbox/'},
+  { text: 'Select', link: '/components/select/'},
 ]
 
 module.exports = {
