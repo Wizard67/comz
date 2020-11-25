@@ -60,6 +60,8 @@ import PanelDefault from '../../components/panel/default.vue'
 import SwitchDefault from '../../components/switch/default.vue'
 import SwitchDisabled from '../../components/switch/disabled.vue'
 
+import RulerDefault from '../../components/ruler/default.vue'
+
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
@@ -118,5 +120,7 @@ export default {
 
     app.component('SwitchDefault', SwitchDefault)
     app.component('SwitchDisabled', SwitchDisabled)
+
+    app.component('RulerDefault', RulerDefault)
   }
 }
