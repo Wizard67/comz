@@ -57,6 +57,9 @@ import FormDefault from '../../components/form/default.vue'
 
 import PanelDefault from '../../components/panel/default.vue'
 
+import SwitchDefault from '../../components/switch/default.vue'
+import SwitchDisabled from '../../components/switch/disabled.vue'
+
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
@@ -112,5 +115,8 @@ export default {
     app.component('FormDefault', FormDefault)
 
     app.component('PanelDefault', PanelDefault)
+
+    app.component('SwitchDefault', SwitchDefault)
+    app.component('SwitchDisabled', SwitchDisabled)
   }
 }
