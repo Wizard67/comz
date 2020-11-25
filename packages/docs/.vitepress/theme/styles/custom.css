@@ -2,16 +2,8 @@
   --c-brand: rgb(52, 142, 199);
 
   --sidebar-width: 200px;
+  --c-divider: transparent;
   --code-bg-color: transparent;
-}
-
-/* 
- *
- *  aside
- *
- */
-.theme aside {
-  border-right: none;
 }
 
 /* 

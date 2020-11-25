@@ -22,13 +22,13 @@
 <<< ./components/card/shadow.vue
 :::
 
-### 属性 Attribute
+## 属性 Attribute
 
 | Attribute | Type    | Default   | Description |
 |-----------|---------|-----------|-------------|
 | shadow    | boolean | `false`   | 是否显示阴影  |
 
-### 插槽 Slot
+## 插槽 Slot
 
 | Slot    | Description               |
 |---------|-------------------------- |
