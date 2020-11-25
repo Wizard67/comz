@@ -14,6 +14,7 @@ const components = [
   { text: 'Select', link: '/components/select/'},
   { text: 'Icon', link: '/components/icon/'},
   { text: 'Space', link: '/components/space/'},
+  { text: 'Form', link: '/components/form/'},
 ]
 
 module.exports = {

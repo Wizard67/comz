@@ -53,6 +53,8 @@ import SpaceWidth from '../../components/space/width.vue'
 import SpaceVerical from '../../components/space/verical.vue'
 import SpaceAlign from '../../components/space/align.vue'
 
+import FormDefault from '../../components/form/default.vue'
+
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
@@ -104,5 +106,7 @@ export default {
     app.component('SpaceWidth', SpaceWidth)
     app.component('SpaceVerical', SpaceVerical)
     app.component('SpaceAlign', SpaceAlign)
+
+    app.component('FormDefault', FormDefault)
   }
 }
