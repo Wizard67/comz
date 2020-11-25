@@ -4,6 +4,8 @@ import '@comz/style'
 import './styles/custom.css'
 import './styles/highlight-theme.css'
 
+import Demo from './components/demo.vue'
+
 import GridDefault from '../../components/grid/default.vue'
 import GridGap from '../../components/grid/gap.vue'
 import GridBorder from '../../components/grid/border.vue'
@@ -69,6 +71,8 @@ import SliderDefault from '../../components/slider/default.vue'
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
+    app.component('Demo', Demo)
+
     app.component('GridDefault', GridDefault)
     app.component('GridGap', GridGap)
     app.component('GridBorder', GridBorder)

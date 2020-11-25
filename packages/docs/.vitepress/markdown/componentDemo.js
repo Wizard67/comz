@@ -6,11 +6,11 @@ module.exports = function componentDemoPlugin(md) {
       const token = tokens[idx]
       const info = token.info.trim().replace('component', '').trim()
       if (token.nesting === 1) {
-        return `<div class="demo">\n
-        <div class="demo-component">${info}</div>\n
-        <div class="demo-code">`
+        return `<Demo>\n
+        <template #component>${info}</template>\n
+        <template #code>`
       } else {
-        return `</div></div>\n`
+        return `</template>\n</Demo>`
       }
     }
   })

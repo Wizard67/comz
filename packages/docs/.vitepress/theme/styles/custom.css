@@ -90,7 +90,19 @@
   border-bottom: 1px solid var(--c-divider-light);
 }
 
+.demo-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  color: #c0c0c0;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
 .demo-code {
+  border-top: 1px solid var(--c-divider-light);
   background-color: #fafafa;
 }
 
