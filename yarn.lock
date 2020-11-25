@@ -1516,10 +1516,10 @@
   resolved "https://registry.npmjs.org/@vue/shared/-/shared-3.0.2.tgz#419bd85a2ebdbd4f42963e98c5a1b103452176d9"
   integrity sha512-Zx869zlNoujFOclKIoYmkh8ES2RcS/+Jn546yOiPyZ+3+Ejivnr+fb8l+DdXUEFjo+iVDNR3KyLzg03aBFfZ4Q==
 
-"@vue/test-utils@^2.0.0-beta.7":
-  version "2.0.0-beta.7"
-  resolved "https://registry.npmjs.org/@vue/test-utils/-/test-utils-2.0.0-beta.7.tgz#27751991e0b013ee4af487e51e16a58d477e5857"
-  integrity sha512-cAe7VqoxxkxTr/2N93UpW/LQbcUVKC+QRA3ZBq5ZWImtAf/8jtcdC2mQ9g4AKmSvyaKQtqxrRn4i/y5z7yrrKA==
+"@vue/test-utils@^2.0.0-beta.10":
+  version "2.0.0-beta.10"
+  resolved "https://registry.npmjs.org/@vue/test-utils/-/test-utils-2.0.0-beta.10.tgz#7b5e2a6084d2c99dcc9d229e8de8b71ce50cb07d"
+  integrity sha512-CRcWjEjDEJc0Ag9uZfMx8y7lGfS16TAHbYGGPAJBRdte6sJn7j7eGRNLNIxjeiIROA2ZIAftYkb2/PnBS+78eA==
 
 abab@^2.0.3:
   version "2.0.5"
