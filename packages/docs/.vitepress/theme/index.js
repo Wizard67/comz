@@ -55,6 +55,8 @@ import SpaceAlign from '../../components/space/align.vue'
 
 import FormDefault from '../../components/form/default.vue'
 
+import PanelDefault from '../../components/panel/default.vue'
+
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
@@ -108,5 +110,7 @@ export default {
     app.component('SpaceAlign', SpaceAlign)
 
     app.component('FormDefault', FormDefault)
+
+    app.component('PanelDefault', PanelDefault)
   }
 }

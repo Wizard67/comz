@@ -15,6 +15,7 @@ const components = [
   { text: 'Icon', link: '/components/icon/'},
   { text: 'Space', link: '/components/space/'},
   { text: 'Form', link: '/components/form/'},
+  { text: 'Panel', link: '/components/panel/'},
 ]
 
 module.exports = {
