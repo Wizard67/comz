@@ -19,6 +19,7 @@ const components = [
   { text: 'Switch', link: '/components/switch/'},
   { text: 'Ruler', link: '/components/ruler/'},
   { text: 'Tooltip', link: '/components/tooltip/'},
+  { text: 'Slider', link: '/components/slider/'},
 ]
 
 module.exports = {

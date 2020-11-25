@@ -64,6 +64,8 @@ import RulerDefault from '../../components/ruler/default.vue'
 
 import TooltipDefault from '../../components/tooltip/default.vue'
 
+import SliderDefault from '../../components/slider/default.vue'
+
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
@@ -126,5 +128,7 @@ export default {
     app.component('RulerDefault', RulerDefault)
 
     app.component('TooltipDefault', TooltipDefault)
+
+    app.component('SliderDefault', SliderDefault)
   }
 }
