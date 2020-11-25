@@ -12,6 +12,7 @@ const components = [
   { text: 'Radio', link: '/components/radio/'},
   { text: 'Checkbox', link: '/components/checkbox/'},
   { text: 'Select', link: '/components/select/'},
+  { text: 'Icon', link: '/components/icon/'},
 ]
 
 module.exports = {

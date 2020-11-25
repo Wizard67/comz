@@ -44,6 +44,9 @@ import CheckboxDisabled from '../../components/checkbox/disabled.vue'
 
 import SelectDefault from '../../components/select/default.vue'
 
+import IconDefault from '../../components/icon/default.vue'
+import IconSpin from '../../components/icon/spin.vue'
+
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
@@ -86,5 +89,8 @@ export default {
     app.component('CheckboxDisabled', CheckboxDisabled)
 
     app.component('SelectDefault', SelectDefault)
+
+    app.component('IconDefault', IconDefault)
+    app.component('IconSpin', IconSpin)
   }
 }
