@@ -62,6 +62,8 @@ import SwitchDisabled from '../../components/switch/disabled.vue'
 
 import RulerDefault from '../../components/ruler/default.vue'
 
+import TooltipDefault from '../../components/tooltip/default.vue'
+
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
@@ -122,5 +124,7 @@ export default {
     app.component('SwitchDisabled', SwitchDisabled)
 
     app.component('RulerDefault', RulerDefault)
+
+    app.component('TooltipDefault', TooltipDefault)
   }
 }
