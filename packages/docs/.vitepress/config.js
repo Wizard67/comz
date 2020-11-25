@@ -13,6 +13,7 @@ const components = [
   { text: 'Checkbox', link: '/components/checkbox/'},
   { text: 'Select', link: '/components/select/'},
   { text: 'Icon', link: '/components/icon/'},
+  { text: 'Space', link: '/components/space/'},
 ]
 
 module.exports = {

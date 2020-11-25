@@ -47,6 +47,12 @@ import SelectDefault from '../../components/select/default.vue'
 import IconDefault from '../../components/icon/default.vue'
 import IconSpin from '../../components/icon/spin.vue'
 
+import SpaceDefault from '../../components/space/default.vue'
+import SpaceWrap from '../../components/space/wrap.vue'
+import SpaceWidth from '../../components/space/width.vue'
+import SpaceVerical from '../../components/space/verical.vue'
+import SpaceAlign from '../../components/space/align.vue'
+
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
@@ -92,5 +98,11 @@ export default {
 
     app.component('IconDefault', IconDefault)
     app.component('IconSpin', IconSpin)
+
+    app.component('SpaceDefault', SpaceDefault)
+    app.component('SpaceWrap', SpaceWrap)
+    app.component('SpaceWidth', SpaceWidth)
+    app.component('SpaceVerical', SpaceVerical)
+    app.component('SpaceAlign', SpaceAlign)
   }
 }
