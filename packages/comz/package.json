@@ -9,15 +9,15 @@
     "dist",
     "types"
   ],
+  "author": "Wizard67<wizard67.hjn@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "rollup -c -w",
     "build": "rollup -c"
   },
-  "license": "ISC",
   "dependencies": {
     "@comz/icons": "0.0.1",
-    "@comz/vca": "0.0.1",
-    "@popperjs/core": "^2.5.3"
+    "@comz/vca": "0.0.1"
   },
   "peerDependencies": {
     "vue": "^3.0.2"

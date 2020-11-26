@@ -9,15 +9,15 @@
     "dist",
     "types"
   ],
+  "author": "Wizard67<wizard67.hjn@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "build": "tsc"
   },
-  "license": "ISC",
-  "devDependencies": {
-    "@popperjs/core": "^2.5.3"
-  },
   "peerDependencies": {
-    "vue": "^3.0.2",
-    "@popperjs/core": "^2.5.3"
+    "vue": "^3.0.2"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.5.4"
   }
 }

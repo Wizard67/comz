@@ -10,13 +10,14 @@
     "dist",
     "types"
   ],
+  "author": "Wizard67<wizard67.hjn@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "prebuild": "rimraf src dist types index.js entries.js",
     "rollup": "rollup -c",
     "generate": "node ./scripts/generate-icon-component.js",
     "build": "npm-run-all -s generate rollup"
   },
-  "license": "ISC",
   "dependencies": {
     "tabler-icons": "1.16.0"
   },

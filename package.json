@@ -8,12 +8,12 @@
     "type": "git",
     "url": "git+https://github.com/Wizard67/comz.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Wizard67/comz/issues"
   },
   "homepage": "https://github.com/Wizard67/comz#readme",
+  "author": "Wizard67<wizard67.hjn@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "build": "yarn workspaces run build",
     "test": "jest --coverage"
@@ -26,8 +26,6 @@
     "@vue/compiler-sfc": "^3.0.2",
     "@vue/test-utils": "^2.0.0-beta.10",
     "babel-jest": "^26.3.0",
-    "gulp": "^4.0.2",
-    "gulp-dart-sass": "^1.0.2",
     "jest": "^26.5.3",
     "rollup": "^2.26.10",
     "rollup-plugin-typescript2": "^0.28.0",

@@ -5,6 +5,8 @@
   "files": [
     "dist"
   ],
+  "author": "Wizard67<wizard67.hjn@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "vitepress",
     "build": "vitepress build"
