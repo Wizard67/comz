@@ -1,6 +1,5 @@
 <template>
   <div
-    class="cswitch"
     :class="className"
     @click="handleValueChange"
   >
@@ -24,7 +23,7 @@ export const className = useBEM(({b, m}) => ({
   [b('cswitch')]: true,
   [m('checked')]: modelValue,
   [m('disabled')]: disabled
-}), { blockPrefix: false })
+}))
 
 export const handleValueChange = () => {
   if (disabled.value) return

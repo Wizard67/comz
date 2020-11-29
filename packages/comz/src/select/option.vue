@@ -1,6 +1,5 @@
 <template>
   <div
-    class="coption"
     :class="className"
     @click="changeState"
   >
@@ -30,7 +29,7 @@ export const { state, changeState } = useOptionState(
 export const className = useBEM(({b, m}) => ({
   [b('coption')]: true,
   [m('selected')]: computed(() => state.value === 'selected'),
-}), { blockPrefix: false })
+}))
 
 export default {}
 </script>

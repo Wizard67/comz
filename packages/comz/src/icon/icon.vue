@@ -1,6 +1,5 @@
 <template>
   <div
-    class="cicon"
     :class="className"
     :style="cssVars"
     @click="handleClick"
@@ -31,7 +30,7 @@ export const className = useBEM(({b, m}) => ({
   [b('cicon')]: true,
   [m('spin')]: spin,
   [m('link')]: link,
-}), { blockPrefix: false })
+}))
 
 export const cssVars = useCssVars({
   '--cicon-size': size,

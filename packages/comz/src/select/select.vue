@@ -4,7 +4,7 @@
       class="cselect__selector"
       @click.stop="togglePanelState"
     >
-      <div class="cselect__field" :class="fieldClassName">{{ currentText }}</div>
+      <div :class="fieldClassName">{{ currentText }}</div>
       <div class="cselect__icon">
         <Icon link>
           <ChevronUp v-if="expand" />
@@ -12,7 +12,7 @@
         </Icon>
       </div>
     </div>
-    <div class="cselect__options" :class="optionsClassName">
+    <div :class="optionsClassName">
       <slot />
     </div>
   </div>
@@ -49,13 +49,13 @@ export const fieldClassName = useBEM(({b, e, m}) => ({
   [b('cselect')]: true,
   [e('field')]: true,
   [m('empty')]: computed(() => isEmpty(modelValue.value))
-}), { blockPrefix: false })
+}))
 
 export const optionsClassName = useBEM(({b, e, m}) => ({
   [b('cselect')]: true,
   [e('options')]: true,
   [m('open')]: expand
-}), { blockPrefix: false })
+}))
 
 export const selectRef = ref<HTMLElement | null>(null)
 

@@ -8,7 +8,6 @@
       <template v-if="true">{{ title }}</template>
     </div>
     <div
-      class="cpanel__wrap"
       ref="wrapRef"
       :class="className"
       :style="{ height }"
@@ -40,7 +39,7 @@ export const className = useBEM(({b, e, m}) => ({
   [b('cpanel')]: true,
   [e('wrap')]: true,
   [m('expand')]: expand
-}), { blockPrefix: false })
+}))
 
 export const togglePanelState = () => {
   emit('update:expand', !expand.value)

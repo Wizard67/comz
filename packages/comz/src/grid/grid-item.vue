@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="cgrid-item"
-    :class="className"
-    :style="cssStyle"
-  >
+  <div :class="className" :style="cssStyle">
     <slot />
   </div>
 </template>
@@ -23,7 +19,7 @@ const { name, place } = toRefs(props)
 export const className = useBEM(({ b, e, m}) => ({
   [b('cgrid-item')]: true,
   [m('border')]: inject(key, ref(false))
-}), { blockPrefix: false })
+}))
 
 export const cssStyle = useCssVars({
   '--cgrid-item-name': name,

@@ -1,7 +1,7 @@
 <template>
   <div class="cform-item">
     <div class="cform-item__label" :style="cssVars">{{ label }}</div>
-    <div class="cform-item__field" :class="className">
+    <div :class="className">
       <slot />
       <div v-if="errorMsg" class="cform-item__error">{{ errorMsg }}</div>
     </div>
@@ -28,7 +28,7 @@ export const className = useBEM(({b, e, m}) => ({
   [b('cform-item')]: true,
   [e('field')]: true,
   [m('error')]: computed(() => errorMsg.value !== '')
-}), { blockPrefix: false })
+}))
 
 export const cssVars = useCssVars({
   '--cformitem-width': inject(LABEL_WIDTH)

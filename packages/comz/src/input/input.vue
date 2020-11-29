@@ -2,7 +2,6 @@
   <div class="cinput" :style="inputCssVars">
     <input
       type="text"
-      class="cinput__field"
       :class="className"
       :style="inputFieldCssVars"
       :value="modelValue"
@@ -41,7 +40,7 @@ export const className = useBEM(({ b, e, m }) => ({
   [b('cinput')]: true,
   [e('field')]: true,
   [m('disabled')]: disabled
-}), { blockPrefix: false })
+}))
 
 export const inputCssVars = useCssVars({
   '--cinput-width': width

@@ -1,7 +1,6 @@
 <template>
   <div class="ctextarea">
     <textarea
-      class="ctextarea__field"
       :class="className"
       :style="cssVars"
       :value="modelValue"
@@ -37,7 +36,7 @@ export const className = useBEM(({b, e, m}) => ({
   [b('ctextarea')]: true,
   [e('field')]: true,
   [m('disabled')]: disabled
-}), { blockPrefix: false })
+}))
 
 export const cssVars = useCssVars({
   '--ctextarea-width': width

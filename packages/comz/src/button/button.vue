@@ -1,7 +1,6 @@
 <template>
   <button
     type="button"
-    class="cbutton"
     :class="className"
     :disabled="disabled"
     @click="handleClick"
@@ -27,7 +26,7 @@ export const className = useBEM(({b, m}) => ({
   [b('cbutton')]: true,
   [m('loading')]: loading,
   [m('disabled')]: disabled
-}), { blockPrefix: false })
+}))
 
 export const handleClick = () => emit('on-click')
 

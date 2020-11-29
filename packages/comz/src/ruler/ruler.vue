@@ -1,9 +1,5 @@
 <template>
-  <section
-    ref="rulerRef"
-    class="cruler"
-    :class="className"
-  >
+  <section ref="rulerRef" :class="className">
   </section>
 </template>
 
@@ -22,7 +18,7 @@ export const { grid, backgroundColor, borderColor } = toRefs(props)
 export const className = useBEM(({b, m}) => ({
   [b('cruler')]: true,
   [m('grid')]: grid
-}), { blockPrefix: false })
+}))
 
 export const cssVars = useCssVars({
   '--cruler-background-color': backgroundColor,

@@ -1,5 +1,5 @@
 <template>
-  <label class="ccheckbox" :class="className">
+  <label :class="className">
     <input
       type="checkbox"
       class="ccheckbox__field"
@@ -33,7 +33,7 @@ export const className = useBEM(({b, e, m}) => ({
   [b('ccheckbox')]: true,
   [m('checked')]: checked,
   [m('disabled')]: disabled
-}), { blockPrefix: false })
+}))
 
 export const handleChange = (event: InputEvent) => {
   const value = (event.target as HTMLInputElement).value

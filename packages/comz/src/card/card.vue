@@ -1,8 +1,5 @@
 <template>
-  <section
-    class="ccard"
-    :class="className"
-  >
+  <section :class="className">
     <div
       v-if="$slots.header"
       class="ccard__header"
@@ -34,7 +31,7 @@ const { shadow } = toRefs(props)
 export const className = useBEM(({b, e, m}) => ({
   [b('ccard')]: true,
   [m('shadow')]: shadow
-}), { blockPrefix: false })
+}))
 
 export default {}
 </script>

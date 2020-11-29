@@ -1,5 +1,5 @@
 <template>
-  <label class="cradio" :class="className">
+  <label :class="className">
     <input
       class="cradio__field"
       type="radio"
@@ -32,7 +32,7 @@ export const className = useBEM(({b, e, m}) => ({
   [b('cradio')]: true,
   [m('checked')]: checked,
   [m('disabled')]: disabled
-}), { blockPrefix: false })
+}))
 
 export const handleValueChange = (event: InputEvent) => {
   emit('update:modelValue', (event.target as HTMLInputElement).value)

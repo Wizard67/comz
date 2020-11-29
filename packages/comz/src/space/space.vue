@@ -1,9 +1,5 @@
 <template>
-  <section
-    class="cspace"
-    :class="className"
-    :style="cssVars"
-  >
+  <section :class="className" :style="cssVars">
     <slot />
   </section>
 </template>
@@ -27,7 +23,7 @@ export const className = useBEM(({b, m}) => ({
   [m('wrap')]: computed(() => !vertical.value && wrap.value),
   [m('vertical')]: computed(() => vertical.value && !wrap.value),
   [m('vertical-wrap')]: computed(() => vertical.value && wrap.value)
-}), { blockPrefix: false })
+}))
 
 export const cssVars = useCssVars({
   '--cspace-gap': gap,

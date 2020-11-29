@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="cgrid"
-    :class="className"
-    :style="cssVars"
-  >
+  <div :class="className" :style="cssVars">
     <slot />
   </div>
 </template>
@@ -26,7 +22,7 @@ provide(key, border)
 export const className = useBEM(({ b, m }) => ({
   [b('cgrid')]: true,
   [m('border')]: border
-}), { blockPrefix: false })
+}))
 
 export const cssVars = useCssVars({
   '--cgrid-gap': gap,
