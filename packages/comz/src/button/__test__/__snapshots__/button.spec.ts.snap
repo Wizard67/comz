@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button.vue props disabled 1`] = `
+<button
+  class="cbutton cbutton--disabled"
+  disabled=""
+  type="button"
+>
+  
+  
+</button>
+`;
+
+exports[`Button.vue props loading 1`] = `
+<button
+  class="cbutton cbutton--loading"
+  type="button"
+>
+  
+  
+</button>
+`;
+
+exports[`Button.vue slots default 1`] = `
+<button
+  class="cbutton"
+  type="button"
+>
+  
+  
+  button
+  
+  
+</button>
+`;
