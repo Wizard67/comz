@@ -26,13 +26,13 @@ declare const props: {
   shadow: boolean
 }
 
-import { ref, toRefs } from 'vue'
+import { toRefs } from 'vue'
 import { useBEM } from '@comz/vca'
 
 const { shadow } = toRefs(props)
 
 export const className = useBEM(({b, e, m}) => ({
-  [b('ccard')]: ref(true),
+  [b('ccard')]: true,
   [m('shadow')]: shadow
 }), { blockPrefix: false })
 

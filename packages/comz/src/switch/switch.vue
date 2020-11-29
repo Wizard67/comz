@@ -15,13 +15,13 @@ declare const props: {
 
 declare function emit (event: 'update:modelValue', value: boolean): void
 
-import { ref, toRefs } from 'vue'
+import { toRefs } from 'vue'
 import { useBEM } from '@comz/vca'
 
 export const { modelValue, disabled } = toRefs(props)
 
 export const className = useBEM(({b, m}) => ({
-  [b('cswitch')]: ref(true),
+  [b('cswitch')]: true,
   [m('checked')]: modelValue,
   [m('disabled')]: disabled
 }), { blockPrefix: false })

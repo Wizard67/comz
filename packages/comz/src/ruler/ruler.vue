@@ -14,13 +14,13 @@ declare const props: {
   grid: boolean
 }
 
-import { ref, toRefs } from 'vue'
+import { toRefs } from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
 
 export const { grid, backgroundColor, borderColor } = toRefs(props)
 
 export const className = useBEM(({b, m}) => ({
-  [b('cruler')]: ref(true),
+  [b('cruler')]: true,
   [m('grid')]: grid
 }), { blockPrefix: false })
 

@@ -28,7 +28,7 @@ declare const props: {
 
 declare function emit (event: 'update:expand', value: boolean): void
 
-import { ref, toRefs } from 'vue'
+import { toRefs } from 'vue'
 import { useBEM, useHeightToggle } from '@comz/vca'
 
 export { default as Icon } from '../icon/icon.vue'
@@ -37,8 +37,8 @@ export { Direction, DirectionHorizontal } from '@comz/icons'
 const { expand } = toRefs(props)
 
 export const className = useBEM(({b, e, m}) => ({
-  [b('cpanel')]: ref(true),
-  [e('wrap')]: ref(true),
+  [b('cpanel')]: true,
+  [e('wrap')]: true,
   [m('expand')]: expand
 }), { blockPrefix: false })
 

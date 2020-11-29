@@ -14,7 +14,7 @@ declare const props: {
   label: string
 }
 
-import { inject, computed, reactive, ref, toRefs } from 'vue'
+import { inject, computed, reactive, toRefs } from 'vue'
 import { useBEM } from '@comz/vca'
 import { handler, current, useOptionState } from './utils'
 
@@ -28,7 +28,7 @@ export const { state, changeState } = useOptionState(
 )
 
 export const className = useBEM(({b, m}) => ({
-  [b('coption')]: ref(true),
+  [b('coption')]: true,
   [m('selected')]: computed(() => state.value === 'selected'),
 }), { blockPrefix: false })
 

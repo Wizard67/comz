@@ -1,13 +1,12 @@
 import { ref, nextTick } from 'vue'
 import { useBEM } from './index'
 
-
 describe('useBEM', () => {
 
   it('should return a BEM style class name.', () => {
     const className = useBEM(({b, e, m}) => ({
-      [b('card')]: ref(true),
-      [e('title')]: ref(true),
+      [b('card')]: true,
+      [e('title')]: true,
       [m('disabled')]: ref(true)
     }))
 
@@ -16,7 +15,7 @@ describe('useBEM', () => {
 
   it('test `block` with `modifier`.', () => {
     const className = useBEM(({b, e, m}) => ({
-      [b('card')]: ref(true),
+      [b('card')]: true,
       [m('disabled')]: ref(true)
     }))
 
@@ -25,7 +24,7 @@ describe('useBEM', () => {
 
   it('test `block` only.', () => {
     const className = useBEM(({b, e, m}) => ({
-      [b('card')]: ref(true)
+      [b('card')]: true
     }))
 
     expect(className.value).toBe('card')
@@ -33,8 +32,8 @@ describe('useBEM', () => {
 
   it('blockPerfix config.', () => {
     const className = useBEM(({b, e, m}) => ({
-      [b('card')]: ref(true),
-      [e('title')]: ref(true),
+      [b('card')]: true,
+      [e('title')]: true,
       [m('disabled')]: ref(true)
     }), { blockPrefix: false })
 
@@ -45,8 +44,8 @@ describe('useBEM', () => {
     const disabled = ref(true)
 
     const className = useBEM(({b, e, m}) => ({
-      [b('card')]: ref(true),
-      [e('title')]: ref(true),
+      [b('card')]: true,
+      [e('title')]: true,
       [m('disabled')]: disabled
     }))
 

@@ -25,8 +25,8 @@ export const errorMsg = ref('')
 props.name && inject(SET_MSG_METHOD)?.(props.name, errorMsg)
 
 export const className = useBEM(({b, e, m}) => ({
-  [b('cform-item')]: ref(true),
-  [e('field')]: ref(true),
+  [b('cform-item')]: true,
+  [e('field')]: true,
   [m('error')]: computed(() => errorMsg.value !== '')
 }), { blockPrefix: false })
 

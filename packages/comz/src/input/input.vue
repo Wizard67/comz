@@ -29,7 +29,7 @@ declare const props: {
 
 declare function emit (event: 'update:modelValue', value: any): void
 
-import { computed, ref, toRefs } from 'vue'
+import { computed, toRefs } from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
 
 export { default as Icon } from '../icon/icon.vue'
@@ -38,8 +38,8 @@ export { X } from '@comz/icons'
 const { disabled, width } = toRefs(props)
 
 export const className = useBEM(({ b, e, m }) => ({
-  [b('cinput')]: ref(true),
-  [e('field')]: ref(true),
+  [b('cinput')]: true,
+  [e('field')]: true,
   [m('disabled')]: disabled
 }), { blockPrefix: false })
 

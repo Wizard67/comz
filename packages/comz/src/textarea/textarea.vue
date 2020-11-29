@@ -26,7 +26,7 @@ declare const props: {
 
 declare function emit (event: 'update:modelValue', value: any): void
 
-import { computed, ref, toRefs } from 'vue'
+import { computed, toRefs } from 'vue'
 import { useBEM,  useCssVars } from '@comz/vca'
 
 const { rows, disabled, width } = toRefs(props)
@@ -34,8 +34,8 @@ const { rows, disabled, width } = toRefs(props)
 export const textareaRows = computed(() => rows?.value ?? 2)
 
 export const className = useBEM(({b, e, m}) => ({
-  [b('ctextarea')]: ref(true),
-  [e('field')]: ref(true),
+  [b('ctextarea')]: true,
+  [e('field')]: true,
   [m('disabled')]: disabled
 }), { blockPrefix: false })
 

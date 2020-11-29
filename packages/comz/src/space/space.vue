@@ -17,13 +17,13 @@ declare const props: {
   wrap: boolean
 }
 
-import { ref, toRefs, computed } from 'vue'
+import { toRefs, computed } from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
 
 const { vertical, wrap, gap, align, itemWidth } = toRefs(props)
 
 export const className = useBEM(({b, m}) => ({
-  [b('cspace')]: ref(true),
+  [b('cspace')]: true,
   [m('wrap')]: computed(() => !vertical.value && wrap.value),
   [m('vertical')]: computed(() => vertical.value && !wrap.value),
   [m('vertical-wrap')]: computed(() => vertical.value && wrap.value)

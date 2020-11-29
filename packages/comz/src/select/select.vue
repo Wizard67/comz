@@ -46,14 +46,14 @@ provide(handler, payload => {
 })
 
 export const fieldClassName = useBEM(({b, e, m}) => ({
-  [b('cselect')]: ref(true),
-  [e('field')]: ref(true),
+  [b('cselect')]: true,
+  [e('field')]: true,
   [m('empty')]: computed(() => isEmpty(modelValue.value))
 }), { blockPrefix: false })
 
 export const optionsClassName = useBEM(({b, e, m}) => ({
-  [b('cselect')]: ref(true),
-  [e('options')]: ref(true),
+  [b('cselect')]: true,
+  [e('options')]: true,
   [m('open')]: expand
 }), { blockPrefix: false })
 

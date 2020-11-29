@@ -21,7 +21,7 @@ import { key } from './utils'
 const { name, place } = toRefs(props)
 
 export const className = useBEM(({ b, e, m}) => ({
-  [b('cgrid-item')]: ref(true),
+  [b('cgrid-item')]: true,
   [m('border')]: inject(key, ref(false))
 }), { blockPrefix: false })
 

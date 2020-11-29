@@ -20,7 +20,7 @@ declare const props: {
 
 declare function emit(event: 'on-click'): void
 
-import { ref, toRefs } from 'vue'
+import { toRefs } from 'vue'
 import { useBEM ,useCssVars } from '@comz/vca'
 
 const { spin, link, size, color, strokeWidth } = toRefs(props)
@@ -28,7 +28,7 @@ const { spin, link, size, color, strokeWidth } = toRefs(props)
 export const handleClick = () => emit('on-click')
 
 export const className = useBEM(({b, m}) => ({
-  [b('cicon')]: ref(true),
+  [b('cicon')]: true,
   [m('spin')]: spin,
   [m('link')]: link,
 }), { blockPrefix: false })

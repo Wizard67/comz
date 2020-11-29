@@ -1,4 +1,4 @@
-import { ref, watchEffect, Ref, computed } from 'vue'
+import { ref, isRef, watchEffect, Ref, computed } from 'vue'
 
 type B = (block: string) => string
 type E = (element: string) => string
@@ -11,7 +11,7 @@ interface BEM {
 }
 
 type Condition = (content: BEM) => {
-  [key: string]: Ref<boolean>
+  [key: string]: boolean | Ref<boolean>
 }
 
 interface Configs {
@@ -60,7 +60,11 @@ export const useBEM: UseBEM = (conditions, configs) => {
 
   watchEffect(cleanUp => {
     for (const key in conditionState) {
-      if (conditionState[key].value) {
+      const isTruthy = isRef(conditionState[key])
+                       ? ((conditionState[key] as Ref).value) as boolean
+                       : conditionState[key] as boolean
+
+      if (isTruthy) {
         switch (key.slice(0, 2)) {
           case BLOCK_PRE:
             scopedBlock.value = key.slice(2)

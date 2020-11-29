@@ -15,7 +15,7 @@ declare const props: {
   border: boolean
 }
 
-import { provide, ref, toRefs } from 'vue'
+import { provide, toRefs } from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
 import { key } from './utils'
 
@@ -24,7 +24,7 @@ const { border, gap, template } = toRefs(props)
 provide(key, border)
 
 export const className = useBEM(({ b, m }) => ({
-  [b('cgrid')]: ref(true),
+  [b('cgrid')]: true,
   [m('border')]: border
 }), { blockPrefix: false })
 

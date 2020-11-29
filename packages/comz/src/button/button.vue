@@ -18,13 +18,13 @@ declare const props: {
 
 declare function emit(event: 'on-click'): void
 
-import { ref, toRefs } from 'vue'
+import { toRefs } from 'vue'
 import { useBEM } from '@comz/vca'
 
 const { loading, disabled } = toRefs(props)
 
 export const className = useBEM(({b, m}) => ({
-  [b('cbutton')]: ref(true),
+  [b('cbutton')]: true,
   [m('loading')]: loading,
   [m('disabled')]: disabled
 }), { blockPrefix: false })

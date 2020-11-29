@@ -21,7 +21,7 @@ declare const props: {
 
 declare function emit (event: 'update:modelValue', value: string[]): void
 
-import { reactive, computed, ref, toRefs } from 'vue'
+import { reactive, computed, toRefs } from 'vue'
 import { useBEM } from '@comz/vca'
 
 const { disabled } = toRefs(props)
@@ -30,7 +30,7 @@ const checkeds = reactive(props.modelValue)
 export const checked = computed(() => checkeds.includes(props.value))
 
 export const className = useBEM(({b, e, m}) => ({
-  [b('ccheckbox')]: ref(true),
+  [b('ccheckbox')]: true,
   [m('checked')]: checked,
   [m('disabled')]: disabled
 }), { blockPrefix: false })
