@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<div
+  class="cicon"
+>
+  
+  
+  icon
+  
+  
+</div>
+`;
+
+exports[`Icon.vue props color 1`] = `
+<div
+  class="cicon"
+  style="--cicon-color: red;"
+>
+  
+  
+</div>
+`;
+
+exports[`Icon.vue props link 1`] = `
+<div
+  class="cicon cicon--link"
+>
+  
+  
+</div>
+`;
+
+exports[`Icon.vue props size 1`] = `
+<div
+  class="cicon"
+  style="--cicon-size: 20px;"
+>
+  
+  
+</div>
+`;
+
+exports[`Icon.vue props spin 1`] = `
+<div
+  class="cicon cicon--spin"
+>
+  
+  
+</div>
+`;
+
+exports[`Icon.vue props strokeWidth 1`] = `
+<div
+  class="cicon"
+  style="--cicon-stroke-width: 1;"
+>
+  
+  
+</div>
+`;
