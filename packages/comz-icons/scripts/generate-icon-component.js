@@ -34,9 +34,11 @@ const typesTemplate = (comps) =>
   `  export const ${ pascalCaseName(c) }: Vue`).join('\n') + '\n' +
   "}"
 
-const generateVueSFC = async (sourcePath, name) => {
-  const content = await fs.readFileSync(sourcePath, 'utf8')
-  const svg = content.replace('width="24" height="24"', 'width="1em" height="1em"').trim()
+const generateVueSFC = (sourcePath, name) => {
+  const content = fs.readFileSync(sourcePath, 'utf8')
+  const svg = content.replace('width="24" height="24"', 'width="1em" height="1em"')
+                     .replace(/\s+class=".+?"/, '')
+                     .trim()
 
   return new Promise((resolve) => {
     const compoentName = `${name}.vue`
@@ -75,7 +77,7 @@ files.forEach(file => {
   }
 })
 
-Promise.all(tasks).then(async res => {
+Promise.all(tasks).then(res => {
   const enties = []
   const rollupEntries = {}
   const types = []
@@ -86,7 +88,7 @@ Promise.all(tasks).then(async res => {
     types.push(file.name)
   })
 
-  await fs.writeFileSync(entryPath, entriesTemplate(enties), 'utf-8')
-  await fs.writeFileSync(rollupEntriesPath, rollupEntriesTemplate(rollupEntries), 'utf-8')
-  await fs.writeFileSync(path.resolve(typesPath, 'index.d.ts'), typesTemplate(types), 'utf-8')
+  fs.writeFileSync(entryPath, entriesTemplate(enties), 'utf-8')
+  fs.writeFileSync(rollupEntriesPath, rollupEntriesTemplate(rollupEntries), 'utf-8')
+  fs.writeFileSync(path.resolve(typesPath, 'index.d.ts'), typesTemplate(types), 'utf-8')
 })
