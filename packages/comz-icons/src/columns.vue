@@ -1,13 +1,6 @@
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path stroke="none" d="M0 0h24v24H0z"/>
-    <line x1="4" y1="6" x2="9.5" y2="6" />
-    <line x1="4" y1="10" x2="9.5" y2="10" />
-    <line x1="4" y1="14" x2="9.5" y2="14" />
-    <line x1="4" y1="18" x2="9.5" y2="18" />
-    <line x1="14.5" y1="6" x2="20" y2="6" />
-    <line x1="14.5" y1="10" x2="20" y2="10" />
-    <line x1="14.5" y1="14" x2="20" y2="14" />
-    <line x1="14.5" y1="18" x2="20" y2="18" />
+  <svg width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M15 2H1v12h14V2zM1 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H1z"/>
+    <path fill-rule="evenodd" d="M7.5 14V2h1v12h-1zm0-8H1V5h6.5v1zm7.5 5H8.5v-1H15v1z"/>
   </svg>
 </template>

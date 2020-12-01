@@ -12,7 +12,6 @@
 declare const props: {
   size?: string
   color?: string
-  strokeWidth?: number
   spin: boolean
   link: boolean
 }
@@ -22,7 +21,7 @@ declare function emit(event: 'on-click'): void
 import { toRefs } from 'vue'
 import { useBEM ,useCssVars } from '@comz/vca'
 
-const { spin, link, size, color, strokeWidth } = toRefs(props)
+const { spin, link, size, color } = toRefs(props)
 
 export const handleClick = () => emit('on-click')
 
@@ -34,8 +33,7 @@ export const className = useBEM(({b, m}) => ({
 
 export const cssVars = useCssVars({
   '--cicon-size': size,
-  '--cicon-color': color,
-  '--cicon-stroke-width': strokeWidth
+  '--cicon-color': color
 })
 
 export default {}

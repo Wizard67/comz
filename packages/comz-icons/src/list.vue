@@ -1,11 +1,5 @@
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path stroke="none" d="M0 0h24v24H0z"/>
-    <line x1="9" y1="6" x2="20" y2="6" />
-    <line x1="9" y1="12" x2="20" y2="12" />
-    <line x1="9" y1="18" x2="20" y2="18" />
-    <line x1="5" y1="6" x2="5" y2="6.01" />
-    <line x1="5" y1="12" x2="5" y2="12.01" />
-    <line x1="5" y1="18" x2="5" y2="18.01" />
+  <svg width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
   </svg>
 </template>

@@ -25,17 +25,6 @@ describe('Icon.vue', () => {
       expect(wrapper.element).toMatchSnapshot()
     })
 
-    it('strokeWidth', () => {
-      const wrapper = mount(Icon, {
-        props: {
-          strokeWidth: 1
-        }
-      })
-
-      expect(wrapper.attributes('style')).toBe('--cicon-stroke-width: 1;')
-      expect(wrapper.element).toMatchSnapshot()
-    })
-
     it('spin', () => {
       const wrapper = mount(Icon, {
         props: {

@@ -2,8 +2,8 @@
   <section class="cpanel">
     <div class="cpanel__header" @click="togglePanelState">
       <Icon size="22px">
-        <DirectionHorizontal v-if="expand" />
-        <Direction v-else />
+        <ChevronExpand v-if="expand" />
+        <ChevronContract v-else />
       </Icon>
       <template v-if="true">{{ title }}</template>
     </div>
@@ -31,7 +31,7 @@ import { toRefs } from 'vue'
 import { useBEM, useHeightToggle } from '@comz/vca'
 
 export { default as Icon } from '../icon/icon.vue'
-export { Direction, DirectionHorizontal } from '@comz/icons'
+export { ChevronExpand, ChevronContract } from '@comz/icons'
 
 const { expand } = toRefs(props)
 

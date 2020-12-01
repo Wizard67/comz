@@ -19,7 +19,7 @@
     "build": "npm-run-all -s generate rollup"
   },
   "dependencies": {
-    "tabler-icons": "1.16.0"
+    "bootstrap-icons": "^1.1.0"
   },
   "devDependencies": {
     "fast-glob": "^3.2.4",

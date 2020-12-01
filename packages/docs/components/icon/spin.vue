@@ -1,14 +1,14 @@
 <template>
-  <Icon spin><Refresh/></Icon>
+  <Icon spin><ArrowRepeat/></Icon>
 </template>
 
 <script>
 import { Icon } from 'comz'
-import { Refresh } from '@comz/icons'
+import { ArrowRepeat } from '@comz/icons'
 
 export default {
   components: {
-    Icon, Refresh
+    Icon, ArrowRepeat
   }
 }
 </script>

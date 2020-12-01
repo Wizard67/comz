@@ -7,7 +7,7 @@ const ignoreIcons = []
 
 const tasks = []
 
-const libPath = path.resolve(process.cwd(), '../../', 'node_modules/tabler-icons/icons/')
+const libPath = path.resolve(process.cwd(), '../../', 'node_modules/bootstrap-icons/icons/')
 const distPath = path.resolve(process.cwd(), './src/')
 const entryPath = path.resolve(process.cwd(), './index.js')
 const typesPath = path.resolve(process.cwd(), './types/')
@@ -36,9 +36,7 @@ const typesTemplate = (comps) =>
 
 const generateVueSFC = (sourcePath, name) => {
   const content = fs.readFileSync(sourcePath, 'utf8')
-  const svg = content.replace('width="24" height="24"', 'width="1em" height="1em"')
-                     .replace(/\s+class=".+?"/, '')
-                     .trim()
+  const svg = content.replace(/\s+class=".+?"/, '').trim()
 
   return new Promise((resolve) => {
     const compoentName = `${name}.vue`

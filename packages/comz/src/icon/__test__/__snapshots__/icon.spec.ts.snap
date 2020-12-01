@@ -49,13 +49,3 @@ exports[`Icon.vue props spin 1`] = `
   
 </div>
 `;
-
-exports[`Icon.vue props strokeWidth 1`] = `
-<div
-  class="cicon"
-  style="--cicon-stroke-width: 1;"
->
-  
-  
-</div>
-`;

@@ -7,7 +7,6 @@
 
 $color: var(--cicon-color, inhert);
 $size: var(--cicon-size, inhert);
-$width: var(--cicon-stroke-width, 2);
 
 $animation: unique-id();
 
@@ -24,7 +23,6 @@ $animation: unique-id();
   & > svg {
     color: $color;
     font-size: $size;
-    stroke-width: $width;
   }
 }
 
@@ -38,6 +36,6 @@ $animation: unique-id();
 
 @keyframes #{$animation} {
   100% {
-    transform: rotate(-1turn);
+    transform: rotate(1turn);
   }
 }

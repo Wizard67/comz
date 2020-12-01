@@ -1,14 +1,14 @@
 <template>
-  <Icon><Ad/></Icon>
+  <Icon><SuitHeartFill/></Icon>
 </template>
 
 <script>
 import { Icon } from 'comz'
-import { Ad } from '@comz/icons'
+import { SuitHeartFill } from '@comz/icons'
 
 export default {
   components: {
-    Icon, Ad
+    Icon, SuitHeartFill
   }
 }
 </script>

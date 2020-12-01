@@ -1928,6 +1928,11 @@ bluebird@^3.7.2:
   resolved "https://registry.npmjs.org/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
 
+bootstrap-icons@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/bootstrap-icons/-/bootstrap-icons-1.1.0.tgz#8f2e268a563e3056723171dfd1c5f78a8c3e1677"
+  integrity sha512-z5wWjw+SGLdDdP9R5qqEYSi+yRJOeOwlGW83VNftMO+jIgW/rtxHk3LI8sRxPYZEB0G+btJaEiUKLKsx3Mlycg==
+
 brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.11.tgz#3c7fcbf529d87226f3d2f52b966ff5271eb441dd"
@@ -6926,11 +6931,6 @@ symbol-tree@^3.2.4:
   version "3.2.4"
   resolved "https://registry.npmjs.org/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
-
-tabler-icons@1.16.0:
-  version "1.16.0"
-  resolved "https://registry.npmjs.org/tabler-icons/-/tabler-icons-1.16.0.tgz#b90b36f3defaa91b49f166ad96a0af365f74b210"
-  integrity sha512-10BVBO5tIaodggRNCXOMa93tffPoJTEXvoTU8nMUWbBnSdZvAxSTU6GddS/wbsXkqF9Bi0E6JkBHjMfE1auIEA==
 
 terminal-link@^2.0.0:
   version "2.1.1"
