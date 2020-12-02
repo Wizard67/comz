@@ -5,12 +5,14 @@
     :disabled="disabled"
     @click="handleClick"
   >
+    <component v-if="icon" class="cbutton__icon" :is="icon" />
     <slot />
   </button>
 </template>
 
 <script setup="props, { emit }" lang="ts">
 declare const props: {
+  icon?: object
   loading: boolean
   disabled: boolean
 }

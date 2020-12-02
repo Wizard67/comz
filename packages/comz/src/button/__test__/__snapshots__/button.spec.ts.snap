@@ -6,6 +6,30 @@ exports[`Button.vue props disabled 1`] = `
   disabled=""
   type="button"
 >
+  <!--v-if-->
+  
+  
+</button>
+`;
+
+exports[`Button.vue props icon 1`] = `
+<button
+  class="cbutton"
+  type="button"
+>
+  <svg
+    class="cbutton__icon"
+    fill="currentColor"
+    height="1em"
+    viewBox="0 0 16 16"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+      fill-rule="evenodd"
+    />
+  </svg>
   
   
 </button>
@@ -16,6 +40,7 @@ exports[`Button.vue props loading 1`] = `
   class="cbutton cbutton--loading"
   type="button"
 >
+  <!--v-if-->
   
   
 </button>
@@ -26,6 +51,7 @@ exports[`Button.vue slots default 1`] = `
   class="cbutton"
   type="button"
 >
+  <!--v-if-->
   
   
   button

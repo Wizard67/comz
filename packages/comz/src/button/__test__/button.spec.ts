@@ -1,8 +1,23 @@
+import { markRaw } from 'vue'
 import { mount } from '@vue/test-utils'
 import Button from '../button.vue'
+import { X } from '@comz/icons'
 
 describe('Button.vue', () => {
   describe('props', () => {
+    it('icon', () => {
+      const wrapper = mount(Button, {
+        props: {
+          icon: markRaw(X)
+        }
+      })
+
+      const svg = wrapper.find('svg')
+      expect(svg).not.toBeUndefined()
+      expect(svg.classes()).toContain('cbutton__icon')
+      expect(wrapper.element).toMatchSnapshot()
+    })
+
     it('loading', () => {
       const wrapper = mount(Button, {
         props: {

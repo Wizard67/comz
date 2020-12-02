@@ -4,6 +4,7 @@
 .cbutton { @extend %button; }
 .cbutton.cbutton--loading { @extend %button--loading; }
 .cbutton.cbutton--disabled { @extend %button--disabled; }
+.cbutton__icon { @extend %button__icon; }
 
 $animation: unique-id();
 
@@ -70,6 +71,10 @@ $animation: unique-id();
   &::after {
     background-color: rgb(189, 189, 189);
   }
+}
+
+%button__icon {
+  margin-right: 4px;
 }
 
 @keyframes #{$animation} {
