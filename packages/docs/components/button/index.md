@@ -1,51 +1,47 @@
 # Button 按钮
 
-## 默认状态
+按钮是用来监听用户点击动作，以触发业务逻辑回调的组件。
 
-渲染普通按钮样式
+## 按钮状态
 
-::: component <ButtonDefault/>
-<<< ./components/button/default.vue
+按钮拥有三种状态：`default`、`loading`、`disabled`，可以复合使用。
+
+> `default` 状态表示可操作。  
+> `loading` 状态表示异步等待，仍然可以监听点击动作。  
+> `diabled` 状态表示禁止操作，不可监听点击动作。
+
+::: component <ButtonBasic/>
+<<< ./components/button/basic.vue
 :::
 
-## 禁用状态
+## 图标按钮
 
-对按钮设置禁用状态
+有多种可以添加图标的方法：
 
-::: component <ButtonDisabled/>
-<<< ./components/button/disabled.vue
+1. 使用 `icon` 属性，传递 Vue 图标组件。
+2. 使用 `v-html` 指令渲染 `svg` 标签字符串。
+3. 使用默认插槽放置图标组件。
+
+::: component <ButtonIcon/>
+<<< ./components/button/icon.vue
 :::
 
-## 加载状态
+## API
+### 属性
 
-对按钮设置加载状态
+| Attribute | Type              | Default     | Description   |
+|-----------|-------------------|-------------|---------------|
+| icon      | `DefineComponent` | `undefined` | 渲染图标组件    |
+| loading   | `boolean`         | `false`     | 是否处于加载状态 |
+| disabled  | `boolean`         | `false`     | 是否处于禁用状态 |
 
-::: component <ButtonLoading/>
-<<< ./components/button/loading.vue
-:::
+### 事件
 
-## 复合状态
+| Event    | Type          | Description |
+|----------|---------------|-------------|
+| on-click | `() => void`  | 监听点击事件  |
 
-处于加载与禁用状态的按钮
-
-::: component <ButtonLoadingDisabled/>
-<<< ./components/button/loading-disabled.vue
-:::
-
-## 属性 Attributes
-
-| Attribute | Type    | Default | Description   |
-|-----------|---------|---------|---------------|
-| loading   | boolean | `false` | 是否处于加载状态 |
-| disabled  | boolean | `false` | 是否处于禁用状态 |
-
-## 事件 Event
-
-| Event    | Type        | Description |
-|----------|-------------|-------------|
-| on-click | () => void  | 监听点击事件  |
-
-## 插槽 Slot
+### 插槽
 
 | Slot    | Description |
 |---------|-------------|
