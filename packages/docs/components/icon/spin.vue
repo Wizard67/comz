@@ -1,14 +1,20 @@
 <template>
-  <Icon spin><ArrowRepeat/></Icon>
+  <Space>
+    <Icon spin><ArrowRepeat/></Icon>
+    <Icon spin><ArrowClockwise/></Icon>
+    <Icon spin><BrightnessHigh/></Icon>
+  </Space>
 </template>
 
 <script>
-import { Icon } from 'comz'
-import { ArrowRepeat } from '@comz/icons'
+import { defineComponent } from 'vue'
+import { Space, Icon } from 'comz'
+import { ArrowRepeat, ArrowClockwise, BrightnessHigh } from '@comz/icons'
 
-export default {
+export default defineComponent({
   components: {
-    Icon, ArrowRepeat
+    Space, Icon,
+    ArrowRepeat, ArrowClockwise, BrightnessHigh
   }
-}
+})
 </script>

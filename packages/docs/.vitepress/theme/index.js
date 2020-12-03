@@ -44,8 +44,9 @@ import CheckboxDisabled from '../../components/checkbox/disabled.vue'
 
 import SelectDefault from '../../components/select/default.vue'
 
-import IconDefault from '../../components/icon/default.vue'
+import IconBasic from '../../components/icon/basic.vue'
 import IconSpin from '../../components/icon/spin.vue'
+import IconStyle from '../../components/icon/style.vue'
 
 import SpaceDefault from '../../components/space/default.vue'
 import SpaceWrap from '../../components/space/wrap.vue'
@@ -109,8 +110,9 @@ export default {
 
     app.component('SelectDefault', SelectDefault)
 
-    app.component('IconDefault', IconDefault)
+    app.component('IconBasic', IconBasic)
     app.component('IconSpin', IconSpin)
+    app.component('IconStyle', IconStyle)
 
     app.component('SpaceDefault', SpaceDefault)
     app.component('SpaceWrap', SpaceWrap)
