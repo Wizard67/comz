@@ -6,12 +6,12 @@
 .cspace.cspace--vertical { @extend %space--vertical; }
 .cspace.cspace--vertical-wrap { @extend %space--vertical-wrap; }
 
-$gap: var(--cspace-gap, 0 0);
+$gap: var(--cspace-gap, 8px 8px);
 $align: var(--cspace-align, start);
 $width: var(--cspace-item-width, 60px);
 
 %space {
-  display: grid;
+  display: inline-grid;
   grid-gap: $gap;
   place-items: start $align;
   grid-auto-flow: column;
@@ -23,7 +23,7 @@ $width: var(--cspace-item-width, 60px);
 }
 
 %space--vertical {
-  display: grid;
+  display: inline-grid;
   grid-gap: $gap;
   grid-auto-flow: row;
   place-items: start $align;
