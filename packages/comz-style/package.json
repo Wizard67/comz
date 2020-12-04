@@ -12,7 +12,9 @@
     "build": "gulp build"
   },
   "devDependencies": {
+    "flex-gap-polyfill": "^1.0.4",
     "gulp": "^4.0.2",
-    "gulp-dart-sass": "^1.0.2"
+    "gulp-dart-sass": "^1.0.2",
+    "gulp-postcss": "^9.0.0"
   }
 }

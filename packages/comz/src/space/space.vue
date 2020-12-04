@@ -7,28 +7,33 @@
 <script setup="props, { emit }" lang="ts">
 declare const props: {
   gap?: string
-  align?: 'start' | 'center' | 'end'
-  itemWidth?: string
+  align?: string
+  justify?: string
+  center: boolean
+  inline: boolean
+  fill: boolean
   vertical: boolean
   wrap: boolean
 }
 
-import { toRefs, computed } from 'vue'
+import { toRefs } from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
 
-const { vertical, wrap, gap, align, itemWidth } = toRefs(props)
+const { inline, fill, vertical, wrap, gap, align, justify, center } = toRefs(props)
 
 export const className = useBEM(({b, m}) => ({
   [b('cspace')]: true,
-  [m('wrap')]: computed(() => !vertical.value && wrap.value),
-  [m('vertical')]: computed(() => vertical.value && !wrap.value),
-  [m('vertical-wrap')]: computed(() => vertical.value && wrap.value)
+  [m('center')]: center,
+  [m('inline')]: inline,
+  [m('fill')]: fill,
+  [m('wrap')]: wrap,
+  [m('vertical')]: vertical
 }))
 
 export const cssVars = useCssVars({
   '--cspace-gap': gap,
   '--cspace-align': align,
-  '--cspace-item-width': itemWidth
+  '--cspace-justify': justify
 }, { scoped: true })
 
 export default {}

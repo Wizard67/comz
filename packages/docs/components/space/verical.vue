@@ -1,20 +1,41 @@
 <template>
-  <Space gap="8px" vertical>
-    <Button>one</Button>
-    <Button>two</Button>
-    <Button>three</Button>
-    <Button>four</Button>
-    <Button>five</Button>
-    <Button>six</Button>
-  </Space>
+  <div class="box">
+    <Space vertical>
+      <Button>one</Button>
+      <Button>two</Button>
+      <Button>three</Button>
+      <Button>four</Button>
+    </Space>
+  </div>
+
+  <div class="box">
+    <Space vertical wrap>
+      <Button>one</Button>
+      <Button>two</Button>
+      <Button>three</Button>
+      <Button>four</Button>
+    </Space>
+  </div>
+
 </template>
 
 <script>
+import { defineComponent } from 'vue'
 import { Button, Space } from 'comz'
 
-export default {
+export default defineComponent({
   components: {
     Button, Space
   }
-}
+})
 </script>
+
+<style scoped>
+.box {
+  display: inline-flex;
+  height: 100px;
+  width: 150px;
+  margin-right: 40px;
+  outline: 1px rgba(0, 0, 0, .2) dashed;
+}
+</style>

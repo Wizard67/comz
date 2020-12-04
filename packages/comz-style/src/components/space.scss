@@ -2,33 +2,47 @@
 @import "../mixins/function";
 
 .cspace { @extend %space; }
+.cspace.cspace--inline { @extend %space--inline; }
 .cspace.cspace--wrap { @extend %space--wrap; }
 .cspace.cspace--vertical { @extend %space--vertical; }
-.cspace.cspace--vertical-wrap { @extend %space--vertical-wrap; }
+.cspace.cspace--fill { @extend %space--fill; }
+.cspace.cspace--center { @extend %space--center; }
 
-$gap: var(--cspace-gap, 8px 8px);
-$align: var(--cspace-align, start);
-$width: var(--cspace-item-width, 60px);
+$gap: var(--cspace-gap, 8px);
+$align: var(--cspace-align, flex-start);
+$justify: var(--cspace-justify, flex-start);
 
 %space {
-  display: inline-grid;
-  grid-gap: $gap;
-  place-items: start $align;
-  grid-auto-flow: column;
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+  width: 100%;
+
+  & > * {
+    flex: none;
+  }
+}
+
+%space--inline {
+  display: inline-flex;
+  width: unset;
 }
 
 %space--wrap {
-  grid-auto-flow: inherit;
-  grid-template-columns: repeat(auto-fit, minmax($width, auto));
+  flex-wrap: wrap;
 }
 
 %space--vertical {
-  display: inline-grid;
-  grid-gap: $gap;
-  grid-auto-flow: row;
-  place-items: start $align;
+  flex-direction: column;
 }
 
-%space--vertical-wrap {
-  grid-auto-flow: row;
+%space--fill {
+  height: calc(100% + #{$gap});
+  width: calc(100% + #{$gap});
+}
+
+%space--center {
+  justify-content: center;
+  align-items: center;
 }
