@@ -18,8 +18,6 @@ import { inject, ref, computed } from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
 import { SET_MSG_METHOD, LABEL_WIDTH } from './utils'
 
-export { default as Space } from '../space/space.vue'
-
 export const errorMsg = ref('')
 
 props.name && inject(SET_MSG_METHOD)?.(props.name, errorMsg)

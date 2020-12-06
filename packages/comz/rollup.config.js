@@ -21,7 +21,7 @@ export default {
     'select': 'src/select/select.vue',
     'option': 'src/select/option.vue',
     'icon': 'src/icon/icon.vue',
-    'space': 'src/space/space.vue',
+    'flex': 'src/flex/flex.vue',
     'form': 'src/form/form.vue',
     'form-item': 'src/form/form-item.vue',
     'panel': 'src/panel/panel.vue',

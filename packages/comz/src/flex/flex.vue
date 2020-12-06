@@ -22,7 +22,7 @@ import { useBEM, useCssVars } from '@comz/vca'
 const { inline, fill, vertical, wrap, gap, align, justify, center } = toRefs(props)
 
 export const className = useBEM(({b, m}) => ({
-  [b('cspace')]: true,
+  [b('cflex')]: true,
   [m('center')]: center,
   [m('inline')]: inline,
   [m('fill')]: fill,
@@ -31,9 +31,9 @@ export const className = useBEM(({b, m}) => ({
 }))
 
 export const cssVars = useCssVars({
-  '--cspace-gap': gap,
-  '--cspace-align': align,
-  '--cspace-justify': justify
+  '--cflex-gap': gap,
+  '--cflex-align': align,
+  '--cflex-justify': justify
 }, { scoped: true })
 
 export default {}

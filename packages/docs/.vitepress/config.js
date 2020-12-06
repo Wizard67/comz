@@ -7,7 +7,7 @@ const components = [
 
   { text: '布局' },
   { text: 'Grid', link: '/components/grid/' },
-  { text: 'Space', link: '/components/space/' },
+  { text: 'Flex', link: '/components/flex/' },
 
   { text: '容器' },
   { text: 'Card', link: '/components/card/' },

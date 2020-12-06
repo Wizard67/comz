@@ -1,19 +1,19 @@
 <template>
-  <Space>
+  <Flex>
     <Button>默认状态</Button>
     <Button loading>加载状态</Button>
     <Button disabled>禁用状态</Button>
     <Button loading disabled>复合状态</Button>
-  </Space>
+  </Flex>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import { Space, Button } from 'comz'
+import { Flex, Button } from 'comz'
 
 export default defineComponent({
   components: {
-    Space, Button
+    Flex, Button
   }
 })
 </script>

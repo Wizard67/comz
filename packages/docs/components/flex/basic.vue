@@ -1,26 +1,26 @@
 <template>
-  <Space>
+  <Flex>
     <Button>one</Button>
     <Button>two</Button>
     <Button>three</Button>
-  </Space>
+  </Flex>
 
   <br>
 
-  <Space gap="30px">
+  <Flex gap="30px">
     <Button>one</Button>
     <Button>two</Button>
     <Button>three</Button>
-  </Space>
+  </Flex>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import { Space, Button } from 'comz'
+import { Flex, Button } from 'comz'
 
 export default defineComponent({
   components: {
-    Space, Button
+    Flex, Button
   }
 })
 </script>

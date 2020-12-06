@@ -1,52 +1,52 @@
 <template>
   <div class="box">
-    <Space justify="center" align="stretch" fill>
+    <Flex justify="center" align="stretch" fill>
       <Button>H</Button>
       <Button>start</Button>
-    </Space>
+    </Flex>
   </div>
   <div class="box">
-    <Space center fill>
+    <Flex center fill>
       <Button>H</Button>
       <Button>center</Button>
-    </Space>
+    </Flex>
   </div>
   <div class="box">
-    <Space justify="space-between" align="flex-end" fill>
+    <Flex justify="space-between" align="flex-end" fill>
       <Button>H</Button>
       <Button>end</Button>
-    </Space>
+    </Flex>
   </div>
 
   <br><br>
 
   <div class="box">
-    <Space justify="center" align="stretch" fill vertical>
+    <Flex justify="center" align="stretch" fill vertical>
       <Button>V</Button>
       <Button>start</Button>
-    </Space>
+    </Flex>
   </div>
   <div class="box">
-    <Space center fill vertical>
+    <Flex center fill vertical>
       <Button>V</Button>
       <Button>center</Button>
-    </Space>
+    </Flex>
   </div>
   <div class="box">
-    <Space justify="space-between" align="flex-end" fill vertical>
+    <Flex justify="space-between" align="flex-end" fill vertical>
       <Button>V</Button>
       <Button>end</Button>
-    </Space>
+    </Flex>
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import { Space, Button } from 'comz'
+import { Flex, Button } from 'comz'
 
 export default defineComponent({
   components: {
-    Space, Button
+    Flex, Button
   }
 })
 </script>

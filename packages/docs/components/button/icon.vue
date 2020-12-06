@@ -1,14 +1,14 @@
 <template>
-  <Space>
+  <Flex>
     <Button :icon="EmojiSmileFill">smile</Button>
     <Button v-html="Gem"></Button>
     <Button>Heart<HeartFill style="marginLeft: 4px;"/></Button>
-  </Space>
+  </Flex>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import { Space, Button } from 'comz'
+import { Flex, Button } from 'comz'
 import { EmojiSmileFill, HeartFill } from '@comz/icons'
 
 const Gem = `
@@ -19,7 +19,7 @@ const Gem = `
 
 export default defineComponent({
   components: {
-    Space, Button, HeartFill
+    Flex, Button, HeartFill
   },
   setup() {
     return {

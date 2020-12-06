@@ -1,19 +1,19 @@
 <template>
-  <Space>
+  <Flex>
     <Icon spin><ArrowRepeat/></Icon>
     <Icon spin><ArrowClockwise/></Icon>
     <Icon spin><BrightnessHigh/></Icon>
-  </Space>
+  </Flex>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import { Space, Icon } from 'comz'
+import { Flex, Icon } from 'comz'
 import { ArrowRepeat, ArrowClockwise, BrightnessHigh } from '@comz/icons'
 
 export default defineComponent({
   components: {
-    Space, Icon,
+    Flex, Icon,
     ArrowRepeat, ArrowClockwise, BrightnessHigh
   }
 })

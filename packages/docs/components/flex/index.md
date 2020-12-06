@@ -1,4 +1,4 @@
-# Space 空间
+# Flex 弹性容器
 
 组件用于设置内容的间距和对齐方式。
 
@@ -6,46 +6,46 @@
 
 ## 基础用法
 
-放置在空间内的组件预设了 `8px` 的间距，可以通过 `gap` 属性重新设置。
+放置在容器内的组件预设了 `8px` 的间距，可以通过 `gap` 属性重新设置。
 
-::: component <SpaceBasic/>
-<<< ./components/space/basic.vue
+::: component <FlexBasic/>
+<<< ./components/flex/basic.vue
 :::
 
 ## 内联元素
 
 容器默认为块级元素，可以添加 `inline` 属性声明成内联元素。
 
-::: component <SpaceInline/>
-<<< ./components/space/inline.vue
+::: component <FlexInline/>
+<<< ./components/flex/inline.vue
 :::
 
 ## 允许换行
 
 设置 `wrap` 属性，允许空间不足时换行。
 
-::: component <SpaceWrap/>
-<<< ./components/space/wrap.vue
+::: component <FlexWrap/>
+<<< ./components/flex/wrap.vue
 :::
 
 ## 垂直排列
 
 `vertical` 属性可以使元素垂直排列
 
-> 如果指定了 Space 组件的高度，可以添加 `wrap` 使之内容允许换行。
+> 如果指定了 Flex 组件的高度，可以添加 `wrap` 使之内容允许换行。
 
-::: component <SpaceVerical/>
-<<< ./components/space/verical.vue
+::: component <FlexVerical/>
+<<< ./components/flex/verical.vue
 :::
 
 ## 填充容器
 
 使用 `fill` 属性填充父容器。
 
-> `fill` 属性会使 Space 组件的 `height` 和 `width` 设置为 `100%`。但需要注意的是由于 polyfill 的影响，实际上的值会被修正为 `100% + gap`。**如果通过 css 处理容器的高度，需要加上 `gap` 高度**。
+> `fill` 属性会使 Flex 组件的 `height` 和 `width` 设置为 `100%`。但需要注意的是由于 polyfill 的影响，实际上的值会被修正为 `100% + gap`。**如果通过 css 处理容器的高度，需要加上 `gap` 高度**。
 
-::: component <SpaceFill/>
-<<< ./components/space/fill.vue
+::: component <FlexFill/>
+<<< ./components/flex/fill.vue
 :::
 
 ## 对齐方式
@@ -57,8 +57,8 @@
 > `center` 属性是预设值，可以使容器项水平垂直居中。  
 > 复杂的对齐方式，建议配合 Grid 组件或者使用 css 实现。
 
-::: component <SpacePlace/>
-<<< ./components/space/place.vue
+::: component <FlexPlace/>
+<<< ./components/flex/place.vue
 :::
 
 ## API

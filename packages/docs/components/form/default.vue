@@ -5,22 +5,22 @@
     </FormItem>
 
     <FormItem label="checkbox" name="checkbox">
-      <Space gap="4px" item-width="50%">
+      <Flex gap="4px" item-width="50%">
         <Checkbox v-model="form.checkbox" value="A">A</Checkbox>
         <Checkbox v-model="form.checkbox" value="B">B</Checkbox>
-      </Space>
+      </Flex>
     </FormItem>
   </Form>
 </template>
 
 <script>
 import { reactive, computed } from 'vue'
-import { Form, FormItem, Space, Input, Checkbox } from 'comz'
+import { Form, FormItem, Flex, Input, Checkbox } from 'comz'
 import { useForm } from '@comz/vca'
 
 export default {
   components: {
-    Form, FormItem, Space, Input, Checkbox
+    Form, FormItem, Flex, Input, Checkbox
   },
   setup() {
     const form = reactive({

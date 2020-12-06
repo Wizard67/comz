@@ -1,5 +1,5 @@
 <template>
-  <Space wrap>
+  <Flex wrap>
     <Button>one</Button>
     <Button>two</Button>
     <Button>three</Button>
@@ -10,16 +10,16 @@
     <Button>eight</Button>
     <Button>nine</Button>
     <Button>ten</Button>
-  </Space>
+  </Flex>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import { Space, Button } from 'comz'
+import { Flex, Button } from 'comz'
 
 export default defineComponent({
   components: {
-    Space, Button
+    Flex, Button
   }
 })
 </script>

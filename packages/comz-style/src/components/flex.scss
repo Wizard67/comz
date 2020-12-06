@@ -1,0 +1,48 @@
+@import "../variables/global";
+@import "../mixins/function";
+
+.cflex { @extend %flex; }
+.cflex.cflex--inline { @extend %flex--inline; }
+.cflex.cflex--wrap { @extend %flex--wrap; }
+.cflex.cflex--vertical { @extend %flex--vertical; }
+.cflex.cflex--fill { @extend %flex--fill; }
+.cflex.cflex--center { @extend %flex--center; }
+
+$gap: var(--cflex-gap, 8px);
+$align: var(--cflex-align, flex-start);
+$justify: var(--cflex-justify, flex-start);
+
+%flex {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+  width: 100%;
+
+  & > * {
+    flex: none;
+  }
+}
+
+%flex--inline {
+  display: inline-flex;
+  width: unset;
+}
+
+%flex--wrap {
+  flex-wrap: wrap;
+}
+
+%flex--vertical {
+  flex-direction: column;
+}
+
+%flex--fill {
+  height: calc(100% + #{$gap});
+  width: calc(100% + #{$gap});
+}
+
+%flex--center {
+  justify-content: center;
+  align-items: center;
+}

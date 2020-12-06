@@ -1,19 +1,19 @@
 <template>
   some text
-  <Space inline>
+  <Flex inline>
     <Button>one</Button>
     <Button>two</Button>
-  </Space>
+  </Flex>
   some text
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import { Space, Button } from 'comz'
+import { Flex, Button } from 'comz'
 
 export default defineComponent({
   components: {
-    Space, Button
+    Flex, Button
   }
 })
 </script>

@@ -48,12 +48,12 @@ import IconBasic from '../../components/icon/basic.vue'
 import IconSpin from '../../components/icon/spin.vue'
 import IconStyle from '../../components/icon/style.vue'
 
-import SpaceBasic from '../../components/space/basic.vue'
-import SpaceInline from '../../components/space/inline.vue'
-import SpaceWrap from '../../components/space/wrap.vue'
-import SpaceFill from '../../components/space/fill.vue'
-import SpaceVerical from '../../components/space/verical.vue'
-import SpacePlace from '../../components/space/place.vue'
+import FlexBasic from '../../components/flex/basic.vue'
+import FlexInline from '../../components/flex/inline.vue'
+import FlexWrap from '../../components/flex/wrap.vue'
+import FlexFill from '../../components/flex/fill.vue'
+import FlexVerical from '../../components/flex/verical.vue'
+import FlexPlace from '../../components/flex/place.vue'
 
 import FormDefault from '../../components/form/default.vue'
 
@@ -115,12 +115,12 @@ export default {
     app.component('IconSpin', IconSpin)
     app.component('IconStyle', IconStyle)
 
-    app.component('SpaceBasic', SpaceBasic)
-    app.component('SpaceInline', SpaceInline)
-    app.component('SpaceWrap', SpaceWrap)
-    app.component('SpaceVerical', SpaceVerical)
-    app.component('SpaceFill', SpaceFill)
-    app.component('SpacePlace', SpacePlace)
+    app.component('FlexBasic', FlexBasic)
+    app.component('FlexInline', FlexInline)
+    app.component('FlexWrap', FlexWrap)
+    app.component('FlexVerical', FlexVerical)
+    app.component('FlexFill', FlexFill)
+    app.component('FlexPlace', FlexPlace)
 
     app.component('FormDefault', FormDefault)
 

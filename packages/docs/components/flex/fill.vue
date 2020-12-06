@@ -1,33 +1,33 @@
 <template>
   <div class="box">
-    <Space>
+    <Flex>
       <Button>one</Button>
-    </Space>
+    </Flex>
   </div>
   <div class="box">
-    <Space class="fill">
+    <Flex class="fill">
       <Button>one</Button>
-    </Space>
+    </Flex>
   </div>
   <div class="box">
-    <Space class="fix-fill">
+    <Flex class="fix-fill">
       <Button>one</Button>
-    </Space>
+    </Flex>
   </div>
   <div class="box">
-    <Space fill>
+    <Flex fill>
       <Button>one</Button>
-    </Space>
+    </Flex>
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import { Space, Button } from 'comz'
+import { Flex, Button } from 'comz'
 
 export default defineComponent({
   components: {
-    Space, Button
+    Flex, Button
   }
 })
 </script>
