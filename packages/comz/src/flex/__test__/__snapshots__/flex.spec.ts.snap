@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button.vue props align 1`] = `
+<section
+  class="cflex"
+  style="--cflex-gap: initial; --cflex-align: flex-end; --cflex-justify: initial;"
+>
+  
+  
+</section>
+`;
+
+exports[`Button.vue props center 1`] = `
+<section
+  class="cflex cflex--center"
+  style="--cflex-gap: initial; --cflex-align: initial; --cflex-justify: initial;"
+>
+  
+  
+</section>
+`;
+
+exports[`Button.vue props fill 1`] = `
+<section
+  class="cflex cflex--fill"
+  style="--cflex-gap: initial; --cflex-align: initial; --cflex-justify: initial;"
+>
+  
+  
+</section>
+`;
+
+exports[`Button.vue props gap 1`] = `
+<section
+  class="cflex"
+  style="--cflex-gap: 10px; --cflex-align: initial; --cflex-justify: initial;"
+>
+  
+  
+</section>
+`;
+
+exports[`Button.vue props inline 1`] = `
+<section
+  class="cflex cflex--inline"
+  style="--cflex-gap: initial; --cflex-align: initial; --cflex-justify: initial;"
+>
+  
+  
+</section>
+`;
+
+exports[`Button.vue props justify 1`] = `
+<section
+  class="cflex"
+  style="--cflex-gap: initial; --cflex-align: initial; --cflex-justify: center;"
+>
+  
+  
+</section>
+`;
+
+exports[`Button.vue props vertical 1`] = `
+<section
+  class="cflex cflex--vertical"
+  style="--cflex-gap: initial; --cflex-align: initial; --cflex-justify: initial;"
+>
+  
+  
+</section>
+`;
+
+exports[`Button.vue slots default 1`] = `
+<section
+  class="cflex"
+  style="--cflex-gap: initial; --cflex-align: initial; --cflex-justify: initial;"
+>
+  
+  
+  flex
+  
+  
+</section>
+`;
