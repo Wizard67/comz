@@ -11,7 +11,7 @@ declare const props: {
   justify?: string
   center: boolean
   inline: boolean
-  fill: boolean
+  full: boolean
   vertical: boolean
   wrap: boolean
 }
@@ -19,13 +19,13 @@ declare const props: {
 import { toRefs } from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
 
-const { inline, fill, vertical, wrap, gap, align, justify, center } = toRefs(props)
+const { inline, full, vertical, wrap, gap, align, justify, center } = toRefs(props)
 
 export const className = useBEM(({b, m}) => ({
   [b('cflex')]: true,
   [m('center')]: center,
   [m('inline')]: inline,
-  [m('fill')]: fill,
+  [m('full')]: full,
   [m('wrap')]: wrap,
   [m('vertical')]: vertical
 }))

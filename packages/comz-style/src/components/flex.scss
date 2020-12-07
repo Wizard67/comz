@@ -5,7 +5,7 @@
 .cflex.cflex--inline { @extend %flex--inline; }
 .cflex.cflex--wrap { @extend %flex--wrap; }
 .cflex.cflex--vertical { @extend %flex--vertical; }
-.cflex.cflex--fill { @extend %flex--fill; }
+.cflex.cflex--full { @extend %flex--full; }
 .cflex.cflex--center { @extend %flex--center; }
 
 $gap: var(--cflex-gap, 8px);
@@ -37,7 +37,7 @@ $justify: var(--cflex-justify, flex-start);
   flex-direction: column;
 }
 
-%flex--fill {
+%flex--full {
   height: calc(100% + #{$gap});
   width: calc(100% + #{$gap});
 }
