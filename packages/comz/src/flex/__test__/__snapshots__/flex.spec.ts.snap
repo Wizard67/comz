@@ -20,9 +20,9 @@ exports[`Button.vue props center 1`] = `
 </section>
 `;
 
-exports[`Button.vue props fill 1`] = `
+exports[`Button.vue props full 1`] = `
 <section
-  class="cflex cflex--fill"
+  class="cflex cflex--full"
   style="--cflex-gap: initial; --cflex-align: initial; --cflex-justify: initial;"
 >
   

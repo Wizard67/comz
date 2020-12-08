@@ -69,14 +69,14 @@ describe('Button.vue', () => {
       expect(wrapper.element).toMatchSnapshot()
     })
 
-    it('fill', () => {
+    it('full', () => {
       const wrapper = mount(Flex, {
         props: {
-          fill: true
+          full: true
         }
       })
 
-      expect(wrapper.classes()).toContain('cflex--fill')
+      expect(wrapper.classes()).toContain('cflex--full')
       expect(wrapper.element).toMatchSnapshot()
     })
   })
