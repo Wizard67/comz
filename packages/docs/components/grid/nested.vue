@@ -1,53 +1,52 @@
 <template>
   <Grid
     class="grid"
-    gap="10px"
-    :template="template"
-    border
+    gap="16px"
+    rows="auto"
+    columns="3fr 1fr 1fr"
   >
-    <GridItem name="first">
-      <Grid gap="10px" :template="nestedTemplate">
-        <GridItem class="block" name="first"></GridItem>
-        <GridItem class="block" name="second"></GridItem>
-        <GridItem class="block" name="third"></GridItem>
+    <GridItem>
+      <Grid
+        class="grid2"
+        rows="3fr 1fr 1fr"
+        columns="auto"
+        areas="'first'
+               'second'
+               'third'"
+      >
+        <GridItem area="first"></GridItem>
+        <GridItem area="second"></GridItem>
+        <GridItem area="third"></GridItem>
       </Grid>
     </GridItem>
-    <GridItem name="second"></GridItem>
-    <GridItem name="third"></GridItem>
+    <GridItem></GridItem>
+    <GridItem></GridItem>
   </Grid>
 </template>
 
 <script>
+import { defineComponent } from 'vue'
 import { Grid, GridItem } from 'comz'
 
-export default {
+export default defineComponent({
   components: {
     Grid,
     GridItem
-  },
-  setup() {
-    return {
-      template: `'first second third' auto
-                 'first second third' auto
-                 'first second third' auto /
-                  3fr   1fr    1fr`,
-
-      nestedTemplate: `'first  first  first' auto
-                       'second second second' auto
-                       'third  third  third' auto /
-                        3fr    1fr    1fr`,
-    }
   }
-}
+})
 </script>
 
 <style scoped>
 .grid {
-  height: 200px;
+  height: 210px;
 }
-.block {
-  width: 100%;
-  height: 100%;
+.grid > * {
+  border: 1px dotted #348ec7;
   background-color: #d3dce6;
+}
+
+.grid2 > * {
+  border: 1px dotted #c76a34;
+  background-color: #e6dbd3;
 }
 </style>

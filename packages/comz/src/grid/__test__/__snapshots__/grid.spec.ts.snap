@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid.vue props areas 1`] = `
+<div
+  class="cgrid"
+  style="--cgrid-areas: a b c; --cgrid-rows: initial; --cgrid-columns: initial; --cgrid-auto-rows: initial; --cgrid-auto-columns: initial; --cgrid-flow: initial; --cgrid-gap: initial;"
+>
+  
+  
+</div>
+`;
+
+exports[`Grid.vue props autoColumns 1`] = `
+<div
+  class="cgrid"
+  style="--cgrid-areas: initial; --cgrid-rows: initial; --cgrid-columns: initial; --cgrid-auto-rows: initial; --cgrid-auto-columns: 100px; --cgrid-flow: initial; --cgrid-gap: initial;"
+>
+  
+  
+</div>
+`;
+
+exports[`Grid.vue props autoRows 1`] = `
+<div
+  class="cgrid"
+  style="--cgrid-areas: initial; --cgrid-rows: initial; --cgrid-columns: initial; --cgrid-auto-rows: 100px 100px 100px; --cgrid-auto-columns: initial; --cgrid-flow: initial; --cgrid-gap: initial;"
+>
+  
+  
+</div>
+`;
+
+exports[`Grid.vue props columns 1`] = `
+<div
+  class="cgrid"
+  style="--cgrid-areas: initial; --cgrid-rows: initial; --cgrid-columns: 100px; --cgrid-auto-rows: initial; --cgrid-auto-columns: initial; --cgrid-flow: initial; --cgrid-gap: initial;"
+>
+  
+  
+</div>
+`;
+
+exports[`Grid.vue props flow 1`] = `
+<div
+  class="cgrid"
+  style="--cgrid-areas: initial; --cgrid-rows: initial; --cgrid-columns: initial; --cgrid-auto-rows: initial; --cgrid-auto-columns: initial; --cgrid-flow: row; --cgrid-gap: initial;"
+>
+  
+  
+</div>
+`;
+
+exports[`Grid.vue props gap 1`] = `
+<div
+  class="cgrid"
+  style="--cgrid-areas: initial; --cgrid-rows: initial; --cgrid-columns: initial; --cgrid-auto-rows: initial; --cgrid-auto-columns: initial; --cgrid-flow: initial; --cgrid-gap: 8px;"
+>
+  
+  
+</div>
+`;
+
+exports[`Grid.vue props inline 1`] = `
+<div
+  class="cgrid cgrid--inline"
+  style="--cgrid-areas: initial; --cgrid-rows: initial; --cgrid-columns: initial; --cgrid-auto-rows: initial; --cgrid-auto-columns: initial; --cgrid-flow: initial; --cgrid-gap: initial;"
+>
+  
+  
+</div>
+`;
+
+exports[`Grid.vue props rows 1`] = `
+<div
+  class="cgrid"
+  style="--cgrid-areas: initial; --cgrid-rows: 100px 100px 100px; --cgrid-columns: initial; --cgrid-auto-rows: initial; --cgrid-auto-columns: initial; --cgrid-flow: initial; --cgrid-gap: initial;"
+>
+  
+  
+</div>
+`;
+
+exports[`Grid.vue props rows 2`] = `
+<div
+  class="cgrid"
+  style="--cgrid-areas: initial; --cgrid-rows: 100px 100px 100px; --cgrid-columns: initial; --cgrid-auto-rows: initial; --cgrid-auto-columns: initial; --cgrid-flow: initial; --cgrid-gap: initial;"
+>
+  
+  
+</div>
+`;
+
+exports[`Grid.vue slots default 1`] = `
+<div
+  class="cgrid"
+  style="--cgrid-areas: initial; --cgrid-rows: initial; --cgrid-columns: initial; --cgrid-auto-rows: initial; --cgrid-auto-columns: initial; --cgrid-flow: initial; --cgrid-gap: initial;"
+>
+  
+  
+  grid
+  
+  
+</div>
+`;

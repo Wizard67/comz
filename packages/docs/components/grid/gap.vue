@@ -1,41 +1,35 @@
 <template>
   <Grid
     class="grid"
-    gap="10px"
-    :template="template"
+    gap="10px 20px"
+    rows="100px 100px"
+    columns="100px 100px 100px"
   >
-    <GridItem class="block" name="first"></GridItem>
-    <GridItem class="block" name="second"></GridItem>
-    <GridItem class="block" name="third"></GridItem>
+    <GridItem></GridItem>
+    <GridItem></GridItem>
+    <GridItem></GridItem>
+    <GridItem></GridItem>
   </Grid>
 </template>
 
 <script>
+import { defineComponent } from 'vue'
 import { Grid, GridItem } from 'comz'
 
-export default {
+export default defineComponent({
   components: {
     Grid,
     GridItem
-  },
-  setup() {
-    return {
-      template: `'first second third' auto
-                 'first second third' auto
-                 'first second third' auto /
-                  1fr   1fr    1fr`
-    }
   }
-}
+})
 </script>
 
 <style scoped>
 .grid {
-  height: 200px;
+  height: 210px;
 }
-.block {
-  width: 100%;
-  height: 100%;
+.grid > * {
+  border: 1px dotted #348ec7;
   background-color: #d3dce6;
 }
 </style>

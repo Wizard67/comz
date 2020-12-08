@@ -1,29 +1,21 @@
 <template>
-  <div :class="className" :style="cssStyle">
+  <div class="cgrid-item" :style="cssStyle">
     <slot />
   </div>
 </template>
 
 <script setup="props, { emit }" lang="ts">
 declare const props: {
-  name: string
-  place?: string
+  area?: string
 }
 
-import { inject, ref, toRefs } from 'vue'
-import { useBEM, useCssVars } from '@comz/vca'
-import { key } from './utils'
+import { toRefs } from 'vue'
+import { useCssVars } from '@comz/vca'
 
-const { name, place } = toRefs(props)
-
-export const className = useBEM(({ b, e, m}) => ({
-  [b('cgrid-item')]: true,
-  [m('border')]: inject(key, ref(false))
-}))
+const { area } = toRefs(props)
 
 export const cssStyle = useCssVars({
-  '--cgrid-item-name': name,
-  '--cgrid-item-place': place
+  '--cgrid-item-area': area
 }, { scoped: true })
 
 export default {}

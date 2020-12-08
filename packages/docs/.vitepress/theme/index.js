@@ -6,11 +6,9 @@ import './styles/highlight-theme.css'
 
 import Demo from './components/demo.vue'
 
-import GridDefault from '../../components/grid/default.vue'
+import GridBasic from '../../components/grid/basic.vue'
 import GridGap from '../../components/grid/gap.vue'
-import GridBorder from '../../components/grid/border.vue'
 import GridNested from '../../components/grid/nested.vue'
-import GridPlace from '../../components/grid/place.vue'
 
 import ButtonBasic from '../../components/button/basic.vue'
 import ButtonIcon from '../../components/button/icon.vue'
@@ -73,11 +71,9 @@ export default {
   enhanceApp({ app, router, siteData }) {
     app.component('Demo', Demo)
 
-    app.component('GridDefault', GridDefault)
+    app.component('GridBasic', GridBasic)
     app.component('GridGap', GridGap)
-    app.component('GridBorder', GridBorder)
     app.component('GridNested', GridNested)
-    app.component('GridPlace', GridPlace)
 
     app.component('ButtonBasic', ButtonBasic)
     app.component('ButtonIcon', ButtonIcon)

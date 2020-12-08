@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GridItem.vue props area 1`] = `
+<div
+  class="cgrid-item"
+  style="--cgrid-item-area: a;"
+>
+  
+  
+</div>
+`;
+
+exports[`GridItem.vue slots default 1`] = `
+<div
+  class="cgrid-item"
+  style="--cgrid-item-area: initial;"
+>
+  
+  
+  grid-item
+  
+  
+</div>
+`;
