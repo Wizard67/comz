@@ -25,9 +25,9 @@ import AlertExtra from '../../components/alert/extra.vue'
 
 import ToastDefault from '../../components/toast/default.vue'
 
-import InputDefault from '../../components/input/default.vue'
-import InputDisabled from '../../components/input/disabled.vue'
-import InputReadonly from '../../components/input/readonly.vue'
+import InputBasic from '../../components/input/basic.vue'
+import InputState from '../../components/input/state.vue'
+import InputSlots from '../../components/input/slots.vue'
 import InputClearable from '../../components/input/clearable.vue'
 
 import TextareaDefault from '../../components/textarea/default.vue'
@@ -90,9 +90,9 @@ export default {
 
     app.component('ToastDefault', ToastDefault)
 
-    app.component('InputDefault', InputDefault)
-    app.component('InputDisabled', InputDisabled)
-    app.component('InputReadonly', InputReadonly)
+    app.component('InputBasic', InputBasic)
+    app.component('InputState', InputState)
+    app.component('InputSlots', InputSlots)
     app.component('InputClearable', InputClearable)
 
     app.component('TextareaDefault', TextareaDefault)

@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input.vue props clearable 1`] = `
+<div
+  class="cinput"
+>
+  <!--v-if-->
+  <div
+    class="cinput__wrapper"
+  >
+    <input
+      class="cinput__field"
+      type="text"
+    />
+    <div
+      class="cinput__clear"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 16 16"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </div>
+  </div>
+  <!--v-if-->
+</div>
+`;
+
+exports[`Input.vue props disabled 1`] = `
+<div
+  class="cinput"
+>
+  <!--v-if-->
+  <div
+    class="cinput__wrapper"
+  >
+    <input
+      class="cinput__field cinput__field--disabled"
+      disabled=""
+      type="text"
+    />
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+</div>
+`;
+
+exports[`Input.vue props modelValue 1`] = `
+<div
+  class="cinput"
+>
+  <!--v-if-->
+  <div
+    class="cinput__wrapper"
+  >
+    <input
+      class="cinput__field"
+      type="text"
+    />
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+</div>
+`;
+
+exports[`Input.vue props placeholder 1`] = `
+<div
+  class="cinput"
+>
+  <!--v-if-->
+  <div
+    class="cinput__wrapper"
+  >
+    <input
+      class="cinput__field"
+      placeholder="text"
+      type="text"
+    />
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+</div>
+`;
+
+exports[`Input.vue props readonly 1`] = `
+<div
+  class="cinput"
+>
+  <!--v-if-->
+  <div
+    class="cinput__wrapper"
+  >
+    <input
+      class="cinput__field cinput__field--readonly"
+      readonly=""
+      type="text"
+    />
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+</div>
+`;
+
+exports[`Input.vue slots append 1`] = `
+<div
+  class="cinput"
+>
+  <!--v-if-->
+  <div
+    class="cinput__wrapper"
+  >
+    <input
+      class="cinput__field"
+      type="text"
+    />
+    <!--v-if-->
+  </div>
+  <div
+    class="cinput__append"
+  >
+    
+    
+    append
+    
+    
+  </div>
+</div>
+`;
+
+exports[`Input.vue slots prepend 1`] = `
+<div
+  class="cinput"
+>
+  <div
+    class="cinput__prepend"
+  >
+    
+    
+    prepend
+    
+    
+  </div>
+  <div
+    class="cinput__wrapper"
+  >
+    <input
+      class="cinput__field"
+      type="text"
+    />
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+</div>
+`;

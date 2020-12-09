@@ -1,17 +1,32 @@
 <template>
-  <div class="cinput" :style="inputCssVars">
-    <input
-      type="text"
-      :class="className"
-      :style="inputFieldCssVars"
-      :value="modelValue"
-      :placeholder="placeholder"
-      :readonly="readonly"
-      :disabled="disabled"
-      @input="handleInput"
-    >
-    <div v-if="showClearButton" class="cinput__clear">
-      <Icon @on-click="handleClear" link><X /></Icon>
+  <div class="cinput">
+    <div v-if="$slots.prepend" class="cinput__prepend">
+      <slot name="prepend" />
+    </div>
+
+    <div class="cinput__wrapper">
+      <input
+        type="text"
+        :class="className"
+        :value="modelValue"
+        :placeholder="placeholder"
+        :readonly="readonly"
+        :disabled="disabled"
+        @input="handleInputChange"
+        @focus="handleInputFocus"
+        @blur="handleInputBlur"
+      >
+      <div
+        v-if="allowClear"
+        class="cinput__clear"
+        @click="clearValue"
+      >
+        <XCircleFill />
+      </div>
+    </div>
+
+    <div v-if="$slots.append" class="cinput__append">
+      <slot name="append" />
     </div>
   </div>
 </template>
@@ -20,51 +35,52 @@
 declare const props: {
   modelValue: string
   placeholder?: string
-  width?: string
   readonly: boolean
   disabled: boolean
   clearable: boolean
 }
 
-declare function emit (event: 'update:modelValue', value: any): void
+declare function emit (event: 'update:modelValue', value: string): void
+declare function emit (event: 'on-focus', value: string): void
+declare function emit (event: 'on-blur', value: string): void
+declare function emit (event: 'on-clear'): void
 
 import { computed, toRefs } from 'vue'
-import { useBEM, useCssVars } from '@comz/vca'
+import { useBEM } from '@comz/vca'
 
-export { default as Icon } from '../icon/icon.vue'
-export { X } from '@comz/icons'
+export { XCircleFill } from '@comz/icons'
 
-const { disabled, width } = toRefs(props)
+const { readonly, disabled } = toRefs(props)
 
 export const className = useBEM(({ b, e, m }) => ({
   [b('cinput')]: true,
   [e('field')]: true,
+  [m('readonly')]: readonly,
   [m('disabled')]: disabled
 }))
 
-export const inputCssVars = useCssVars({
-  '--cinput-width': width
-})
-
-export const inputFieldCssVars = useCssVars({
-  '--cinput-field-rpadding': computed(() => 
-    showClearButton.value ? '1.5em': undefined
-  )
-})
-
-export const showClearButton = computed(() =>
-  props.modelValue?.length > 0 &&
+export const allowClear = computed(() =>
+  props.modelValue?.length &&
   props.clearable &&
   !props.readonly &&
   !props.disabled
 )
 
-export const handleInput = (event: InputEvent) => {
+export const handleInputChange = (event: InputEvent) => {
   emit('update:modelValue', (event.target as HTMLInputElement).value)
 }
 
-export const handleClear = () => {
+export const handleInputFocus = (event: InputEvent) => {
+  emit('on-focus', (event.target as HTMLInputElement).value)
+}
+
+export const handleInputBlur = (event: InputEvent) => {
+  emit('on-blur', (event.target as HTMLInputElement).value)
+}
+
+export const clearValue = () => {
   emit('update:modelValue', '')
+  emit('on-clear')
 }
 
 export default {}
