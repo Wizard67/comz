@@ -34,8 +34,8 @@
 
 > 如果指定了 Flex 组件的高度，可以添加 `wrap` 使之内容允许换行。
 
-::: component <FlexVerical/>
-<<< ./components/flex/verical.vue
+::: component <FlexVertical/>
+<<< ./components/flex/vertical.vue
 :::
 
 ## 填充容器
