@@ -6,7 +6,8 @@
 .cbutton.cbutton--disabled { @extend %button--disabled; }
 .cbutton__icon { @extend %button__icon; }
 
-$animation: unique-id();
+$animation-before: unique-id();
+$animation-after: unique-id();
 
 %button {
   box-sizing: border-box;
@@ -26,6 +27,10 @@ $animation: unique-id();
   transition: box-shadow .1s ease-in-out;
   user-select: none;
   overflow: hidden;
+
+  &::before {
+    content: '\200b'
+  }
 
   &:focus {
     outline: none;
@@ -51,15 +56,26 @@ $animation: unique-id();
     color: rgb(231, 231, 231);
   }
 
+  &::before,
   &::after {
     content: "";
+    box-sizing: border-box;
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 50%;
+    right: auto;
+    width: auto;
     height: 4px;
     background-color: rgb(32, 123, 180);
-    animation: #{$animation} .5s linear infinite forwards;
+    will-change: right left;
+  }
+
+  &::before {
+    animation: #{$animation-before} 1.8s linear infinite forwards;
+  }
+
+  &::after {
+    animation: #{$animation-after} 1.8s linear infinite forwards;
   }
 }
 
@@ -69,6 +85,7 @@ $animation: unique-id();
   background-color: rgb(238, 238, 238);
   cursor: not-allowed;
 
+  &::before,
   &::after {
     background-color: rgb(189, 189, 189);
   }
@@ -78,7 +95,14 @@ $animation: unique-id();
   margin-right: 4px;
 }
 
-@keyframes #{$animation} {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(200%); }
+@keyframes #{$animation-before} {
+  0% { left: -90%; right: 100%; }
+  60% { left: -90%; right: 100%; }
+  100% { left: 100%; right: -35%; }
+}
+
+@keyframes #{$animation-after} {
+  0% { left: -200%; right: 100%; }
+  60% { left: 107%; right: -8%; }
+  100% { left: 107%; right: -8%; }
 }
