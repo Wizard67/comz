@@ -2,17 +2,17 @@
   <Flex wrap>
     <Flex gap="16px" vertical inline>
       <Input class="input" v-model="value1" placeholder="normal">
-        <template #prepend><Envelope /></template>
+        <template #prepend><Icon><Envelope /></Icon></template>
         <template #append>.com</template>
       </Input>
 
       <Input class="input" v-model="value1" placeholder="disabled" disabled>
-        <template #prepend><Envelope /></template>
+        <template #prepend><Icon><Envelope /></Icon></template>
         <template #append>.com</template>
       </Input>
 
       <Input class="input" v-model="value1" placeholder="readonly" readonly>
-        <template #prepend><Envelope /></template>
+        <template #prepend><Icon><Envelope /></Icon></template>
         <template #append>.com</template>
       </Input>
     </Flex>
