@@ -1,5 +1,9 @@
 <template>
-  <section :class="className" :style="cssVars">
+  <section
+    ref="flexRef"
+    :class="className"
+    :style="cssVars"
+  >
     <slot />
   </section>
 </template>
@@ -16,10 +20,16 @@ declare const props: {
   wrap: boolean
 }
 
-import { toRefs } from 'vue'
+import { ref, toRefs, computed } from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
 
+import { useFlexPolyfillGapItem } from './utils'
+
 const { inline, full, vertical, wrap, gap, align, justify, center } = toRefs(props)
+
+export const flexRef = ref<HTMLLIElement | null>(null)
+
+useFlexPolyfillGapItem(flexRef, computed(() => props.gap ?? '8px'))
 
 export const className = useBEM(({b, m}) => ({
   [b('cflex')]: true,

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button.vue props align 1`] = `
+exports[`Flex.vue props align 1`] = `
 <section
   class="cflex"
   style="--cflex-gap: initial; --cflex-align: flex-end; --cflex-justify: initial;"
@@ -10,7 +10,7 @@ exports[`Button.vue props align 1`] = `
 </section>
 `;
 
-exports[`Button.vue props center 1`] = `
+exports[`Flex.vue props center 1`] = `
 <section
   class="cflex cflex--center"
   style="--cflex-gap: initial; --cflex-align: initial; --cflex-justify: initial;"
@@ -20,7 +20,7 @@ exports[`Button.vue props center 1`] = `
 </section>
 `;
 
-exports[`Button.vue props full 1`] = `
+exports[`Flex.vue props full 1`] = `
 <section
   class="cflex cflex--full"
   style="--cflex-gap: initial; --cflex-align: initial; --cflex-justify: initial;"
@@ -30,7 +30,7 @@ exports[`Button.vue props full 1`] = `
 </section>
 `;
 
-exports[`Button.vue props gap 1`] = `
+exports[`Flex.vue props gap 1`] = `
 <section
   class="cflex"
   style="--cflex-gap: 10px; --cflex-align: initial; --cflex-justify: initial;"
@@ -40,7 +40,7 @@ exports[`Button.vue props gap 1`] = `
 </section>
 `;
 
-exports[`Button.vue props inline 1`] = `
+exports[`Flex.vue props inline 1`] = `
 <section
   class="cflex cflex--inline"
   style="--cflex-gap: initial; --cflex-align: initial; --cflex-justify: initial;"
@@ -50,7 +50,7 @@ exports[`Button.vue props inline 1`] = `
 </section>
 `;
 
-exports[`Button.vue props justify 1`] = `
+exports[`Flex.vue props justify 1`] = `
 <section
   class="cflex"
   style="--cflex-gap: initial; --cflex-align: initial; --cflex-justify: center;"
@@ -60,7 +60,7 @@ exports[`Button.vue props justify 1`] = `
 </section>
 `;
 
-exports[`Button.vue props vertical 1`] = `
+exports[`Flex.vue props vertical 1`] = `
 <section
   class="cflex cflex--vertical"
   style="--cflex-gap: initial; --cflex-align: initial; --cflex-justify: initial;"
@@ -70,7 +70,7 @@ exports[`Button.vue props vertical 1`] = `
 </section>
 `;
 
-exports[`Button.vue slots default 1`] = `
+exports[`Flex.vue slots default 1`] = `
 <section
   class="cflex"
   style="--cflex-gap: initial; --cflex-align: initial; --cflex-justify: initial;"

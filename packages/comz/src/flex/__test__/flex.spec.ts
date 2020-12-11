@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 import Flex from '../flex.vue'
 
-describe('Button.vue', () => {
+describe('Flex.vue', () => {
   describe('props', () => {
     it('inline', () => {
       const wrapper = mount(Flex, {
