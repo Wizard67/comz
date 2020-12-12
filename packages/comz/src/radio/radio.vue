@@ -1,5 +1,6 @@
 <template>
   <label :class="className">
+    <div :class="buttonClassName">{{ "\u200b" }}</div>
     <input
       class="cradio__field"
       type="radio"
@@ -14,8 +15,8 @@
 
 <script setup="props, { emit }" lang="ts">
 declare const props: {
-  value: string
-  modelValue: string | number
+  value: string | number | boolean | any[] | object
+  modelValue: string | number | boolean | any[] | object
   disabled: boolean
 }
 
@@ -26,16 +27,25 @@ import { useBEM } from '@comz/vca'
 
 const { disabled } = toRefs(props)
 
-export const checked = computed(() => props.value === props.modelValue)
+export const checked = computed(() =>
+  JSON.stringify(props.value) === JSON.stringify(props.modelValue)
+)
 
-export const className = useBEM(({b, e, m}) => ({
+export const className = useBEM(({ b, m }) => ({
   [b('cradio')]: true,
+  [m('disabled')]: disabled
+}))
+
+export const buttonClassName = useBEM(({ b, e, m }) => ({
+  [b('cradio')]: true,
+  [e('button')]: true,
   [m('checked')]: checked,
   [m('disabled')]: disabled
 }))
 
 export const handleValueChange = (event: InputEvent) => {
-  emit('update:modelValue', (event.target as HTMLInputElement).value)
+  // to avoid object-value being stringify, return props.value
+  emit('update:modelValue', props.value)
 }
 
 export default {}

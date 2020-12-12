@@ -2,15 +2,17 @@
 @import "../mixins/function";
 
 .cradio { @extend %radio; }
-.cradio.cradio--checked { @extend %radio--checked; }
 .cradio.cradio--disabled { @extend %radio--disabled; }
+.cradio__button { @extend %radio__button; }
+.cradio__button.cradio__button--checked { @extend %radio__button--checked; }
+.cradio__button.cradio__button--disabled { @extend %radio__button--disabled; }
 .cradio__field { @extend %radio__field; }
 
 %radio {
   position: relative;
   box-sizing: border-box;
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   padding: 4px 0;
   color: rgb(51, 51, 51);
   font-size: 14px;
@@ -20,6 +22,16 @@
   &:focus {
     outline: none;
   }
+}
+
+%radio--disabled {
+  color: rgba(0, 0, 0, .3);
+  filter: grayscale(80%);
+  cursor: not-allowed;
+}
+
+%radio__button {
+  position: relative;
 
   &::before,
   &::after {
@@ -50,15 +62,14 @@
   }
 }
 
-%radio--checked {
+%radio__button--checked {
   &::after {
     transform: translateY(-50%) translateZ(0) scale(.52);
     opacity: 1;
   }
 }
 
-%radio--disabled {
-  color: rgba(0, 0, 0, .3);
+%radio__button--disabled {
   cursor: not-allowed;
 
   &::before {

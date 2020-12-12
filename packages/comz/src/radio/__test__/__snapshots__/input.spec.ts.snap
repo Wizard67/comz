@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio.vue props disabled 1`] = `
+<label
+  class="cradio cradio--disabled"
+>
+  <div
+    class="cradio__button cradio__button--disabled"
+  >
+    ​
+  </div>
+  <input
+    class="cradio__field"
+    disabled=""
+    type="radio"
+    value="false"
+  />
+  
+  
+</label>
+`;
+
+exports[`Radio.vue props modelValue 1`] = `
+<label
+  class="cradio"
+>
+  <div
+    class="cradio__button cradio__button--checked"
+  >
+    ​
+  </div>
+  <input
+    class="cradio__field"
+    type="radio"
+    value="radio"
+  />
+  
+  
+</label>
+`;
+
+exports[`Radio.vue props value 1`] = `
+<label
+  class="cradio"
+>
+  <div
+    class="cradio__button"
+  >
+    ​
+  </div>
+  <input
+    class="cradio__field"
+    type="radio"
+    value="radio"
+  />
+  
+  
+</label>
+`;
+
+exports[`Radio.vue slots default 1`] = `
+<label
+  class="cradio"
+>
+  <div
+    class="cradio__button"
+  >
+    ​
+  </div>
+  <input
+    class="cradio__field"
+    type="radio"
+    value="false"
+  />
+  
+  
+  text
+  
+  
+</label>
+`;

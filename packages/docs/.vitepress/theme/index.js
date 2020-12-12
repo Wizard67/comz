@@ -34,8 +34,9 @@ import TextareaDefault from '../../components/textarea/default.vue'
 import TextareaDisabled from '../../components/textarea/disabled.vue'
 import TextareaReadonly from '../../components/textarea/readonly.vue'
 
-import RadioDefault from '../../components/radio/default.vue'
-import RadioDisabled from '../../components/radio/disabled.vue'
+import RadioBasic from '../../components/radio/basic.vue'
+import RadioValue from '../../components/radio/value.vue'
+import RadioLabel from '../../components/radio/label.vue'
 
 import CheckboxDefault from '../../components/checkbox/default.vue'
 import CheckboxDisabled from '../../components/checkbox/disabled.vue'
@@ -99,8 +100,9 @@ export default {
     app.component('TextareaDisabled', TextareaDisabled)
     app.component('TextareaReadonly', TextareaReadonly)
 
-    app.component('RadioDefault', RadioDefault)
-    app.component('RadioDisabled', RadioDisabled)
+    app.component('RadioBasic', RadioBasic)
+    app.component('RadioValue', RadioValue)
+    app.component('RadioLabel', RadioLabel)
 
     app.component('CheckboxDefault', CheckboxDefault)
     app.component('CheckboxDisabled', CheckboxDisabled)
