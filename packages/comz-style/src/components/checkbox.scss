@@ -2,15 +2,17 @@
 @import "../mixins/function";
 
 .ccheckbox { @extend %checkbox; }
-.ccheckbox.ccheckbox--checked { @extend %checkbox--checked; }
 .ccheckbox.ccheckbox--disabled { @extend %checkbox--disabled; }
+.ccheckbox__button { @extend %checkbox__button; }
+.ccheckbox__button.ccheckbox__button--checked { @extend %checkbox__button--checked; }
+.ccheckbox__button.ccheckbox__button--disabled { @extend %checkbox__button--disabled; }
 .ccheckbox__field { @extend %checkbox__field; }
 
 %checkbox {
   position: relative;
   box-sizing: border-box;
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   padding: 4px 0;
   color: rgb(51, 51, 51);
   font-size: 14px;
@@ -20,6 +22,16 @@
   &:focus {
     outline: none;
   }
+}
+
+%checkbox--disabled {
+  color: rgba(0, 0, 0, .3);
+  filter: grayscale(80%);
+  cursor: not-allowed;
+}
+
+%checkbox__button {
+  position: relative;
 
   &::before,
   &::after {
@@ -51,15 +63,14 @@
   }
 }
 
-%checkbox--checked {
+%checkbox__button--checked {
   &::after {
     transform: translateY(-50%) translateZ(0) scale(.5);
     opacity: 1;
   }
 }
 
-%checkbox--disabled {
-  color: rgba(0, 0, 0, .3);
+%checkbox__button--disabled {
   cursor: not-allowed;
 
   &::before {

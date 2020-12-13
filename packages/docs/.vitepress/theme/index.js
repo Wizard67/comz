@@ -38,8 +38,9 @@ import RadioBasic from '../../components/radio/basic.vue'
 import RadioValue from '../../components/radio/value.vue'
 import RadioLabel from '../../components/radio/label.vue'
 
-import CheckboxDefault from '../../components/checkbox/default.vue'
-import CheckboxDisabled from '../../components/checkbox/disabled.vue'
+import CheckboxBasic from '../../components/checkbox/basic.vue'
+import CheckboxValue from '../../components/checkbox/value.vue'
+import CheckboxLabel from '../../components/checkbox/label.vue'
 
 import SelectDefault from '../../components/select/default.vue'
 
@@ -104,8 +105,9 @@ export default {
     app.component('RadioValue', RadioValue)
     app.component('RadioLabel', RadioLabel)
 
-    app.component('CheckboxDefault', CheckboxDefault)
-    app.component('CheckboxDisabled', CheckboxDisabled)
+    app.component('CheckboxBasic', CheckboxBasic)
+    app.component('CheckboxValue', CheckboxValue)
+    app.component('CheckboxLabel', CheckboxLabel)
 
     app.component('SelectDefault', SelectDefault)
 

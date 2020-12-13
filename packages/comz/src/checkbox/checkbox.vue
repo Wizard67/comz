@@ -1,12 +1,13 @@
 <template>
   <label :class="className">
+    <div :class="buttonClassName">{{ "\u200b" }}</div>
     <input
       type="checkbox"
       class="ccheckbox__field"
       :value="value"
       :checked="checked"
       :disabled="disabled"
-      @change="handleChange"
+      @change="handleValueChange"
     />
     <slot />
   </label>
@@ -14,36 +15,47 @@
 
 <script setup="props, { emit }" lang="ts">
 declare const props: {
-  value: string
-  modelValue: string[]
+  value: string | number | boolean | any[] | object
+  modelValue: (string | number | boolean | any[] | object)[]
   disabled: boolean
 }
 
-declare function emit (event: 'update:modelValue', value: string[]): void
+declare function emit (event: 'update:modelValue', value: any[]): void
 
-import { reactive, computed, toRefs } from 'vue'
+import { computed, toRefs } from 'vue'
 import { useBEM } from '@comz/vca'
 
 const { disabled } = toRefs(props)
-const checkeds = reactive(props.modelValue)
 
-export const checked = computed(() => checkeds.includes(props.value))
+const strModelValue = computed(() =>
+  props.modelValue.map(item => JSON.stringify(item))
+)
+const strValue = computed(() => JSON.stringify(props.value))
 
-export const className = useBEM(({b, e, m}) => ({
+export const checked = computed(() =>
+  strModelValue.value.includes(strValue.value)
+)
+
+export const className = useBEM(({ b, m }) => ({
   [b('ccheckbox')]: true,
+  [m('disabled')]: disabled
+}))
+
+export const buttonClassName = useBEM(({ b, e, m }) => ({
+  [b('ccheckbox')]: true,
+  [e('button')]: true,
   [m('checked')]: checked,
   [m('disabled')]: disabled
 }))
 
-export const handleChange = (event: InputEvent) => {
-  const value = (event.target as HTMLInputElement).value
-  const index = props.modelValue.indexOf(value)
+export const handleValueChange = (event: InputEvent) => {
+  const index = strModelValue.value.indexOf(strValue.value)
 
   index >= 0
-  ? checkeds.splice(index, 1)
-  : checkeds.push(value)
+  ? props.modelValue.splice(index, 1)
+  : props.modelValue.push(props.value)
 
-  emit('update:modelValue', checkeds)
+  emit('update:modelValue', props.modelValue)
 }
 
 export default {}

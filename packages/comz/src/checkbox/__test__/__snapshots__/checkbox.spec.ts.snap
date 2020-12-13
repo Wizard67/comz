@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox.vue props disabled 1`] = `
+<label
+  class="ccheckbox ccheckbox--disabled"
+>
+  <div
+    class="ccheckbox__button ccheckbox__button--disabled"
+  >
+    ​
+  </div>
+  <input
+    class="ccheckbox__field"
+    disabled=""
+    type="checkbox"
+    value="false"
+  />
+  
+  
+</label>
+`;
+
+exports[`Checkbox.vue props modelValue 1`] = `
+<label
+  class="ccheckbox"
+>
+  <div
+    class="ccheckbox__button ccheckbox__button--checked"
+  >
+    ​
+  </div>
+  <input
+    class="ccheckbox__field"
+    type="checkbox"
+    value="checkbox"
+  />
+  
+  
+</label>
+`;
+
+exports[`Checkbox.vue props value 1`] = `
+<label
+  class="ccheckbox"
+>
+  <div
+    class="ccheckbox__button"
+  >
+    ​
+  </div>
+  <input
+    class="ccheckbox__field"
+    type="checkbox"
+    value="checkbox"
+  />
+  
+  
+</label>
+`;
+
+exports[`Checkbox.vue slots default 1`] = `
+<label
+  class="ccheckbox"
+>
+  <div
+    class="ccheckbox__button"
+  >
+    ​
+  </div>
+  <input
+    class="ccheckbox__field"
+    type="checkbox"
+    value="false"
+  />
+  
+  
+  text
+  
+  
+</label>
+`;
