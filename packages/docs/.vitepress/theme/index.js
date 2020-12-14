@@ -62,8 +62,6 @@ import PanelDefault from '../../components/panel/default.vue'
 import SwitchDefault from '../../components/switch/default.vue'
 import SwitchDisabled from '../../components/switch/disabled.vue'
 
-import RulerDefault from '../../components/ruler/default.vue'
-
 import TooltipDefault from '../../components/tooltip/default.vue'
 
 import SliderDefault from '../../components/slider/default.vue'
@@ -128,8 +126,6 @@ export default {
 
     app.component('SwitchDefault', SwitchDefault)
     app.component('SwitchDisabled', SwitchDisabled)
-
-    app.component('RulerDefault', RulerDefault)
 
     app.component('TooltipDefault', TooltipDefault)
 
