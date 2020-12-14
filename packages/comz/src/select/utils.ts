@@ -3,13 +3,8 @@ import {
   onUnmounted,
   watchEffect,
   computed,
-  InjectionKey, Ref, ComputedRef, UnwrapRef
+  Ref, ComputedRef, UnwrapRef
 } from 'vue'
-
-export const handler: InjectionKey<Handler> = Symbol()
-
-export const current: InjectionKey<Ref<unknown>> = Symbol()
-
 
 export const useClickOutSide = (
   track: Ref<boolean>,
@@ -41,7 +36,7 @@ type Option = UnwrapRef<{
   label: string
 }>
 
-type Handler = (value: Option) => void
+export type Handler = (value: Option) => void
 
 export const useOptionState = (
   target: Ref<unknown> | ComputedRef<unknown>,

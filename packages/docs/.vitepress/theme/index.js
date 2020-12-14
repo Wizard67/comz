@@ -42,7 +42,7 @@ import CheckboxBasic from '../../components/checkbox/basic.vue'
 import CheckboxValue from '../../components/checkbox/value.vue'
 import CheckboxLabel from '../../components/checkbox/label.vue'
 
-import SelectDefault from '../../components/select/default.vue'
+import SelectBasic from '../../components/select/basic.vue'
 
 import IconBasic from '../../components/icon/basic.vue'
 import IconSpin from '../../components/icon/spin.vue'
@@ -107,7 +107,7 @@ export default {
     app.component('CheckboxValue', CheckboxValue)
     app.component('CheckboxLabel', CheckboxLabel)
 
-    app.component('SelectDefault', SelectDefault)
+    app.component('SelectBasic', SelectBasic)
 
     app.component('IconBasic', IconBasic)
     app.component('IconSpin', IconSpin)

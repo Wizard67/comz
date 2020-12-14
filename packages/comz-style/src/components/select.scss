@@ -2,24 +2,26 @@
 @import "../mixins/function";
 
 .cselect { @extend %select; }
+.cselect.cselect--disabled { @extend %select--disabled; }
+
 .cselect__selector { @extend %select__selector; }
+
 .cselect__field { @extend %select__field; }
 .cselect__field.cselect__field--empty { @extend %select__field--empty; }
+
 .cselect__icon { @extend %select__icon; }
+
 .cselect__options { @extend %select__options; }
 .cselect__options.cselect__options--open { @extend %select__options--open; }
 
-$width: var(--cinput-width, 100%);
-
 .coption { @extend %option; }
+.coption--disabled { @extend %option--disabled; }
 .coption--selected { @extend %option--selected; }
 
 %select {
   box-sizing: border-box;
   position: relative;
   display: inline-flex;
-  width: $width;
-  padding: 4px 8px;
   border-radius: 2px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   color: rgb(51, 51, 51);
@@ -29,12 +31,19 @@ $width: var(--cinput-width, 100%);
   cursor: pointer;
 }
 
+%select--disabled {
+  color: rgba(0, 0, 0, .2);
+  background-color: rgb(235, 235, 235);
+  cursor: not-allowed;
+}
+
 %select__selector {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 100%;
+  padding: 4px 8px;
 }
 
 %select__field {
@@ -48,6 +57,7 @@ $width: var(--cinput-width, 100%);
 
 %select__icon {
   flex: none;
+  margin-left: .5em;
 }
 
 %select__options {
@@ -88,6 +98,15 @@ $width: var(--cinput-width, 100%);
 
   &:hover {
     background-color: rgba(0, 0, 0, .05);
+  }
+}
+
+%option--disabled {
+  color: rgba(0, 0, 0, .2);
+  cursor: not-allowed;
+
+  &:hover {
+    background-color: unset;
   }
 }
 

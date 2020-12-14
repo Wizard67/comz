@@ -1,7 +1,7 @@
 <template>
   <div
     :class="className"
-    @click="changeState"
+    @click="() => !disabled && changeState()"
   >
     <slot />
   </div>
@@ -11,24 +11,31 @@
 declare const props: {
   value: unknown
   label: string
+  disabled: boolean
 }
 
-import { inject, computed, reactive, toRefs } from 'vue'
-import { useBEM } from '@comz/vca'
-import { handler, current, useOptionState } from './utils'
+import type { Ref, ComputedRef } from 'vue'
+import type { Handler } from './utils'
 
-const currentValue = inject(current)
-const { value, label } = toRefs(props)
+import { inject, computed, reactive, toRefs, getCurrentInstance } from 'vue'
+import { useBEM } from '@comz/vca'
+import { useOptionState } from './utils'
+
+const uid = getCurrentInstance()?.parent?.uid
+
+const currentValue = inject<Ref<unknown> | ComputedRef<unknown>>(`select-${uid}-value`)
+const { value, label, disabled } = toRefs(props)
 
 export const { state, changeState } = useOptionState(
   currentValue!,
   reactive({ value, label }),
-  inject(handler)!
+  inject<Handler>(`select-${uid}-handler`)!
 )
 
 export const className = useBEM(({b, m}) => ({
   [b('coption')]: true,
   [m('selected')]: computed(() => state.value === 'selected'),
+  [m('disabled')]: disabled
 }))
 
 export default {}

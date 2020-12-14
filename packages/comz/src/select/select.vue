@@ -1,12 +1,15 @@
 <template>
-  <div class="cselect" ref="selectRef">
+  <div
+    ref="selectRef"
+    :class="className"
+  >
     <div
       class="cselect__selector"
-      @click.stop="togglePanelState"
+      @click.stop="() => !disabled && toggle()"
     >
       <div :class="fieldClassName">{{ currentText }}</div>
       <div class="cselect__icon">
-        <Icon link>
+        <Icon>
           <ChevronUp v-if="expand" />
           <ChevronDown v-else />
         </Icon>
@@ -20,38 +23,54 @@
 
 <script setup="props, { emit }" lang="ts">
 declare const props: {
-  placeholder?: string,
-  modelValue: unknown
+  modelValue: string | number | boolean | any[] | object,
+  placeholder?: string
+  disabled: boolean
 }
 
-declare function emit (event: 'update:modelValue', value: unknown): void
+declare function emit (event: 'update:modelValue', value: any): void
 
-import { ref, toRefs, computed, provide } from 'vue'
-import { useBEM } from '@comz/vca'
-import { handler, current, useClickOutSide, isEmpty } from './utils'
+import type { Ref } from 'vue'
+import type { Handler } from './utils'
+
+import { ref, toRefs, computed, provide, getCurrentInstance } from 'vue'
+import { useBEM, useToggle } from '@comz/vca'
+import { useClickOutSide, isEmpty } from './utils'
 
 export { default as Icon } from '../icon/icon.vue'
 export { ChevronDown, ChevronUp } from '@comz/icons'
 
-export const expand = ref(false)
-export const label = ref('')
+const uid = getCurrentInstance()?.uid
 
-export const { modelValue, placeholder } = toRefs(props)
+const label = ref('')
+const { modelValue, placeholder, disabled } = toRefs(props)
 
-provide(current, modelValue)
-provide(handler, payload => {
+export const { state: expand, toggle } = useToggle(false)
+
+export const handleClick = () => {
+  // console.log(expand.value)
+  toggle()
+}
+
+provide<Ref<unknown>>(`select-${uid}-value`, modelValue)
+provide<Handler>(`select-${uid}-handler`, payload => {
   label.value = payload.label
-  togglePanelState()
+  toggle(false)
   emit('update:modelValue', payload.value)
 })
 
-export const fieldClassName = useBEM(({b, e, m}) => ({
+export const className = useBEM(({ b, m }) => ({
+  [b('cselect')]: true,
+  [m('disabled')]: disabled
+}))
+
+export const fieldClassName = useBEM(({ b, e, m }) => ({
   [b('cselect')]: true,
   [e('field')]: true,
   [m('empty')]: computed(() => isEmpty(modelValue.value))
 }))
 
-export const optionsClassName = useBEM(({b, e, m}) => ({
+export const optionsClassName = useBEM(({ b, e, m }) => ({
   [b('cselect')]: true,
   [e('options')]: true,
   [m('open')]: expand
@@ -65,13 +84,9 @@ useClickOutSide(
   result => expand.value = result
 )
 
-export const currentText = computed(() => {
-  return label.value || modelValue.value || placeholder?.value
-})
-
-export const togglePanelState = () => {
-  expand.value = !expand.value
-}
+export const currentText = computed(() =>
+  label.value || modelValue.value || placeholder?.value
+)
 
 export default {}
 </script>
