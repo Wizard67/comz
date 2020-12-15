@@ -59,8 +59,8 @@ import FormDefault from '../../components/form/default.vue'
 
 import PanelDefault from '../../components/panel/default.vue'
 
-import SwitchDefault from '../../components/switch/default.vue'
-import SwitchDisabled from '../../components/switch/disabled.vue'
+import SwitchBasic from '../../components/switch/basic.vue'
+import SwitchSlots from '../../components/switch/slots.vue'
 
 import TooltipDefault from '../../components/tooltip/default.vue'
 
@@ -124,8 +124,8 @@ export default {
 
     app.component('PanelDefault', PanelDefault)
 
-    app.component('SwitchDefault', SwitchDefault)
-    app.component('SwitchDisabled', SwitchDisabled)
+    app.component('SwitchBasic', SwitchBasic)
+    app.component('SwitchSlots', SwitchSlots)
 
     app.component('TooltipDefault', TooltipDefault)
 

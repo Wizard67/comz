@@ -2,10 +2,37 @@
 @import "../mixins/function";
 
 .cswitch { @extend %switch; }
-.cswitch.cswitch--checked { @extend %switch--checked; }
-.cswitch.cswitch--disabled { @extend %switch--disabled; }
+.cswitch__prepend { @extend %switch__prepend; }
+.cswitch__field { @extend %switch__field; }
+.cswitch__field.cswitch__field--checked { @extend %switch__field--checked; }
+.cswitch__field.cswitch__field--disabled { @extend %switch__field--disabled; }
+.cswitch__append { @extend %switch__append; }
 
 %switch {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+%switch__prepend,
+%switch__append {
+  flex: none;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  line-height: 100%;
+}
+
+%switch__prepend {
+  padding-right: 8px;
+}
+
+%switch__append {
+  padding-left: 8px;
+}
+
+%switch__field {
   position: relative;
   box-sizing: border-box;
   display: inline-flex;
@@ -13,10 +40,9 @@
   width: 2.5em;
   height: 22px;
   padding: 4px 0;
-  color: rgb(52, 142, 199);
-  font-size: 14px;
+  color: rgba(0,0,0,.38);
   line-height: 1.2em;
-  cursor: pointer;
+  cursor: inherit;
 
   &::before,
   &::after {
@@ -51,8 +77,11 @@
   }
 }
 
-%switch--checked {
+%switch__field--checked {
+  color: rgb(52, 142, 199);
+
   &::before {
+    background-color: currentColor;
     clip-path: none;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     transform: translateY(-50%) translateZ(0);
@@ -64,7 +93,7 @@
   }
 }
 
-%switch--disabled {
-  color: #c7c7c7;
+%switch__field--disabled {
+  color: rgb(193, 193, 193);
   cursor: not-allowed;
 }

@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch.vue props disabled 1`] = `
+<div
+  class="cswitch"
+>
+  <!--v-if-->
+  <div
+    class="cswitch__field cswitch__field--checked cswitch__field--disabled"
+  />
+  <!--v-if-->
+</div>
+`;
+
+exports[`Switch.vue props modelValue 1`] = `
+<div
+  class="cswitch"
+>
+  <!--v-if-->
+  <div
+    class="cswitch__field cswitch__field--checked"
+  />
+  <!--v-if-->
+</div>
+`;
+
+exports[`Switch.vue slots append 1`] = `
+<div
+  class="cswitch"
+>
+  <!--v-if-->
+  <div
+    class="cswitch__field cswitch__field--checked"
+  />
+  <div
+    class="cswitch__append"
+  >
+    
+    
+    append
+    
+    
+  </div>
+</div>
+`;
+
+exports[`Switch.vue slots prepend 1`] = `
+<div
+  class="cswitch"
+>
+  <div
+    class="cswitch__prepend"
+  >
+    
+    
+    prepend
+    
+    
+  </div>
+  <div
+    class="cswitch__field cswitch__field--checked"
+  />
+  <!--v-if-->
+</div>
+`;

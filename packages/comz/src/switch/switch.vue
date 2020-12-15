@@ -1,8 +1,14 @@
 <template>
-  <div
-    :class="className"
-    @click="handleValueChange"
-  >
+  <div class="cswitch" @click="handleValueChange">
+    <div v-if="$slots.prepend" class="cswitch__prepend">
+      <slot name="prepend" />
+    </div>
+
+    <div :class="className"></div>
+
+    <div v-if="$slots.append" class="cswitch__append">
+      <slot name="append" />
+    </div>
   </div>
 </template>
 
@@ -17,10 +23,11 @@ declare function emit (event: 'update:modelValue', value: boolean): void
 import { toRefs } from 'vue'
 import { useBEM } from '@comz/vca'
 
-export const { modelValue, disabled } = toRefs(props)
+const { modelValue, disabled } = toRefs(props)
 
-export const className = useBEM(({b, m}) => ({
+export const className = useBEM(({ b, e, m }) => ({
   [b('cswitch')]: true,
+  [e('field')]: true,
   [m('checked')]: modelValue,
   [m('disabled')]: disabled
 }))
