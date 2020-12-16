@@ -17,7 +17,8 @@ $justify: var(--cflex-justify, flex-start);
   justify-content: $justify;
   align-items: $align;
   gap: $gap;
-  
+  width: 100%;
+
   & > * {
     flex: none;
   }
@@ -25,6 +26,7 @@ $justify: var(--cflex-justify, flex-start);
 
 %flex--inline {
   display: inline-flex;
+  width: unset;
 }
 
 %flex--wrap {
@@ -37,7 +39,6 @@ $justify: var(--cflex-justify, flex-start);
 
 %flex--full {
   height: calc(100% + #{$gap});
-  width: calc(100% + #{$gap});
 }
 
 %flex--center {
