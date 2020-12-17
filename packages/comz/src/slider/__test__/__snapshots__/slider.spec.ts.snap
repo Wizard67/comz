@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slider.vue props disabled 1`] = `
+<section
+  class="cslider"
+>
+  <!--v-if-->
+  <div
+    class="cslider__field cslider__field--disabled"
+    style="--cslider-thumb-offset: 0px;"
+  >
+    <div
+      class="cslider__thumb cslider__thumb--disabled"
+    />
+  </div>
+  <!--v-if-->
+</section>
+`;
+
+exports[`Slider.vue slots append 1`] = `
+<section
+  class="cslider"
+>
+  <!--v-if-->
+  <div
+    class="cslider__field"
+    style="--cslider-thumb-offset: 0px;"
+  >
+    <div
+      class="cslider__thumb"
+    />
+  </div>
+  <div
+    class="cslider__append"
+  >
+    
+    
+    append
+    
+    
+  </div>
+</section>
+`;
+
+exports[`Slider.vue slots prepend 1`] = `
+<section
+  class="cslider"
+>
+  <div
+    class="cslider__prepend"
+  >
+    
+    
+    prepend
+    
+    
+  </div>
+  <div
+    class="cslider__field"
+    style="--cslider-thumb-offset: 0px;"
+  >
+    <div
+      class="cslider__thumb"
+    />
+  </div>
+  <!--v-if-->
+</section>
+`;

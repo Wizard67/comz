@@ -5453,6 +5453,11 @@ number-is-nan@^1.0.0:
   resolved "https://registry.npmjs.org/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
+number-precision@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.npmjs.org/number-precision/-/number-precision-1.5.0.tgz#eca1e3657cc7de3778987f2d22aa9dea4be238d5"
+  integrity sha512-CxmQK1FFj3G3YXS4PDZSz3+IvtNESpuMwK6JY+y4IIDBbyY1ldkvk2nqBzDJj+EKFXZrrmL/fObqtSoB8b/jZQ==
+
 nwsapi@^2.2.0:
   version "2.2.0"
   resolved "https://registry.npmjs.org/nwsapi/-/nwsapi-2.2.0.tgz#204879a9e3d068ff2a55139c2c772780681a38b7"

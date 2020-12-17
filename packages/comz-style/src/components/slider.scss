@@ -2,20 +2,64 @@
 @import "../mixins/function";
 
 .cslider { @extend %slider; }
+
+.cslider__prepend { @extend %slider__prepend; }
+
+.cslider__field { @extend %slider__field; }
+.cslider__field--disabled { @extend %slider__field--disabled; }
+
 .cslider__thumb { @extend %slider__thumb; }
+.cslider__thumb--disabled { @extend %slider__thumb--disabled; }
+
+.cslider__append { @extend %slider__append; }
 
 $offset: var(--cslider-thumb-offset, 0);
 
 %slider {
+  position: relative;
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
-  width: 160px;
-  max-width: 100%;
-  height: 4px;
-  background: linear-gradient(to right, rgb(52, 142, 199) $offset, #c7c7c7 $offset);
+  height: 24px;
+  width: auto;
   font-size: 14px;
+}
+
+%slider__prepend,
+%slider__append {
+  flex: none;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  line-height: 100%;
+}
+
+%slider__prepend {
+  padding-right: 8px;
+}
+
+%slider__append {
+  padding-left: 8px;
+}
+
+%slider__field {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  min-width: 160px;
+  margin: 0 .6em;
+  border-radius: 200px;
+  color: rgb(52, 142, 199);
+  background: linear-gradient(to right, currentColor $offset, #c7c7c7 $offset);
   line-height: 1.2em;
   cursor: pointer;
+}
+
+%slider__field--disabled {
+  color: rgb(193, 193, 193);
+  background: linear-gradient(to right, currentColor $offset, #e7e7e7 $offset);
+  cursor: not-allowed;
 }
 
 %slider__thumb {
@@ -43,7 +87,7 @@ $offset: var(--cslider-thumb-offset, 0);
     height: 4px;
     border-radius: 200px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    background-color: white;
+    background-color: currentColor;
   }
 
   &::before {
@@ -59,4 +103,9 @@ $offset: var(--cslider-thumb-offset, 0);
                 background-color .1s ease-in-out;
     cursor: inherit;
   }
+}
+
+%slider__thumb--disabled {
+  color: rgb(193, 193, 193);
+  cursor: not-allowed;
 }

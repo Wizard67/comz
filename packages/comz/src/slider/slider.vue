@@ -1,25 +1,41 @@
 <template>
-  <div class="cslider" ref="sliderRef" :style="cssVars">
-    <div class="cslider__thumb" ref="thumbRef"></div>
-  </div>
+  <section class="cslider">
+    <div v-if="$slots.prepend" class="cslider__prepend">
+      <slot name="prepend" />
+    </div>
+
+    <div :class="fieldClassName" ref="sliderRef" :style="cssVars">
+      <div :class="thumbClassName" ref="thumbRef"></div>
+    </div>
+
+    <div v-if="$slots.append" class="cslider__append">
+      <slot name="append" />
+    </div>
+  </section>
 </template>
 
 <script setup="props, { emit }" lang="ts">
 declare const props: {
-  modelValue?: number
+  modelValue: number
   min?: number
   max?: number
   step?: number
+  disabled: boolean
 }
 
 declare function emit(event: 'update:modelValue', value: number): void
 
-import { ref, computed, watchEffect, watch, nextTick, Ref, WatchStopHandle } from 'vue'
-import { useEvent, useMouse, useCssVars, MouseState } from '@comz/vca'
+import type { MouseState } from '@comz/vca'
+import { ref, toRefs, computed, watchEffect, watch, Ref, WatchStopHandle } from 'vue'
+import { useEvent, useMouse, useBEM, useCssVars } from '@comz/vca'
+import { strip } from 'number-precision'
+
 import { useElementRect, getPointValue } from './utils'
 
 export const sliderRef = ref<HTMLElement | null>(null)
 export const thumbRef = ref<HTMLElement | null>(null)
+
+const { disabled } = toRefs(props)
 
 const { width, right, left } = useElementRect(sliderRef)
 
@@ -35,24 +51,36 @@ const unitDistance = computed(() => width.value / distance.value)
 const mouseState: Ref<MouseState | null> = ref(null)
 const offsetX = computed(() => mouseState.value?.offsetX ?? 0)
 const currentPoint = computed(() => Math.min(Math.max(0, offsetX.value), width.value))
-const currentValue = computed(() => Math.round(currentPoint.value * unitWidth.value + min.value))
+const currentValue = computed(() => strip(currentPoint.value * unitWidth.value + min.value, 10))
 
 const valuePosition = computed(() => (value.value - min.value) * unitDistance.value + left.value)
 const thumbOffset = computed(() => getPointValue(valuePosition.value, breakPoints.value) - left.value)
 
 watch(mouseState, () => {
-  nextTick(() => emit('update:modelValue', currentValue.value))
+  emit('update:modelValue', currentValue.value)
 }, { deep: true })
 
 export const cssVars = useCssVars({
   '--cslider-thumb-offset': computed(() => `${ thumbOffset.value }px`)
 })
 
+export const fieldClassName = useBEM(({b, e, m}) => ({
+  [b('cslider')]: true,
+  [e('field')]: true,
+  [m('disabled')]: disabled
+}))
+
+export const thumbClassName = useBEM(({b, e, m}) => ({
+  [b('cslider')]: true,
+  [e('thumb')]: true,
+  [m('disabled')]: disabled
+}))
+
 const breakPoints = ref<number[]>([])
 watchEffect(() => {
   const points = Math.ceil(distance.value / step.value + 1)
-  const list = [...Array(points).keys()].map(point =>
-    point * unitDistance.value * step.value + left.value
+  const list = Array(points).fill(null).map((_, index) =>
+    index * unitDistance.value * step.value + left.value
   )
 
   if (list[points - 1] > right.value) list.pop()
@@ -63,6 +91,8 @@ watchEffect(() => {
 let stopUseMouse: WatchStopHandle | null = null
 
 useEvent(sliderRef, 'mousedown', event => {
+  if (disabled.value) return
+
   const { state, stop } = useMouse(sliderRef, {
     onBefore: () => event,
     onUpdate: ({ pageX, pageY }) => ({

@@ -64,7 +64,10 @@ import SwitchSlots from '../../components/switch/slots.vue'
 
 import TooltipDefault from '../../components/tooltip/default.vue'
 
-import SliderDefault from '../../components/slider/default.vue'
+import SliderBasic from '../../components/slider/basic.vue'
+import SliderRange from '../../components/slider/range.vue'
+import SliderStep from '../../components/slider/step.vue'
+import SliderSlots from '../../components/slider/slots.vue'
 
 export default {
   ...DefaultTheme,
@@ -129,6 +132,9 @@ export default {
 
     app.component('TooltipDefault', TooltipDefault)
 
-    app.component('SliderDefault', SliderDefault)
+    app.component('SliderBasic', SliderBasic)
+    app.component('SliderRange', SliderRange)
+    app.component('SliderStep', SliderStep)
+    app.component('SliderSlots', SliderSlots)
   }
 }
