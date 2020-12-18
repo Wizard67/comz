@@ -1,11 +1,11 @@
 <template>
   <Flex gap="160px">
-    <Flex gap="24px">
+    <Flex gap="24px" inline>
       <Radio v-model="value" value="A">A</Radio>
       <Radio v-model="value" value="B">B</Radio>
     </Flex>
 
-    <Flex gap="24px">
+    <Flex gap="24px" inline>
       <Radio v-model="value" value="A" disabled>A</Radio>
       <Radio v-model="value" value="B" disabled>B</Radio>
     </Flex>
