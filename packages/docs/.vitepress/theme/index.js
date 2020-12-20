@@ -55,7 +55,7 @@ import FlexFull from '../../components/flex/full.vue'
 import FlexVertical from '../../components/flex/vertical.vue'
 import FlexPlace from '../../components/flex/place.vue'
 
-import FormDefault from '../../components/form/default.vue'
+import FormBasic from '../../components/form/basic.vue'
 
 import PanelDefault from '../../components/panel/default.vue'
 
@@ -123,7 +123,7 @@ export default {
     app.component('FlexFull', FlexFull)
     app.component('FlexPlace', FlexPlace)
 
-    app.component('FormDefault', FormDefault)
+    app.component('FormBasic', FormBasic)
 
     app.component('PanelDefault', PanelDefault)
 

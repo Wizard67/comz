@@ -6,44 +6,36 @@
 .cform-item { @extend %form-item; }
 .cform-item__label { @extend %form-item__label; }
 .cform-item__field { @extend %form-item__field; }
-.cform-item__field.cform-item__field--error { @extend %form-item__field--error; }
-.cform-item__error { @extend %form-item__error; }
 
-$width: var(--cformitem-width, 80px);
+$width: var(--cform-label-width, 80px);
+$align: var(--cform-label-align, right);
 
 %form {
   display: flex;
   flex-direction: column;
-  padding: 4px;
 }
 
 %form-item {
   display: flex;
   align-items: flex-start;
-  margin: 4px 0;
+  margin: 6px 0;
 }
 
 %form-item__label {
   flex: none;
   width: $width;
-  padding: 4px 0;
-  color: rgb(51, 51, 51);
+  height: 24px;
+  color: $text-color;
   font-size: 14px;
-  line-height: 1.2em;
+  line-height: 24px;
+  text-align: $align;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 %form-item__field {
   position: relative;
-  flex: 1;
-  width: calc(100% - 80%);
+  margin-left: 8px;
 }
 
-%form-item__field--error {
-
-}
-
-%form-item__error {
-  box-sizing: border-box;
-  color: rgb(252, 92, 92);
-  font-size: 14px;
-}

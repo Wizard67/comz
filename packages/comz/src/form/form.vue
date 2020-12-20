@@ -1,5 +1,5 @@
 <template>
-  <div class="cform">
+  <div class="cform" :style="cssVars">
     <slot />
   </div>
 </template>
@@ -7,21 +7,18 @@
 <script setup="props, { emit }" lang="ts">
 declare const props: {
   labelWidth?: string
+  labelAlign?: string
 }
 
-import { toRefs, provide, reactive } from 'vue'
-import { LABEL_WIDTH, SET_MSG_METHOD } from './utils'
+import { toRefs } from 'vue'
+import { useCssVars } from '@comz/vca'
 
-const { labelWidth } = toRefs(props)
-const itemMap = reactive(new Map())
+const { labelWidth, labelAlign } = toRefs(props)
 
-provide(LABEL_WIDTH, labelWidth)
-provide(SET_MSG_METHOD, (key, value) => itemMap.set(key, value))
-
-export const setMsg = (name: string, msg: string) => {
-  const value = itemMap.get(name)
-  value.value = msg
-}
+export const cssVars = useCssVars({
+  '--cform-label-width': labelWidth,
+  '--cform-label-align': labelAlign
+}, { scoped: true })
 
 export default {}
 </script>
