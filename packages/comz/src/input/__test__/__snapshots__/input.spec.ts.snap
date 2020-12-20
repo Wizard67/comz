@@ -35,7 +35,7 @@ exports[`Input.vue props clearable 1`] = `
 
 exports[`Input.vue props disabled 1`] = `
 <div
-  class="cinput"
+  class="cinput cinput--disabled"
 >
   <!--v-if-->
   <div

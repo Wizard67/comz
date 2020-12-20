@@ -57,9 +57,10 @@ describe('Input.vue', () => {
         }
       })
 
-      const element = wrapper.get('.cinput__field')
+      const field = wrapper.get('.cinput__field')
 
-      expect(element.classes()).toContain('cinput__field--disabled')
+      expect(wrapper.classes()).toContain('cinput--disabled')
+      expect(field.classes()).toContain('cinput__field--disabled')
       expect(wrapper.element).toMatchSnapshot()
     })
 
