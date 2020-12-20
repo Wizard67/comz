@@ -1,5 +1,5 @@
 <template>
-  <div class="cinput">
+  <div :class="className">
     <div v-if="$slots.prepend" class="cinput__prepend">
       <slot name="prepend" />
     </div>
@@ -7,7 +7,7 @@
     <div class="cinput__wrapper">
       <input
         type="text"
-        :class="className"
+        :class="fieldClassName"
         :value="modelValue"
         :placeholder="placeholder"
         :readonly="readonly"
@@ -52,7 +52,12 @@ export { XCircleFill } from '@comz/icons'
 
 const { readonly, disabled } = toRefs(props)
 
-export const className = useBEM(({ b, e, m }) => ({
+export const className = useBEM(({ b, m }) => ({
+  [b('cinput')]: true,
+  [m('disabled')]: disabled
+}))
+
+export const fieldClassName = useBEM(({ b, e, m }) => ({
   [b('cinput')]: true,
   [e('field')]: true,
   [m('readonly')]: readonly,

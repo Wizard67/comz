@@ -1,1 +1,22 @@
+/* color */
 $color-primary: rgb(52, 142, 199);
+$color-disabled: #BDBDBD;
+$color-inactive: #E0E0E0;
+
+$text-color: #263238;
+$text-disabled: #546E7A;
+
+/* shadow */
+$shadow-overlay: 0 8px 10px -5px rgba(0,0,0,.2),
+                 0 16px 24px 2px rgba(0,0,0,.14),
+                 0 6px 30px 5px rgba(0,0,0,.12);
+
+$shadow-container: 0 2px 4px -1px rgba(0,0,0,.2),
+                   0 4px 5px 0 rgba(0,0,0,.14),
+                   0 1px 10px 0 rgba(0,0,0,.12);
+
+$shadow-form: 0 2px 1px -1px rgba(0,0,0,.14),
+              0 1px 1px 0 rgba(0,0,0,.14),
+              0 1px 3px 0 rgba(0,0,0,.12);
+
+$shadow-form-disabled: 0 1px 1px 0 rgba(0,0,0,.12);

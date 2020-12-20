@@ -3,9 +3,11 @@
 
 .ccheckbox { @extend %checkbox; }
 .ccheckbox.ccheckbox--disabled { @extend %checkbox--disabled; }
+
 .ccheckbox__button { @extend %checkbox__button; }
 .ccheckbox__button.ccheckbox__button--checked { @extend %checkbox__button--checked; }
 .ccheckbox__button.ccheckbox__button--disabled { @extend %checkbox__button--disabled; }
+
 .ccheckbox__field { @extend %checkbox__field; }
 
 %checkbox {
@@ -13,10 +15,10 @@
   box-sizing: border-box;
   display: inline-flex;
   align-items: flex-start;
-  padding: 4px 0;
-  color: rgb(51, 51, 51);
+  padding: .2858em 0;
+  color: $text-color;
   font-size: 14px;
-  line-height: 1.2em;
+  line-height: 1.2;
   cursor: pointer;
 
   &:focus {
@@ -25,13 +27,14 @@
 }
 
 %checkbox--disabled {
-  color: rgba(0, 0, 0, .3);
+  color: $text-disabled;
   filter: grayscale(80%);
   cursor: not-allowed;
 }
 
 %checkbox__button {
   position: relative;
+  color: $color-primary;
 
   &::before,
   &::after {
@@ -46,17 +49,17 @@
 
   &::before {
     transform: translateY(-50%) translateZ(0);
-    border: 2px rgb(52, 142, 199) solid;
-    border-radius: 2px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    border: .1429em currentColor solid;
+    border-radius: .1429em;
+    box-shadow: $shadow-form;
     cursor: inherit;
   }
 
   &::after {
+    background-color: currentColor;
+    opacity: 0;
     transform: translateY(-50%) translateZ(0) scale(.1);
     transform-origin: center;
-    background-color: rgb(52, 142, 199);
-    opacity: 0;
     transition: background-color .2s ease-in-out,
                 transform .15s ease-in-out,
                 opacity .1s ease-in-out;
@@ -71,15 +74,11 @@
 }
 
 %checkbox__button--disabled {
+  color: $color-disabled;
   cursor: not-allowed;
 
   &::before {
-    border: 2px rgba(0, 0, 0, .2) solid;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  }
-
-  &::after {
-    background-color: rgba(0, 0, 0, .2);
+    box-shadow: $shadow-form-disabled;
   }
 }
 
@@ -87,7 +86,7 @@
   width: 1em;
   height: 1em;
   margin: 0 .25em 0 0;
-  opacity: 0;
   font-size: inherit;
+  opacity: 0;
   cursor: inherit;
 }

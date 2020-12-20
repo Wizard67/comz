@@ -1,6 +1,6 @@
 <template>
   <label :class="className">
-    <div :class="buttonClassName">{{ "\u200b" }}</div>
+    <div :class="buttonClassName">{{ '\u200b' }}</div>
     <input
       class="cradio__field"
       type="radio"
