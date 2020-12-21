@@ -1,6 +1,6 @@
 <template>
   <label :class="className">
-    <div :class="buttonClassName">{{ '\u200b' }}</div>
+    <div class="cradio__button">{{ '\u200b' }}</div>
     <input
       class="cradio__field"
       type="radio"
@@ -33,12 +33,6 @@ export const checked = computed(() =>
 
 export const className = useBEM(({ b, m }) => ({
   [b('cradio')]: true,
-  [m('disabled')]: disabled
-}))
-
-export const buttonClassName = useBEM(({ b, e, m }) => ({
-  [b('cradio')]: true,
-  [e('button')]: true,
   [m('checked')]: checked,
   [m('disabled')]: disabled
 }))

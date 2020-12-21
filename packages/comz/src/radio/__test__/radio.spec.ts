@@ -29,9 +29,7 @@ describe('Radio.vue', () => {
         }
       })
 
-      const element = wrapper.find('.cradio__button')
-
-      expect(element.classes()).toContain('cradio__button--checked')
+      expect(wrapper.classes()).toContain('cradio--checked')
       expect(wrapper.element).toMatchSnapshot()
     })
 
@@ -44,7 +42,6 @@ describe('Radio.vue', () => {
       })
 
       expect(wrapper.classes()).toContain('cradio--disabled')
-      expect(wrapper.find('.cradio__button').classes()).toContain('cradio__button--disabled')
       expect(wrapper.element).toMatchSnapshot()
     })
   })

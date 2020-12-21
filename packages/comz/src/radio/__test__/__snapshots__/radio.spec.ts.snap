@@ -5,7 +5,7 @@ exports[`Radio.vue props disabled 1`] = `
   class="cradio cradio--disabled"
 >
   <div
-    class="cradio__button cradio__button--disabled"
+    class="cradio__button"
   >
     ​
   </div>
@@ -22,10 +22,10 @@ exports[`Radio.vue props disabled 1`] = `
 
 exports[`Radio.vue props modelValue 1`] = `
 <label
-  class="cradio"
+  class="cradio cradio--checked"
 >
   <div
-    class="cradio__button cradio__button--checked"
+    class="cradio__button"
   >
     ​
   </div>
