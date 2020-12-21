@@ -7,7 +7,7 @@
     <div class="cinput__wrapper">
       <input
         type="text"
-        :class="fieldClassName"
+        class="cinput__field"
         :value="modelValue"
         :placeholder="placeholder"
         :readonly="readonly"
@@ -54,12 +54,6 @@ const { readonly, disabled } = toRefs(props)
 
 export const className = useBEM(({ b, m }) => ({
   [b('cinput')]: true,
-  [m('disabled')]: disabled
-}))
-
-export const fieldClassName = useBEM(({ b, e, m }) => ({
-  [b('cinput')]: true,
-  [e('field')]: true,
   [m('readonly')]: readonly,
   [m('disabled')]: disabled
 }))

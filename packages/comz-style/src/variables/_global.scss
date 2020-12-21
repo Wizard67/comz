@@ -4,7 +4,11 @@ $color-disabled: #BDBDBD;
 $color-inactive: #E0E0E0;
 
 $text-color: #263238;
+$text-readonly: #BDBDBD;
 $text-disabled: #546E7A;
+
+$form-disabled: rgba(107,107,107, .3);
+$form-placeholder: rgb(155, 155, 155);
 
 /* shadow */
 $shadow-overlay: 0 8px 10px -5px rgba(0,0,0,.2),

@@ -42,7 +42,7 @@ exports[`Input.vue props disabled 1`] = `
     class="cinput__wrapper"
   >
     <input
-      class="cinput__field cinput__field--disabled"
+      class="cinput__field"
       disabled=""
       type="text"
     />
@@ -91,14 +91,14 @@ exports[`Input.vue props placeholder 1`] = `
 
 exports[`Input.vue props readonly 1`] = `
 <div
-  class="cinput"
+  class="cinput cinput--readonly"
 >
   <!--v-if-->
   <div
     class="cinput__wrapper"
   >
     <input
-      class="cinput__field cinput__field--readonly"
+      class="cinput__field"
       readonly=""
       type="text"
     />

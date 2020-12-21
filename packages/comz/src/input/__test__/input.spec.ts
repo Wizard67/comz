@@ -43,9 +43,7 @@ describe('Input.vue', () => {
         }
       })
 
-      const element = wrapper.get('.cinput__field')
-
-      expect(element.classes()).toContain('cinput__field--readonly')
+      expect(wrapper.classes()).toContain('cinput--readonly')
       expect(wrapper.element).toMatchSnapshot()
     })
 
@@ -57,10 +55,7 @@ describe('Input.vue', () => {
         }
       })
 
-      const field = wrapper.get('.cinput__field')
-
       expect(wrapper.classes()).toContain('cinput--disabled')
-      expect(field.classes()).toContain('cinput__field--disabled')
       expect(wrapper.element).toMatchSnapshot()
     })
 

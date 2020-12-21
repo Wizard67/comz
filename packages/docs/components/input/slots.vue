@@ -71,6 +71,5 @@ export default defineComponent({
 .input {
   width: 200px;
   color: rgb(131, 131, 131);
-  font-size: 14px;
 }
 </style>
