@@ -4,32 +4,43 @@
 .cbutton { @extend %button; }
 .cbutton.cbutton--loading { @extend %button--loading; }
 .cbutton.cbutton--disabled { @extend %button--disabled; }
+
 .cbutton__icon { @extend %button__icon; }
 
 $animation-before: unique-id();
 $animation-after: unique-id();
 
 %button {
+  --box-shadow: initial;
+  --border-color: initial;
+  --hover-color: initial;
+  --hover-background-color: initial;
+  --color: initial;
+  --background-color: initial;
+  --cursor: initial;
+
+  appearance: none;
   box-sizing: border-box;
   position: relative;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: 4px 16px;
+  padding: px2em(4px) px2em(16px);
   border: none;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  color: white;
-  background-color: rgb(52, 142, 199);
+  border-radius: px2em(4px);
+  box-shadow: var(--box-shadow, $shadow-form);
+  color: var(--color, white);
+  background-color: var(--background-color, #{$color-primary});
   font-size: 14px;
-  letter-spacing: 1px;
-  line-height: 1.2em;
+  letter-spacing: px2em(1px);
+  line-height: 1.2;
   transition: box-shadow .1s ease-in-out;
   user-select: none;
   overflow: hidden;
+  cursor: var(--cursor, pointer);
 
   &::before {
-    content: '\200b'
+    content: "\200b"
   }
 
   &:focus {
@@ -37,9 +48,8 @@ $animation-after: unique-id();
   }
 
   &:hover {
-    cursor: pointer;
-    color: rgb(240, 240, 240);
-    background-color: rgb(32, 123, 180);
+    color: var(--hover-color, rgb(240, 240, 240));
+    background-color: var(--hover-background-color, rgb(32, 123, 180));
   }
 
   &:active {
@@ -49,50 +59,43 @@ $animation-after: unique-id();
 }
 
 %button--loading {
-  background-color: rgb(83, 172, 228);
-  cursor: wait;
-
-  &:active {
-    color: rgb(231, 231, 231);
-  }
+  --cursor: wait;
 
   &::before,
   &::after {
-    content: "";
+    content: "\200b";
     box-sizing: border-box;
     position: absolute;
     bottom: 0;
     left: 0;
     right: auto;
     width: auto;
-    height: 4px;
-    background-color: rgb(32, 123, 180);
+    height: px2em(4px);
+    background-color: var(--border-color, rgb(24, 99, 170));
     will-change: right left;
   }
 
   &::before {
-    animation: #{$animation-before} 1.8s linear infinite forwards;
+    animation: #{$animation-before} 1.4s linear infinite forwards;
   }
 
   &::after {
-    animation: #{$animation-after} 1.8s linear infinite forwards;
+    animation: #{$animation-after} 1.4s linear infinite forwards;
   }
 }
 
 %button--disabled {
-  box-shadow: inset 0 0 20px 2px rgba(241, 241, 241, .3);
-  color: #b1b1b1;
-  background-color: rgb(238, 238, 238);
-  cursor: not-allowed;
-
-  &::before,
-  &::after {
-    background-color: rgb(189, 189, 189);
-  }
+  --box-shadow: #{$shadow-form-disabled};
+  --border-color: rgb(189, 189, 189);
+  --hover-color: #{$text-disabled};
+  --hover-background-color: #{$color-inactive};
+  --color: #{$text-disabled};
+  --background-color: #{$color-inactive};
+  --cursor: not-allowed;
 }
 
 %button__icon {
-  margin-right: 4px;
+  margin-right: px2em(4px);
 }
 
 @keyframes #{$animation-before} {
