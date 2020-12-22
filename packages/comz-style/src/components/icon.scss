@@ -6,13 +6,19 @@
 .cicon.cicon--link { @extend %icon--link; }
 
 $color: var(--cicon-color, inhert);
-$size: var(--cicon-size, inhert);
+$size: var(--cicon-size, 14px);
 
 $animation: unique-id();
 
 %icon {
+  --animation: initial;
+  --cursor: initial;
+
   display: inline-flex;
   align-items: center;
+  color: $text-color;
+  animation: var(--animation, unset);
+  cursor: var(--cursor, inhert);
 
   // aligns svg/image/font icon with text
   // https://zhuanlan.zhihu.com/p/30624268
@@ -27,11 +33,11 @@ $animation: unique-id();
 }
 
 %icon--spin {
-  animation: #{$animation} .85s linear infinite;
+  --animation: #{$animation} .85s linear infinite;
 }
 
 %icon--link {
-  cursor: pointer;
+  --cursor: pointer;
 }
 
 @keyframes #{$animation} {
