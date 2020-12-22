@@ -2,32 +2,42 @@
 @import "../mixins/function";
 
 .cslider { @extend %slider; }
+.cslider--disabled { @extend %slider--disabled; }
 
 .cslider__prepend { @extend %slider__prepend; }
-
 .cslider__field { @extend %slider__field; }
-.cslider__field--disabled { @extend %slider__field--disabled; }
-
 .cslider__thumb { @extend %slider__thumb; }
-.cslider__thumb--disabled { @extend %slider__thumb--disabled; }
-
 .cslider__append { @extend %slider__append; }
 
 $offset: var(--cslider-thumb-offset, 0);
 
 %slider {
+  --box-shadow: initial;
+  --inactive-color: initial;
+  --color: initial;
+  --background-offset: initial;
+  --background-color: initial;
+  --cursor: initial;
+
   position: relative;
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
-  padding: .2858em 0;
-  color: $text-color;
+  padding: px2em(4px) 0;
   font-size: 14px;
   line-height: 1.2;
+  cursor: var(--cursor, pointer);
 
   &::before {
     content: "\200b";
   }
+}
+
+%slider--disabled {
+  --box-shadow: #{$shadow-form-disabled};
+  --inactive-color: #{$color-inactive};
+  --background-color: #{$color-disabled};
+  --cursor: not-allowed;
 }
 
 %slot {
@@ -35,17 +45,18 @@ $offset: var(--cslider-thumb-offset, 0);
   display: flex;
   align-items: center;
   align-self: stretch;
+  font-size: 14px;
   line-height: 100%;
 }
 
 %slider__prepend {
   @extend %slot;
-  padding-right: .571em;
+  padding-right: px2em(8px);
 }
 
 %slider__append {
   @extend %slot;
-  padding-left: .571em;
+  padding-left: px2em(8px);
 }
 
 %slider__field {
@@ -56,24 +67,18 @@ $offset: var(--cslider-thumb-offset, 0);
   width: 100%;
   min-width: 160px;
   margin: 0 .5em;
-  border-radius: 100em;
-  color: $color-primary;
-  background: linear-gradient(to right, currentColor $offset, $color-disabled $offset);
+  color: var(--color, #{$color-primary});
+  border-radius: px2em(100px);
+  background: linear-gradient(to right, var(--background-color, #{$color-primary}) $offset, var(--inactive-color, #{$color-disabled}) $offset);
   cursor: pointer;
-}
-
-%slider__field--disabled {
-  color: $color-disabled;
-  background: linear-gradient(to right, currentColor $offset, $color-inactive $offset);
-  cursor: not-allowed;
 }
 
 %slider__thumb {
   position: relative;
-  width: .0357em;
-  height: .2858em;
+  width: px2em(.5px);
+  height: px2em(4px);
   transform: translateX($offset);
-  color: inherit;
+  color: var(--background-color, #{$color-primary});
   cursor: inherit;
 
   &::before,
@@ -90,8 +95,8 @@ $offset: var(--cslider-thumb-offset, 0);
     left: .5em;
     transform: translate(-50%, -50%);
     width: 1.5em;
-    height: .2858em;
-    border-radius: 100em;
+    height: px2em(4px);
+    border-radius: px2em(100px);
     background-color: currentColor;
   }
 
@@ -102,15 +107,10 @@ $offset: var(--cslider-thumb-offset, 0);
     width: 1em;
     height: 1em;
     border-radius: 50%;
-    border: .1429em currentColor solid;
-    box-shadow: $shadow-form;
+    border: px2em(2px) currentColor solid;
+    box-shadow: var(--box-shadow, #{$shadow-form});
     transition: transform .1s ease-in-out,
                 background-color .1s ease-in-out;
     cursor: inherit;
   }
-}
-
-%slider__thumb--disabled {
-  color: $color-disabled;
-  cursor: not-allowed;
 }

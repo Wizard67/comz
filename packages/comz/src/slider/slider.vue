@@ -1,11 +1,11 @@
 <template>
-  <section class="cslider">
+  <section :class="className">
     <div v-if="$slots.prepend" class="cslider__prepend">
       <slot name="prepend" />
     </div>
 
-    <div :class="fieldClassName" ref="sliderRef" :style="cssVars">
-      <div :class="thumbClassName" ref="thumbRef"></div>
+    <div class="cslider__field" ref="sliderRef" :style="cssVars">
+      <div class="cslider__thumb" ref="thumbRef"></div>
     </div>
 
     <div v-if="$slots.append" class="cslider__append">
@@ -64,15 +64,8 @@ export const cssVars = useCssVars({
   '--cslider-thumb-offset': computed(() => `${ thumbOffset.value }px`)
 })
 
-export const fieldClassName = useBEM(({b, e, m}) => ({
+export const className = useBEM(({ b, m }) => ({
   [b('cslider')]: true,
-  [e('field')]: true,
-  [m('disabled')]: disabled
-}))
-
-export const thumbClassName = useBEM(({b, e, m}) => ({
-  [b('cslider')]: true,
-  [e('thumb')]: true,
   [m('disabled')]: disabled
 }))
 

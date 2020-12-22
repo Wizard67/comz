@@ -34,8 +34,7 @@ describe('Slider.vue', () => {
         }
       })
 
-      expect(wrapper.find('.cslider__field').classes()).toContain('cslider__field--disabled')
-      expect(wrapper.find('.cslider__thumb').classes()).toContain('cslider__thumb--disabled')
+      expect(wrapper.classes()).toContain('cslider--disabled')
       expect(wrapper.element).toMatchSnapshot()
     })
   })

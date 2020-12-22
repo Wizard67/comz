@@ -2,15 +2,15 @@
 
 exports[`Slider.vue props disabled 1`] = `
 <section
-  class="cslider"
+  class="cslider cslider--disabled"
 >
   <!--v-if-->
   <div
-    class="cslider__field cslider__field--disabled"
+    class="cslider__field"
     style="--cslider-thumb-offset: 0px;"
   >
     <div
-      class="cslider__thumb cslider__thumb--disabled"
+      class="cslider__thumb"
     />
   </div>
   <!--v-if-->
