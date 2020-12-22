@@ -1,10 +1,10 @@
 <template>
-  <div class="cswitch" @click="handleValueChange">
+  <div :class="className" @click="handleValueChange">
     <div v-if="$slots.prepend" class="cswitch__prepend">
       <slot name="prepend" />
     </div>
 
-    <div :class="className"></div>
+    <div class="cswitch__field"></div>
 
     <div v-if="$slots.append" class="cswitch__append">
       <slot name="append" />
@@ -25,9 +25,8 @@ import { useBEM } from '@comz/vca'
 
 const { modelValue, disabled } = toRefs(props)
 
-export const className = useBEM(({ b, e, m }) => ({
+export const className = useBEM(({ b, m }) => ({
   [b('cswitch')]: true,
-  [e('field')]: true,
   [m('checked')]: modelValue,
   [m('disabled')]: disabled
 }))

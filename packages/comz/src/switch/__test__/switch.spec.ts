@@ -10,9 +10,7 @@ describe('Switch.vue', () => {
         }
       })
 
-      const element = wrapper.find('.cswitch__field')
-
-      expect(element.classes()).toContain('cswitch__field--checked')
+      expect(wrapper.classes()).toContain('cswitch--checked')
       expect(wrapper.element).toMatchSnapshot()
     })
 
@@ -24,9 +22,7 @@ describe('Switch.vue', () => {
         }
       })
 
-      const element = wrapper.find('.cswitch__field')
-
-      expect(element.classes()).toContain('cswitch__field--disabled')
+      expect(wrapper.classes()).toContain('cswitch--disabled')
       expect(wrapper.element).toMatchSnapshot()
     })
   })

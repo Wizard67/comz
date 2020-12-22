@@ -2,11 +2,11 @@
 
 exports[`Switch.vue props disabled 1`] = `
 <div
-  class="cswitch"
+  class="cswitch cswitch--checked cswitch--disabled"
 >
   <!--v-if-->
   <div
-    class="cswitch__field cswitch__field--checked cswitch__field--disabled"
+    class="cswitch__field"
   />
   <!--v-if-->
 </div>
@@ -14,11 +14,11 @@ exports[`Switch.vue props disabled 1`] = `
 
 exports[`Switch.vue props modelValue 1`] = `
 <div
-  class="cswitch"
+  class="cswitch cswitch--checked"
 >
   <!--v-if-->
   <div
-    class="cswitch__field cswitch__field--checked"
+    class="cswitch__field"
   />
   <!--v-if-->
 </div>
@@ -26,11 +26,11 @@ exports[`Switch.vue props modelValue 1`] = `
 
 exports[`Switch.vue slots append 1`] = `
 <div
-  class="cswitch"
+  class="cswitch cswitch--checked"
 >
   <!--v-if-->
   <div
-    class="cswitch__field cswitch__field--checked"
+    class="cswitch__field"
   />
   <div
     class="cswitch__append"
@@ -46,7 +46,7 @@ exports[`Switch.vue slots append 1`] = `
 
 exports[`Switch.vue slots prepend 1`] = `
 <div
-  class="cswitch"
+  class="cswitch cswitch--checked"
 >
   <div
     class="cswitch__prepend"
@@ -58,7 +58,7 @@ exports[`Switch.vue slots prepend 1`] = `
     
   </div>
   <div
-    class="cswitch__field cswitch__field--checked"
+    class="cswitch__field"
   />
   <!--v-if-->
 </div>
