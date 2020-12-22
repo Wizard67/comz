@@ -17,7 +17,9 @@ $grid-gap: var(--cgrid-gap, 0);
 $grid-item-area: var(--cgrid-item-area);
 
 %grid {
-  display: grid;
+  --display: initial;
+
+  display: var(--display, grid);
   grid-template-areas: $grid-areas;
   grid-template-rows: $grid-rows;
   grid-template-columns: $grid-columns;
@@ -30,7 +32,7 @@ $grid-item-area: var(--cgrid-item-area);
 }
 
 %grid--inline {
-  display: inline-grid;
+  --display: inline-grid;
 }
 
 %grid-item {
