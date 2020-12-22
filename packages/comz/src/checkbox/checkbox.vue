@@ -1,6 +1,6 @@
 <template>
   <label :class="className">
-    <div :class="buttonClassName">{{ "\u200b" }}</div>
+    <div class="ccheckbox__button">{{ '\u200b' }}</div>
     <input
       type="checkbox"
       class="ccheckbox__field"
@@ -38,12 +38,6 @@ export const checked = computed(() =>
 
 export const className = useBEM(({ b, m }) => ({
   [b('ccheckbox')]: true,
-  [m('disabled')]: disabled
-}))
-
-export const buttonClassName = useBEM(({ b, e, m }) => ({
-  [b('ccheckbox')]: true,
-  [e('button')]: true,
   [m('checked')]: checked,
   [m('disabled')]: disabled
 }))

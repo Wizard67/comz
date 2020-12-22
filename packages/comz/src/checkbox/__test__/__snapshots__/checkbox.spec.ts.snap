@@ -5,7 +5,7 @@ exports[`Checkbox.vue props disabled 1`] = `
   class="ccheckbox ccheckbox--disabled"
 >
   <div
-    class="ccheckbox__button ccheckbox__button--disabled"
+    class="ccheckbox__button"
   >
     ​
   </div>
@@ -22,10 +22,10 @@ exports[`Checkbox.vue props disabled 1`] = `
 
 exports[`Checkbox.vue props modelValue 1`] = `
 <label
-  class="ccheckbox"
+  class="ccheckbox ccheckbox--checked"
 >
   <div
-    class="ccheckbox__button ccheckbox__button--checked"
+    class="ccheckbox__button"
   >
     ​
   </div>

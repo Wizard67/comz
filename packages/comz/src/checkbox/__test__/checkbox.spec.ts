@@ -29,9 +29,7 @@ describe('Checkbox.vue', () => {
         }
       })
 
-      const element = wrapper.find('.ccheckbox__button')
-
-      expect(element.classes()).toContain('ccheckbox__button--checked')
+      expect(wrapper.classes()).toContain('ccheckbox--checked')
       expect(wrapper.element).toMatchSnapshot()
     })
 
@@ -44,7 +42,6 @@ describe('Checkbox.vue', () => {
       })
 
       expect(wrapper.classes()).toContain('ccheckbox--disabled')
-      expect(wrapper.find('.ccheckbox__button').classes()).toContain('ccheckbox__button--disabled')
       expect(wrapper.element).toMatchSnapshot()
     })
   })

@@ -2,39 +2,54 @@
 @import "../mixins/function";
 
 .ccheckbox { @extend %checkbox; }
+.ccheckbox.ccheckbox--checked { @extend %checkbox--checked; }
 .ccheckbox.ccheckbox--disabled { @extend %checkbox--disabled; }
 
 .ccheckbox__button { @extend %checkbox__button; }
-.ccheckbox__button.ccheckbox__button--checked { @extend %checkbox__button--checked; }
-.ccheckbox__button.ccheckbox__button--disabled { @extend %checkbox__button--disabled; }
-
 .ccheckbox__field { @extend %checkbox__field; }
 
 %checkbox {
+  --border-color: initial;
+  --box-shadow: initial;
+  --color: initial;
+  --transform: initial;
+  --filter: initial;
+  --cursor: initial;
+  --opacity: initial;
+
   position: relative;
   box-sizing: border-box;
   display: inline-flex;
   align-items: flex-start;
-  padding: .2858em 0;
-  color: $text-color;
+  padding: px2em(4px) 0;
+  color: var(--color, #{$text-color});
   font-size: 14px;
   line-height: 1.2;
-  cursor: pointer;
+  cursor: var(--cursor, pointer);
+  filter: var(--filter, unset);
 
   &:focus {
     outline: none;
   }
 }
 
+%checkbox--checked {
+  --transform: translateY(-50%) translateZ(0) scale(.5);
+  --opacity: 1;
+}
+
 %checkbox--disabled {
-  color: $text-disabled;
-  filter: grayscale(80%);
-  cursor: not-allowed;
+  --border-color: #{$color-disabled};
+  --color: #{$text-disabled};
+  --filter: grayscale(80%);
+  --cursor: not-allowed;
 }
 
 %checkbox__button {
   position: relative;
-  color: $color-primary;
+  color: var(--border-color, #{$color-primary});
+  cursor: inherit;
+  font-size: inherit;
 
   &::before,
   &::after {
@@ -49,36 +64,20 @@
 
   &::before {
     transform: translateY(-50%) translateZ(0);
-    border: .1429em currentColor solid;
-    border-radius: .1429em;
-    box-shadow: $shadow-form;
+    border: px2em(2px) currentColor solid;
+    border-radius: px2em(2px);
+    box-shadow: var(--box-shadow, #{$shadow-form});
     cursor: inherit;
   }
 
   &::after {
     background-color: currentColor;
-    opacity: 0;
-    transform: translateY(-50%) translateZ(0) scale(.1);
+    opacity: var(--opacity, 0);
+    transform: var(--transform, translateY(-50%) translateZ(0) scale(.1));
     transform-origin: center;
     transition: background-color .2s ease-in-out,
                 transform .15s ease-in-out,
                 opacity .1s ease-in-out;
-  }
-}
-
-%checkbox__button--checked {
-  &::after {
-    transform: translateY(-50%) translateZ(0) scale(.5);
-    opacity: 1;
-  }
-}
-
-%checkbox__button--disabled {
-  color: $color-disabled;
-  cursor: not-allowed;
-
-  &::before {
-    box-shadow: $shadow-form-disabled;
   }
 }
 
