@@ -15,7 +15,6 @@ declare const props: {
   justify?: string
   center: boolean
   inline: boolean
-  full: boolean
   vertical: boolean
   wrap: boolean
 }
@@ -25,7 +24,7 @@ import { useBEM, useCssVars } from '@comz/vca'
 
 import { useFlexPolyfillGapItem } from './utils'
 
-const { inline, full, vertical, wrap, gap, align, justify, center } = toRefs(props)
+const { inline, vertical, wrap, gap, align, justify, center } = toRefs(props)
 
 export const flexRef = ref<HTMLLIElement | null>(null)
 
@@ -35,7 +34,6 @@ export const className = useBEM(({b, m}) => ({
   [b('cflex')]: true,
   [m('center')]: center,
   [m('inline')]: inline,
-  [m('full')]: full,
   [m('wrap')]: wrap,
   [m('vertical')]: vertical
 }))

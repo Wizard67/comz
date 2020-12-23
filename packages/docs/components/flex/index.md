@@ -38,16 +38,6 @@
 <<< ./components/flex/vertical.vue
 :::
 
-## 填充容器
-
-使用 `full` 属性填充父容器。
-
-> `full` 属性会使 Flex 组件的 `height` 和 `width` 设置为 `100%`。但需要注意的是由于 polyfill 的影响，实际上的值会被修正为 `100% + gap`。**如果通过 css 处理容器的高度，需要加上 `gap` 高度**。
-
-::: component <FlexFull/>
-<<< ./components/flex/full.vue
-:::
-
 ## 对齐方式
 
 通过 `justify` 和 `align` 和 `center` 属性设置内容的对齐方式。
@@ -73,7 +63,6 @@
 | align     | `<align-items>`     | `'flex-start'` | 交叉轴上项的对齐方式 |
 | center    | `boolean`           | `false`        | 容器内容水平垂直居中 |
 | vertical  | `boolean`           | `false`        | 是否垂直排列        |
-| full      | `boolean`           | `false`        | 是否填充父容器      |
 
 ### 插槽
 

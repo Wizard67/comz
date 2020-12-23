@@ -20,16 +20,6 @@ exports[`Flex.vue props center 1`] = `
 </section>
 `;
 
-exports[`Flex.vue props full 1`] = `
-<section
-  class="cflex cflex--full"
-  style="--cflex-gap: initial; --cflex-align: initial; --cflex-justify: initial;"
->
-  
-  
-</section>
-`;
-
 exports[`Flex.vue props gap 1`] = `
 <section
   class="cflex"

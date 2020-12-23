@@ -5,7 +5,6 @@
 .cflex.cflex--inline { @extend %flex--inline; }
 .cflex.cflex--wrap { @extend %flex--wrap; }
 .cflex.cflex--vertical { @extend %flex--vertical; }
-.cflex.cflex--full { @extend %flex--full; }
 .cflex.cflex--center { @extend %flex--center; }
 
 $gap: var(--cflex-gap, 8px);
@@ -17,7 +16,6 @@ $justify: var(--cflex-justify, flex-start);
   --width: initial;
   --flex-wrap: initial;
   --flex-direction: initial;
-  --height: initial;
   --justify-content: initial;
   --align-items: initial;
 
@@ -28,7 +26,7 @@ $justify: var(--cflex-justify, flex-start);
   flex-wrap: var(--flex-wrap, initial);
   gap: $gap;
   width: var(--width, 100%);
-  height: var(--height, auto);
+  height: auto;
 
   & > * {
     flex: none;
@@ -46,10 +44,6 @@ $justify: var(--cflex-justify, flex-start);
 
 %flex--vertical {
   --flex-direction: column;
-}
-
-%flex--full {
-  --height: calc(100% + #{$gap});
 }
 
 %flex--center {

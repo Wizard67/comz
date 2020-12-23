@@ -68,17 +68,6 @@ describe('Flex.vue', () => {
       expect(wrapper.classes()).toContain('cflex--vertical')
       expect(wrapper.element).toMatchSnapshot()
     })
-
-    it('full', () => {
-      const wrapper = mount(Flex, {
-        props: {
-          full: true
-        }
-      })
-
-      expect(wrapper.classes()).toContain('cflex--full')
-      expect(wrapper.element).toMatchSnapshot()
-    })
   })
 
   describe('slots', () => {

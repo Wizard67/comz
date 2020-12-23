@@ -51,7 +51,6 @@ import IconStyle from '../../components/icon/style.vue'
 import FlexBasic from '../../components/flex/basic.vue'
 import FlexInline from '../../components/flex/inline.vue'
 import FlexWrap from '../../components/flex/wrap.vue'
-import FlexFull from '../../components/flex/full.vue'
 import FlexVertical from '../../components/flex/vertical.vue'
 import FlexPlace from '../../components/flex/place.vue'
 
@@ -120,7 +119,6 @@ export default {
     app.component('FlexInline', FlexInline)
     app.component('FlexWrap', FlexWrap)
     app.component('FlexVertical', FlexVertical)
-    app.component('FlexFull', FlexFull)
     app.component('FlexPlace', FlexPlace)
 
     app.component('FormBasic', FormBasic)
