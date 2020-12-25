@@ -2,23 +2,16 @@
 @import "../mixins/function";
 
 .ctooltip { @extend %tooltip; }
-.ctooltip__text { @extend %tooltip__text; }
 .ctooltip__slot { @extend %tooltip__slot; }
 
-
 %tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-%tooltip__text {
-  position: absolute;
   display: inline-flex;
   align-items: center;
+  width: auto;
   max-width: 160px;
   padding: 4px 16px;
   border-radius: 4px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: $shadow-overlay;
   color: white;
   background-color: rgb(47, 49, 55);
   font-size: 14px;
@@ -28,5 +21,17 @@
 }
 
 %tooltip__slot {
-  
+  display: inline-block;
+}
+
+// vue-transition
+
+.tooltip-enter-active,
+.tooltip-leave-active {
+  position: absolute;
+  transition: opacity 0.5s ease;
+}
+.tooltip-enter-from,
+.tooltip-leave-to {
+  opacity: 0;
 }

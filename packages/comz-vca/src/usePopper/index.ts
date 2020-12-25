@@ -1,4 +1,4 @@
-import { ref, Ref, watch, WatchStopHandle } from 'vue'
+import { ref, Ref, watch, WatchStopHandle, nextTick } from 'vue'
 
 import {
   createPopper,
@@ -22,11 +22,14 @@ export const usePopper = (
 
   stopWatch = watch([reference, popper], ([referenceValue, popperValue], _, cleanUp) => {
     if (referenceValue && popperValue) {
-      popperInstance.value = createPopper(
-        referenceValue,
-        popperValue,
-        popperOptions
-      )
+      console.log('creat', referenceValue, popperValue)
+      nextTick(() => {
+        popperInstance.value = createPopper(
+          referenceValue,
+          popperValue,
+          popperOptions
+        )
+      })
     }
 
     popperInstance.value &&
