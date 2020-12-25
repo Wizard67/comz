@@ -36,7 +36,9 @@ const typesTemplate = (comps) =>
 
 const generateVueSFC = (sourcePath, name) => {
   const content = fs.readFileSync(sourcePath, 'utf8')
-  const svg = content.replace(/\s+class=".+?"/, '').trim()
+  const svg = content.replace('width="16" height="16"', 'width="1em" height="1em"')
+                     .replace(/\s+class=".+?"/, '')
+                     .trim()
 
   return new Promise((resolve) => {
     const compoentName = `${name}.vue`
