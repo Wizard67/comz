@@ -32,7 +32,7 @@ let popper: Ref<Instance | null>
 
 useEvent(slotRef, 'mouseenter', () => {
   toggle()
-  popper = usePopper(slotRef, textRef, {
+  const { popperInstance } = usePopper(slotRef, textRef, {
     placement: props.placement || 'bottom',
     strategy: 'fixed',
     modifiers: [{
@@ -42,6 +42,8 @@ useEvent(slotRef, 'mouseenter', () => {
       }
     }]
   })
+
+  popper = popperInstance
 })
 
 useEvent(slotRef, 'mouseleave', () => {
