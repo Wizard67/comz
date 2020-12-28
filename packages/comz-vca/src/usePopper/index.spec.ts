@@ -32,7 +32,8 @@ describe('usePopper', () => {
         const referenceRef = ref(null)
         const popperRef = ref(null)
 
-        popper = usePopper(referenceRef, popperRef)
+        const { popperInstance } = usePopper(referenceRef, popperRef)
+        popper = popperInstance
 
         return { referenceRef, popperRef }
       },
@@ -57,7 +58,8 @@ describe('usePopper', () => {
       setup() {
         const popperRef = ref(null)
 
-        popper = usePopper(referenceRef, popperRef)
+        const { popperInstance } = usePopper(referenceRef, popperRef)
+        popper = popperInstance
 
         return { referenceRef, popperRef }
       },
@@ -83,7 +85,8 @@ describe('usePopper', () => {
         const referenceRef = ref(null)
         const popperRef = ref(null)
 
-        popper = usePopper(referenceRef, popperRef)
+        const { popperInstance } = usePopper(referenceRef, popperRef)
+        popper = popperInstance
 
         return { referenceRef, popperRef }
       },
@@ -106,7 +109,8 @@ describe('usePopper', () => {
         const referenceRef = ref(null)
         const popperRef = ref(null)
 
-        popper = usePopper(referenceRef, popperRef)
+        const { popperInstance } = usePopper(referenceRef, popperRef)
+        popper = popperInstance
 
         return { referenceRef, popperRef }
       },
@@ -120,5 +124,41 @@ describe('usePopper', () => {
     popper.value.setOptions({ placement: 'top' })
     await nextTick()
     expect(wrapper.get('[data-popper-placement="top"]')).toBeInstanceOf(DOMWrapper)
+  })
+
+  it('autoClear option should be work.', async () => {
+    let popper = null
+    let stop = null
+
+    const wrapper = mount(defineComponent({
+      setup() {
+        const referenceRef = ref(null)
+        const popperRef = ref(null)
+
+        const { popperInstance, stopWatch } = usePopper(referenceRef, popperRef, {}, {
+          autoClear: false
+        })
+        popper = popperInstance
+        stop = stopWatch
+
+        return { referenceRef, popperRef }
+      },
+      render: () => [
+        h('div', { ref: 'popperRef' }, 'popper text'),
+        h('div', { ref: 'referenceRef' })
+      ]
+    }))
+
+    await nextTick()
+    wrapper.unmount()
+    expect(popper).not.toBeNull()
+
+    stop()
+    popper.value.destroy()
+    popper = null
+    await nextTick()
+
+    expect(popper).toBeNull()
+    expect(() => wrapper.get('[data-popper-placement]')).toThrowError()
   })
 })
