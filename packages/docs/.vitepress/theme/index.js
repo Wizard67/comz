@@ -23,7 +23,8 @@ import ModalAsync from '../../components/modal/async.vue'
 import AlertDefault from '../../components/alert/default.vue'
 import AlertExtra from '../../components/alert/extra.vue'
 
-import ToastDefault from '../../components/toast/default.vue'
+import ToastBasic from '../../components/toast/basic.vue'
+import ToastDuration from '../../components/toast/duration.vue'
 
 import InputBasic from '../../components/input/basic.vue'
 import InputState from '../../components/input/state.vue'
@@ -90,7 +91,8 @@ export default {
     app.component('AlertDefault', AlertDefault)
     app.component('AlertExtra', AlertExtra)
 
-    app.component('ToastDefault', ToastDefault)
+    app.component('ToastBasic', ToastBasic)
+    app.component('ToastDuration', ToastDuration)
 
     app.component('InputBasic', InputBasic)
     app.component('InputState', InputState)

@@ -2,6 +2,8 @@
 @import "../mixins/function";
 
 .ctoast { @extend %toast; }
+.ctoast__icon { @extend %toast__icon; }
+.ctoast__content { @extend %toast__content; }
 
 $width: var(--ctoast-top);
 
@@ -19,25 +21,33 @@ $toast-out: unique-id();
   max-width: 500px;
   padding: 8px 16px;
   border-radius: 4px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-  color: rgb(51, 51, 51);
+  box-shadow: $shadow-overlay;
+  color: $text-color;
   background-color: white;
   font-size: 14px;
-  line-height: 1.2em;
-  transition: transform .3s ease-in-out;
+  line-height: 1.2;
   z-index: 600;
+}
+
+%toast__icon {
+  margin-right: .5em;
+}
+
+%toast__content {
+  
 }
 
 // vue-transition
 .ctoast-enter-active {
-  animation: #{$toast-in} .3s ease-in-out;
+  animation: #{$toast-in} .2s ease-in-out;
 }
 .ctoast-leave-active {
-  animation: #{$toast-out} .3s ease-in-out;
+  animation: #{$toast-out} .2s ease-in-out;
 }
 
 @keyframes #{$toast-in} {
   0% {
+    box-shadow: none;
     transform: translate3d(-50%, -100%, 0);
     opacity: 0;
   }
@@ -53,6 +63,7 @@ $toast-out: unique-id();
     opacity: 1;
   }
   100% {
+    box-shadow: none;
     transform: translate3d(-50%, -100%, 0);
     opacity: 0;
   }
