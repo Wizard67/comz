@@ -15,7 +15,7 @@
     "build": "tsc"
   },
   "peerDependencies": {
-    "vue": "^3.0.2"
+    "vue": "^3.0.4"
   },
   "dependencies": {
     "@popperjs/core": "^2.5.4"
