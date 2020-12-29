@@ -4,29 +4,31 @@
   </div>
 </template>
 
-<script setup="props, { emit }" lang="ts">
-declare const props: {
-  areas?: string
-  rows?: string
-  columns?: string
-  autoRows?: string
-  autoColumns?: string
-  flow?: 'row' | 'column' | 'row dense' | 'column dense'
-  gap?: string
-  inline: boolean
-}
-
+<script setup lang="ts">
+import { defineProps } from 'vue'
 import { toRefs } from 'vue'
+
 import { useBEM, useCssVars } from '@comz/vca'
+
+const props = defineProps({
+  areas: { type: String, required: false },
+  rows: { type: String, required: false },
+  columns: { type: String, required: false },
+  autoRows: { type: String, required: false },
+  autoColumns: { type: String, required: false },
+  flow: { type: String, required: false },
+  gap: { type: String, required: false },
+  inline: { type: Boolean, required: true }
+})
 
 const { areas, rows, columns, autoRows, autoColumns, flow, gap, inline } = toRefs(props)
 
-export const className = useBEM(({ b, m }) => ({
+const className = useBEM(({ b, m }) => ({
   [b('cgrid')]: true,
   [m('inline')]: inline
 }))
 
-export const cssVars = useCssVars({
+const cssVars = useCssVars({
   '--cgrid-areas': areas,
   '--cgrid-rows': rows,
   '--cgrid-columns': columns,
@@ -35,6 +37,4 @@ export const cssVars = useCssVars({
   '--cgrid-flow': flow,
   '--cgrid-gap': gap
 }, { scoped: true })
-
-export default {}
 </script>

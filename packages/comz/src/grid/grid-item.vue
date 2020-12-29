@@ -4,19 +4,19 @@
   </div>
 </template>
 
-<script setup="props, { emit }" lang="ts">
-declare const props: {
-  area?: string
-}
+<script setup lang="ts">
+import { defineProps } from 'vue'
 
 import { toRefs } from 'vue'
 import { useCssVars } from '@comz/vca'
 
+const props = defineProps({
+  area: { type: String, required: false }
+})
+
 const { area } = toRefs(props)
 
-export const cssStyle = useCssVars({
+const cssStyle = useCssVars({
   '--cgrid-item-area': area
 }, { scoped: true })
-
-export default {}
 </script>

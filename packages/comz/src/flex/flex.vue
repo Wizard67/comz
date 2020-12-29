@@ -8,29 +8,31 @@
   </section>
 </template>
 
-<script setup="props, { emit }" lang="ts">
-declare const props: {
-  gap?: string
-  align?: string
-  justify?: string
-  center: boolean
-  inline: boolean
-  vertical: boolean
-  wrap: boolean
-}
-
+<script setup lang="ts">
+import { defineProps } from 'vue'
 import { ref, toRefs, computed } from 'vue'
+
 import { useBEM, useCssVars } from '@comz/vca'
 
 import { useFlexPolyfillGapItem } from './utils'
 
+const props = defineProps({
+  gap: { type: String, required: false },
+  align: { type: String, required: false },
+  justify: { type: String, required: false },
+  center: { type: Boolean, required: true },
+  inline: { type: Boolean, required: true },
+  vertical: { type: Boolean, required: true },
+  wrap: { type: Boolean, required: true }
+})
+
 const { inline, vertical, wrap, gap, align, justify, center } = toRefs(props)
 
-export const flexRef = ref<HTMLLIElement | null>(null)
+const flexRef = ref<HTMLLIElement | null>(null)
 
 useFlexPolyfillGapItem(flexRef, computed(() => props.gap ?? '8px'))
 
-export const className = useBEM(({b, m}) => ({
+const className = useBEM(({ b, m }) => ({
   [b('cflex')]: true,
   [m('center')]: center,
   [m('inline')]: inline,
@@ -38,11 +40,9 @@ export const className = useBEM(({b, m}) => ({
   [m('vertical')]: vertical
 }))
 
-export const cssVars = useCssVars({
+const cssVars = useCssVars({
   '--cflex-gap': gap,
   '--cflex-align': align,
   '--cflex-justify': justify
 }, { scoped: true })
-
-export default {}
 </script>

@@ -9,10 +9,13 @@
   </div>
 </template>
 
-<script setup="props, { emit }" lang="ts">
-declare const props: {
-  label?: string
-}
+<script setup lang="ts">
+import { defineProps } from 'vue'
+import { toRefs } from 'vue'
 
-export default {}
+const props = defineProps({
+  label: { type: String, required: false }
+})
+
+const { label } = toRefs(props)
 </script>

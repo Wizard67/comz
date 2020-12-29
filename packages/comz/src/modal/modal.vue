@@ -30,41 +30,43 @@
   </teleport>
 </template>
 
-<script setup="props, { emit }" lang="ts">
-declare const props: {
-  title?: string
-  width?: string
-  show: boolean
-  closable: boolean
-}
-
-declare function emit(event: 'update:show', state: boolean): void
-declare function emit(event: 'on-close'): void
-
+<script setup lang="ts">
+import { defineProps, defineEmit } from 'vue'
 import { toRefs } from 'vue'
+
+import { Card } from 'comz'
+import { Button } from 'comz'
+import { Icon } from 'comz'
+import { X } from '@comz/icons'
+
 import { useCssVars } from '@comz/vca'
 
-export { default as Card } from '../card/card.vue'
-export { default as Button } from '../button/button.vue'
-export { default as Icon } from '../icon/icon.vue'
-export { X } from '@comz/icons'
+const props = defineProps({
+  title: { type: String, required: false },
+  width: { type: String, required: false },
+  show: { type: Boolean, required: true },
+  closable: { type: Boolean, required: true }
+})
+
+const emit = defineEmit([
+  'update:show',
+  'on-close'
+])
 
 const { closable, width } = toRefs(props)
 
-export const handleClose = () => {
+const handleClose = () => {
   emit('update:show', false)
   emit('on-close')
 }
 
-export const handleMaskClick = () => {
+const handleMaskClick = () => {
   if (!closable.value) return
 
   handleClose()
 }
 
-export const cssVars = useCssVars({
+const cssVars = useCssVars({
   '--cmodal-width': width
 }, { scoped: true })
-
-export default {}
 </script>

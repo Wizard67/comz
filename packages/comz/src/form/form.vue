@@ -4,21 +4,21 @@
   </div>
 </template>
 
-<script setup="props, { emit }" lang="ts">
-declare const props: {
-  labelWidth?: string
-  labelAlign?: string
-}
-
+<script setup lang="ts">
+import { defineProps } from 'vue'
 import { toRefs } from 'vue'
+
 import { useCssVars } from '@comz/vca'
+
+const props = defineProps({
+  labelWidth: { type: String, required: false },
+  labelAlign: { type: String, required: false }
+})
 
 const { labelWidth, labelAlign } = toRefs(props)
 
-export const cssVars = useCssVars({
+const cssVars = useCssVars({
   '--cform-label-width': labelWidth,
   '--cform-label-align': labelAlign
 }, { scoped: true })
-
-export default {}
 </script>

@@ -14,28 +14,35 @@
   </section>
 </template>
 
-<script setup="props, { emit }" lang="ts">
-declare const props: {
-  modelValue: number
-  min?: number
-  max?: number
-  step?: number
-  disabled: boolean
-}
-
-declare function emit(event: 'update:modelValue', value: number): void
-
+<script setup lang="ts">
+import type { Ref, WatchStopHandle } from 'vue'
 import type { MouseState } from '@comz/vca'
-import { ref, toRefs, computed, watchEffect, watch, Ref, WatchStopHandle } from 'vue'
+
+import { defineProps, defineEmit } from 'vue'
+import { ref, toRefs, computed, watchEffect, watch } from 'vue'
+
 import { useEvent, useMouse, useBEM, useCssVars } from '@comz/vca'
+
 import { strip } from 'number-precision'
 
 import { useElementRect, getPointValue } from './utils'
 
-export const sliderRef = ref<HTMLElement | null>(null)
-export const thumbRef = ref<HTMLElement | null>(null)
+const props = defineProps({
+  modelValue: { type: Number, required: true },
+  min: { type: Number, required: false },
+  max: { type: Number, required: false },
+  step: { type: Number, required: false },
+  disabled: { type: Boolean, required: true }
+})
+
+const emit = defineEmit([
+  'update:modelValue'
+])
 
 const { disabled } = toRefs(props)
+
+const sliderRef = ref<HTMLElement | null>(null)
+const thumbRef = ref<HTMLElement | null>(null)
 
 const { width, right, left } = useElementRect(sliderRef)
 
@@ -60,11 +67,11 @@ watch(mouseState, () => {
   emit('update:modelValue', currentValue.value)
 }, { deep: true })
 
-export const cssVars = useCssVars({
+const cssVars = useCssVars({
   '--cslider-thumb-offset': computed(() => `${ thumbOffset.value }px`)
 })
 
-export const className = useBEM(({ b, m }) => ({
+const className = useBEM(({ b, m }) => ({
   [b('cslider')]: true,
   [m('disabled')]: disabled
 }))
@@ -99,6 +106,4 @@ useEvent(sliderRef, 'mousedown', event => {
 })
 
 useEvent(window, 'mouseup', () => stopUseMouse?.())
-
-export default {}
 </script>

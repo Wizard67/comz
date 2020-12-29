@@ -12,29 +12,31 @@
   </div>
 </template>
 
-<script setup="props, { emit }" lang="ts">
-declare const props: {
-  modelValue: boolean
-  disabled: boolean
-}
-
-declare function emit (event: 'update:modelValue', value: boolean): void
-
+<script setup lang="ts">
+import { defineProps, defineEmit } from 'vue'
 import { toRefs } from 'vue'
+
 import { useBEM } from '@comz/vca'
+
+const props = defineProps({
+  modelValue: { type: Boolean, required: true },
+  disabled: { type: Boolean, required: true }
+})
+
+const emit = defineEmit([
+  'update:modelValue'
+])
 
 const { modelValue, disabled } = toRefs(props)
 
-export const className = useBEM(({ b, m }) => ({
+const className = useBEM(({ b, m }) => ({
   [b('cswitch')]: true,
   [m('checked')]: modelValue,
   [m('disabled')]: disabled
 }))
 
-export const handleValueChange = () => {
+const handleValueChange = () => {
   if (disabled.value) return
   emit('update:modelValue', !modelValue.value)
 }
-
-export default {}
 </script>

@@ -18,20 +18,20 @@
   </section>
 </template>
 
-<script setup="props, { emit }" lang="ts">
-declare const props: {
-  shadow: boolean
-}
-
+<script setup lang="ts">
+import { defineProps } from 'vue'
 import { toRefs } from 'vue'
+
 import { useBEM } from '@comz/vca'
+
+const props = defineProps({
+  shadow: { type: Boolean, required: true }
+})
 
 const { shadow } = toRefs(props)
 
-export const className = useBEM(({b, e, m}) => ({
+const className = useBEM(({ b, m }) => ({
   [b('ccard')]: true,
   [m('shadow')]: shadow
 }))
-
-export default {}
 </script>

@@ -31,56 +31,58 @@
   </div>
 </template>
 
-<script setup="props, { emit }" lang="ts">
-declare const props: {
-  modelValue: string
-  placeholder?: string
-  readonly: boolean
-  disabled: boolean
-  clearable: boolean
-}
-
-declare function emit (event: 'update:modelValue', value: string): void
-declare function emit (event: 'on-focus', value: string): void
-declare function emit (event: 'on-blur', value: string): void
-declare function emit (event: 'on-clear'): void
-
+<script setup lang="ts">
+import { defineProps, defineEmit } from 'vue'
 import { computed, toRefs } from 'vue'
+
+import { XCircleFill } from '@comz/icons'
+
 import { useBEM } from '@comz/vca'
 
-export { XCircleFill } from '@comz/icons'
+const props = defineProps({
+  modelValue: { type: String, reuqired: true },
+  placeholder: { type: String, reuqired: false },
+  readonly: { type: Boolean, reuqired: true },
+  disabled: { type: Boolean, reuqired: true },
+  clearable: { type: Boolean, reuqired: true }
+})
+
+const emit = defineEmit([
+  'update:modelValue',
+  'on-focus',
+  'on-blur',
+  'on-clear'
+])
 
 const { readonly, disabled } = toRefs(props)
 
-export const className = useBEM(({ b, m }) => ({
+const className = useBEM(({ b, m }) => ({
   [b('cinput')]: true,
   [m('readonly')]: readonly,
   [m('disabled')]: disabled
 }))
 
-export const allowClear = computed(() =>
+const allowClear = computed(() =>
   props.modelValue?.length &&
   props.clearable &&
   !props.readonly &&
   !props.disabled
 )
 
-export const handleInputChange = (event: InputEvent) => {
+const handleInputChange = (event: InputEvent) => {
   emit('update:modelValue', (event.target as HTMLInputElement).value)
 }
 
-export const handleInputFocus = (event: InputEvent) => {
+const handleInputFocus = (event: InputEvent) => {
   emit('on-focus', (event.target as HTMLInputElement).value)
 }
 
-export const handleInputBlur = (event: InputEvent) => {
+const handleInputBlur = (event: InputEvent) => {
   emit('on-blur', (event.target as HTMLInputElement).value)
 }
 
-export const clearValue = () => {
+const clearValue = () => {
   emit('update:modelValue', '')
   emit('on-clear')
 }
-
-export default {}
 </script>

@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "comz": ["index.ts"],
+    },
     "target": "es6",
     "lib": ["dom", "esnext"],
     "declaration": true,
@@ -14,8 +18,8 @@
     "allowJs": true
   },
   "include": [
-    "defines",
-    "src",
+    "defines/vue.d.ts",
+    "defines/createBlock.d.ts",
     "index.ts"
   ],
   "exclude": [

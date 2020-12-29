@@ -19,18 +19,11 @@
   </teleport>
 </template>
 
-<script setup="props, { emit }" lang="ts">
-declare const props: {
-  show: boolean
-  type?: string
-  duration?: number
-}
-
-declare function emit(event: 'update:show', state: boolean): void
-
+<script setup lang="ts">
+import { defineProps, defineEmit } from 'vue'
 import { computed, toRefs } from 'vue'
-import { useOverlay, useCssVars } from '@comz/vca'
 
+import { Icon } from 'comz'
 import {
   InfoCircleFill,
   CheckCircleFill,
@@ -38,7 +31,17 @@ import {
   XCircleFill
 } from '@comz/icons'
 
-export { default as Icon } from '../icon/icon.vue'
+import { useOverlay, useCssVars } from '@comz/vca'
+
+const props = defineProps({
+  show: { type: Boolean, reuqired: true },
+  type: { type: String, reuqired: false },
+  duration: { type: Number, reuqired: false }
+})
+
+const emit = defineEmit([
+  'update:show'
+])
 
 const { show, type, duration } = toRefs(props)
 
@@ -49,11 +52,11 @@ const { index } = useOverlay({
   onChange: state => state && emit('update:show', false)
 })
 
-export const cssVars = useCssVars({
+const cssVars = useCssVars({
   '--ctoast-top': computed(() => `${(index.value - 1) * 50 + 12}px`)
 })
 
-export const icon = computed(() => {
+const icon = computed(() => {
   switch (type?.value) {
     case 'info':
       return InfoCircleFill
@@ -72,6 +75,4 @@ export const icon = computed(() => {
       break
   }
 })
-
-export default {}
 </script>

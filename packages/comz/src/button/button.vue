@@ -10,27 +10,29 @@
   </button>
 </template>
 
-<script setup="props, { emit }" lang="ts">
-declare const props: {
-  icon?: object
-  loading: boolean
-  disabled: boolean
-}
-
-declare function emit(event: 'on-click'): void
-
+<script setup lang="ts">
+import { defineProps, defineEmit } from 'vue'
 import { toRefs } from 'vue'
+
 import { useBEM } from '@comz/vca'
+
+const props = defineProps({
+  icon: { type: Object, required: false },
+  loading: { type: Boolean, required: true },
+  disabled: { type: Boolean, required: true }
+})
+
+const emit = defineEmit([
+  'on-click'
+])
 
 const { loading, disabled } = toRefs(props)
 
-export const className = useBEM(({b, m}) => ({
+const className = useBEM(({ b, m }) => ({
   [b('cbutton')]: true,
   [m('loading')]: loading,
   [m('disabled')]: disabled
 }))
 
-export const handleClick = () => emit('on-click')
-
-export default {}
+const handleClick = () => emit('on-click')
 </script>

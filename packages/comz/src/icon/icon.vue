@@ -8,33 +8,35 @@
   </div>
 </template>
 
-<script setup="props, { emit }" lang="ts">
-declare const props: {
-  size?: string
-  color?: string
-  spin: boolean
-  link: boolean
-}
-
-declare function emit(event: 'on-click'): void
-
+<script setup lang="ts">
+import { defineProps, defineEmit } from 'vue'
 import { toRefs } from 'vue'
+
 import { useBEM, useCssVars } from '@comz/vca'
+
+const props = defineProps({
+  size: { type: String, required: false },
+  color: { type: String, required: false },
+  spin: { type: Boolean, required: true },
+  link: { type: Boolean, required: true }
+})
+
+const emit = defineEmit([
+  'on-click'
+])
 
 const { spin, link, size, color } = toRefs(props)
 
-export const handleClick = () => emit('on-click')
-
-export const className = useBEM(({ b, m }) => ({
+const className = useBEM(({ b, m }) => ({
   [b('cicon')]: true,
   [m('spin')]: spin,
   [m('link')]: link,
 }))
 
-export const cssVars = useCssVars({
+const cssVars = useCssVars({
   '--cicon-size': size,
   '--cicon-color': color
 })
 
-export default {}
+const handleClick = () => emit('on-click')
 </script>

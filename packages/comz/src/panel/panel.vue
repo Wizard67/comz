@@ -19,35 +19,37 @@
   </section>
 </template>
 
-<script setup="props, { emit }" lang="ts">
-declare const props: {
-  expand: boolean
-  title?: string
-}
-
-declare function emit (event: 'update:expand', value: boolean): void
-
+<script setup lang="ts">
+import { defineProps, defineEmit } from 'vue'
 import { toRefs } from 'vue'
+
+import { Icon } from 'comz'
+import { ChevronExpand, ChevronContract } from '@comz/icons'
+
 import { useBEM, useHeightToggle } from '@comz/vca'
 
-export { default as Icon } from '../icon/icon.vue'
-export { ChevronExpand, ChevronContract } from '@comz/icons'
+const props = defineProps({
+  expand: { type: Boolean, required: true },
+  title: { type: String, required: false }
+})
+
+const emit = defineEmit([
+  'update:expand'
+])
 
 const { expand } = toRefs(props)
 
-export const className = useBEM(({b, e, m}) => ({
+const className = useBEM(({ b, e, m }) => ({
   [b('cpanel')]: true,
   [e('wrap')]: true,
   [m('expand')]: expand
 }))
 
-export const togglePanelState = () => {
-  emit('update:expand', !expand.value)
-}
-
-export const { wrapRef, bodyRef, height } = useHeightToggle(expand, {
+const { wrapRef, bodyRef, height } = useHeightToggle(expand, {
   wrapPadding: 8
 })
 
-export default {}
+const togglePanelState = () => {
+  emit('update:expand', !expand.value)
+}
 </script>

@@ -13,27 +13,31 @@
   </section>
 </template>
 
-<script setup="props, { emit }" lang="ts">
-declare const props: {
-  text?: String
-  placement?: Placement
-}
+<script setup lang="ts">
+import type { Ref } from 'vue'
+import type { Placement, Instance } from '@popperjs/core'
 
-import { ref, Ref } from 'vue'
-import { Placement, Instance } from '@popperjs/core'
+import { defineProps, defineEmit } from 'vue'
+import { ref } from 'vue'
+
 import { useEvent, useToggle, usePopper } from '@comz/vca'
 
-export const textRef = ref<HTMLElement | null>(null)
-export const slotRef = ref<HTMLElement | null>(null)
+const props = defineProps({
+  text: { type: String, required: false },
+  placement: { type: String, required: false }
+})
 
-export const { state: show, toggle } = useToggle()
+const textRef = ref<HTMLElement | null>(null)
+const slotRef = ref<HTMLElement | null>(null)
+
+const { state: show, toggle } = useToggle()
 
 let popper: Ref<Instance | null>
 
 useEvent(slotRef, 'mouseenter', () => {
   toggle()
   const { popperInstance } = usePopper(slotRef, textRef, {
-    placement: props.placement || 'bottom',
+    placement: (props.placement || 'bottom') as Placement,
     strategy: 'fixed',
     modifiers: [{
       name: 'offset',
@@ -50,6 +54,4 @@ useEvent(slotRef, 'mouseleave', () => {
   toggle()
   popper.value?.destroy()
 })
-
-export default {}
 </script>

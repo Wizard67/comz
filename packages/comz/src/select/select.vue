@@ -21,36 +21,36 @@
   </div>
 </template>
 
-<script setup="props, { emit }" lang="ts">
-declare const props: {
-  modelValue: string | number | boolean | any[] | object,
-  placeholder?: string
-  disabled: boolean
-}
-
-declare function emit (event: 'update:modelValue', value: any): void
-
+<script setup lang="ts">
 import type { Ref } from 'vue'
 import type { Handler } from './utils'
 
+import { defineProps, defineEmit } from 'vue'
 import { ref, toRefs, computed, provide, getCurrentInstance } from 'vue'
+
+import { Icon } from 'comz'
+import { ChevronDown, ChevronUp } from '@comz/icons'
+
 import { useBEM, useToggle } from '@comz/vca'
+
 import { useClickOutSide, isEmpty } from './utils'
 
-export { default as Icon } from '../icon/icon.vue'
-export { ChevronDown, ChevronUp } from '@comz/icons'
+const props = defineProps({
+  modelValue: { type: [String, Number, Boolean, Array, Object], required: true },
+  placeholder: { type: String, required: false },
+  disabled: { type: Boolean, required: true }
+})
 
-const uid = getCurrentInstance()?.uid
+const emit = defineEmit([
+  'update:modelValue'
+])
 
-const label = ref('')
 const { modelValue, placeholder, disabled } = toRefs(props)
 
-export const { state: expand, toggle } = useToggle(false)
+const uid = getCurrentInstance()?.uid
+const label = ref('')
 
-export const handleClick = () => {
-  // console.log(expand.value)
-  toggle()
-}
+const { state: expand, toggle } = useToggle(false)
 
 provide<Ref<unknown>>(`select-${uid}-value`, modelValue)
 provide<Handler>(`select-${uid}-handler`, payload => {
@@ -59,24 +59,24 @@ provide<Handler>(`select-${uid}-handler`, payload => {
   emit('update:modelValue', payload.value)
 })
 
-export const className = useBEM(({ b, m }) => ({
+const className = useBEM(({ b, m }) => ({
   [b('cselect')]: true,
   [m('disabled')]: disabled
 }))
 
-export const fieldClassName = useBEM(({ b, e, m }) => ({
+const fieldClassName = useBEM(({ b, e, m }) => ({
   [b('cselect')]: true,
   [e('field')]: true,
   [m('empty')]: computed(() => isEmpty(modelValue.value))
 }))
 
-export const optionsClassName = useBEM(({ b, e, m }) => ({
+const optionsClassName = useBEM(({ b, e, m }) => ({
   [b('cselect')]: true,
   [e('options')]: true,
   [m('open')]: expand
 }))
 
-export const selectRef = ref<HTMLElement | null>(null)
+const selectRef = ref<HTMLElement | null>(null)
 
 useClickOutSide(
   expand,
@@ -84,9 +84,7 @@ useClickOutSide(
   result => expand.value = result
 )
 
-export const currentText = computed(() =>
+const currentText = computed(() =>
   label.value || modelValue.value || placeholder?.value
 )
-
-export default {}
 </script>

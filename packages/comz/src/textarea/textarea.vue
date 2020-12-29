@@ -13,38 +13,40 @@
   </div>
 </template>
 
-<script setup="props, { emit }" lang="ts">
-declare const props: {
-  modelValue: string | number
-  width?: string
-  rows?: number
-  placeholder?: string
-  readonly: boolean
-  disabled: boolean
-}
-
-declare function emit (event: 'update:modelValue', value: any): void
-
+<script setup lang="ts">
+import { defineProps, defineEmit } from 'vue'
 import { computed, toRefs } from 'vue'
+
 import { useBEM,  useCssVars } from '@comz/vca'
+
+const props = defineProps({
+  modelValue: { type: String, required: true },
+  width: { type: String, required: false },
+  rows: { type: Number, required: false },
+  placeholder: { type: String, required: false },
+  readonly: { type: Boolean, required: true },
+  disabled: { type: Boolean, required: true }
+})
+
+const emit = defineEmit([
+  'update:modelValue'
+])
 
 const { rows, disabled, width } = toRefs(props)
 
-export const textareaRows = computed(() => rows?.value ?? 2)
+const textareaRows = computed(() => rows?.value ?? 2)
 
-export const className = useBEM(({b, e, m}) => ({
+const className = useBEM(({ b, e, m }) => ({
   [b('ctextarea')]: true,
   [e('field')]: true,
   [m('disabled')]: disabled
 }))
 
-export const cssVars = useCssVars({
+const cssVars = useCssVars({
   '--ctextarea-width': width
 })
 
-export const handleInput = (event: InputEvent) => {
+const handleInput = (event: InputEvent) => {
   emit('update:modelValue', (event.target as HTMLTextAreaElement).value)
 }
-
-export default {}
 </script>

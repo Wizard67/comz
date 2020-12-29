@@ -9,31 +9,33 @@
   </section>
 </template>
 
-<script setup="props, { emit }" lang="ts">
-declare const props: {
-  color?: string
-  show: boolean
-}
-
-declare function emit(event: 'update:show', state: boolean): void
-declare function emit(event: 'on-close'): void
-
+<script setup lang="ts">
+import { defineProps, defineEmit } from 'vue'
 import { toRefs } from 'vue'
+
+import { Icon } from 'comz'
+import { X } from '@comz/icons'
+
 import { useCssVars } from '@comz/vca'
 
-export { default as Icon } from '../icon/icon.vue'
-export { X } from '@comz/icons'
+const props = defineProps({
+  color: { type: String, required: false },
+  show: { type: Boolean, required: true }
+})
+
+const emit = defineEmit([
+  'update:show',
+  'on-close'
+])
 
 const { color } = toRefs(props)
 
-export const cssVars = useCssVars({
+const cssVars = useCssVars({
   '--calert-color': color
 })
 
-export const handleClose = () => {
+const handleClose = () => {
   emit('update:show', false)
   emit('on-close')
 }
-
-export default {}
 </script>
