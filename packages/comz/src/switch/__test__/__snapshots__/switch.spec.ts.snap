@@ -36,9 +36,7 @@ exports[`Switch.vue slots append 1`] = `
     class="cswitch__append"
   >
     
-    
     append
-    
     
   </div>
 </div>
@@ -52,9 +50,7 @@ exports[`Switch.vue slots prepend 1`] = `
     class="cswitch__prepend"
   >
     
-    
     prepend
-    
     
   </div>
   <div

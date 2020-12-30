@@ -16,9 +16,7 @@ exports[`GridItem.vue slots default 1`] = `
   style="--cgrid-item-area: initial;"
 >
   
-  
   grid-item
-  
   
 </div>
 `;

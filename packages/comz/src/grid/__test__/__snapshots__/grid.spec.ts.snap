@@ -96,9 +96,7 @@ exports[`Grid.vue slots default 1`] = `
   style="--cgrid-areas: initial; --cgrid-rows: initial; --cgrid-columns: initial; --cgrid-auto-rows: initial; --cgrid-auto-columns: initial; --cgrid-flow: initial; --cgrid-gap: initial;"
 >
   
-  
   grid
-  
   
 </div>
 `;

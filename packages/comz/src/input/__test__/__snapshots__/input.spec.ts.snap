@@ -125,9 +125,7 @@ exports[`Input.vue slots append 1`] = `
     class="cinput__append"
   >
     
-    
     append
-    
     
   </div>
 </div>
@@ -141,9 +139,7 @@ exports[`Input.vue slots prepend 1`] = `
     class="cinput__prepend"
   >
     
-    
     prepend
-    
     
   </div>
   <div

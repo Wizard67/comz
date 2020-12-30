@@ -34,9 +34,7 @@ exports[`Slider.vue slots append 1`] = `
     class="cslider__append"
   >
     
-    
     append
-    
     
   </div>
 </section>
@@ -50,9 +48,7 @@ exports[`Slider.vue slots prepend 1`] = `
     class="cslider__prepend"
   >
     
-    
     prepend
-    
     
   </div>
   <div

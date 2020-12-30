@@ -73,9 +73,7 @@ exports[`Radio.vue slots default 1`] = `
     value="false"
   />
   
-  
   text
-  
   
 </label>
 `;

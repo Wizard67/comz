@@ -66,9 +66,7 @@ exports[`Flex.vue slots default 1`] = `
   style="--cflex-gap: initial; --cflex-align: initial; --cflex-justify: initial;"
 >
   
-  
   flex
-  
   
 </section>
 `;
