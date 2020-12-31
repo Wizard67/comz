@@ -4614,6 +4614,11 @@ is-obj@^2.0.0:
   resolved "https://registry.npmjs.org/is-obj/-/is-obj-2.0.0.tgz#473fb05d973705e3fd9620545018ca8e22ef4982"
   integrity sha512-drqDG3cbczxxEJRoOXcOjtdp1J/lyp1mNn0xaznRs8+muBhgQcrnbspox5X5fOw0HnMnbfDzvnEMEtqDEJEo8w==
 
+is-plain-object@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.npmjs.org/is-plain-object/-/is-plain-object-3.0.1.tgz#662d92d24c0aa4302407b0d45d21f2251c85f85b"
+  integrity sha512-Xnpx182SBMrr/aBik8y+GuR4U1L9FqMSojwDQwPMmxyC6bvEqly9UBCxhauBF5vNh2gwWJNX6oDV7O+OM4z34g==
+
 is-plain-object@^2.0.1, is-plain-object@^2.0.3, is-plain-object@^2.0.4:
   version "2.0.4"
   resolved "https://registry.npmjs.org/is-plain-object/-/is-plain-object-2.0.4.tgz#2c163b3fafb1b606d9d17928f05c2a1c38e07677"
@@ -8538,6 +8543,13 @@ vue-jest@^5.0.0-alpha.7:
     convert-source-map "^1.6.0"
     extract-from-css "^0.4.4"
     ts-jest "^24.0.0"
+
+vue-types@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.npmjs.org/vue-types/-/vue-types-3.0.1.tgz#20e9baae8673de8093d0a989234695d08d544be0"
+  integrity sha512-UbvbzPu8DNzZRfMB1RDTFKBB6seMm80scMFdP+GkKaw00EugC3cjq9AtlS4y258vDkpAe9HfqbRO4cp63qVHXQ==
+  dependencies:
+    is-plain-object "3.0.1"
 
 vue@^3.0.2:
   version "3.0.2"

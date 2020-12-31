@@ -16,13 +16,13 @@
 <script setup lang="ts">
 import { defineProps, defineEmit } from 'vue'
 import { computed, toRefs } from 'vue'
-
 import { useBEM } from '@comz/vca'
+import { oneOfType, bool } from 'vue-types'
 
 const props = defineProps({
-  modelValue: { type: [String, Number, Boolean, Array, Object], required: true },
-  value: { type: [String, Number, Boolean, Array, Object], required: true },
-  disabled: { type: Boolean, required: true }
+  modelValue: oneOfType([String, Number, Boolean, Array, Object]).isRequired,
+  value: oneOfType([String, Number, Boolean, Array, Object]).isRequired,
+  disabled: bool().isRequired
 })
 
 const emit = defineEmit([

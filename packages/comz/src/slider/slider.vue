@@ -20,19 +20,17 @@ import type { MouseState } from '@comz/vca'
 
 import { defineProps, defineEmit } from 'vue'
 import { ref, toRefs, computed, watchEffect, watch } from 'vue'
-
 import { useEvent, useMouse, useBEM, useCssVars } from '@comz/vca'
-
 import { strip } from 'number-precision'
-
+import { number, bool } from 'vue-types'
 import { useElementRect, getPointValue } from './utils'
 
 const props = defineProps({
-  modelValue: { type: Number, required: true },
-  min: { type: Number, required: false },
-  max: { type: Number, required: false },
-  step: { type: Number, required: false },
-  disabled: { type: Boolean, required: true }
+  modelValue: number().isRequired,
+  min: number(),
+  max: number(),
+  step: number(),
+  disabled: bool().isRequired
 })
 
 const emit = defineEmit([

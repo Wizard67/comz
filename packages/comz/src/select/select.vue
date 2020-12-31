@@ -27,18 +27,17 @@ import type { Handler } from './utils'
 
 import { defineProps, defineEmit } from 'vue'
 import { ref, toRefs, computed, provide, getCurrentInstance } from 'vue'
+import { useBEM, useToggle } from '@comz/vca'
+import { oneOfType, string, bool } from 'vue-types'
+import { useClickOutSide, isEmpty } from './utils'
 
 import { Icon } from 'comz'
 import { ChevronDown, ChevronUp } from '@comz/icons'
 
-import { useBEM, useToggle } from '@comz/vca'
-
-import { useClickOutSide, isEmpty } from './utils'
-
 const props = defineProps({
-  modelValue: { type: [String, Number, Boolean, Array, Object], required: true },
-  placeholder: { type: String, required: false },
-  disabled: { type: Boolean, required: true }
+  modelValue: oneOfType([String, Number, Boolean, Array, Object]).isRequired,
+  placeholder: string(),
+  disabled: bool().isRequired
 })
 
 const emit = defineEmit([

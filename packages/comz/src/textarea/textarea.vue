@@ -16,16 +16,16 @@
 <script setup lang="ts">
 import { defineProps, defineEmit } from 'vue'
 import { computed, toRefs } from 'vue'
-
 import { useBEM,  useCssVars } from '@comz/vca'
+import { string, number, bool } from 'vue-types'
 
 const props = defineProps({
-  modelValue: { type: String, required: true },
-  width: { type: String, required: false },
-  rows: { type: Number, required: false },
-  placeholder: { type: String, required: false },
-  readonly: { type: Boolean, required: true },
-  disabled: { type: Boolean, required: true }
+  modelValue: string().isRequired,
+  width: string(),
+  rows: number(),
+  placeholder: string(),
+  readonly: bool().isRequired,
+  disabled: bool().isRequired
 })
 
 const emit = defineEmit([

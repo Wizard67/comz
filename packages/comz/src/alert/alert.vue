@@ -12,15 +12,15 @@
 <script setup lang="ts">
 import { defineProps, defineEmit } from 'vue'
 import { toRefs } from 'vue'
+import { useCssVars } from '@comz/vca'
+import { string, bool } from 'vue-types'
 
 import { Icon } from 'comz'
 import { X } from '@comz/icons'
 
-import { useCssVars } from '@comz/vca'
-
 const props = defineProps({
-  color: { type: String, required: false },
-  show: { type: Boolean, required: true }
+  color: string(),
+  show: bool().isRequired
 })
 
 const emit = defineEmit([

@@ -34,17 +34,17 @@
 <script setup lang="ts">
 import { defineProps, defineEmit } from 'vue'
 import { computed, toRefs } from 'vue'
+import { useBEM } from '@comz/vca'
+import { string, bool } from 'vue-types'
 
 import { XCircleFill } from '@comz/icons'
 
-import { useBEM } from '@comz/vca'
-
 const props = defineProps({
-  modelValue: { type: String, reuqired: true },
-  placeholder: { type: String, reuqired: false },
-  readonly: { type: Boolean, reuqired: true },
-  disabled: { type: Boolean, reuqired: true },
-  clearable: { type: Boolean, reuqired: true }
+  modelValue: string().isRequired,
+  placeholder: string(),
+  readonly: bool().isRequired,
+  disabled: bool().isRequired,
+  clearable: bool().isRequired
 })
 
 const emit = defineEmit([

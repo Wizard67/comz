@@ -21,11 +21,11 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import { toRefs } from 'vue'
-
 import { useBEM } from '@comz/vca'
+import { bool } from 'vue-types'
 
 const props = defineProps({
-  shadow: { type: Boolean, required: true }
+  shadow: bool().isRequired
 })
 
 const { shadow } = toRefs(props)

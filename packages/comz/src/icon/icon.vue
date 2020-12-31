@@ -11,14 +11,14 @@
 <script setup lang="ts">
 import { defineProps, defineEmit } from 'vue'
 import { toRefs } from 'vue'
-
 import { useBEM, useCssVars } from '@comz/vca'
+import { string, bool } from 'vue-types'
 
 const props = defineProps({
-  size: { type: String, required: false },
-  color: { type: String, required: false },
-  spin: { type: Boolean, required: true },
-  link: { type: Boolean, required: true }
+  size: string(),
+  color: string(),
+  spin: bool().isRequired,
+  link: bool().isRequired
 })
 
 const emit = defineEmit([

@@ -15,12 +15,12 @@
 <script setup lang="ts">
 import { defineProps, defineEmit } from 'vue'
 import { toRefs } from 'vue'
-
 import { useBEM } from '@comz/vca'
+import { bool } from 'vue-types'
 
 const props = defineProps({
-  modelValue: { type: Boolean, required: true },
-  disabled: { type: Boolean, required: true }
+  modelValue: bool().isRequired,
+  disabled: bool().isRequired
 })
 
 const emit = defineEmit([

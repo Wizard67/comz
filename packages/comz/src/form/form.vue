@@ -7,12 +7,12 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import { toRefs } from 'vue'
-
 import { useCssVars } from '@comz/vca'
+import { string } from 'vue-types'
 
 const props = defineProps({
-  labelWidth: { type: String, required: false },
-  labelAlign: { type: String, required: false }
+  labelWidth: string(),
+  labelAlign: string()
 })
 
 const { labelWidth, labelAlign } = toRefs(props)

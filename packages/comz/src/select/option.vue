@@ -13,15 +13,14 @@ import type { Handler } from './utils'
 
 import { defineProps } from 'vue'
 import { inject, computed, reactive, toRefs, getCurrentInstance } from 'vue'
-
 import { useBEM } from '@comz/vca'
-
+import { oneOfType, string, bool } from 'vue-types'
 import { useOptionState } from './utils'
 
 const props = defineProps({
-  value: { type: [String, Number, Boolean, Array, Object], required: true },
-  label: { type: String, required: true },
-  disabled: { type: Boolean, required: true }
+  value: oneOfType([String, Number, Boolean, Array, Object]).isRequired,
+  label: string().isRequired,
+  disabled: bool().isRequired
 })
 
 const uid = getCurrentInstance()?.parent?.uid

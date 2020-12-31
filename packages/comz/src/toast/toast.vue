@@ -22,6 +22,8 @@
 <script setup lang="ts">
 import { defineProps, defineEmit } from 'vue'
 import { computed, toRefs } from 'vue'
+import { useOverlay, useCssVars } from '@comz/vca'
+import { string, number, bool } from 'vue-types'
 
 import { Icon } from 'comz'
 import {
@@ -31,12 +33,10 @@ import {
   XCircleFill
 } from '@comz/icons'
 
-import { useOverlay, useCssVars } from '@comz/vca'
-
 const props = defineProps({
-  show: { type: Boolean, reuqired: true },
-  type: { type: String, reuqired: false },
-  duration: { type: Number, reuqired: false }
+  show: bool().isRequired,
+  type: string(),
+  duration: number()
 })
 
 const emit = defineEmit([

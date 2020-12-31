@@ -19,12 +19,12 @@ import type { Placement, Instance } from '@popperjs/core'
 
 import { defineProps, defineEmit } from 'vue'
 import { ref } from 'vue'
-
 import { useEvent, useToggle, usePopper } from '@comz/vca'
+import { string } from 'vue-types'
 
 const props = defineProps({
-  text: { type: String, required: false },
-  placement: { type: String, required: false }
+  text: string(),
+  placement: string()
 })
 
 const textRef = ref<HTMLElement | null>(null)

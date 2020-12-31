@@ -7,18 +7,18 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import { toRefs } from 'vue'
-
 import { useBEM, useCssVars } from '@comz/vca'
+import { string, bool } from 'vue-types'
 
 const props = defineProps({
-  areas: { type: String, required: false },
-  rows: { type: String, required: false },
-  columns: { type: String, required: false },
-  autoRows: { type: String, required: false },
-  autoColumns: { type: String, required: false },
-  flow: { type: String, required: false },
-  gap: { type: String, required: false },
-  inline: { type: Boolean, required: true }
+  areas: string(),
+  rows: string(),
+  columns: string(),
+  autoRows: string(),
+  autoColumns: string(),
+  flow: string(),
+  gap: string(),
+  inline: bool().isRequired
 })
 
 const { areas, rows, columns, autoRows, autoColumns, flow, gap, inline } = toRefs(props)

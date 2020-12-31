@@ -22,15 +22,15 @@
 <script setup lang="ts">
 import { defineProps, defineEmit } from 'vue'
 import { toRefs } from 'vue'
+import { useBEM, useHeightToggle } from '@comz/vca'
+import { string, bool } from 'vue-types'
 
 import { Icon } from 'comz'
 import { ChevronExpand, ChevronContract } from '@comz/icons'
 
-import { useBEM, useHeightToggle } from '@comz/vca'
-
 const props = defineProps({
-  expand: { type: Boolean, required: true },
-  title: { type: String, required: false }
+  expand: bool().isRequired,
+  title: string()
 })
 
 const emit = defineEmit([

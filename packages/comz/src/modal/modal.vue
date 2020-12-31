@@ -33,19 +33,19 @@
 <script setup lang="ts">
 import { defineProps, defineEmit } from 'vue'
 import { toRefs } from 'vue'
+import { useCssVars } from '@comz/vca'
+import { string, bool } from 'vue-types'
 
 import { Card } from 'comz'
 import { Button } from 'comz'
 import { Icon } from 'comz'
 import { X } from '@comz/icons'
 
-import { useCssVars } from '@comz/vca'
-
 const props = defineProps({
-  title: { type: String, required: false },
-  width: { type: String, required: false },
-  show: { type: Boolean, required: true },
-  closable: { type: Boolean, required: true }
+  title: string(),
+  width: string(),
+  show: bool().isRequired,
+  closable: bool().isRequired
 })
 
 const emit = defineEmit([

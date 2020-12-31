@@ -11,19 +11,18 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import { ref, toRefs, computed } from 'vue'
-
 import { useBEM, useCssVars } from '@comz/vca'
-
+import { string, bool } from 'vue-types'
 import { useFlexPolyfillGapItem } from './utils'
 
 const props = defineProps({
-  gap: { type: String, required: false },
-  align: { type: String, required: false },
-  justify: { type: String, required: false },
-  center: { type: Boolean, required: true },
-  inline: { type: Boolean, required: true },
-  vertical: { type: Boolean, required: true },
-  wrap: { type: Boolean, required: true }
+  gap: string(),
+  align: string(),
+  justify: string(),
+  center: bool().isRequired,
+  inline: bool().isRequired,
+  vertical: bool().isRequired,
+  wrap: bool().isRequired
 })
 
 const { inline, vertical, wrap, gap, align, justify, center } = toRefs(props)

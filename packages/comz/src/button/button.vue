@@ -13,13 +13,13 @@
 <script setup lang="ts">
 import { defineProps, defineEmit } from 'vue'
 import { toRefs } from 'vue'
-
 import { useBEM } from '@comz/vca'
+import { object, bool } from 'vue-types'
 
 const props = defineProps({
-  icon: { type: Object, required: false },
-  loading: { type: Boolean, required: true },
-  disabled: { type: Boolean, required: true }
+  icon: object(),
+  loading: bool().isRequired,
+  disabled: bool().isRequired
 })
 
 const emit = defineEmit([

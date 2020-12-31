@@ -12,9 +12,10 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import { toRefs } from 'vue'
+import { string } from 'vue-types'
 
 const props = defineProps({
-  label: { type: String, required: false }
+  label: string()
 })
 
 const { label } = toRefs(props)
