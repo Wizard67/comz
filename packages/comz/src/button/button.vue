@@ -5,8 +5,9 @@
     :disabled="disabled"
     @click="handleClick"
   >
-    <component v-if="icon" class="cbutton__icon" :is="icon" />
-    <slot />
+    <Flex gap="4px" inline>
+      <slot />
+    </Flex>
   </button>
 </template>
 
@@ -14,24 +15,27 @@
 import { defineProps, defineEmit } from 'vue'
 import { toRefs } from 'vue'
 import { useBEM } from '@comz/vca'
-import { object, bool } from 'vue-types'
+import { bool } from 'vue-types'
+
+import { Flex } from 'comz'
 
 const props = defineProps({
-  icon: object(),
   loading: bool().isRequired,
-  disabled: bool().isRequired
+  disabled: bool().isRequired,
+  danger: bool().isRequired
 })
 
 const emit = defineEmit([
   'on-click'
 ])
 
-const { loading, disabled } = toRefs(props)
+const { loading, disabled, danger } = toRefs(props)
 
 const className = useBEM(({ b, m }) => ({
   [b('cbutton')]: true,
   [m('loading')]: loading,
-  [m('disabled')]: disabled
+  [m('disabled')]: disabled,
+  [m('danger')]: danger
 }))
 
 const handleClick = () => emit('on-click')

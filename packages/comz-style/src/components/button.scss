@@ -2,10 +2,9 @@
 @import "../mixins/function";
 
 .cbutton { @extend %button; }
+.cbutton.cbutton--danger { @extend %button--danger; }
 .cbutton.cbutton--loading { @extend %button--loading; }
 .cbutton.cbutton--disabled { @extend %button--disabled; }
-
-.cbutton__icon { @extend %button__icon; }
 
 $animation-before: unique-id();
 $animation-after: unique-id();
@@ -58,6 +57,12 @@ $animation-after: unique-id();
   }
 }
 
+%button--danger {
+  --border-color: #a31621;
+  --hover-background-color: #c42936;
+  --background-color: #e63946;
+}
+
 %button--loading {
   --cursor: wait;
 
@@ -92,10 +97,6 @@ $animation-after: unique-id();
   --color: #{$text-disabled};
   --background-color: #{$color-inactive};
   --cursor: not-allowed;
-}
-
-%button__icon {
-  margin-right: px2em(4px);
 }
 
 @keyframes #{$animation-before} {
