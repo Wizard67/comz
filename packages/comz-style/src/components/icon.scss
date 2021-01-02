@@ -16,7 +16,6 @@ $animation: unique-id();
 
   display: inline-flex;
   align-items: center;
-  color: $text-color;
   animation: var(--animation, unset);
   cursor: var(--cursor, inhert);
 
