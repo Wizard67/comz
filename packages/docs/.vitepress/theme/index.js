@@ -11,6 +11,7 @@ import GridGap from '../../components/grid/gap.vue'
 import GridNested from '../../components/grid/nested.vue'
 
 import ButtonBasic from '../../components/button/basic.vue'
+import ButtonUsage from '../../components/button/usage.vue'
 import ButtonIcon from '../../components/button/icon.vue'
 
 import CardDefault from '../../components/card/default.vue'
@@ -78,6 +79,7 @@ export default {
     app.component('GridGap', GridGap)
     app.component('GridNested', GridNested)
 
+    app.component('ButtonUsage', ButtonUsage)
     app.component('ButtonBasic', ButtonBasic)
     app.component('ButtonIcon', ButtonIcon)
 
