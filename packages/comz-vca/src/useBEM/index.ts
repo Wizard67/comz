@@ -1,76 +1,94 @@
-import { ref, unref, watchEffect, Ref, computed } from 'vue'
+import type { Ref } from 'vue'
+import { reactive, computed, unref, watchEffect } from 'vue'
 
-type B = (block: string) => string
-type E = (element: string) => string
-type M = (modifier: string) => string
+type NodeType = 'block' | 'element' | 'modifier'
 
-interface BEM {
-  b: B
-  e: E
-  m: M
+type InputValue<T> = T | undefined | Ref<T> | Ref<undefined>
+
+interface BEMNode {
+  type: NodeType,
+  key: InputValue<string>,
+  value: InputValue<boolean>
 }
 
-type Condition = (content: BEM) => {
-  [key: string]: boolean | Ref<boolean>
+type BEMNodeList = Array<BEMNode>
+
+type Condition = (content: {
+  [k in 'b' | 'e' | 'm']: (key: InputValue<string>) => Exclude<keyof any, number>
+}) => {
+  [key: string]: InputValue<boolean>
 }
 
-type UseBEM = (condition: Condition) => Ref<string>
+const INVALID_KEY = Symbol()
 
-const BLOCK_PRE = 'b:'
-const ELEMENT_PRE = 'e:'
-const MODIFIERS_PRE = 'm:'
+const SEPARATOR_ELEMENT = '__'
+const SEPARATOR_MODIFIER = '--'
 
-export const useBEM: UseBEM = (conditions) => {
+function markNode (type: NodeType, target: BEMNodeList, key: InputValue<string>) {
+  target.push({
+    type: type,
+    key: key,
+    value: undefined
+  })
 
-  const scopedBlock: Ref<string> = ref('')
-  const scopedElement: Ref<string> = ref('')
-  const scopedModifiers: Ref<Set<string>> = ref(new Set())
+  const k = unref(key)
+  return k !== undefined ? k : INVALID_KEY
+}
 
-  const b: B = block => `${BLOCK_PRE}${block}`
-  const e: E = element => `${ELEMENT_PRE}${element}`
-  const m: M = modifier => `${MODIFIERS_PRE}${modifier}`
-
-  const conditionState = conditions({ b, e, m })
-
-  const resetScopedValue = () => {
-    scopedBlock.value = ''
-    scopedElement.value = ''
-    scopedModifiers.value.clear()
+function transNodes2ClassName (nodes: BEMNodeList): string {
+  function filter(target: BEMNodeList, type: NodeType) {
+    return target.filter(node =>
+      node.type === type &&
+      unref(node.key) !== undefined &&
+      unref(node.value) === true
+    )
   }
 
-  const BEMClassName = computed(() => {
-    const blockElement = scopedElement.value
-                         ? [scopedBlock.value, scopedElement.value].join('__')
-                         : scopedBlock.value
+  const rawBlock = filter(nodes, 'block').pop()
+  const rawElement = filter(nodes, 'element').pop()
+  const rawModifiers = filter(nodes, 'modifier')
 
-    const modifiers: string[] = []
+  if (rawBlock?.key === undefined) {
+    console.warn('useBEN need to declare a block element with b().')
+  }
 
-    Array.from(scopedModifiers.value).forEach(key => {
-      modifiers.push([blockElement, key].join('--'))
+  const component = rawElement?.key
+                    ? [rawBlock?.key, rawElement.key].join(SEPARATOR_ELEMENT)
+                    : rawBlock?.key
+
+  const modifiers = Array.from(rawModifiers).map(modifier => {
+    return [component, unref(modifier.key)].join(SEPARATOR_MODIFIER)
+  })
+
+  return [component, ...modifiers].join(' ')
+}
+
+export function useBEM (condition: Condition): Ref<string> {
+  const nodeList: BEMNodeList = reactive([])
+
+  function b (key: InputValue<string>) {
+    return markNode('block', nodeList, key)
+  }
+
+  function e (key: InputValue<string>) {
+    return markNode('element', nodeList, key)
+  }
+
+  function m (key: InputValue<string>) {
+    return markNode('modifier', nodeList, key)
+  }
+
+  watchEffect(() => {
+    const conditionState = condition({ b, e, m })
+    const keys = Object.keys(conditionState)
+
+    keys.map(key => {
+      const index = nodeList.findIndex(node => node.key === key)
+      nodeList[index]['value'] = conditionState[key]
     })
-
-    return [blockElement, ...modifiers].join(' ')
   })
 
-  watchEffect(cleanUp => {
-    for (const key in conditionState) {
-      if (unref(conditionState[key])) {
-        switch (key.slice(0, 2)) {
-          case BLOCK_PRE:
-            scopedBlock.value = key.slice(2)
-            break
-          case ELEMENT_PRE:
-            scopedElement.value = key.slice(2)
-            break
-          case MODIFIERS_PRE:
-            scopedModifiers.value.add(key.slice(2))
-            break
-        }
-      }
-    }
-
-    cleanUp(resetScopedValue)
-  })
+  const BEMClassName = computed(() => transNodes2ClassName(nodeList))
 
   return BEMClassName
 }
