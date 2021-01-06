@@ -5,7 +5,7 @@
   >
     <GridItem>
       <Flex style="height: 100%" center>
-        <Button v-bind="atts">
+        <Button v-bind="atts" :type="type">
           <Icon v-if="props.includes('icon')"><HeartFill/></Icon>
           {{ text }}
         </Button>
@@ -16,6 +16,13 @@
       <Flex class="side" vertical>
         <div class="title">Props</div>
         <Input v-model="text" placeholder="button text"></Input>
+
+        <Select v-model="type" placeholder="button type" style="width: 100%;">
+          <Option label="default" value="default">default</Option>
+          <Option label="primary" value="primary">primary</Option>
+          <Option label="text" value="text">text</Option>
+        </Select>
+
         <Checkbox v-model="props" value="danger">danger</Checkbox>
         <Checkbox v-model="props" value="icon">icon</Checkbox>
         <Checkbox v-model="props" value="loading">loading</Checkbox>
@@ -31,7 +38,7 @@ import { defineComponent, ref, computed } from 'vue'
 import {
   Button,
   Grid, GridItem, Flex,
-  Input, Checkbox, Icon
+  Input, Checkbox, Select, Option, Icon
 } from 'comz'
 
 import { HeartFill } from '@comz/icons'
@@ -40,28 +47,28 @@ export default defineComponent({
   components: {
     Button,
     Grid, GridItem, Flex,
-    Input, Checkbox,
+    Input, Checkbox, Select, Option,
     Icon, HeartFill
   },
   setup() {
+    const text = ref('Button')
+    const type = ref('')
+
     const props = ref([])
 
     const atts = computed(() => {
       const obj = {}
-      props.value.map(item => {
-        if (item !== 'icon') {
-          obj[item] = true
-        }
-      })
+      props.value
+        .filter(item => item !== 'icon')
+        .map(item => obj[item] = true)
       return obj
     })
 
-    const text = ref('Button')
-
     return {
+      text,
+      type,
       props,
-      atts,
-      text
+      atts
     }
   }
 })
