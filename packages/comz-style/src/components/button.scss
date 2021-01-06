@@ -2,6 +2,9 @@
 @import "../mixins/function";
 
 .cbutton { @extend %button; }
+.cbutton.cbutton--default { @extend %button--default; }
+.cbutton.cbutton--primary { @extend %button--primary; }
+.cbutton.cbutton--text { @extend %button--text; }
 .cbutton.cbutton--danger { @extend %button--danger; }
 .cbutton.cbutton--loading { @extend %button--loading; }
 .cbutton.cbutton--disabled { @extend %button--disabled; }
@@ -10,13 +13,20 @@ $animation-before: unique-id();
 $animation-after: unique-id();
 
 %button {
+  --is-fill: initial;
+  --is-text: initial;
+
+  --border: initial;
   --box-shadow: initial;
-  --border-color: initial;
-  --hover-color: initial;
-  --hover-background-color: initial;
   --color: initial;
   --background-color: initial;
   --cursor: initial;
+
+  --hover-background-color: initial;
+  --active-background-color: initial;
+
+  --loading-pseudo-element-height: initial;
+  --loading-pseudo-element-background-color: initial;
 
   appearance: none;
   box-sizing: border-box;
@@ -25,11 +35,11 @@ $animation-after: unique-id();
   justify-content: center;
   align-items: center;
   padding: px2em(4px) px2em(16px);
-  border: none;
+  border: var(--border, none);
   border-radius: px2em(4px);
-  box-shadow: var(--box-shadow, $shadow-form);
-  color: var(--color, white);
-  background-color: var(--background-color, #{$color-primary});
+  box-shadow: var(--box-shadow, #{$shadow-form});
+  color: var(--color, #{$text-color});
+  background-color: var(--background-color, white);
   font-size: 14px;
   letter-spacing: px2em(1px);
   line-height: 1.2;
@@ -47,20 +57,54 @@ $animation-after: unique-id();
   }
 
   &:hover {
-    color: var(--hover-color, rgb(240, 240, 240));
-    background-color: var(--hover-background-color, rgb(32, 123, 180));
+    background-color: var(--hover-background-color, rgb(252, 252, 252));
   }
 
   &:active {
-    color: rgb(231, 231, 231);
-    box-shadow: inset 0 0 20px 2px rgba(241, 241, 241, .3);
+    background-color: var(--active-background-color, rgb(235, 235, 235));
   }
 }
 
+%button--default {}
+
+%button--primary {
+  --is-fill: ;
+
+  --color: white;
+  --background-color: #{$color-primary};
+
+  --hover-background-color: rgb(32, 123, 180);
+  --active-background-color: #{$color-primary};
+
+  --loading-pseudo-element-background-color: rgb(24, 99, 170);
+}
+
+%button--text {
+  --is-text: ;
+
+  --box-shadow: none;
+  --background-color: transparent;
+
+  --hover-background-color: transparent;
+
+  --loading-pseudo-element-height: #{px2em(2px)};
+  --loading-pseudo-element-background-color: #{$color-primary};
+}
+
 %button--danger {
-  --border-color: #a31621;
-  --hover-background-color: #c42936;
-  --background-color: #e63946;
+  --c: var(--is-fill) white;
+  --b-c: var(--is-fill) #e63946;
+  --h-b-c: var(--is-fill) #c42936;
+  --a-b-c: var(--is-fill) #e63946;
+  --l-p-e-b-c: var(--is-fill) #a31621;
+
+  --color: var(--c, #e63946);
+  --background-color: var(--b-c, transparent);
+
+  --hover-background-color: var(--h-b-c, rgb(252, 252, 252));
+  --active-background-color: var(--a-b-c, rgb(235, 235, 235));
+
+  --loading-pseudo-element-background-color: var(--l-p-e-b-c, #e63946);
 }
 
 %button--loading {
@@ -75,8 +119,8 @@ $animation-after: unique-id();
     left: 0;
     right: auto;
     width: auto;
-    height: px2em(4px);
-    background-color: var(--border-color, rgb(24, 99, 170));
+    height: var(--loading-pseudo-element-height, px2em(4px));
+    background-color: var(--loading-pseudo-element-background-color, #{$color-primary});
     will-change: right left;
   }
 
@@ -90,13 +134,20 @@ $animation-after: unique-id();
 }
 
 %button--disabled {
-  --box-shadow: #{$shadow-form-disabled};
-  --border-color: rgb(189, 189, 189);
-  --hover-color: #{$text-disabled};
-  --hover-background-color: #{$color-inactive};
+  --b-s: var(--is-text) none;
+  --b-c: var(--is-text) transparent;
+  --h-b-c: var(--is-text) transparent;
+  --a-b-c: var(--is-text) transparent;
+
+  --box-shadow: var(--b-s, #{$shadow-form-disabled});
   --color: #{$text-disabled};
-  --background-color: #{$color-inactive};
+  --background-color: var(--b-c, #{$color-inactive});
   --cursor: not-allowed;
+
+  --hover-background-color: var(--h-b-c, #{$color-inactive});
+  --active-background-color: var(--a-b-c, #{$color-inactive});
+
+  --loading-pseudo-element-background-color: rgb(189, 189, 189);
 }
 
 @keyframes #{$animation-before} {

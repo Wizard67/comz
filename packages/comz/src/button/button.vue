@@ -5,7 +5,7 @@
     :disabled="disabled"
     @click="handleClick"
   >
-    <Flex gap="4px" inline>
+    <Flex gap="4px">
       <slot />
     </Flex>
   </button>
@@ -13,13 +13,14 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmit } from 'vue'
-import { toRefs } from 'vue'
+import { toRefs, computed } from 'vue'
 import { useBEM } from '@comz/vca'
-import { bool } from 'vue-types'
+import { oneOf, bool } from 'vue-types'
 
 import { Flex } from 'comz'
 
 const props = defineProps({
+  type: oneOf(['', 'default', 'primary', 'text']).def(''),
   loading: bool().isRequired,
   disabled: bool().isRequired,
   danger: bool().isRequired
@@ -29,13 +30,14 @@ const emit = defineEmit([
   'on-click'
 ])
 
-const { loading, disabled, danger } = toRefs(props)
+const { type, danger, loading, disabled } = toRefs(props)
 
 const className = useBEM(({ b, m }) => ({
   [b('cbutton')]: true,
+  [m(type)]: computed(() => !!type?.value),
+  [m('danger')]: danger,
   [m('loading')]: loading,
-  [m('disabled')]: disabled,
-  [m('danger')]: danger
+  [m('disabled')]: disabled
 }))
 
 const handleClick = () => emit('on-click')
