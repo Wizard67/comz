@@ -8,10 +8,7 @@ exports.build = () => (
   src('./*.scss')
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(postcss([
-      flexGapPolyfill(),
-      cssnano({
-        preset: 'default'
-      })
+      flexGapPolyfill()
     ]))
     .pipe(dest('./dist/') )
 )
