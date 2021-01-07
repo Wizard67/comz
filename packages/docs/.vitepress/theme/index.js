@@ -6,6 +6,7 @@ import './styles/highlight-theme.css'
 
 import Demo from './components/demo.vue'
 
+import GridUsage from '../../components/grid/usage.vue'
 import GridBasic from '../../components/grid/basic.vue'
 import GridGap from '../../components/grid/gap.vue'
 import GridNested from '../../components/grid/nested.vue'
@@ -75,6 +76,7 @@ export default {
   enhanceApp({ app, router, siteData }) {
     app.component('Demo', Demo)
 
+    app.component('GridUsage', GridUsage)
     app.component('GridBasic', GridBasic)
     app.component('GridGap', GridGap)
     app.component('GridNested', GridNested)

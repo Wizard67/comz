@@ -2,6 +2,10 @@
 
 声明网格布局。
 
+## 用例
+
+<GridUsage/>
+
 ## 基础用法
 
 声明一个网格布局需要先使用 `rows` 和 `columns` 属性定义出网格线的位置关系。
@@ -45,6 +49,7 @@
 | autoRows    | `string`                | `''`    | 声明隐式创建的网格行高 |
 | autoColumns | `string`                | `''`    | 声明隐式创建的网格列宽 |
 | flow        | `<grid-auto-flow>`      | `'row'` | 定义填充方式         |
+| padding     | `<length>`              | `''`    | 设置容器内边距        |
 | gap         | `<length>`              | `''`    | 项的间距             |
 | inline      | `boolean`               | `false` | 声明成内联网格        |
 

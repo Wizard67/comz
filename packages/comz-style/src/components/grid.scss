@@ -11,13 +11,25 @@ $grid-auto-rows: var(--cgrid-auto-rows);
 $grid-auto-columns: var(--cgrid-auto-columns);
 $grid-flow: var(--cgrid-flow);
 $grid-gap: var(--cgrid-gap, 0);
+$grid-padding: var(--cgrid-padding, 0);
 
 .cgrid-item { @extend %grid-item; }
 
 $grid-item-area: var(--cgrid-item-area);
 
 %grid {
+  --cgrid-areas: initial;
+  --cgrid-rows: initial;
+  --cgrid-columns: initial;
+  --cgrid-auto-rows: initial;
+  --cgrid-auto-columns: initial;
+  --cgrid-flow: initial;
+  --cgrid-padding: initial;
+  --cgrid-gap: initial;
+
   --display: initial;
+  --width: initial;
+  --height: initial;
 
   display: var(--display, grid);
   grid-template-areas: $grid-areas;
@@ -27,14 +39,19 @@ $grid-item-area: var(--cgrid-item-area);
   grid-auto-columns: $grid-auto-columns;
   grid-auto-flow: $grid-flow;
   grid-gap: $grid-gap;
-  width: 100%;
-  height: 100%;
+  width: var(--width, 100%);
+  height: var(--height, 100%);
+  padding: $grid-padding;
 }
 
 %grid--inline {
   --display: inline-grid;
+  --width: auto;
+  --height: auto;
 }
 
 %grid-item {
+  --cgrid-item-area: initial;
+
   grid-area: $grid-item-area;
 }

@@ -1,7 +1,7 @@
 <template>
-  <div :class="className" :style="cssVars">
+  <section :class="className" :style="cssVars">
     <slot />
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -17,11 +17,22 @@ const props = defineProps({
   autoRows: string(),
   autoColumns: string(),
   flow: string(),
+  padding: string(),
   gap: string(),
   inline: bool().isRequired
 })
 
-const { areas, rows, columns, autoRows, autoColumns, flow, gap, inline } = toRefs(props)
+const {
+  areas,
+  rows,
+  columns,
+  autoRows,
+  autoColumns,
+  flow,
+  padding,
+  gap,
+  inline
+} = toRefs(props)
 
 const className = useBEM(({ b, m }) => ({
   [b('cgrid')]: true,
@@ -35,6 +46,7 @@ const cssVars = useCssVars({
   '--cgrid-auto-rows': autoRows,
   '--cgrid-auto-columns': autoColumns,
   '--cgrid-flow': flow,
+  '--cgrid-padding': padding,
   '--cgrid-gap': gap
-}, { scoped: true })
+})
 </script>

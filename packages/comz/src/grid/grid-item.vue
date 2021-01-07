@@ -1,7 +1,7 @@
 <template>
-  <div class="cgrid-item" :style="cssStyle">
+  <section class="cgrid-item" :style="cssStyle">
     <slot />
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -18,5 +18,5 @@ const { area } = toRefs(props)
 
 const cssStyle = useCssVars({
   '--cgrid-item-area': area
-}, { scoped: true })
+})
 </script>
