@@ -68,5 +68,5 @@ const handleMaskClick = () => {
 
 const cssVars = useCssVars({
   '--cmodal-width': width
-}, { scoped: true })
+})
 </script>

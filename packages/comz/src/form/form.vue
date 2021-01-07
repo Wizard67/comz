@@ -20,5 +20,5 @@ const { labelWidth, labelAlign } = toRefs(props)
 const cssVars = useCssVars({
   '--cform-label-width': labelWidth,
   '--cform-label-align': labelAlign
-}, { scoped: true })
+})
 </script>

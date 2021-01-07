@@ -11,6 +11,9 @@ $size: var(--cicon-size, 14px);
 $animation: unique-id();
 
 %icon {
+  --cicon-color: initial;
+  --cicon-size: initial;
+
   --animation: initial;
   --cursor: initial;
 

@@ -16,6 +16,9 @@ $align: var(--cform-label-align, right);
 }
 
 %form-item {
+  --cform-label-width: initial;
+  --cform-label-align: initial;
+
   display: flex;
   align-items: flex-start;
   margin: 6px 0;

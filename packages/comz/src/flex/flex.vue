@@ -43,5 +43,5 @@ const cssVars = useCssVars({
   '--cflex-gap': gap,
   '--cflex-align': align,
   '--cflex-justify': justify
-}, { scoped: true })
+})
 </script>

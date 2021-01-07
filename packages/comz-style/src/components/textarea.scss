@@ -8,6 +8,8 @@
 $width: var(--ctextarea-width, 100%);
 
 %textarea {
+  --ctextarea-width: initial;
+
   position: relative;
   display: flex;
   justify-content: space-between;

@@ -8,6 +8,8 @@
 $alert-color: var(--calert-color, white);
 
 %alert {
+  --calert-color: initial;
+
   display: flex;
   justify-content: space-between;
   align-items: center;

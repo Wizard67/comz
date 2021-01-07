@@ -12,6 +12,10 @@ $align: var(--cflex-align, flex-start);
 $justify: var(--cflex-justify, flex-start);
 
 %flex {
+  --cflex-gap: initial;
+  --cflex-align: initial;
+  --cflex-justify: initial;
+
   --display: initial;
   --width: initial;
   --flex-wrap: initial;

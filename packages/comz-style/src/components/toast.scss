@@ -11,6 +11,8 @@ $toast-in: unique-id();
 $toast-out: unique-id();
 
 %toast {
+  --ctoast-top: initial;
+
   box-sizing: border-box;
   position: fixed;
   top: 0;

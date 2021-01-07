@@ -12,6 +12,8 @@
 $offset: var(--cslider-thumb-offset, 0);
 
 %slider {
+  --cslider-thumb-offset: initial;
+
   --box-shadow: initial;
   --inactive-color: initial;
   --color: initial;
