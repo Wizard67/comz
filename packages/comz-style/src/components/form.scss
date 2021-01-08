@@ -11,14 +11,14 @@ $width: var(--cform-label-width, 80px);
 $align: var(--cform-label-align, right);
 
 %form {
+  --cform-label-width: initial;
+  --cform-label-align: initial;
+
   display: flex;
   flex-direction: column;
 }
 
 %form-item {
-  --cform-label-width: initial;
-  --cform-label-align: initial;
-
   display: flex;
   align-items: flex-start;
   margin: 6px 0;
