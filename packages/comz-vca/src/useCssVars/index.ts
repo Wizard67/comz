@@ -1,45 +1,31 @@
-import {
-  computed, reactive,
-  Ref, ComputedRef, UnwrapRef
-} from 'vue'
+import { Ref, ComputedRef } from 'vue'
+import { unref, reactive, computed } from 'vue'
 
-type Value = number | string | undefined
+type CSSValue = number | string | undefined
 
-type TransValueToString = (value: Value, scoped: boolean) => string
+type Condition = {
+  [property: string]: Ref<CSSValue> | undefined
+}
 
-type UseCssVars = (
-  vars: { [property: string]: ComputedRef<Value> | Ref<Value> | undefined },
-  options?: {
-    scoped?: boolean
-  }
-) => UnwrapRef<Record<string, string>>
-
-const INVALID_VALUE = 'initial'
-
-const transValueToString: TransValueToString = (value, scoped) => {
+const transValue2String = (value: unknown) => {
   switch (typeof value) {
     case 'undefined':
-      return scoped ? INVALID_VALUE : ''
+      return ''
     case 'number':
       return String(value)
     case 'string':
-      return value || (scoped ? INVALID_VALUE : '')
+      return value
     default:
       throw Error(`useCssVars expected undefined, number or string, but get ${typeof value}`)
   }
 }
 
-export const useCssVars: UseCssVars = (vars, options) => {
-  const varTrans = reactive({})
+export function useCssVars (condition: Condition): Record<string, ComputedRef<string>> {
+  const varsObj = reactive({})
 
-  for (const property in vars) {
-    varTrans[property] = computed(() => {
-      return transValueToString(
-        vars[property]?.value,
-        options?.scoped || false
-      )}
-    )
+  for (const key in condition) {
+    varsObj[key] = computed(() => transValue2String(unref(condition[key])))
   }
 
-  return varTrans
+  return varsObj
 }
