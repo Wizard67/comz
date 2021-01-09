@@ -4,32 +4,31 @@
 .cflex { @extend %flex; }
 .cflex.cflex--inline { @extend %flex--inline; }
 .cflex.cflex--wrap { @extend %flex--wrap; }
-.cflex.cflex--vertical { @extend %flex--vertical; }
-.cflex.cflex--center { @extend %flex--center; }
 
 $gap: var(--cflex-gap, 8px);
-$align: var(--cflex-align, flex-start);
-$justify: var(--cflex-justify, flex-start);
+$flow: var(--cflex-flow, row);
+$justify-center: var(--cflex-justify-center, flex-start);
+$align-center: var(--cflex-align-center, flex-start);
+$justify-items: var(--cflex-justify-items, flex-start);
+$align-items: var(--cflex-align-items, flex-start);
 
 %flex {
   --cflex-gap: initial;
+  --cflex-flow: initial;
   --cflex-align: initial;
   --cflex-justify: initial;
 
   --display: initial;
-  --width: initial;
   --flex-wrap: initial;
-  --flex-direction: initial;
-  --justify-content: initial;
-  --align-items: initial;
 
   display: var(--display, flex);
-  flex-direction: var(--flex-direction, initial);
-  justify-content: var(--justify-content, #{$justify});
-  align-items: var(--align-items, #{$align});
+  flex-direction: $flow;
+  justify-content: $justify-center;
+  align-content: $align-center;
+  justify-items: $justify-items;
+  align-items: $align-items;
   flex-wrap: var(--flex-wrap, initial);
   gap: $gap;
-  width: var(--width, 100%);
   height: auto;
 
   & > * {
@@ -39,18 +38,8 @@ $justify: var(--cflex-justify, flex-start);
 
 %flex--inline {
   --display: inline-flex;
-  --width: auto;
 }
 
 %flex--wrap {
   --flex-wrap: wrap;
-}
-
-%flex--vertical {
-  --flex-direction: column;
-}
-
-%flex--center {
-  --justify-content: center;
-  --align-items: center;
 }
