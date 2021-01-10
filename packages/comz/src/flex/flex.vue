@@ -22,11 +22,11 @@ const props = defineProps({
   flow: oneOf(['', 'row', 'column', 'row-reverse', 'column-reverse']),
   justifyCenter: oneOf(['', 'flex-start', 'center', 'flex-end', 'baseline', 'stretch', 'space-between', 'space-around', 'space-evenly']),
   alignCenter: oneOf(['', 'flex-start', 'center', 'flex-end', 'baseline', 'stretch', 'space-between', 'space-around', 'space-evenly']),
-  justifyItem: oneOf(['', 'flex-start', 'center', 'flex-end', 'baseline', 'stretch']),
-  alignItem: oneOf(['', 'flex-start', 'center', 'flex-end', 'baseline', 'stretch'])
+  justifyItems: oneOf(['', 'flex-start', 'center', 'flex-end', 'baseline', 'stretch']),
+  alignItems: oneOf(['', 'flex-start', 'center', 'flex-end', 'baseline', 'stretch'])
 })
 
-const { inline, wrap, gap, flow, justifyCenter, alignCenter, justifyItem, alignItem } = toRefs(props)
+const { inline, wrap, gap, flow, justifyCenter, alignCenter, justifyItems, alignItems } = toRefs(props)
 
 const flexRef = ref<HTMLLIElement | null>(null)
 
@@ -43,7 +43,7 @@ const cssVars = useCssVars({
   '--cflex-flow': flow,
   '--cflex-justify-center': justifyCenter,
   '--cflex-align-center': alignCenter,
-  '--cflex-justify-item': justifyItem,
-  '--cflex-align-item': alignItem
+  '--cflex-justify-items': justifyItems,
+  '--cflex-align-items': alignItems
 })
 </script>
