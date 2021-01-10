@@ -26,8 +26,8 @@
 
 配合 `Icon` 组件可以在按钮内添加图标。
 
-::: component <ButtonIcon/>
-<<< ./components/button/icon.vue
+::: component <ButtonIcons/>
+<<< ./components/button/icons.vue
 :::
 
 ## API

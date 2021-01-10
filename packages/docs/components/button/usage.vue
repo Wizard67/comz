@@ -4,7 +4,7 @@
     columns="auto 200px"
   >
     <GridItem>
-      <Flex style="height: 100%" center>
+      <Flex full justify-center="center" align-items="center">
         <Button v-bind="atts" :type="type">
           <Icon v-if="props.includes('icon')"><HeartFill/></Icon>
           {{ text }}
@@ -13,7 +13,7 @@
     </GridItem>
 
     <GridItem>
-      <Flex class="side" vertical>
+      <Flex class="side" flow="column">
         <div class="title">Props</div>
         <Input v-model="text" placeholder="button text"></Input>
 

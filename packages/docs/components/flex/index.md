@@ -4,6 +4,10 @@
 
 > 在实现上依赖了 [`flex-gap-polyfill`](https://github.com/limitlessloop/flex-gap-polyfill) 来做浏览器兼容，如果遇到 `margins collapse`，可以创建一个 [`BFC（块级格式上下文）`](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context) 解决。
 
+## 用例
+
+<FlexUsage/>
+
 ## 基础用法
 
 放置在容器内的组件预设了 `8px` 的间距，可以通过 `gap` 属性重新设置。

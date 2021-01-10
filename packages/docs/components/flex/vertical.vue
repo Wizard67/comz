@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <Flex vertical>
+    <Flex flow="column">
       <Button>one</Button>
       <Button>two</Button>
       <Button>three</Button>
@@ -9,7 +9,7 @@
   </div>
 
   <div class="box">
-    <Flex vertical wrap>
+    <Flex flow="column" wrap>
       <Button>one</Button>
       <Button>two</Button>
       <Button>three</Button>

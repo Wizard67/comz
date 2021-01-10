@@ -1,5 +1,5 @@
 <template>
-  <Flex gap="16px" vertical>
+  <Flex gap="16px" flow="column">
     <Slider v-model="value1" :min="min" :max="max">
       <template #prepend>{{ min }}</template>
       <template #append>{{ max }}</template>

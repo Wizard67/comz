@@ -1,5 +1,5 @@
 <template>
-  <Flex gap="16px" vertical>
+  <Flex gap="16px" flow="column">
     <Switch v-model="value">
       <template #prepend><Icon><EmojiFrown/></Icon></template>
       <template #append><Icon><EmojiSmile/></Icon></template>

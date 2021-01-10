@@ -1,6 +1,6 @@
 <template>
-  <Flex gap="16px" vertical>
-    <Flex inline>
+  <Flex gap="16px" flow="column">
+    <Flex>
       <Button>
         <Icon><EmojiSmileFill/></Icon>Smile
       </Button>
@@ -14,7 +14,7 @@
       </Button>
     </Flex>
 
-    <Flex inline>
+    <Flex>
       <Button type="primary">
         <Icon><EmojiSmileFill/></Icon>Smile
       </Button>
@@ -28,7 +28,7 @@
       </Button>
     </Flex>
 
-    <Flex inline>
+    <Flex>
       <Button type="text">
         <Icon><EmojiSmileFill/></Icon>Smile
       </Button>

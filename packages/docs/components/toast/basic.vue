@@ -7,19 +7,19 @@
   <br>
 
   <Flex>
-    <Flex inline>
+    <Flex>
       <Button @on-click="info = true">info toast</Button>
       <Toast v-model:show="info" type="info">Info Toast</Toast>
     </Flex>
-    <Flex inline>
+    <Flex>
       <Button @on-click="success = true">success toast</Button>
       <Toast v-model:show="success" type="success">Success Toast</Toast>
     </Flex>
-    <Flex inline>
+    <Flex>
       <Button @on-click="warning = true">warning toast</Button>
       <Toast v-model:show="warning" type="warning">Warning Toast</Toast>
     </Flex>
-    <Flex inline>
+    <Flex>
       <Button @on-click="error = true">error toast</Button>
       <Toast v-model:show="error" type="error">Error Toast</Toast>
     </Flex>

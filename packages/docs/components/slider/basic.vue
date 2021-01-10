@@ -1,5 +1,5 @@
 <template>
-  <Flex gap="16px" vertical>
+  <Flex gap="16px" flow="column">
     <Slider v-model="value1"></Slider>
     <Slider v-model="value2"></Slider>
     <Slider v-model="value3" disabled></Slider>

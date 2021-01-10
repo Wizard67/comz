@@ -1,10 +1,10 @@
 <template>
-  <Flex gap="16px" vertical>
-    <Flex vertical>
+  <Flex gap="16px" flow="column">
+    <Flex flow="column">
       <div>value: {{value1}}</div>
       <Slider v-model="value1" :step="0.1" :min="0" :max="10"></Slider>
     </Flex>
-    <Flex vertical>
+    <Flex flow="column">
       <div>value: {{value2}}</div>
       <Slider v-model="value2" :step="30"></Slider>
     </Flex>

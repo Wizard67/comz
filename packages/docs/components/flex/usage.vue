@@ -4,43 +4,28 @@
     columns="auto 300px"
   >
     <GridItem class="container">
-      <Grid
-        class="demo-grid"
-        :padding="`${padding}px`"
-        :rows="rows"
-        :columns="columns"
-        :autoRows="autoRows"
-        :autoColumns="autoColumns"
-        :flow="flow.join(' ')"
+      <Flex
+        class="demo-flex"
+        :style="full ? 'height: 382px' : ''"
         :gap="`${gap}px`"
+        :wrap="wrap"
         :inline="inline"
+        :flow="(flow.sort((a, b) => a === 'reverse' ? 1 : -1)).join('-')"
       >
         <template v-for="(item, index) in items" :key="index">
-          <GridItem class="demo-griditem">
+          <div class="demo-block">
             <div class="label">{{ index+1 }}</div>
-          </GridItem>
+          </div>
         </template>
-      </Grid>
+      </Flex>
     </GridItem>
 
     <GridItem>
       <Flex class="side" flow="column">
         <div class="title">Props</div>
         <Form label-width="60px" label-align="left">
-          <FormItem label="padding">
-            <Slider v-model="padding" :min="0" :max="20"></Slider>
-          </FormItem>
-          <FormItem label="rows">
-            <Input v-model="rows" placeholder="rows"></Input>
-          </FormItem>
-          <FormItem label="columns">
-            <Input v-model="columns" placeholder="columns"></Input>
-          </FormItem>
-          <FormItem label="autoRows">
-            <Input v-model="autoRows" placeholder="rows"></Input>
-          </FormItem>
-          <FormItem label="autoColumns">
-            <Input v-model="autoColumns" placeholder="columns"></Input>
+          <FormItem label="full">
+            <Switch v-model="full"></Switch>
           </FormItem>
           <FormItem label="gap">
             <Slider v-model="gap" :min="0" :max="20"></Slider>
@@ -49,15 +34,31 @@
             <Flex wrap>
               <Checkbox v-model="flow" value="row" :disabled="flow.includes('column')">row</Checkbox>
               <Checkbox v-model="flow" value="column" :disabled="flow.includes('row')">column</Checkbox>
-              <Checkbox v-model="flow" value="dense">dense</Checkbox>
+              <Checkbox v-model="flow" value="reverse" :disabled="flow.length === 0">reverse</Checkbox>
             </Flex>
+          </FormItem>
+          <FormItem label="wrap">
+            <Switch v-model="wrap"></Switch>
           </FormItem>
           <FormItem label="inline">
             <Switch v-model="inline"></Switch>
           </FormItem>
+          <FormItem label="justify-center">
+            <Select v-model="justifyCenter" placeholder="justify-center" style="width: 174px;">
+              <Option label="" value=""></Option>
+              <Option label="flex-start" value="flex-start">flex-start</Option>
+              <Option label="center" value="center">center</Option>
+              <Option label="flex-end" value="flex-end">flex-end</Option>
+              <Option label="baseline" value="baseline">baseline</Option>
+              <Option label="stretch" value="stretch">stretch</Option>
+              <Option label="space-between" value="space-between">space-between</Option>
+              <Option label="space-around" value="space-around">space-around</Option>
+              <Option label="space-evenly" value="space-evenly">space-evenly</Option>
+            </Select>
+          </FormItem>
         </Form>
 
-        <Flex justify-center="center">
+        <Flex full justify-content="center">
           <Button @on-click="handleAddItem"><Icon><Plus/></Icon>Item</Button>
           <Button @on-click="handleMinusItem"><Icon><Dash/></Icon>Item</Button>
         </Flex>
@@ -67,7 +68,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, reactive } from 'vue'
+import { defineComponent, ref, reactive, computed } from 'vue'
 
 import {
   Grid, GridItem, Flex,
@@ -86,16 +87,14 @@ export default defineComponent({
     Icon, Plus, Dash
   },
   setup() {
-    const rows = ref('100px 100px 100px')
-    const columns = ref('200px 100px')
-    const autoRows = ref('')
-    const autoColumns = ref('')
-    const padding = ref(10)
+    const full = ref(false)
     const gap = ref(8)
     const flow = ref([])
+    const wrap = ref(false)
     const inline = ref(false)
+    const justifyCenter = ref('')
 
-    const items = reactive([{}, {}, {}, {}])
+    const items = reactive([{}, {}, {}])
 
     const handleAddItem = () => {
       items.push({})
@@ -106,9 +105,9 @@ export default defineComponent({
     }
 
     return {
-      rows, columns, autoRows, autoColumns,
-      padding,
-      gap, flow, inline,
+      full,
+      gap, flow, wrap, inline,
+      justifyCenter, 
       items, handleAddItem, handleMinusItem
     }
   }
@@ -117,12 +116,14 @@ export default defineComponent({
 
 <style scoped>
 .grid {
+  box-sizing: border-box;
   width: 100%;
   height: 400px;
   border: 1px solid var(--c-divider-light);
   overflow: hidden;
 }
 .container {
+  padding: 8px;
   overflow: scroll;
 }
 .side {
@@ -136,14 +137,16 @@ export default defineComponent({
   font-weight: bold;
 }
 
-.demo-grid {
+.demo-flex {
   background-color: #a8dadc;
 }
-.demo-griditem {
+.demo-block {
   position: relative;
+  width: 100px;
+  height: 28px;
   background-color: #457b9d;
 }
-.demo-griditem > .label {
+.demo-block > .label {
   position: absolute;
   top: 2px;
   left: 2px;

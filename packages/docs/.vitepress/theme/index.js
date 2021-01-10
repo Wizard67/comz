@@ -13,7 +13,7 @@ import GridNested from '../../components/grid/nested.vue'
 
 import ButtonBasic from '../../components/button/basic.vue'
 import ButtonUsage from '../../components/button/usage.vue'
-import ButtonIcon from '../../components/button/icon.vue'
+import ButtonIcons from '../../components/button/icons.vue'
 
 import CardDefault from '../../components/card/default.vue'
 import CardSlot from '../../components/card/slot.vue'
@@ -51,6 +51,7 @@ import IconBasic from '../../components/icon/basic.vue'
 import IconSpin from '../../components/icon/spin.vue'
 import IconStyle from '../../components/icon/style.vue'
 
+import FlexUsage from '../../components/flex/usage.vue'
 import FlexBasic from '../../components/flex/basic.vue'
 import FlexInline from '../../components/flex/inline.vue'
 import FlexWrap from '../../components/flex/wrap.vue'
@@ -83,7 +84,7 @@ export default {
 
     app.component('ButtonUsage', ButtonUsage)
     app.component('ButtonBasic', ButtonBasic)
-    app.component('ButtonIcon', ButtonIcon)
+    app.component('ButtonIcons', ButtonIcons)
 
     app.component('CardDefault', CardDefault)
     app.component('CardSlot', CardSlot)
@@ -121,6 +122,7 @@ export default {
     app.component('IconSpin', IconSpin)
     app.component('IconStyle', IconStyle)
 
+    app.component('FlexUsage', FlexUsage)
     app.component('FlexBasic', FlexBasic)
     app.component('FlexInline', FlexInline)
     app.component('FlexWrap', FlexWrap)

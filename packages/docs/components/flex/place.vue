@@ -1,18 +1,18 @@
 <template>
   <div class="box">
-    <Flex justify="center" align="stretch" fill>
+    <Flex>
       <Button>H</Button>
       <Button>start</Button>
     </Flex>
   </div>
   <div class="box">
-    <Flex center fill>
+    <Flex>
       <Button>H</Button>
       <Button>center</Button>
     </Flex>
   </div>
   <div class="box">
-    <Flex justify="space-between" align="flex-end" fill>
+    <Flex>
       <Button>H</Button>
       <Button>end</Button>
     </Flex>
@@ -21,19 +21,19 @@
   <br><br>
 
   <div class="box">
-    <Flex justify="center" align="stretch" fill vertical>
+    <Flex>
       <Button>V</Button>
       <Button>start</Button>
     </Flex>
   </div>
   <div class="box">
-    <Flex center fill vertical>
+    <Flex>
       <Button>V</Button>
       <Button>center</Button>
     </Flex>
   </div>
   <div class="box">
-    <Flex justify="space-between" align="flex-end" fill vertical>
+    <Flex>
       <Button>V</Button>
       <Button>end</Button>
     </Flex>

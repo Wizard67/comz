@@ -1,14 +1,14 @@
 <template>
-  <Flex gap="16px" vertical>
-    <Flex vertical>
+  <Flex gap="16px" flow="column">
+    <Flex flow="column">
       <div>value: {{value1}}</div>
       <Slider v-model="value1" :min="0" :max="50"></Slider>
     </Flex>
-    <Flex vertical>
+    <Flex flow="column">
       <div>value: {{value2}}</div>
       <Slider v-model="value2" :min="50" :max="100"></Slider>
     </Flex>
-    <Flex vertical>
+    <Flex flow="column">
       <div>value: {{value3}}</div>
       <Slider v-model="value3" :min="-50" :max="50"></Slider>
     </Flex>

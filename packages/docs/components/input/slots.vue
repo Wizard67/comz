@@ -1,6 +1,6 @@
 <template>
   <Flex wrap>
-    <Flex gap="16px" vertical inline>
+    <Flex gap="16px" flow="column">
       <Input class="input" v-model="value1" placeholder="normal">
         <template #prepend><Icon><Envelope /></Icon></template>
         <template #append>.com</template>
@@ -17,7 +17,7 @@
       </Input>
     </Flex>
 
-    <Flex gap="16px" vertical inline>
+    <Flex gap="16px" flow="column">
       <Input class="input" v-model="value2" placeholder="normal">
         <template #prepend>￥</template>
       </Input>
@@ -31,7 +31,7 @@
       </Input>
     </Flex>
 
-    <Flex gap="16px" vertical inline>
+    <Flex gap="16px" flow="column">
       <Input class="input" v-model="value3" placeholder="normal">
         <template #append><Icon link><MicFill /></Icon></template>
       </Input>
