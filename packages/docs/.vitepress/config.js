@@ -27,7 +27,11 @@ const components = [
   { text: '容器' },
   { text: 'Alert', link: '/components/alert/' },
   { text: 'Toast', link: '/components/toast/' },
-  { text: 'Tooltip', link: '/components/tooltip/' },
+  { text: 'Tooltip', link: '/components/tooltip/' }
+]
+
+const demos = [
+  { text: '布局', link: '/demo/layout/' }
 ]
 
 module.exports = {
@@ -55,12 +59,22 @@ module.exports = {
         {
           text: '组件',
           children: components
+        },
+        {
+          text: '示例',
+          children: demos
         }
       ],
       '/components/': [
         {
           text: '组件',
           children: components
+        }
+      ],
+      '/demo/': [
+        {
+          text: '示例',
+          children: demos
         }
       ]
     }

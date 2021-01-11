@@ -72,6 +72,11 @@ import SliderRange from '../../components/slider/range.vue'
 import SliderStep from '../../components/slider/step.vue'
 import SliderSlots from '../../components/slider/slots.vue'
 
+import LayoutDemo1 from '../../demo/layout/demo1.vue'
+import LayoutDemo2 from '../../demo/layout/demo2.vue'
+import LayoutDemo3 from '../../demo/layout/demo3.vue'
+import LayoutDemo4 from '../../demo/layout/demo4.vue'
+
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
@@ -142,5 +147,11 @@ export default {
     app.component('SliderRange', SliderRange)
     app.component('SliderStep', SliderStep)
     app.component('SliderSlots', SliderSlots)
+
+
+    app.component('LayoutDemo1', LayoutDemo1)
+    app.component('LayoutDemo2', LayoutDemo2)
+    app.component('LayoutDemo3', LayoutDemo3)
+    app.component('LayoutDemo4', LayoutDemo4)
   }
 }
