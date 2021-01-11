@@ -4,18 +4,23 @@
 .cgrid { @extend %grid; }
 .cgrid.cgrid--inline { @extend %grid--inline; }
 
-$grid-areas: var(--cgrid-areas);
-$grid-rows: var(--cgrid-rows);
-$grid-columns: var(--cgrid-columns);
-$grid-auto-rows: var(--cgrid-auto-rows);
-$grid-auto-columns: var(--cgrid-auto-columns);
-$grid-flow: var(--cgrid-flow);
-$grid-gap: var(--cgrid-gap, 0);
-$grid-padding: var(--cgrid-padding, 0);
+$areas: var(--cgrid-areas);
+$rows: var(--cgrid-rows);
+$columns: var(--cgrid-columns);
+$auto-rows: var(--cgrid-auto-rows);
+$auto-columns: var(--cgrid-auto-columns);
+$flow: var(--cgrid-flow);
+$gap: var(--cgrid-gap, 0);
+$place-content: var(--cgrid-place-content, stretch);
+$width: var(--cgrid-width);
+$height: var(--cgrid-height);
+$padding: var(--cgrid-padding, 0);
 
 .cgrid-item { @extend %grid-item; }
 
-$grid-item-area: var(--cgrid-item-area);
+$item-area: var(--cgrid-item-area);
+$item-place-items: var(--cgrid-item-place-items, flex-start);
+$item-padding: var(--cgrid-item-padding);
 
 %grid {
   --cgrid-areas: initial;
@@ -28,30 +33,30 @@ $grid-item-area: var(--cgrid-item-area);
   --cgrid-gap: initial;
 
   --display: initial;
-  --width: initial;
-  --height: initial;
 
   display: var(--display, grid);
-  grid-template-areas: $grid-areas;
-  grid-template-rows: $grid-rows;
-  grid-template-columns: $grid-columns;
-  grid-auto-rows: $grid-auto-rows;
-  grid-auto-columns: $grid-auto-columns;
-  grid-auto-flow: $grid-flow;
-  grid-gap: $grid-gap;
-  width: var(--width, 100%);
-  height: var(--height, 100%);
-  padding: $grid-padding;
+  grid-template-areas: $areas;
+  grid-template-rows: $rows;
+  grid-template-columns: $columns;
+  grid-auto-rows: $auto-rows;
+  grid-auto-columns: $auto-columns;
+  grid-auto-flow: $flow;
+  grid-gap: $gap;
+  place-content: $place-content;
+  width: $width;
+  height: $height;
+  padding: $padding;
 }
 
 %grid--inline {
   --display: inline-grid;
-  --width: auto;
-  --height: auto;
 }
 
 %grid-item {
   --cgrid-item-area: initial;
 
-  grid-area: $grid-item-area;
+  display: grid;
+  grid-area: $item-area;
+  place-items: $item-place-items;
+  padding: $item-padding;
 }

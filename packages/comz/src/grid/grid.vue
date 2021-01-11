@@ -17,9 +17,12 @@ const props = defineProps({
   autoRows: string(),
   autoColumns: string(),
   flow: string(),
-  padding: string(),
   gap: string(),
-  inline: bool().isRequired
+  inline: bool().isRequired,
+  placeContent: string(),
+  width: string(),
+  height: string(),
+  padding: string()
 })
 
 const {
@@ -31,7 +34,10 @@ const {
   flow,
   padding,
   gap,
-  inline
+  inline,
+  placeContent,
+  width,
+  height
 } = toRefs(props)
 
 const className = useBEM(({ b, m }) => ({
@@ -46,7 +52,10 @@ const cssVars = useCssVars({
   '--cgrid-auto-rows': autoRows,
   '--cgrid-auto-columns': autoColumns,
   '--cgrid-flow': flow,
-  '--cgrid-padding': padding,
-  '--cgrid-gap': gap
+  '--cgrid-gap': gap,
+  '--cgrid-place-content': placeContent,
+  '--cgrid-width': width,
+  '--cgrid-height': height,
+  '--cgrid-padding': padding
 })
 </script>

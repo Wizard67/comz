@@ -11,12 +11,16 @@ import { useCssVars } from '@comz/vca'
 import { string } from 'vue-types'
 
 const props = defineProps({
-  area: string()
+  area: string(),
+  padding: string(),
+  placeItems: string()
 })
 
-const { area } = toRefs(props)
+const { padding, area, placeItems } = toRefs(props)
 
 const cssStyle = useCssVars({
-  '--cgrid-item-area': area
+  '--cgrid-item-area': area,
+  '--cgrid-item-padding': padding,
+  '--cgrid-item-place-items': placeItems
 })
 </script>
