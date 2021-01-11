@@ -18,10 +18,9 @@ $align-items: var(--cflex-align-items, flex-start);
   --cflex-align: initial;
   --cflex-justify: initial;
 
-  --display: initial;
   --flex-wrap: initial;
 
-  display: var(--display, flex);
+  display: flex;
   flex-direction: $flow;
   justify-content: $justify-center;
   align-content: $align-center;
@@ -29,6 +28,7 @@ $align-items: var(--cflex-align-items, flex-start);
   align-items: $align-items;
   flex-wrap: var(--flex-wrap, initial);
   gap: $gap;
+  max-width: 100%;
   height: auto;
 
   & > * {
@@ -37,7 +37,7 @@ $align-items: var(--cflex-align-items, flex-start);
 }
 
 %flex--inline {
-  --display: inline-flex;
+  display: inline-flex; /* should work with flex-gap-polyfill */
 }
 
 %flex--wrap {
