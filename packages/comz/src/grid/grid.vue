@@ -9,7 +9,7 @@ import { defineProps } from 'vue'
 import { toRefs } from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
 import { string, bool } from 'vue-types'
-import { useCssPlace } from '../utils/useCssPlace'
+import { useCssShorthand } from '../utils/useCssShorthand'
 
 const props = defineProps({
   areas: string(),
@@ -46,7 +46,7 @@ const className = useBEM(({ b, m }) => ({
   [m('inline')]: inline
 }))
 
-const { align, justify } = useCssPlace(placeContent)
+const [ align, justify ] = useCssShorthand(placeContent)
 
 const cssVars = useCssVars({
   '--cgrid-areas': areas,

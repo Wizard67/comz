@@ -9,7 +9,7 @@ import { defineProps } from 'vue'
 import { toRefs } from 'vue'
 import { useCssVars } from '@comz/vca'
 import { string } from 'vue-types'
-import { useCssPlace } from '../utils/useCssPlace'
+import { useCssShorthand } from '../utils/useCssShorthand'
 
 const props = defineProps({
   area: string(),
@@ -19,7 +19,7 @@ const props = defineProps({
 
 const { padding, area, placeItems } = toRefs(props)
 
-const { align, justify } = useCssPlace(placeItems)
+const [ align, justify ] = useCssShorthand(placeItems)
 
 const cssStyle = useCssVars({
   '--cgrid-item-area': area,

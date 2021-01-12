@@ -31,8 +31,12 @@ $item-padding: var(--cgrid-item-padding);
   --cgrid-auto-rows: initial;
   --cgrid-auto-columns: initial;
   --cgrid-flow: initial;
-  --cgrid-padding: initial;
   --cgrid-gap: initial;
+  --cgrid-align-content: initial;
+  --cgrid-justify-content: initial;
+  --cgrid-width: initial;
+  --cgrid-height: initial;
+  --cgrid-padding: initial;
 
   --display: initial;
 
@@ -57,6 +61,9 @@ $item-padding: var(--cgrid-item-padding);
 
 %grid-item {
   --cgrid-item-area: initial;
+  --cgrid-item-align-items: initial;
+  --cgrid-item-justify-items: initial;
+  --cgrid-item-padding: initial;
 
   display: grid;
   grid-area: $item-area;
