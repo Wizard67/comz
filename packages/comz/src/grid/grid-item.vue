@@ -9,6 +9,7 @@ import { defineProps } from 'vue'
 import { toRefs } from 'vue'
 import { useCssVars } from '@comz/vca'
 import { string } from 'vue-types'
+import { useCssPlace } from '../utils/useCssPlace'
 
 const props = defineProps({
   area: string(),
@@ -18,9 +19,12 @@ const props = defineProps({
 
 const { padding, area, placeItems } = toRefs(props)
 
+const { align, justify } = useCssPlace(placeItems)
+
 const cssStyle = useCssVars({
   '--cgrid-item-area': area,
   '--cgrid-item-padding': padding,
-  '--cgrid-item-place-items': placeItems
+  '--cgrid-item-align-items': align,
+  '--cgrid-item-justify-items': justify
 })
 </script>

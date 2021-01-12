@@ -12,25 +12,37 @@
 import { defineProps } from 'vue'
 import { ref, toRefs, computed } from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
-import { string, bool, oneOf } from 'vue-types'
+import { string, bool } from 'vue-types'
 import { useFlexPolyfillGapItem } from './utils'
+import { useCssPlace } from '../utils/useCssPlace'
 
 const props = defineProps({
   inline: bool().isRequired,
   wrap: bool().isRequired,
   gap: string(),
-  flow: oneOf(['', 'row', 'column', 'row-reverse', 'column-reverse']),
-  justifyCenter: oneOf(['', 'flex-start', 'center', 'flex-end', 'baseline', 'stretch', 'space-between', 'space-around', 'space-evenly']),
-  alignCenter: oneOf(['', 'flex-start', 'center', 'flex-end', 'baseline', 'stretch', 'space-between', 'space-around', 'space-evenly']),
-  justifyItems: oneOf(['', 'flex-start', 'center', 'flex-end', 'baseline', 'stretch']),
-  alignItems: oneOf(['', 'flex-start', 'center', 'flex-end', 'baseline', 'stretch'])
+  flow: string(),
+  placeContent: string(),
+  placeItems: string(),
+  placeSelf: string()
 })
 
-const { inline, wrap, gap, flow, justifyCenter, alignCenter, justifyItems, alignItems } = toRefs(props)
+const {
+  inline,
+  wrap,
+  gap,
+  flow,
+  placeContent,
+  placeItems,
+  placeSelf
+} = toRefs(props)
 
 const flexRef = ref<HTMLLIElement | null>(null)
 
 useFlexPolyfillGapItem(flexRef, computed(() => props.gap ?? '8px'))
+
+const { align: alignCenter, justify: justifyCenter } = useCssPlace(placeContent)
+const { align: alignItems, justify: justifyItems } = useCssPlace(placeItems)
+const { align: alignSelf, justify: justifySelf } = useCssPlace(placeSelf)
 
 const className = useBEM(({ b, m }) => ({
   [b('cflex')]: true,
@@ -41,9 +53,11 @@ const className = useBEM(({ b, m }) => ({
 const cssVars = useCssVars({
   '--cflex-gap': gap,
   '--cflex-flow': flow,
-  '--cflex-justify-center': justifyCenter,
   '--cflex-align-center': alignCenter,
+  '--cflex-justify-center': justifyCenter,
+  '--cflex-align-items': alignItems,
   '--cflex-justify-items': justifyItems,
-  '--cflex-align-items': alignItems
+  '--cflex-align-self': alignSelf,
+  '--cflex-justify-self': justifySelf
 })
 </script>

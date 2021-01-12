@@ -11,7 +11,8 @@ $auto-rows: var(--cgrid-auto-rows);
 $auto-columns: var(--cgrid-auto-columns);
 $flow: var(--cgrid-flow);
 $gap: var(--cgrid-gap, 0);
-$place-content: var(--cgrid-place-content, stretch);
+$align-content: var(--cgrid-align-content, stretch);
+$justify-content: var(--cgrid-justify-content, stretch);
 $width: var(--cgrid-width);
 $height: var(--cgrid-height);
 $padding: var(--cgrid-padding, 0);
@@ -19,7 +20,8 @@ $padding: var(--cgrid-padding, 0);
 .cgrid-item { @extend %grid-item; }
 
 $item-area: var(--cgrid-item-area);
-$item-place-items: var(--cgrid-item-place-items, flex-start);
+$item-align-items: var(--cgrid-item-align-items, flex-start);
+$item-justify-items: var(--cgrid-item-justify-items, flex-start);
 $item-padding: var(--cgrid-item-padding);
 
 %grid {
@@ -42,7 +44,8 @@ $item-padding: var(--cgrid-item-padding);
   grid-auto-columns: $auto-columns;
   grid-auto-flow: $flow;
   grid-gap: $gap;
-  place-content: $place-content;
+  align-content: $align-content;
+  justify-content: $justify-content;
   width: $width;
   height: $height;
   padding: $padding;
@@ -57,6 +60,7 @@ $item-padding: var(--cgrid-item-padding);
 
   display: grid;
   grid-area: $item-area;
-  place-items: $item-place-items;
+  align-items: $item-align-items;
+  justify-items: $item-justify-items;
   padding: $item-padding;
 }

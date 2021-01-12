@@ -9,6 +9,7 @@ import { defineProps } from 'vue'
 import { toRefs } from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
 import { string, bool } from 'vue-types'
+import { useCssPlace } from '../utils/useCssPlace'
 
 const props = defineProps({
   areas: string(),
@@ -45,6 +46,8 @@ const className = useBEM(({ b, m }) => ({
   [m('inline')]: inline
 }))
 
+const { align, justify } = useCssPlace(placeContent)
+
 const cssVars = useCssVars({
   '--cgrid-areas': areas,
   '--cgrid-rows': rows,
@@ -53,7 +56,8 @@ const cssVars = useCssVars({
   '--cgrid-auto-columns': autoColumns,
   '--cgrid-flow': flow,
   '--cgrid-gap': gap,
-  '--cgrid-place-content': placeContent,
+  '--cgrid-align-content': align,
+  '--cgrid-justify-content': justify,
   '--cgrid-width': width,
   '--cgrid-height': height,
   '--cgrid-padding': padding
