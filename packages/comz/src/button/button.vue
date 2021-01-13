@@ -5,9 +5,7 @@
     :disabled="disabled"
     @click="handleClick"
   >
-    <Flex gap="4px">
-      <slot />
-    </Flex>
+    <slot />
   </button>
 </template>
 
@@ -16,8 +14,6 @@ import { defineProps, defineEmit } from 'vue'
 import { toRefs, computed } from 'vue'
 import { useBEM } from '@comz/vca'
 import { oneOf, bool } from 'vue-types'
-
-import { Flex } from 'comz'
 
 const props = defineProps({
   type: oneOf(['', 'default', 'primary', 'text']).def(''),

@@ -53,8 +53,16 @@
         </Form>
 
         <Flex place-content="center">
-          <Button @on-click="handleAddItem"><Icon><Plus/></Icon>Item</Button>
-          <Button @on-click="handleMinusItem"><Icon><Dash/></Icon>Item</Button>
+          <Button @on-click="handleAddItem">
+            <Flex gap="4px">
+              <Icon><Plus/></Icon>Item
+            </Flex>
+          </Button>
+          <Button @on-click="handleMinusItem">
+            <Flex gap="4px">
+              <Icon><Dash/></Icon>Item
+            </Flex>
+          </Button>
         </Flex>
       </Flex>
     </GridItem>

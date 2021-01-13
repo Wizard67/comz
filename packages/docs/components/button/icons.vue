@@ -2,43 +2,61 @@
   <Flex gap="16px" flow="column">
     <Flex>
       <Button>
-        <Icon><EmojiSmileFill/></Icon>Smile
+        <Flex gap="4px">
+          <Icon><EmojiSmileFill/></Icon>Smile
+        </Flex>
       </Button>
 
       <Button>
-        <Icon><Gem/></Icon>Gem<Icon><Gem/></Icon>
+        <Flex gap="4px">
+          <Icon><Gem/></Icon>Gem<Icon><Gem/></Icon>
+        </Flex>
       </Button>
 
       <Button>
-        Heart<Icon><HeartFill/></Icon>
+        <Flex gap="4px">
+          Heart<Icon><HeartFill/></Icon>
+        </Flex>
       </Button>
     </Flex>
 
     <Flex>
       <Button type="primary">
-        <Icon><EmojiSmileFill/></Icon>Smile
+        <Flex gap="4px">
+          <Icon><EmojiSmileFill/></Icon>Smile
+        </Flex>
       </Button>
 
       <Button type="primary">
-        <Icon><Gem/></Icon>Gem<Icon><Gem/></Icon>
+        <Flex gap="4px">
+          <Icon><Gem/></Icon>Gem<Icon><Gem/></Icon>
+        </Flex>
       </Button>
 
       <Button type="primary">
-        Heart<Icon><HeartFill/></Icon>
+        <Flex gap="4px">
+          Heart<Icon><HeartFill/></Icon>
+        </Flex>
       </Button>
     </Flex>
 
     <Flex>
       <Button type="text">
-        <Icon><EmojiSmileFill/></Icon>Smile
+        <Flex gap="4px">
+          <Icon><EmojiSmileFill/></Icon>Smile
+        </Flex>
       </Button>
 
       <Button type="text">
-        <Icon><Gem/></Icon>Gem<Icon><Gem/></Icon>
+        <Flex gap="4px">
+          <Icon><Gem/></Icon>Gem<Icon><Gem/></Icon>
+        </Flex>
       </Button>
 
       <Button type="text">
-        Heart<Icon><HeartFill/></Icon>
+        <Flex gap="4px">
+          Heart<Icon><HeartFill/></Icon>
+        </Flex>
       </Button>
     </Flex>
   </Flex>

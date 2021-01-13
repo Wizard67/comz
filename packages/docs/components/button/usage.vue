@@ -3,13 +3,13 @@
     class="grid"
     columns="auto 200px"
   >
-    <GridItem>
-      <Flex full justify-center="center" align-items="center">
-        <Button v-bind="atts" :type="type">
+    <GridItem place-items="center">
+      <Button v-bind="atts" :type="type">
+        <Flex gap="4px">
           <Icon v-if="props.includes('icon')"><HeartFill/></Icon>
           {{ text }}
-        </Button>
-      </Flex>
+        </Flex>
+      </Button>
     </GridItem>
 
     <GridItem>
