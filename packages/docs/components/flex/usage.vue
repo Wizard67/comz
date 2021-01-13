@@ -1,16 +1,17 @@
 <template>
   <Grid
     class="grid"
-    columns="auto 300px"
+    columns="auto 330px"
   >
-    <GridItem class="container">
+    <GridItem padding="8px">
       <Flex
-        class="demo-flex"
-        :style="full ? 'height: 382px' : ''"
+        :style="full ? 'height: 382px; width: 100%;' : ''"
         :gap="`${gap}px`"
         :wrap="wrap"
         :inline="inline"
         :flow="(flow.sort((a, b) => a === 'reverse' ? 1 : -1)).join('-')"
+        :place-content="placeContent"
+        :place-items="placeItems"
       >
         <template v-for="(item, index) in items" :key="index">
           <div class="demo-block">
@@ -23,9 +24,12 @@
     <GridItem>
       <Flex class="side" flow="column">
         <div class="title">Props</div>
-        <Form label-width="60px" label-align="left">
+        <Form label-width="100px" label-align="left">
           <FormItem label="full">
             <Switch v-model="full"></Switch>
+          </FormItem>
+          <FormItem label="inline">
+            <Switch v-model="inline"></Switch>
           </FormItem>
           <FormItem label="gap">
             <Slider v-model="gap" :min="0" :max="20"></Slider>
@@ -40,25 +44,15 @@
           <FormItem label="wrap">
             <Switch v-model="wrap"></Switch>
           </FormItem>
-          <FormItem label="inline">
-            <Switch v-model="inline"></Switch>
+          <FormItem label="place-content">
+            <Input v-model="placeContent" placeholder="place-content"></Input>
           </FormItem>
-          <FormItem label="justify-center">
-            <Select v-model="justifyCenter" placeholder="justify-center" style="width: 174px;">
-              <Option label="" value=""></Option>
-              <Option label="flex-start" value="flex-start">flex-start</Option>
-              <Option label="center" value="center">center</Option>
-              <Option label="flex-end" value="flex-end">flex-end</Option>
-              <Option label="baseline" value="baseline">baseline</Option>
-              <Option label="stretch" value="stretch">stretch</Option>
-              <Option label="space-between" value="space-between">space-between</Option>
-              <Option label="space-around" value="space-around">space-around</Option>
-              <Option label="space-evenly" value="space-evenly">space-evenly</Option>
-            </Select>
+          <FormItem label="place-items">
+            <Input v-model="placeItems" placeholder="place-items"></Input>
           </FormItem>
         </Form>
 
-        <Flex full justify-content="center">
+        <Flex place-content="center">
           <Button @on-click="handleAddItem"><Icon><Plus/></Icon>Item</Button>
           <Button @on-click="handleMinusItem"><Icon><Dash/></Icon>Item</Button>
         </Flex>
@@ -90,9 +84,10 @@ export default defineComponent({
     const full = ref(false)
     const gap = ref(8)
     const flow = ref([])
-    const wrap = ref(false)
+    const wrap = ref(true)
     const inline = ref(false)
-    const justifyCenter = ref('')
+    const placeContent = ref('center')
+    const placeItems = ref('')
 
     const items = reactive([{}, {}, {}])
 
@@ -107,7 +102,7 @@ export default defineComponent({
     return {
       full,
       gap, flow, wrap, inline,
-      justifyCenter, 
+      placeContent, placeItems,
       items, handleAddItem, handleMinusItem
     }
   }
@@ -120,11 +115,6 @@ export default defineComponent({
   width: 100%;
   height: 400px;
   border: 1px solid var(--c-divider-light);
-  overflow: hidden;
-}
-.container {
-  padding: 8px;
-  overflow: scroll;
 }
 .side {
   box-sizing: border-box;
@@ -137,12 +127,9 @@ export default defineComponent({
   font-weight: bold;
 }
 
-.demo-flex {
-  background-color: #a8dadc;
-}
 .demo-block {
   position: relative;
-  width: 100px;
+  width: 90px;
   height: 28px;
   background-color: #457b9d;
 }

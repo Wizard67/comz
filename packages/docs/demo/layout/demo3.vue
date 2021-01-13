@@ -24,7 +24,6 @@
       </template>
     </Grid>
 
-
     <Grid width="100%" columns="repeat(12, 8.33%)">
       <GridItem place-items="center" area="1 / 5 / -1 / span 2">offset 4 span 2</GridItem>
       <GridItem place-items="center" area="1 / -4 / -1 / span 3">offset 9 span 3</GridItem>

@@ -10,6 +10,7 @@
     <Button>eight</Button>
     <Button>nine</Button>
     <Button>ten</Button>
+    <Button>eleven</Button>
   </Flex>
 </template>
 

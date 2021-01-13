@@ -1,20 +1,23 @@
 <template>
   <section
-    ref="flexRef"
     :class="className"
     :style="cssVars"
   >
-    <slot />
+    <template v-for="(item, index) in slots" :key="index">
+      <div class="cflex__item">
+        <component :is="item" />
+      </div>
+    </template>
   </section>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
-import { ref, toRefs, computed } from 'vue'
+import { defineProps, useContext } from 'vue'
+import { toRefs, computed } from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
 import { string, bool } from 'vue-types'
-import { useFlexPolyfillGapItem } from './utils'
-import { useCssPlace } from '../utils/useCssPlace'
+import { getVnodes } from './utils'
+import { useCssShorthand } from '../utils/useCssShorthand'
 
 const props = defineProps({
   inline: bool().isRequired,
@@ -26,6 +29,10 @@ const props = defineProps({
   placeSelf: string()
 })
 
+const content = useContext()
+// filter vnode which type is comment
+const slots = computed(() => getVnodes(content.slots?.default?.() || []))
+
 const {
   inline,
   wrap,
@@ -36,13 +43,10 @@ const {
   placeSelf
 } = toRefs(props)
 
-const flexRef = ref<HTMLLIElement | null>(null)
-
-useFlexPolyfillGapItem(flexRef, computed(() => props.gap ?? '8px'))
-
-const { align: alignCenter, justify: justifyCenter } = useCssPlace(placeContent)
-const { align: alignItems, justify: justifyItems } = useCssPlace(placeItems)
-const { align: alignSelf, justify: justifySelf } = useCssPlace(placeSelf)
+const [ rowGap, columnGap ] = useCssShorthand(gap)
+const [ alignContent, justifyContent ] = useCssShorthand(placeContent)
+const [ alignItems, justifyItems ] = useCssShorthand(placeItems)
+const [ alignSelf, justifySelf ] = useCssShorthand(placeSelf)
 
 const className = useBEM(({ b, m }) => ({
   [b('cflex')]: true,
@@ -52,9 +56,11 @@ const className = useBEM(({ b, m }) => ({
 
 const cssVars = useCssVars({
   '--cflex-gap': gap,
+  '--cflex-row-gap': rowGap,
+  '--cflex-column-gap': columnGap,
   '--cflex-flow': flow,
-  '--cflex-align-center': alignCenter,
-  '--cflex-justify-center': justifyCenter,
+  '--cflex-align-content': alignContent,
+  '--cflex-justify-content': justifyContent,
   '--cflex-align-items': alignItems,
   '--cflex-justify-items': justifyItems,
   '--cflex-align-self': alignSelf,

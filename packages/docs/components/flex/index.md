@@ -2,8 +2,6 @@
 
 组件用于设置内容的间距和对齐方式。
 
-> 在实现上依赖了 [`flex-gap-polyfill`](https://github.com/limitlessloop/flex-gap-polyfill) 来做浏览器兼容，如果遇到 `margins collapse`，可以创建一个 [`BFC（块级格式上下文）`](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context) 解决。
-
 ## 用例
 
 <FlexUsage/>

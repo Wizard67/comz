@@ -9,7 +9,7 @@
   </div>
 
   <div class="box">
-    <Flex flow="column" wrap>
+    <Flex flow="column" wrap style="height: 100px">
       <Button>one</Button>
       <Button>two</Button>
       <Button>three</Button>

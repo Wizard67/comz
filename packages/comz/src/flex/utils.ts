@@ -1,29 +1,20 @@
-import { watch } from "vue"
-import type { Ref } from 'vue'
+import type { VNode } from 'vue'
+import { Comment, Fragment } from 'vue'
 
-const setStyleVar = (element: HTMLElement, gap: Ref<string> ) => {
-  Array.from(element?.children ?? []).map((item) => {
-    if (Array.from(item?.classList ?? []).includes('cflex')) {
-      (item as HTMLLIElement).style.setProperty(`--fgp-has-polyfil_gap-item`, gap.value)
-    }
+function findVNodes (target: VNode[], arr: VNode[]) {
+  target.map(vn => {
+    if (vn.type === Comment) return
+
+    vn.type !== Fragment
+    ? arr.push(vn)
+    : findVNodes(vn.children as VNode[], arr)
   })
 }
 
-export const useFlexPolyfillGapItem = (
-  targetRef: Ref<HTMLElement | null>,
-  value: Ref<string>
-) => {
+export function getVnodes (vnodes: VNode[]) {
+  const arr: VNode[] = []
 
-  watch(targetRef, (element, _, cleanUp) => {
-    if (!element) return
+  findVNodes(vnodes, arr)
 
-    setStyleVar(element, value)
-
-    const observer = new MutationObserver(() => {
-      setStyleVar(element, value)
-    })
-    observer.observe(element, { attributes: true })
-
-    cleanUp(() => observer.disconnect())
-  }, { flush: 'post' })
+  return arr
 }
