@@ -7863,10 +7863,10 @@ vinyl@^2.0.0:
     remove-trailing-separator "^1.0.1"
     replace-ext "^1.0.0"
 
-vite@^2.0.0-beta.8:
-  version "2.0.0-beta.17"
-  resolved "https://registry.npmjs.org/vite/-/vite-2.0.0-beta.17.tgz#5e9992d0765ea8467e4c961274faa7d583164c1b"
-  integrity sha512-wjygLMmjRUMwCwngtu/c4H6ZrGm8D2f7skqlS1ANGvwM7IbR98gR68bWpAAG/BUWRfLxBeQRUkDEQRR5xh9t8Q==
+vite@^2.0.0-beta.21:
+  version "2.0.0-beta.27"
+  resolved "https://registry.npmjs.org/vite/-/vite-2.0.0-beta.27.tgz#a2e4b3a698e67c89fd963ff51ee5283ec564c65c"
+  integrity sha512-1fGPjSVE4MmCGVguFy7pPurCLnvHu4fJSzVjejd9GoFqCNie+JKCpe3KGsxIb9B8ot/aDd4ISCB0+fH1/01FUA==
   dependencies:
     esbuild "^0.8.26"
     postcss "^8.2.1"
@@ -7875,10 +7875,10 @@ vite@^2.0.0-beta.8:
   optionalDependencies:
     fsevents "~2.1.2"
 
-vitepress@^0.10.7:
-  version "0.10.7"
-  resolved "https://registry.npmjs.org/vitepress/-/vitepress-0.10.7.tgz#53ce1f735cf765fc50ed07cb0a7d5ae4fb92ef29"
-  integrity sha512-6ZnH3WIYL58E5ddKCDzihI2UKUOD24e15jfi2YEbiMI3Eb6cZwfFehiZUoSVFQ38sJ6/Vh9p8SzH92w+OlXXFQ==
+vitepress@^0.11.3:
+  version "0.11.3"
+  resolved "https://registry.npmjs.org/vitepress/-/vitepress-0.11.3.tgz#bcc1b06792a3786175f72a1735ea4dc724d14c85"
+  integrity sha512-9WaZzlJgmOYXlMoTGaROP1npCp1A6V6BYB2nbYucsID0aTrm79p18Tdg2OEjG8X3iAOgN2PX5c1IXmrUneycqA==
   dependencies:
     "@docsearch/css" "^1.0.0-alpha.28"
     "@docsearch/js" "^1.0.0-alpha.28"
@@ -7905,7 +7905,7 @@ vitepress@^0.10.7:
     prismjs "^1.20.0"
     sirv "^1.0.10"
     slash "^3.0.0"
-    vite "^2.0.0-beta.8"
+    vite "^2.0.0-beta.21"
     vue "^3.0.5"
 
 vue-jest@^5.0.0-alpha.7:
