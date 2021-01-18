@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import { defineProps, useContext } from 'vue'
-import { toRefs, computed } from 'vue'
+import { toRefs, computed, getCurrentInstance } from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
 import { string, bool } from 'vue-types'
 import { getVnodes } from './utils'
@@ -29,7 +29,10 @@ const props = defineProps({
   placeSelf: string()
 })
 
+const instance = getCurrentInstance()!
 const content = useContext()
+content.expose(instance['ctx'])
+
 // filter vnode which type is comment
 const slots = computed(() => getVnodes(content.slots?.default?.() || []))
 

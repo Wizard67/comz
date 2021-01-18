@@ -33,7 +33,7 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmit } from 'vue'
-import { computed, toRefs } from 'vue'
+import { computed, toRefs, useContext, getCurrentInstance } from 'vue'
 import { useBEM } from '@comz/vca'
 import { string, bool } from 'vue-types'
 
@@ -53,6 +53,10 @@ const emit = defineEmit([
   'on-blur',
   'on-clear'
 ])
+
+const instance = getCurrentInstance()!
+const { expose } = useContext()
+expose(instance['ctx'])
 
 const { readonly, disabled } = toRefs(props)
 

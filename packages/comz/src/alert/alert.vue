@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmit } from 'vue'
-import { toRefs } from 'vue'
+import { toRefs, useContext, getCurrentInstance } from 'vue'
 import { useCssVars } from '@comz/vca'
 import { string, bool } from 'vue-types'
 
@@ -27,6 +27,10 @@ const emit = defineEmit([
   'update:show',
   'on-close'
 ])
+
+const instance = getCurrentInstance()!
+const { expose } = useContext()
+expose(instance['ctx'])
 
 const { color } = toRefs(props)
 

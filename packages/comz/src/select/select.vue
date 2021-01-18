@@ -26,7 +26,7 @@ import type { Ref } from 'vue'
 import type { Handler } from './utils'
 
 import { defineProps, defineEmit } from 'vue'
-import { ref, toRefs, computed, provide, getCurrentInstance } from 'vue'
+import { ref, toRefs, computed, provide, useContext, getCurrentInstance } from 'vue'
 import { useBEM, useToggle } from '@comz/vca'
 import { oneOfType, string, bool } from 'vue-types'
 import { useClickOutSide, isEmpty } from './utils'
@@ -44,9 +44,13 @@ const emit = defineEmit([
   'update:modelValue'
 ])
 
+const instance = getCurrentInstance()!
+const { expose } = useContext()
+expose(instance['ctx'])
+
 const { modelValue, placeholder, disabled } = toRefs(props)
 
-const uid = getCurrentInstance()?.uid
+const uid = instance.uid
 const label = ref('')
 
 const { state: expand, toggle } = useToggle(false)

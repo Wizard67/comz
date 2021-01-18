@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmit } from 'vue'
-import { computed, toRefs } from 'vue'
+import { computed, toRefs, useContext, getCurrentInstance } from 'vue'
 import { useBEM,  useCssVars } from '@comz/vca'
 import { string, number, bool } from 'vue-types'
 
@@ -31,6 +31,10 @@ const props = defineProps({
 const emit = defineEmit([
   'update:modelValue'
 ])
+
+const instance = getCurrentInstance()!
+const { expose } = useContext()
+expose(instance['ctx'])
 
 const { rows, disabled, width } = toRefs(props)
 

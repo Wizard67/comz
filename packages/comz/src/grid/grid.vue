@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue'
-import { toRefs } from 'vue'
+import { toRefs, useContext, getCurrentInstance } from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
 import { string, bool } from 'vue-types'
 import { useCssShorthand } from '../utils/useCssShorthand'
@@ -25,6 +25,10 @@ const props = defineProps({
   height: string(),
   padding: string()
 })
+
+const instance = getCurrentInstance()!
+const { expose } = useContext()
+expose(instance['ctx'])
 
 const {
   areas,

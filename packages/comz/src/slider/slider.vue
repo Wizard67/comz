@@ -19,7 +19,7 @@ import type { Ref, WatchStopHandle } from 'vue'
 import type { MouseState } from '@comz/vca'
 
 import { defineProps, defineEmit } from 'vue'
-import { ref, toRefs, computed, watchEffect, watch } from 'vue'
+import { ref, toRefs, computed, watchEffect, watch, useContext, getCurrentInstance } from 'vue'
 import { useEvent, useMouse, useBEM, useCssVars } from '@comz/vca'
 import { strip } from 'number-precision'
 import { number, bool } from 'vue-types'
@@ -36,6 +36,10 @@ const props = defineProps({
 const emit = defineEmit([
   'update:modelValue'
 ])
+
+const instance = getCurrentInstance()!
+const { expose } = useContext()
+expose(instance['ctx'])
 
 const { disabled } = toRefs(props)
 

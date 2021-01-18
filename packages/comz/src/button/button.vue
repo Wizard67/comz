@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmit } from 'vue'
-import { toRefs, computed } from 'vue'
+import { toRefs, computed, useContext, getCurrentInstance } from 'vue'
 import { useBEM } from '@comz/vca'
 import { oneOf, bool } from 'vue-types'
 
@@ -25,6 +25,10 @@ const props = defineProps({
 const emit = defineEmit([
   'on-click'
 ])
+
+const instance = getCurrentInstance()!
+const { expose } = useContext()
+expose(instance['ctx'])
 
 const { type, danger, loading, disabled } = toRefs(props)
 

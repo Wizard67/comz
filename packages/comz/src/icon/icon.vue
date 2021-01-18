@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmit } from 'vue'
-import { toRefs } from 'vue'
+import { toRefs, useContext, getCurrentInstance } from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
 import { string, bool } from 'vue-types'
 
@@ -24,6 +24,10 @@ const props = defineProps({
 const emit = defineEmit([
   'on-click'
 ])
+
+const instance = getCurrentInstance()!
+const { expose } = useContext()
+expose(instance['ctx'])
 
 const { spin, link, size, color } = toRefs(props)
 

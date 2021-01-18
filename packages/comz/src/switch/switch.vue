@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmit } from 'vue'
-import { toRefs } from 'vue'
+import { toRefs, useContext, getCurrentInstance } from 'vue'
 import { useBEM } from '@comz/vca'
 import { bool } from 'vue-types'
 
@@ -26,6 +26,10 @@ const props = defineProps({
 const emit = defineEmit([
   'update:modelValue'
 ])
+
+const instance = getCurrentInstance()!
+const { expose } = useContext()
+expose(instance['ctx'])
 
 const { modelValue, disabled } = toRefs(props)
 
