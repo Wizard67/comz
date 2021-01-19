@@ -16,7 +16,21 @@
   "license": "MIT",
   "scripts": {
     "build": "yarn workspaces run build",
+    "lint": "yarn lint:ts && yarn lint:vue",
+    "lint:ts": "prettier --check --write --parser typescript \"packages/**/*.ts\"",
+    "lint:vue": "prettier --check --write --parser vue \"packages/**/*.vue\"",
     "test": "jest"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --parser=typescript --write"
+    ],
+    "*.vue": [
+      "prettier --parser=vue --write"
+    ]
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -28,13 +42,16 @@
     "babel-jest": "^26.3.0",
     "jest": "^26.5.3",
     "jest-mock-warn": "^1.1.0",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1",
     "rollup": "^2.26.10",
     "rollup-plugin-typescript2": "^0.28.0",
     "rollup-plugin-vue": "^6.0.0",
     "ts-jest": "^26.4.1",
     "typescript": "^4.1.2",
     "vue": "^3.0.5",
-    "vue-jest": "^5.0.0-alpha.7"
+    "vue-jest": "^5.0.0-alpha.7",
+    "yorkie": "^2.0.0"
   },
   "dependencies": {}
 }
