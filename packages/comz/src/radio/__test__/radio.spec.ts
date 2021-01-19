@@ -66,7 +66,7 @@ describe('Radio.vue', () => {
 
   describe('slots', () => {
     it('default', () => {
-      const content = "text"
+      const content = 'text'
 
       const wrapper = mount(Radio, {
         props: {

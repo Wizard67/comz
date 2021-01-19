@@ -1,11 +1,7 @@
 <template>
   <teleport to="body">
     <transition name="ctoast">
-      <div
-        v-if="show"
-        class="ctoast"
-        :style="cssVars"
-      >
+      <div v-if="show" class="ctoast" :style="cssVars">
         <div class="ctoast__icon">
           <Icon>
             <component :is="icon"></component>
@@ -20,8 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmit } from 'vue'
-import { computed, toRefs } from 'vue'
+import { defineProps, defineEmit, computed, toRefs } from 'vue'
 import { useOverlay, useCssVars } from '@comz/vca'
 import { string, number, bool } from 'vue-types'
 
@@ -39,9 +34,7 @@ const props = defineProps({
   duration: number()
 })
 
-const emit = defineEmit([
-  'update:show'
-])
+const emit = defineEmit(['update:show'])
 
 const { show, type, duration } = toRefs(props)
 
@@ -49,7 +42,7 @@ const { index } = useOverlay({
   namespace: 'toast',
   track: show,
   duration: duration?.value ?? 3000,
-  onChange: state => state && emit('update:show', false)
+  onChange: (state) => state && emit('update:show', false)
 })
 
 const cssVars = useCssVars({

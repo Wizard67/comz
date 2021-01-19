@@ -7,11 +7,7 @@
       </Icon>
       <template v-if="true">{{ title }}</template>
     </div>
-    <div
-      ref="wrapRef"
-      :class="className"
-      :style="{ height }"
-    >
+    <div ref="wrapRef" :class="className" :style="{ height }">
       <div class="cpanel__body" ref="bodyRef">
         <slot />
       </div>
@@ -20,26 +16,29 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmit } from 'vue'
-import { toRefs, useContext, getCurrentInstance } from 'vue'
+import {
+  defineProps,
+  defineEmit,
+  useContext,
+  getCurrentInstance,
+  toRefs
+} from 'vue'
 import { useBEM, useHeightToggle } from '@comz/vca'
 import { string, bool } from 'vue-types'
 
 import { Icon } from 'comz'
 import { ChevronExpand, ChevronContract } from '@comz/icons'
 
+const { expose } = useContext()
+
 const props = defineProps({
   expand: bool().isRequired,
   title: string()
 })
 
-const emit = defineEmit([
-  'update:expand'
-])
+const emit = defineEmit(['update:expand'])
 
 const instance = getCurrentInstance()!
-const { expose } = useContext()
-expose(instance['ctx'])
 
 const { expand } = toRefs(props)
 
@@ -56,4 +55,6 @@ const { wrapRef, bodyRef, height } = useHeightToggle(expand, {
 const togglePanelState = () => {
   emit('update:expand', !expand.value)
 }
+
+expose(instance['ctx'])
 </script>

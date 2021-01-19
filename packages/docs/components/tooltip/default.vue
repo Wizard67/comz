@@ -9,7 +9,8 @@ import { Tooltip, Button } from 'comz'
 
 export default {
   components: {
-    Tooltip, Button
+    Tooltip,
+    Button
   }
 }
 </script>

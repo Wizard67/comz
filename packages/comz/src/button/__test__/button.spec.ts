@@ -24,7 +24,7 @@ describe('Button.vue', () => {
           loading: true
         }
       })
-  
+
       expect(wrapper.classes()).toContain('cbutton--loading')
       expect(wrapper.element).toMatchSnapshot()
     })
@@ -35,7 +35,7 @@ describe('Button.vue', () => {
           disabled: true
         }
       })
-  
+
       expect(wrapper.classes()).toContain('cbutton--disabled')
       expect(wrapper.element).toMatchSnapshot()
     })
@@ -44,7 +44,7 @@ describe('Button.vue', () => {
   describe('event', () => {
     it('on-click', () => {
       const wrapper = mount(Button)
-      
+
       wrapper.trigger('click')
       expect(wrapper.emitted()).toHaveProperty('on-click')
     })
@@ -52,7 +52,7 @@ describe('Button.vue', () => {
 
   describe('slots', () => {
     it('default', () => {
-      const content = "button"
+      const content = 'button'
 
       const wrapper = mount(Button, {
         slots: {

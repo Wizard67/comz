@@ -145,7 +145,7 @@ describe('Input.vue', () => {
 
   describe('slots', () => {
     it('prepend', () => {
-      const content = "prepend"
+      const content = 'prepend'
 
       const wrapper = mount(Input, {
         props: {
@@ -155,7 +155,7 @@ describe('Input.vue', () => {
           prepend: content
         }
       })
-      
+
       const element = wrapper.find('.cinput__prepend')
 
       expect(element.exists()).toBe(true)
@@ -164,7 +164,7 @@ describe('Input.vue', () => {
     })
 
     it('append', () => {
-      const content = "append"
+      const content = 'append'
 
       const wrapper = mount(Input, {
         props: {
@@ -174,7 +174,7 @@ describe('Input.vue', () => {
           append: content
         }
       })
-      
+
       const element = wrapper.find('.cinput__append')
 
       expect(element.exists()).toBe(true)

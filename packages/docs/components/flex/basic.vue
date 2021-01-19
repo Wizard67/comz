@@ -5,7 +5,7 @@
     <Button>three</Button>
   </Flex>
 
-  <br>
+  <br />
 
   <Flex gap="30px">
     <Button>one</Button>
@@ -20,7 +20,8 @@ import { Flex, Button } from 'comz'
 
 export default defineComponent({
   components: {
-    Flex, Button
+    Flex,
+    Button
   }
 })
 </script>

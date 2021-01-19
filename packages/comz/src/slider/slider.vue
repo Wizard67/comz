@@ -18,12 +18,23 @@
 import type { Ref, WatchStopHandle } from 'vue'
 import type { MouseState } from '@comz/vca'
 
-import { defineProps, defineEmit } from 'vue'
-import { ref, toRefs, computed, watchEffect, watch, useContext, getCurrentInstance } from 'vue'
+import {
+  defineProps,
+  defineEmit,
+  useContext,
+  getCurrentInstance,
+  ref,
+  toRefs,
+  computed,
+  watchEffect,
+  watch
+} from 'vue'
 import { useEvent, useMouse, useBEM, useCssVars } from '@comz/vca'
 import { strip } from 'number-precision'
 import { number, bool } from 'vue-types'
 import { useElementRect, getPointValue } from './utils'
+
+const { expose } = useContext()
 
 const props = defineProps({
   modelValue: number().isRequired,
@@ -33,13 +44,9 @@ const props = defineProps({
   disabled: bool().isRequired
 })
 
-const emit = defineEmit([
-  'update:modelValue'
-])
+const emit = defineEmit(['update:modelValue'])
 
 const instance = getCurrentInstance()!
-const { expose } = useContext()
-expose(instance['ctx'])
 
 const { disabled } = toRefs(props)
 
@@ -59,18 +66,30 @@ const unitDistance = computed(() => width.value / distance.value)
 
 const mouseState: Ref<MouseState | null> = ref(null)
 const offsetX = computed(() => mouseState.value?.offsetX ?? 0)
-const currentPoint = computed(() => Math.min(Math.max(0, offsetX.value), width.value))
-const currentValue = computed(() => strip(currentPoint.value * unitWidth.value + min.value, 10))
+const currentPoint = computed(() =>
+  Math.min(Math.max(0, offsetX.value), width.value)
+)
+const currentValue = computed(() =>
+  strip(currentPoint.value * unitWidth.value + min.value, 10)
+)
 
-const valuePosition = computed(() => (value.value - min.value) * unitDistance.value + left.value)
-const thumbOffset = computed(() => getPointValue(valuePosition.value, breakPoints.value) - left.value)
+const valuePosition = computed(
+  () => (value.value - min.value) * unitDistance.value + left.value
+)
+const thumbOffset = computed(
+  () => getPointValue(valuePosition.value, breakPoints.value) - left.value
+)
 
-watch(mouseState, () => {
-  emit('update:modelValue', currentValue.value)
-}, { deep: true })
+watch(
+  mouseState,
+  () => {
+    emit('update:modelValue', currentValue.value)
+  },
+  { deep: true }
+)
 
 const cssVars = useCssVars({
-  '--cslider-thumb-offset': computed(() => `${ thumbOffset.value }px`)
+  '--cslider-thumb-offset': computed(() => `${thumbOffset.value}px`)
 })
 
 const className = useBEM(({ b, m }) => ({
@@ -81,9 +100,9 @@ const className = useBEM(({ b, m }) => ({
 const breakPoints = ref<number[]>([])
 watchEffect(() => {
   const points = Math.ceil(distance.value / step.value + 1)
-  const list = Array(points).fill(null).map((_, index) =>
-    index * unitDistance.value * step.value + left.value
-  )
+  const list = Array(points)
+    .fill(null)
+    .map((_, index) => index * unitDistance.value * step.value + left.value)
 
   if (list[points - 1] > right.value) list.pop()
 
@@ -92,7 +111,7 @@ watchEffect(() => {
 
 let stopUseMouse: WatchStopHandle | null = null
 
-useEvent(sliderRef, 'mousedown', event => {
+useEvent(sliderRef, 'mousedown', (event) => {
   if (disabled.value) return
 
   const { state, stop } = useMouse(sliderRef, {
@@ -108,4 +127,6 @@ useEvent(sliderRef, 'mousedown', event => {
 })
 
 useEvent(window, 'mouseup', () => stopUseMouse?.())
+
+expose(instance['ctx'])
 </script>

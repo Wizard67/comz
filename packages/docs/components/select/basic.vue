@@ -34,7 +34,9 @@ import { Flex, Select, Option } from 'comz'
 
 export default defineComponent({
   components: {
-    Flex, Select, Option
+    Flex,
+    Select,
+    Option
   },
   setup() {
     return {

@@ -15,12 +15,8 @@
         @input="handleInputChange"
         @focus="handleInputFocus"
         @blur="handleInputBlur"
-      >
-      <div
-        v-if="allowClear"
-        class="cinput__clear"
-        @click="clearValue"
-      >
+      />
+      <div v-if="allowClear" class="cinput__clear" @click="clearValue">
         <XCircleFill />
       </div>
     </div>
@@ -32,12 +28,20 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmit } from 'vue'
-import { computed, toRefs, useContext, getCurrentInstance } from 'vue'
+import {
+  defineProps,
+  defineEmit,
+  useContext,
+  getCurrentInstance,
+  computed,
+  toRefs
+} from 'vue'
 import { useBEM } from '@comz/vca'
 import { string, bool } from 'vue-types'
 
 import { XCircleFill } from '@comz/icons'
+
+const { expose } = useContext()
 
 const props = defineProps({
   modelValue: string().isRequired,
@@ -55,8 +59,6 @@ const emit = defineEmit([
 ])
 
 const instance = getCurrentInstance()!
-const { expose } = useContext()
-expose(instance['ctx'])
 
 const { readonly, disabled } = toRefs(props)
 
@@ -66,11 +68,12 @@ const className = useBEM(({ b, m }) => ({
   [m('disabled')]: disabled
 }))
 
-const allowClear = computed(() =>
-  props.modelValue?.length &&
-  props.clearable &&
-  !props.readonly &&
-  !props.disabled
+const allowClear = computed(
+  () =>
+    props.modelValue?.length &&
+    props.clearable &&
+    !props.readonly &&
+    !props.disabled
 )
 
 const handleInputChange = (event: InputEvent) => {
@@ -89,4 +92,6 @@ const clearValue = () => {
   emit('update:modelValue', '')
   emit('on-clear')
 }
+
+expose(instance['ctx'])
 </script>

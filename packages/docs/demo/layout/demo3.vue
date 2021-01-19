@@ -25,8 +25,12 @@
     </Grid>
 
     <Grid width="100%" columns="repeat(12, 8.33%)">
-      <GridItem place-items="center" area="1 / 5 / -1 / span 2">offset 4 span 2</GridItem>
-      <GridItem place-items="center" area="1 / -4 / -1 / span 3">offset 9 span 3</GridItem>
+      <GridItem place-items="center" area="1 / 5 / -1 / span 2"
+        >offset 4 span 2</GridItem
+      >
+      <GridItem place-items="center" area="1 / -4 / -1 / span 3"
+        >offset 9 span 3</GridItem
+      >
     </Grid>
   </Flex>
 </template>
@@ -37,14 +41,17 @@ import { Grid, GridItem, Flex, Button } from 'comz'
 
 export default defineComponent({
   components: {
-    Grid, GridItem, Flex, Button
+    Grid,
+    GridItem,
+    Flex,
+    Button
   }
 })
 </script>
 
 <style scoped>
 .cgrid-item {
-  background-color: rgba(0, 0, 0, .2);
+  background-color: rgba(0, 0, 0, 0.2);
   outline: 1px white solid;
   font-size: 14px;
 }

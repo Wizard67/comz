@@ -1,9 +1,5 @@
 <template>
-  <Textarea
-    v-model="value"
-    placeholder="something"
-    disabled
-  ></Textarea>
+  <Textarea v-model="value" placeholder="something" disabled></Textarea>
 </template>
 
 <script>

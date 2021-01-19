@@ -1,8 +1,5 @@
 <template>
-  <section
-    :class="className"
-    :style="cssVars"
-  >
+  <section :class="className" :style="cssVars">
     <template v-for="(item, index) in slots" :key="index">
       <div class="cflex__item">
         <component :is="item" />
@@ -12,12 +9,19 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, useContext } from 'vue'
-import { toRefs, computed, getCurrentInstance } from 'vue'
+import {
+  defineProps,
+  useContext,
+  getCurrentInstance,
+  toRefs,
+  computed
+} from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
 import { string, bool } from 'vue-types'
 import { getVnodes } from './utils'
 import { useCssShorthand } from '../utils/useCssShorthand'
+
+const { expose, slots: originSlots } = useContext()
 
 const props = defineProps({
   inline: bool().isRequired,
@@ -30,26 +34,18 @@ const props = defineProps({
 })
 
 const instance = getCurrentInstance()!
-const content = useContext()
-content.expose(instance['ctx'])
 
 // filter vnode which type is comment
-const slots = computed(() => getVnodes(content.slots?.default?.() || []))
+const slots = computed(() => getVnodes(originSlots?.default?.() || []))
 
-const {
-  inline,
-  wrap,
-  gap,
-  flow,
-  placeContent,
-  placeItems,
-  placeSelf
-} = toRefs(props)
+const { inline, wrap, gap, flow, placeContent, placeItems, placeSelf } = toRefs(
+  props
+)
 
-const [ rowGap, columnGap ] = useCssShorthand(gap)
-const [ alignContent, justifyContent ] = useCssShorthand(placeContent)
-const [ alignItems, justifyItems ] = useCssShorthand(placeItems)
-const [ alignSelf, justifySelf ] = useCssShorthand(placeSelf)
+const [rowGap, columnGap] = useCssShorthand(gap)
+const [alignContent, justifyContent] = useCssShorthand(placeContent)
+const [alignItems, justifyItems] = useCssShorthand(placeItems)
+const [alignSelf, justifySelf] = useCssShorthand(placeSelf)
 
 const className = useBEM(({ b, m }) => ({
   [b('cflex')]: true,
@@ -69,4 +65,6 @@ const cssVars = useCssVars({
   '--cflex-align-self': alignSelf,
   '--cflex-justify-self': justifySelf
 })
+
+expose(instance['ctx'])
 </script>

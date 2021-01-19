@@ -1,5 +1,10 @@
 <template>
-  <Input class="input" v-model="value" placeholder="write some text" clearable></Input>
+  <Input
+    class="input"
+    v-model="value"
+    placeholder="write some text"
+    clearable
+  ></Input>
 </template>
 
 <script>

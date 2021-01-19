@@ -1,4 +1,4 @@
-import { reactive,toRefs, watch, Ref } from 'vue'
+import { reactive, toRefs, watch, Ref } from 'vue'
 
 export const getRange = (value: number, range: number[]) => {
   let left = 0
@@ -14,13 +14,13 @@ export const getRange = (value: number, range: number[]) => {
     }
   }
 
-  return [ range[left], range[left + 1] ]
+  return [range[left], range[left + 1]]
 }
 
 export const getPointValue = (value: number, range: number[]) => {
   const [min, max] = getRange(value, range)
-  
-  return (value - min) > (max - value) ? max : min
+
+  return value - min > max - value ? max : min
 }
 
 export const useElementRect = (targetRef: Ref<HTMLElement | null>) => {
@@ -48,21 +48,24 @@ export const useElementRect = (targetRef: Ref<HTMLElement | null>) => {
     rect.y = domRect.y
   }
 
-  watch(targetRef, (element, _, cleanUp) => {
-    if (!element) return
+  watch(
+    targetRef,
+    (element, _, cleanUp) => {
+      if (!element) return
 
-    updateTargetRect(element)
-
-    const observer = new MutationObserver(() => {
       updateTargetRect(element)
-    })
-    observer.observe(element, { attributes: true })
 
-    cleanUp(() => {
-      observer.disconnect()
-    })
+      const observer = new MutationObserver(() => {
+        updateTargetRect(element)
+      })
+      observer.observe(element, { attributes: true })
 
-  }, { immediate: true, flush: 'post' })
+      cleanUp(() => {
+        observer.disconnect()
+      })
+    },
+    { immediate: true, flush: 'post' }
+  )
 
   return toRefs(rect)
 }

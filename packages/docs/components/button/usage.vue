@@ -1,12 +1,9 @@
 <template>
-  <Grid
-    class="grid"
-    columns="auto 200px"
-  >
+  <Grid class="grid" columns="auto 200px">
     <GridItem place-items="center">
       <Button v-bind="atts" :type="type">
         <Flex gap="4px">
-          <Icon v-if="props.includes('icon')"><HeartFill/></Icon>
+          <Icon v-if="props.includes('icon')"><HeartFill /></Icon>
           {{ text }}
         </Flex>
       </Button>
@@ -17,7 +14,7 @@
         <div class="title">Props</div>
         <Input v-model="text" placeholder="button text"></Input>
 
-        <Select v-model="type" placeholder="button type" style="width: 100%;">
+        <Select v-model="type" placeholder="button type" style="width: 100%">
           <Option label="default" value="default">default</Option>
           <Option label="primary" value="primary">primary</Option>
           <Option label="text" value="text">text</Option>
@@ -37,8 +34,14 @@ import { defineComponent, ref, computed } from 'vue'
 
 import {
   Button,
-  Grid, GridItem, Flex,
-  Input, Checkbox, Select, Option, Icon
+  Grid,
+  GridItem,
+  Flex,
+  Input,
+  Checkbox,
+  Select,
+  Option,
+  Icon
 } from 'comz'
 
 import { HeartFill } from '@comz/icons'
@@ -46,9 +49,15 @@ import { HeartFill } from '@comz/icons'
 export default defineComponent({
   components: {
     Button,
-    Grid, GridItem, Flex,
-    Input, Checkbox, Select, Option,
-    Icon, HeartFill
+    Grid,
+    GridItem,
+    Flex,
+    Input,
+    Checkbox,
+    Select,
+    Option,
+    Icon,
+    HeartFill
   },
   setup() {
     const text = ref('Button')
@@ -59,8 +68,8 @@ export default defineComponent({
     const atts = computed(() => {
       const obj = {}
       props.value
-        .filter(item => item !== 'icon')
-        .map(item => obj[item] = true)
+        .filter((item) => item !== 'icon')
+        .map((item) => (obj[item] = true))
       return obj
     })
 
@@ -87,7 +96,7 @@ export default defineComponent({
   border-left: 1px solid var(--c-divider-light);
 }
 .title {
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   font-weight: bold;
 }
 </style>

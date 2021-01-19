@@ -17,7 +17,7 @@ describe('GridItem.vue', () => {
 
   describe('slots', () => {
     it('default', () => {
-      const content = "grid-item"
+      const content = 'grid-item'
 
       const wrapper = mount(GridItem, {
         slots: {

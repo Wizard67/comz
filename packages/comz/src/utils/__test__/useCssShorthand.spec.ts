@@ -8,16 +8,13 @@ describe('useCssShorthand', () => {
       ref('second')
     ])
 
-    expect(useCssShorthand(ref('first'))).toEqual([
-      ref('first'),
-      ref('first')
-    ])
+    expect(useCssShorthand(ref('first'))).toEqual([ref('first'), ref('first')])
   })
 
   it('should recalculate when value change.', async () => {
     const prop = ref('first second')
 
-    const [ first, second ] = useCssShorthand(prop)
+    const [first, second] = useCssShorthand(prop)
 
     expect(first.value).toBe('first')
     expect(second.value).toBe('second')

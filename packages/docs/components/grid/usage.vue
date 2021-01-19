@@ -1,8 +1,5 @@
 <template>
-  <Grid
-    class="grid"
-    columns="auto 300px"
-  >
+  <Grid class="grid" columns="auto 300px">
     <GridItem class="container">
       <Grid
         class="demo-grid"
@@ -17,7 +14,7 @@
       >
         <template v-for="(item, index) in items" :key="index">
           <GridItem class="demo-griditem">
-            <div class="label">{{ index+1 }}</div>
+            <div class="label">{{ index + 1 }}</div>
           </GridItem>
         </template>
       </Grid>
@@ -47,8 +44,18 @@
           </FormItem>
           <FormItem label="flow">
             <Flex wrap>
-              <Checkbox v-model="flow" value="row" :disabled="flow.includes('column')">row</Checkbox>
-              <Checkbox v-model="flow" value="column" :disabled="flow.includes('row')">column</Checkbox>
+              <Checkbox
+                v-model="flow"
+                value="row"
+                :disabled="flow.includes('column')"
+                >row</Checkbox
+              >
+              <Checkbox
+                v-model="flow"
+                value="column"
+                :disabled="flow.includes('row')"
+                >column</Checkbox
+              >
               <Checkbox v-model="flow" value="dense">dense</Checkbox>
             </Flex>
           </FormItem>
@@ -60,12 +67,12 @@
         <Flex place-content="center">
           <Button @on-click="handleAddItem">
             <Flex gap="4px">
-              <Icon><Plus/></Icon>Item
+              <Icon><Plus /></Icon>Item
             </Flex>
           </Button>
           <Button @on-click="handleMinusItem">
             <Flex gap="4px">
-              <Icon><Dash/></Icon>Item
+              <Icon><Dash /></Icon>Item
             </Flex>
           </Button>
         </Flex>
@@ -78,9 +85,18 @@
 import { defineComponent, ref, reactive } from 'vue'
 
 import {
-  Grid, GridItem, Flex,
-  Form, FormItem,
-  Input, Checkbox, Select, Slider, Option, Switch, Icon,
+  Grid,
+  GridItem,
+  Flex,
+  Form,
+  FormItem,
+  Input,
+  Checkbox,
+  Select,
+  Slider,
+  Option,
+  Switch,
+  Icon,
   Button
 } from 'comz'
 
@@ -88,10 +104,21 @@ import { Plus, Dash } from '@comz/icons'
 
 export default defineComponent({
   components: {
-    Grid, GridItem, Flex, Button,
-    Form, FormItem,
-    Input, Checkbox, Select, Slider, Option, Switch,
-    Icon, Plus, Dash
+    Grid,
+    GridItem,
+    Flex,
+    Button,
+    Form,
+    FormItem,
+    Input,
+    Checkbox,
+    Select,
+    Slider,
+    Option,
+    Switch,
+    Icon,
+    Plus,
+    Dash
   },
   setup() {
     const rows = ref('100px 100px 100px')
@@ -114,10 +141,17 @@ export default defineComponent({
     }
 
     return {
-      rows, columns, autoRows, autoColumns,
+      rows,
+      columns,
+      autoRows,
+      autoColumns,
       padding,
-      gap, flow, inline,
-      items, handleAddItem, handleMinusItem
+      gap,
+      flow,
+      inline,
+      items,
+      handleAddItem,
+      handleMinusItem
     }
   }
 })
@@ -140,7 +174,7 @@ export default defineComponent({
   border-left: 1px solid var(--c-divider-light);
 }
 .title {
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   font-weight: bold;
 }
 

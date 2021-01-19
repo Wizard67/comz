@@ -1,9 +1,7 @@
 <template>
   <Button @on-click="show = true">Show Modal</Button>
 
-  <Modal v-model:show="show" closable>
-    Modal
-  </Modal>
+  <Modal v-model:show="show" closable> Modal </Modal>
 </template>
 
 <script>

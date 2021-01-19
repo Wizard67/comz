@@ -1,9 +1,9 @@
 <template>
   <Panel title="Title" v-model:expand="expand">
-    Panel<br>
-    Panel<br>
-    Panel<br>
-    Panel<br>
+    Panel<br />
+    Panel<br />
+    Panel<br />
+    Panel<br />
   </Panel>
 </template>
 

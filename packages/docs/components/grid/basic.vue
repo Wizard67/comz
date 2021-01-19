@@ -12,13 +12,9 @@
     <GridItem area="main"></GridItem>
   </Grid>
 
-  <br>
+  <br />
 
-  <Grid
-    class="grid"
-    rows="100px auto auto"
-    columns="100px 1fr 1fr"
-  >
+  <Grid class="grid" rows="100px auto auto" columns="100px 1fr 1fr">
     <GridItem area="1 / 1 / 2 / 4"></GridItem>
     <GridItem area="2 / 1 / 4 / 2"></GridItem>
     <GridItem area="2 / 2 / 4 / 4"></GridItem>

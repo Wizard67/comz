@@ -1,21 +1,18 @@
 <template>
-  <Grid
-    class="grid"
-    columns="auto 330px"
-  >
+  <Grid class="grid" columns="auto 330px">
     <GridItem padding="8px">
       <Flex
         :style="full ? 'height: 382px; width: 100%;' : ''"
         :gap="`${gap}px`"
         :wrap="wrap"
         :inline="inline"
-        :flow="(flow.sort((a, b) => a === 'reverse' ? 1 : -1)).join('-')"
+        :flow="flow.sort((a, b) => (a === 'reverse' ? 1 : -1)).join('-')"
         :place-content="placeContent"
         :place-items="placeItems"
       >
         <template v-for="(item, index) in items" :key="index">
           <div class="demo-block">
-            <div class="label">{{ index+1 }}</div>
+            <div class="label">{{ index + 1 }}</div>
           </div>
         </template>
       </Flex>
@@ -36,9 +33,24 @@
           </FormItem>
           <FormItem label="flow">
             <Flex wrap>
-              <Checkbox v-model="flow" value="row" :disabled="flow.includes('column')">row</Checkbox>
-              <Checkbox v-model="flow" value="column" :disabled="flow.includes('row')">column</Checkbox>
-              <Checkbox v-model="flow" value="reverse" :disabled="flow.length === 0">reverse</Checkbox>
+              <Checkbox
+                v-model="flow"
+                value="row"
+                :disabled="flow.includes('column')"
+                >row</Checkbox
+              >
+              <Checkbox
+                v-model="flow"
+                value="column"
+                :disabled="flow.includes('row')"
+                >column</Checkbox
+              >
+              <Checkbox
+                v-model="flow"
+                value="reverse"
+                :disabled="flow.length === 0"
+                >reverse</Checkbox
+              >
             </Flex>
           </FormItem>
           <FormItem label="wrap">
@@ -55,12 +67,12 @@
         <Flex place-content="center">
           <Button @on-click="handleAddItem">
             <Flex gap="4px">
-              <Icon><Plus/></Icon>Item
+              <Icon><Plus /></Icon>Item
             </Flex>
           </Button>
           <Button @on-click="handleMinusItem">
             <Flex gap="4px">
-              <Icon><Dash/></Icon>Item
+              <Icon><Dash /></Icon>Item
             </Flex>
           </Button>
         </Flex>
@@ -73,9 +85,18 @@
 import { defineComponent, ref, reactive, computed } from 'vue'
 
 import {
-  Grid, GridItem, Flex,
-  Form, FormItem,
-  Input, Checkbox, Select, Slider, Option, Switch, Icon,
+  Grid,
+  GridItem,
+  Flex,
+  Form,
+  FormItem,
+  Input,
+  Checkbox,
+  Select,
+  Slider,
+  Option,
+  Switch,
+  Icon,
   Button
 } from 'comz'
 
@@ -83,10 +104,21 @@ import { Plus, Dash } from '@comz/icons'
 
 export default defineComponent({
   components: {
-    Grid, GridItem, Flex, Button,
-    Form, FormItem,
-    Input, Checkbox, Select, Slider, Option, Switch,
-    Icon, Plus, Dash
+    Grid,
+    GridItem,
+    Flex,
+    Button,
+    Form,
+    FormItem,
+    Input,
+    Checkbox,
+    Select,
+    Slider,
+    Option,
+    Switch,
+    Icon,
+    Plus,
+    Dash
   },
   setup() {
     const full = ref(false)
@@ -109,9 +141,15 @@ export default defineComponent({
 
     return {
       full,
-      gap, flow, wrap, inline,
-      placeContent, placeItems,
-      items, handleAddItem, handleMinusItem
+      gap,
+      flow,
+      wrap,
+      inline,
+      placeContent,
+      placeItems,
+      items,
+      handleAddItem,
+      handleMinusItem
     }
   }
 })
@@ -131,7 +169,7 @@ export default defineComponent({
   border-left: 1px solid var(--c-divider-light);
 }
 .title {
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   font-weight: bold;
 }
 

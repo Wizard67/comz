@@ -11,7 +11,8 @@ import { Flex, Switch } from 'comz'
 
 export default defineComponent({
   components: {
-    Flex, Switch
+    Flex,
+    Switch
   },
   setup() {
     return {

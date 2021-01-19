@@ -16,7 +16,6 @@
       <Button>four</Button>
     </Flex>
   </div>
-
 </template>
 
 <script>
@@ -25,7 +24,8 @@ import { Button, Flex } from 'comz'
 
 export default defineComponent({
   components: {
-    Button, Flex
+    Button,
+    Flex
   }
 })
 </script>
@@ -36,6 +36,6 @@ export default defineComponent({
   height: 100px;
   width: 150px;
   margin-right: 40px;
-  outline: 1px rgba(0, 0, 0, .2) dashed;
+  outline: 1px rgba(0, 0, 0, 0.2) dashed;
 }
 </style>

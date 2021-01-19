@@ -1,7 +1,9 @@
 import type { Ref } from 'vue'
 import { ref, watchEffect, unref } from 'vue'
 
-export function useCssShorthand (shorthand: Ref<string | undefined> | undefined) {
+export function useCssShorthand(
+  shorthand: Ref<string | undefined> | undefined
+) {
   const property1 = ref<string | undefined>(undefined)
   const property2 = ref<string | undefined>(undefined)
 
@@ -16,8 +18,5 @@ export function useCssShorthand (shorthand: Ref<string | undefined> | undefined)
     property2.value = args[1] || args[0]
   })
 
-  return [
-    property1,
-    property2
-  ]
+  return [property1, property2]
 }

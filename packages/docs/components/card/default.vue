@@ -1,7 +1,5 @@
 <template>
-  <Card>
-    Card
-  </Card>
+  <Card> Card </Card>
 </template>
 
 <script>

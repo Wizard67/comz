@@ -9,14 +9,14 @@
     <Checkbox v-model="value" :value="{ key: 'value' }">Object</Checkbox>
   </Flex>
 
-  <br>
+  <br />
 
   <pre>Invalid value: <code>{{ JSON.stringify(value2, null, 0) }}</code></pre>
 
   <Flex gap="24px">
     <Checkbox v-model="value2" :value="() => {}">Function</Checkbox>
     <Checkbox v-model="value2" :value="null">Null</Checkbox>
-    <Checkbox v-model="value2" :value="[ new Map(), () => {} ]">Array</Checkbox>
+    <Checkbox v-model="value2" :value="[new Map(), () => {}]">Array</Checkbox>
     <Checkbox v-model="value2" :value="{ key: () => {} }">Object</Checkbox>
   </Flex>
 </template>
@@ -27,7 +27,8 @@ import { Flex, Checkbox } from 'comz'
 
 export default defineComponent({
   components: {
-    Flex, Checkbox
+    Flex,
+    Checkbox
   },
   setup() {
     return {

@@ -1,7 +1,7 @@
 <template>
   <div class="cform-item">
     <div class="cform-item__label">
-      {{ label? label + ':' : '' }}
+      {{ label ? label + ':' : '' }}
     </div>
     <div class="cform-item__field">
       <slot />
@@ -10,13 +10,10 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
-import { toRefs } from 'vue'
+import { defineProps, toRefs } from 'vue'
 import { string } from 'vue-types'
 
 const props = defineProps({
   label: string()
 })
-
-const { label } = toRefs(props)
 </script>

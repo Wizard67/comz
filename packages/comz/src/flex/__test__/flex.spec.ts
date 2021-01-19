@@ -72,7 +72,7 @@ describe('Flex.vue', () => {
 
   describe('slots', () => {
     it('default', () => {
-      const content = "flex"
+      const content = 'flex'
 
       const wrapper = mount(Flex, {
         slots: {

@@ -4,10 +4,9 @@
   <Modal v-model:show="show">
     <template #default>Modal</template>
     <template #footer="{ close }">
-      <Button
-        @on-click="handleClose(close)"
-        :loading="loading"
-      >异步关闭</Button>
+      <Button @on-click="handleClose(close)" :loading="loading"
+        >异步关闭</Button
+      >
     </template>
   </Modal>
 </template>
@@ -25,7 +24,7 @@ export default {
     const show = ref(false)
 
     const loading = ref(false)
-    const handleClose = close => {
+    const handleClose = (close) => {
       loading.value = true
       setTimeout(() => {
         loading.value = false
@@ -35,7 +34,8 @@ export default {
 
     return {
       show,
-      loading, handleClose
+      loading,
+      handleClose
     }
   }
 }

@@ -4,7 +4,7 @@
     <Toast v-model:show="show">Toast</Toast>
   </Flex>
 
-  <br>
+  <br />
 
   <Flex>
     <Flex>
@@ -32,7 +32,9 @@ import { Flex, Button, Toast } from 'comz'
 
 export default defineComponent({
   components: {
-    Flex, Button, Toast
+    Flex,
+    Button,
+    Toast
   },
   setup() {
     return {

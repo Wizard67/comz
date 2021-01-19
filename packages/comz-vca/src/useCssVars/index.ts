@@ -16,11 +16,15 @@ const transValue2String = (value: unknown) => {
     case 'string':
       return value
     default:
-      throw Error(`useCssVars expected undefined, number or string, but get ${typeof value}`)
+      throw Error(
+        `useCssVars expected undefined, number or string, but get ${typeof value}`
+      )
   }
 }
 
-export function useCssVars (condition: Condition): Record<string, ComputedRef<string>> {
+export function useCssVars(
+  condition: Condition
+): Record<string, ComputedRef<string>> {
   const varsObj = reactive({})
 
   for (const key in condition) {

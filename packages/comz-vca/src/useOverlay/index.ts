@@ -7,13 +7,15 @@ type OverlayOptions = {
   onChange?: (state: boolean) => void
 }
 
-type UseOverlay = (options: OverlayOptions) => {
+type UseOverlay = (
+  options: OverlayOptions
+) => {
   index: Ref
 }
 
 const indexMarker = {}
 
-export const useOverlay: UseOverlay = options => {
+export const useOverlay: UseOverlay = (options) => {
   const { namespace, track, duration, onChange } = options
 
   indexMarker[namespace] ??= ref(0)
@@ -22,22 +24,26 @@ export const useOverlay: UseOverlay = options => {
 
   const index = ref(0)
 
-  watch(() => track.value, value => {
-    marder.value += value ? 1 : -1
-    index.value = marder.value
+  watch(
+    () => track.value,
+    (value) => {
+      marder.value += value ? 1 : -1
+      index.value = marder.value
 
-    value
-      ? setTimeout(() => onChange?.(value), duration)
-      : onChange?.(value)
-  })
+      value ? setTimeout(() => onChange?.(value), duration) : onChange?.(value)
+    }
+  )
 
   // animation queue
-  watch(() => marder.value, (val, perVal) => {
-    if (val === 0 || val >= perVal) return
+  watch(
+    () => marder.value,
+    (val, perVal) => {
+      if (val === 0 || val >= perVal) return
 
-    const distance = perVal - val
-    index.value -= distance
-  })
+      const distance = perVal - val
+      index.value -= distance
+    }
+  )
 
   return {
     index

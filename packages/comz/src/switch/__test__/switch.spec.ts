@@ -44,7 +44,7 @@ describe('Switch.vue', () => {
 
   describe('slots', () => {
     it('prepend', () => {
-      const content = "prepend"
+      const content = 'prepend'
 
       const wrapper = mount(Switch, {
         props: {
@@ -54,7 +54,7 @@ describe('Switch.vue', () => {
           prepend: content
         }
       })
-      
+
       const element = wrapper.find('.cswitch__prepend')
 
       expect(element.exists()).toBe(true)
@@ -63,7 +63,7 @@ describe('Switch.vue', () => {
     })
 
     it('append', () => {
-      const content = "append"
+      const content = 'append'
 
       const wrapper = mount(Switch, {
         props: {
@@ -73,7 +73,7 @@ describe('Switch.vue', () => {
           append: content
         }
       })
-      
+
       const element = wrapper.find('.cswitch__append')
 
       expect(element.exists()).toBe(true)

@@ -11,23 +11,23 @@ const mouseMoveEvent = (position) => {
 }
 
 describe('useMouse', () => {
-
   beforeAll(() => {
-    document.body.getBoundingClientRect = () => (
-      { width: 100, height: 100, left: 0, top: 0 } as DOMRect
-    )
+    document.body.getBoundingClientRect = () =>
+      ({ width: 100, height: 100, left: 0, top: 0 } as DOMRect)
   })
 
   it('should be work.', () => {
     let mouseState = null
 
-    mount(defineComponent({
-      setup() {
-        const { state } = useMouse()
-        mouseState = state
-      },
-      render: () => h('div')
-    }))
+    mount(
+      defineComponent({
+        setup() {
+          const { state } = useMouse()
+          mouseState = state
+        },
+        render: () => h('div')
+      })
+    )
 
     expect(isReactive(mouseState)).toBe(true)
   })
@@ -35,13 +35,15 @@ describe('useMouse', () => {
   it('should be change when mouse move.', async () => {
     let mouseState = null
 
-    mount(defineComponent({
-      setup() {
-        const { state } = useMouse()
-        mouseState = state
-      },
-      render: () => h('div')
-    }))
+    mount(
+      defineComponent({
+        setup() {
+          const { state } = useMouse()
+          mouseState = state
+        },
+        render: () => h('div')
+      })
+    )
 
     await nextTick()
 
@@ -57,13 +59,15 @@ describe('useMouse', () => {
   it('should be calculate inner state.', async () => {
     let mouseState = null
 
-    mount(defineComponent({
-      setup() {
-        const { state } = useMouse()
-        mouseState = state
-      },
-      render: () => h('div')
-    }))
+    mount(
+      defineComponent({
+        setup() {
+          const { state } = useMouse()
+          mouseState = state
+        },
+        render: () => h('div')
+      })
+    )
 
     await nextTick()
 
@@ -78,13 +82,15 @@ describe('useMouse', () => {
     let mouseState = null
     const targetRef = ref(null)
 
-    mount(defineComponent({
-      setup() {
-        const { state } = useMouse(targetRef)
-        mouseState = state
-      },
-      render: () => h('div')
-    }))
+    mount(
+      defineComponent({
+        setup() {
+          const { state } = useMouse(targetRef)
+          mouseState = state
+        },
+        render: () => h('div')
+      })
+    )
 
     await nextTick()
     expect(mouseState.target.width).toBe(0)
@@ -101,13 +107,15 @@ describe('useMouse', () => {
   it('should be recalculate when target rect change.', async () => {
     let mouseState = null
 
-    mount(defineComponent({
-      setup() {
-        const { state } = useMouse()
-        mouseState = state
-      },
-      render: () => h('div')
-    }))
+    mount(
+      defineComponent({
+        setup() {
+          const { state } = useMouse()
+          mouseState = state
+        },
+        render: () => h('div')
+      })
+    )
 
     await nextTick()
 
@@ -117,7 +125,8 @@ describe('useMouse', () => {
     expect(mouseState.target.height).toBe(100)
 
     document.body.style.height = `200px` // trigger MutationObserver
-    document.body.getBoundingClientRect = () => ({ width: 200, height: 200, left: 0, top: 0 } as DOMRect)
+    document.body.getBoundingClientRect = () =>
+      ({ width: 200, height: 200, left: 0, top: 0 } as DOMRect)
     await nextTick()
     expect(mouseState.target.width).toBe(200)
     expect(mouseState.target.height).toBe(200)
@@ -127,14 +136,16 @@ describe('useMouse', () => {
     let mouseState = null
     let stopHandle = null
 
-    mount(defineComponent({
-      setup() {
-        const { state, stop } = useMouse()
-        mouseState = state
-        stopHandle = stop
-      },
-      render: () => h('div')
-    }))
+    mount(
+      defineComponent({
+        setup() {
+          const { state, stop } = useMouse()
+          mouseState = state
+          stopHandle = stop
+        },
+        render: () => h('div')
+      })
+    )
 
     await nextTick()
 
@@ -147,25 +158,27 @@ describe('useMouse', () => {
   it('hooks should be work.', async () => {
     let mouseState = null
 
-    mount(defineComponent({
-      setup() {
-        const { state } = useMouse(document.body, {
-          onBefore: (rect) => {
-            expect(rect).toStrictEqual(expect.any(Object))
-            return {
-              pageX: 1,
-              pageY: 2
-            }
-          },
-          onUpdate: (event) => ({
-            pageX: event.pageX + 10,
-            pageY: event.pageY + 10
+    mount(
+      defineComponent({
+        setup() {
+          const { state } = useMouse(document.body, {
+            onBefore: (rect) => {
+              expect(rect).toStrictEqual(expect.any(Object))
+              return {
+                pageX: 1,
+                pageY: 2
+              }
+            },
+            onUpdate: (event) => ({
+              pageX: event.pageX + 10,
+              pageY: event.pageY + 10
+            })
           })
-        })
-        mouseState = state
-      },
-      render: () => h('div')
-    }))
+          mouseState = state
+        },
+        render: () => h('div')
+      })
+    )
 
     await nextTick()
     expect(mouseState.x).toBe(11)
@@ -175,5 +188,4 @@ describe('useMouse', () => {
     expect(mouseState.x).toBe(20)
     expect(mouseState.y).toBe(20)
   })
-
 })

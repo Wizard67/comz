@@ -5,8 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
-import { toRefs } from 'vue'
+import { defineProps, toRefs } from 'vue'
 import { useCssVars } from '@comz/vca'
 import { string } from 'vue-types'
 import { useCssShorthand } from '../utils/useCssShorthand'
@@ -19,7 +18,7 @@ const props = defineProps({
 
 const { padding, area, placeItems } = toRefs(props)
 
-const [ align, justify ] = useCssShorthand(placeItems)
+const [align, justify] = useCssShorthand(placeItems)
 
 const cssStyle = useCssVars({
   '--cgrid-item-area': area,

@@ -17,7 +17,9 @@ import { Flex, Button, Toast } from 'comz'
 
 export default defineComponent({
   components: {
-    Flex, Button, Toast
+    Flex,
+    Button,
+    Toast
   },
   setup() {
     return {

@@ -1,8 +1,8 @@
 <template>
   <Flex>
-    <Icon size="20px"><EmojiLaughingFill/></Icon>
-    <Icon color="#348ec7"><EmojiLaughingFill/></Icon>
-    <Icon link><EmojiLaughingFill/></Icon>
+    <Icon size="20px"><EmojiLaughingFill /></Icon>
+    <Icon color="#348ec7"><EmojiLaughingFill /></Icon>
+    <Icon link><EmojiLaughingFill /></Icon>
   </Flex>
 </template>
 
@@ -13,7 +13,8 @@ import { EmojiLaughingFill } from '@comz/icons'
 
 export default defineComponent({
   components: {
-    Flex, Icon,
+    Flex,
+    Icon,
     EmojiLaughingFill
   }
 })

@@ -12,7 +12,7 @@
             <template #header>
               <slot name="header" :close="handleClose">
                 <template v-if="true">{{ title || '提示' }}</template>
-                <Icon v-if="closable" @on-click="handleClose" link><X/></Icon>
+                <Icon v-if="closable" @on-click="handleClose" link><X /></Icon>
               </slot>
             </template>
             <template #default>
@@ -31,8 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmit } from 'vue'
-import { toRefs } from 'vue'
+import { defineProps, defineEmit, toRefs } from 'vue'
 import { useCssVars } from '@comz/vca'
 import { string, bool } from 'vue-types'
 
@@ -48,10 +47,7 @@ const props = defineProps({
   closable: bool().isRequired
 })
 
-const emit = defineEmit([
-  'update:show',
-  'on-close'
-])
+const emit = defineEmit(['update:show', 'on-close'])
 
 const { closable, width } = toRefs(props)
 

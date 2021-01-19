@@ -51,14 +51,14 @@ describe('Icon.vue', () => {
   describe('event', () => {
     it('on-click', () => {
       const wrapper = mount(Icon)
-      
+
       wrapper.trigger('click')
       expect(wrapper.emitted()).toHaveProperty('on-click')
     })
   })
 
   describe('slot', () => {
-    const content = "icon"
+    const content = 'icon'
 
     const wrapper = mount(Icon, {
       slots: {

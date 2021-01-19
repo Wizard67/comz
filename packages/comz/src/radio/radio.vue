@@ -14,10 +14,18 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmit } from 'vue'
-import { computed, toRefs, useContext, getCurrentInstance } from 'vue'
+import {
+  defineProps,
+  defineEmit,
+  useContext,
+  getCurrentInstance,
+  computed,
+  toRefs
+} from 'vue'
 import { useBEM } from '@comz/vca'
 import { oneOfType, bool } from 'vue-types'
+
+const { expose } = useContext()
 
 const props = defineProps({
   modelValue: oneOfType([String, Number, Boolean, Array, Object]).isRequired,
@@ -25,18 +33,14 @@ const props = defineProps({
   disabled: bool().isRequired
 })
 
-const emit = defineEmit([
-  'update:modelValue'
-])
+const emit = defineEmit(['update:modelValue'])
 
 const instance = getCurrentInstance()!
-const { expose } = useContext()
-expose(instance['ctx'])
 
 const { disabled } = toRefs(props)
 
-const checked = computed(() =>
-  JSON.stringify(props.value) === JSON.stringify(props.modelValue)
+const checked = computed(
+  () => JSON.stringify(props.value) === JSON.stringify(props.modelValue)
 )
 
 const className = useBEM(({ b, m }) => ({
@@ -49,4 +53,6 @@ const handleValueChange = (event: InputEvent) => {
   // to avoid object-value being stringify, return props.value
   emit('update:modelValue', props.value)
 }
+
+expose(instance['ctx'])
 </script>

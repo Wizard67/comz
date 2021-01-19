@@ -13,23 +13,26 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmit } from 'vue'
-import { toRefs, useContext, getCurrentInstance } from 'vue'
+import {
+  defineProps,
+  defineEmit,
+  useContext,
+  getCurrentInstance,
+  toRefs
+} from 'vue'
 import { useBEM } from '@comz/vca'
 import { bool } from 'vue-types'
+
+const { expose } = useContext()
 
 const props = defineProps({
   modelValue: bool().isRequired,
   disabled: bool().isRequired
 })
 
-const emit = defineEmit([
-  'update:modelValue'
-])
+const emit = defineEmit(['update:modelValue'])
 
 const instance = getCurrentInstance()!
-const { expose } = useContext()
-expose(instance['ctx'])
 
 const { modelValue, disabled } = toRefs(props)
 
@@ -43,4 +46,6 @@ const handleValueChange = () => {
   if (disabled.value) return
   emit('update:modelValue', !modelValue.value)
 }
+
+expose(instance['ctx'])
 </script>

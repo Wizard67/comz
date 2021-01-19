@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="className"
-    @click="() => !disabled && changeState()"
-  >
+  <div :class="className" @click="() => !disabled && changeState()">
     <slot />
   </div>
 </template>
@@ -11,8 +8,14 @@
 import type { Ref, ComputedRef } from 'vue'
 import type { Handler } from './utils'
 
-import { defineProps } from 'vue'
-import { inject, computed, reactive, toRefs, getCurrentInstance } from 'vue'
+import {
+  defineProps,
+  getCurrentInstance,
+  inject,
+  computed,
+  reactive,
+  toRefs
+} from 'vue'
 import { useBEM } from '@comz/vca'
 import { oneOfType, string, bool } from 'vue-types'
 import { useOptionState } from './utils'
@@ -23,9 +26,13 @@ const props = defineProps({
   disabled: bool().isRequired
 })
 
-const uid = getCurrentInstance()?.parent?.uid
+const instance = getCurrentInstance()!
+const uid = instance.parent?.uid
 
-const currentValue = inject<Ref<unknown> | ComputedRef<unknown>>(`select-${uid}-value`)
+const currentValue = inject<Ref<unknown> | ComputedRef<unknown>>(
+  `select-${uid}-value`
+)
+
 const { value, label, disabled } = toRefs(props)
 
 const { state, changeState } = useOptionState(

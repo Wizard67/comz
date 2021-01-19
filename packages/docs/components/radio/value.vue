@@ -9,13 +9,13 @@
     <Radio v-model="value" :value="{ key: 'value' }">Object</Radio>
   </Flex>
 
-  <br>
+  <br />
 
   <pre>Invalid value: <code>{{ JSON.stringify(value2, null, 0) }}</code></pre>
 
   <Flex gap="24px">
     <Radio v-model="value2" :value="() => {}">Function</Radio>
-    <Radio v-model="value2" :value="[ new Map(), () => {} ]">Array</Radio>
+    <Radio v-model="value2" :value="[new Map(), () => {}]">Array</Radio>
     <Radio v-model="value2" :value="{ key: () => {} }">Object</Radio>
   </Flex>
 </template>
@@ -26,7 +26,8 @@ import { Flex, Radio } from 'comz'
 
 export default {
   components: {
-    Flex, Radio
+    Flex,
+    Radio
   },
   setup() {
     return {

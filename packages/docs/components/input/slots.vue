@@ -2,17 +2,23 @@
   <Flex wrap>
     <Flex gap="16px" flow="column">
       <Input class="input" v-model="value1" placeholder="normal">
-        <template #prepend><Icon><Envelope /></Icon></template>
+        <template #prepend
+          ><Icon><Envelope /></Icon
+        ></template>
         <template #append>.com</template>
       </Input>
 
       <Input class="input" v-model="value1" placeholder="disabled" disabled>
-        <template #prepend><Icon><Envelope /></Icon></template>
+        <template #prepend
+          ><Icon><Envelope /></Icon
+        ></template>
         <template #append>.com</template>
       </Input>
 
       <Input class="input" v-model="value1" placeholder="readonly" readonly>
-        <template #prepend><Icon><Envelope /></Icon></template>
+        <template #prepend
+          ><Icon><Envelope /></Icon
+        ></template>
         <template #append>.com</template>
       </Input>
     </Flex>
@@ -33,7 +39,9 @@
 
     <Flex gap="16px" flow="column">
       <Input class="input" v-model="value3" placeholder="normal">
-        <template #append><Icon link><MicFill /></Icon></template>
+        <template #append
+          ><Icon link><MicFill /></Icon
+        ></template>
       </Input>
 
       <Input class="input" v-model="value3" placeholder="disabled" disabled>
@@ -54,7 +62,10 @@ import { Envelope, MicFill } from '@comz/icons'
 
 export default defineComponent({
   components: {
-    Flex, Envelope, MicFill, Icon,
+    Flex,
+    Envelope,
+    MicFill,
+    Icon,
     Input
   },
   setup() {

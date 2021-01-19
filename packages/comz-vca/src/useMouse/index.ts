@@ -1,4 +1,14 @@
-import { ref, toRef, computed, reactive, isRef, watch, toRaw, Ref, UnwrapRef } from 'vue'
+import {
+  ref,
+  toRef,
+  computed,
+  reactive,
+  isRef,
+  watch,
+  toRaw,
+  Ref,
+  UnwrapRef
+} from 'vue'
 import { useEvent } from '../useEvent'
 
 type MouseEventPagePosition = {
@@ -25,8 +35,8 @@ export interface MouseState {
   }
 }
 
-interface Hooks <T extends MouseEventPagePosition>{
-  onBefore?: (rect: Rect) => T,
+interface Hooks<T extends MouseEventPagePosition> {
+  onBefore?: (rect: Rect) => T
   onUpdate?: (event: T & Rect) => T
 }
 
@@ -51,12 +61,13 @@ export const useMouse = (
     y: pageY,
     offsetX: computed(() => state.x - targetRect.left - window.pageXOffset),
     offsetY: computed(() => state.y - targetRect.top - window.pageYOffset),
-    inner: computed(() => (
-      state.offsetX >= 0 &&
-      state.offsetY >= 0 &&
-      state.offsetX <= targetRect.width &&
-      state.offsetY <= targetRect.height
-    )),
+    inner: computed(
+      () =>
+        state.offsetX >= 0 &&
+        state.offsetY >= 0 &&
+        state.offsetX <= targetRect.width &&
+        state.offsetY <= targetRect.height
+    ),
     target: {
       width: toRef(targetRect, 'width'),
       height: toRef(targetRect, 'height')
@@ -73,14 +84,15 @@ export const useMouse = (
   }
 
   const updateMouseState = (event: MouseEventPagePosition) => {
-    const mouseEvent = hooks?.onUpdate?.({
-      pageX: event.pageX,
-      pageY: event.pageY,
-      top: targetRect.top,
-      left: targetRect.left,
-      width: targetRect.width,
-      height: targetRect.height
-    }) ?? event
+    const mouseEvent =
+      hooks?.onUpdate?.({
+        pageX: event.pageX,
+        pageY: event.pageY,
+        top: targetRect.top,
+        left: targetRect.left,
+        width: targetRect.width,
+        height: targetRect.height
+      }) ?? event
 
     pageX.value = mouseEvent.pageX
     pageY.value = mouseEvent.pageY
@@ -88,31 +100,34 @@ export const useMouse = (
 
   const targetRef = isRef(target) ? target : ref(target)
 
-  const stop = watch(targetRef, (element, _, cleanUp) => {
-    if (!element) return
+  const stop = watch(
+    targetRef,
+    (element, _, cleanUp) => {
+      if (!element) return
 
-    updateTargetRect(element)
-
-    const initState = hooks?.onBefore?.(toRaw(targetRect))
-
-    pageX.value = initState?.pageX || pageX.value
-    pageY.value = initState?.pageY || pageY.value
-
-    initState && updateMouseState(initState)
-
-    const observer = new MutationObserver(() => {
       updateTargetRect(element)
-    })
-    observer.observe(element, { attributes: true })
 
-    const stopMoveEvent = useEvent(document, 'mousemove', updateMouseState)
+      const initState = hooks?.onBefore?.(toRaw(targetRect))
 
-    cleanUp(() => {
-      observer.disconnect()
-      stopMoveEvent()
-    })
+      pageX.value = initState?.pageX || pageX.value
+      pageY.value = initState?.pageY || pageY.value
 
-  }, { immediate: true, flush: 'post' })
+      initState && updateMouseState(initState)
+
+      const observer = new MutationObserver(() => {
+        updateTargetRect(element)
+      })
+      observer.observe(element, { attributes: true })
+
+      const stopMoveEvent = useEvent(document, 'mousemove', updateMouseState)
+
+      cleanUp(() => {
+        observer.disconnect()
+        stopMoveEvent()
+      })
+    },
+    { immediate: true, flush: 'post' }
+  )
 
   return { state, stop }
 }

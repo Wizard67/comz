@@ -1,8 +1,12 @@
 <template>
   <Flex gap="16px" flow="column">
     <Switch v-model="value">
-      <template #prepend><Icon><EmojiFrown/></Icon></template>
-      <template #append><Icon><EmojiSmile/></Icon></template>
+      <template #prepend
+        ><Icon><EmojiFrown /></Icon
+      ></template>
+      <template #append
+        ><Icon><EmojiSmile /></Icon
+      ></template>
     </Switch>
 
     <Switch v-model="value1">
@@ -18,8 +22,11 @@ import { EmojiSmile, EmojiFrown } from '@comz/icons'
 
 export default defineComponent({
   components: {
-    Flex, Switch,
-    Icon, EmojiSmile, EmojiFrown
+    Flex,
+    Switch,
+    Icon,
+    EmojiSmile,
+    EmojiFrown
   },
   setup() {
     return {

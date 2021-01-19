@@ -26,7 +26,8 @@ import { Flex, Button } from 'comz'
 
 export default defineComponent({
   components: {
-    Flex, Button
+    Flex,
+    Button
   }
 })
 </script>

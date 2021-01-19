@@ -18,7 +18,7 @@
     </Flex>
   </div>
 
-  <br><br>
+  <br /><br />
 
   <div class="box">
     <Flex>
@@ -46,7 +46,8 @@ import { Flex, Button } from 'comz'
 
 export default defineComponent({
   components: {
-    Flex, Button
+    Flex,
+    Button
   }
 })
 </script>
@@ -59,6 +60,6 @@ export default defineComponent({
   margin-right: 40px;
   vertical-align: top;
   overflow: hidden;
-  outline: 1px rgba(0, 0, 0, .2) dashed;
+  outline: 1px rgba(0, 0, 0, 0.2) dashed;
 }
 </style>

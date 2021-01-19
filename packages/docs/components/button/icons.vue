@@ -3,19 +3,19 @@
     <Flex>
       <Button>
         <Flex gap="4px">
-          <Icon><EmojiSmileFill/></Icon>Smile
+          <Icon><EmojiSmileFill /></Icon>Smile
         </Flex>
       </Button>
 
       <Button>
         <Flex gap="4px">
-          <Icon><Gem/></Icon>Gem<Icon><Gem/></Icon>
+          <Icon><Gem /></Icon>Gem<Icon><Gem /></Icon>
         </Flex>
       </Button>
 
       <Button>
         <Flex gap="4px">
-          Heart<Icon><HeartFill/></Icon>
+          Heart<Icon><HeartFill /></Icon>
         </Flex>
       </Button>
     </Flex>
@@ -23,19 +23,19 @@
     <Flex>
       <Button type="primary">
         <Flex gap="4px">
-          <Icon><EmojiSmileFill/></Icon>Smile
+          <Icon><EmojiSmileFill /></Icon>Smile
         </Flex>
       </Button>
 
       <Button type="primary">
         <Flex gap="4px">
-          <Icon><Gem/></Icon>Gem<Icon><Gem/></Icon>
+          <Icon><Gem /></Icon>Gem<Icon><Gem /></Icon>
         </Flex>
       </Button>
 
       <Button type="primary">
         <Flex gap="4px">
-          Heart<Icon><HeartFill/></Icon>
+          Heart<Icon><HeartFill /></Icon>
         </Flex>
       </Button>
     </Flex>
@@ -43,19 +43,19 @@
     <Flex>
       <Button type="text">
         <Flex gap="4px">
-          <Icon><EmojiSmileFill/></Icon>Smile
+          <Icon><EmojiSmileFill /></Icon>Smile
         </Flex>
       </Button>
 
       <Button type="text">
         <Flex gap="4px">
-          <Icon><Gem/></Icon>Gem<Icon><Gem/></Icon>
+          <Icon><Gem /></Icon>Gem<Icon><Gem /></Icon>
         </Flex>
       </Button>
 
       <Button type="text">
         <Flex gap="4px">
-          Heart<Icon><HeartFill/></Icon>
+          Heart<Icon><HeartFill /></Icon>
         </Flex>
       </Button>
     </Flex>
@@ -71,7 +71,10 @@ export default defineComponent({
   components: {
     Flex,
     Button,
-    Icon, EmojiSmileFill, Gem, HeartFill,
+    Icon,
+    EmojiSmileFill,
+    Gem,
+    HeartFill
   }
 })
 </script>

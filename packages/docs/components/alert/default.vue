@@ -1,6 +1,6 @@
 <template>
   <Alert v-model:show="show1">Some Text</Alert>
-  <br>
+  <br />
   <Alert v-model:show="show2" color="#348ec7">Some Text</Alert>
 </template>
 
@@ -17,7 +17,8 @@ export default {
     const show2 = ref(true)
 
     return {
-      show1, show2
+      show1,
+      show2
     }
   }
 }

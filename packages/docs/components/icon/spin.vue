@@ -1,8 +1,8 @@
 <template>
   <Flex>
-    <Icon spin><ArrowRepeat/></Icon>
-    <Icon spin><ArrowClockwise/></Icon>
-    <Icon spin><BrightnessHigh/></Icon>
+    <Icon spin><ArrowRepeat /></Icon>
+    <Icon spin><ArrowClockwise /></Icon>
+    <Icon spin><BrightnessHigh /></Icon>
   </Flex>
 </template>
 
@@ -13,8 +13,11 @@ import { ArrowRepeat, ArrowClockwise, BrightnessHigh } from '@comz/icons'
 
 export default defineComponent({
   components: {
-    Flex, Icon,
-    ArrowRepeat, ArrowClockwise, BrightnessHigh
+    Flex,
+    Icon,
+    ArrowRepeat,
+    ArrowClockwise,
+    BrightnessHigh
   }
 })
 </script>

@@ -2,13 +2,13 @@
   <Flex gap="160px">
     <Flex gap="24px">
       <Checkbox v-model="value" value="image1">
-        <Icon size="64px" color="#d2d2d2"><CardImage/></Icon>
+        <Icon size="64px" color="#d2d2d2"><CardImage /></Icon>
       </Checkbox>
       <Checkbox v-model="value" value="image2">
-        <Icon size="64px" color="#d2d2d2"><CardImage/></Icon>
+        <Icon size="64px" color="#d2d2d2"><CardImage /></Icon>
       </Checkbox>
       <Checkbox v-model="value" value="image3">
-        <Icon size="64px" color="#d2d2d2"><CardImage/></Icon>
+        <Icon size="64px" color="#d2d2d2"><CardImage /></Icon>
       </Checkbox>
     </Flex>
   </Flex>
@@ -21,8 +21,10 @@ import { CardImage } from '@comz/icons'
 
 export default defineComponent({
   components: {
-    Flex, Checkbox,
-    Icon, CardImage
+    Flex,
+    Checkbox,
+    Icon,
+    CardImage
   },
   setup() {
     return {

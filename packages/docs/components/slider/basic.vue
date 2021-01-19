@@ -12,7 +12,8 @@ import { Flex, Slider } from 'comz'
 
 export default defineComponent({
   components: {
-    Flex, Slider
+    Flex,
+    Slider
   },
   setup() {
     return {

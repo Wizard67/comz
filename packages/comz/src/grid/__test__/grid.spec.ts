@@ -21,7 +21,9 @@ describe('Grid.vue', () => {
         }
       })
 
-      expect(wrapper.attributes('style')).toContain('--cgrid-rows: 100px 100px 100px;')
+      expect(wrapper.attributes('style')).toContain(
+        '--cgrid-rows: 100px 100px 100px;'
+      )
       expect(wrapper.element).toMatchSnapshot()
     })
 
@@ -32,7 +34,9 @@ describe('Grid.vue', () => {
         }
       })
 
-      expect(wrapper.attributes('style')).toContain('--cgrid-rows: 100px 100px 100px;')
+      expect(wrapper.attributes('style')).toContain(
+        '--cgrid-rows: 100px 100px 100px;'
+      )
       expect(wrapper.element).toMatchSnapshot()
     })
 
@@ -54,7 +58,9 @@ describe('Grid.vue', () => {
         }
       })
 
-      expect(wrapper.attributes('style')).toContain('--cgrid-auto-rows: 100px 100px 100px;')
+      expect(wrapper.attributes('style')).toContain(
+        '--cgrid-auto-rows: 100px 100px 100px;'
+      )
       expect(wrapper.element).toMatchSnapshot()
     })
 
@@ -65,7 +71,9 @@ describe('Grid.vue', () => {
         }
       })
 
-      expect(wrapper.attributes('style')).toContain('--cgrid-auto-columns: 100px;')
+      expect(wrapper.attributes('style')).toContain(
+        '--cgrid-auto-columns: 100px;'
+      )
       expect(wrapper.element).toMatchSnapshot()
     })
 
@@ -105,7 +113,7 @@ describe('Grid.vue', () => {
 
   describe('slots', () => {
     it('default', () => {
-      const content = "grid"
+      const content = 'grid'
 
       const wrapper = mount(Grid, {
         slots: {

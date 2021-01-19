@@ -10,27 +10,29 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmit } from 'vue'
-import { toRefs, useContext, getCurrentInstance } from 'vue'
+import {
+  defineProps,
+  defineEmit,
+  useContext,
+  getCurrentInstance,
+  toRefs
+} from 'vue'
 import { useCssVars } from '@comz/vca'
 import { string, bool } from 'vue-types'
 
 import { Icon } from 'comz'
 import { X } from '@comz/icons'
 
+const { expose } = useContext()
+
 const props = defineProps({
   color: string(),
   show: bool().isRequired
 })
 
-const emit = defineEmit([
-  'update:show',
-  'on-close'
-])
+const emit = defineEmit(['update:show', 'on-close'])
 
 const instance = getCurrentInstance()!
-const { expose } = useContext()
-expose(instance['ctx'])
 
 const { color } = toRefs(props)
 
@@ -42,4 +44,6 @@ const handleClose = () => {
   emit('update:show', false)
   emit('on-close')
 }
+
+expose(instance['ctx'])
 </script>

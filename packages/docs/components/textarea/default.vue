@@ -1,8 +1,5 @@
 <template>
-  <Textarea
-    v-model="value"
-    placeholder="something"
-  ></Textarea>
+  <Textarea v-model="value" placeholder="something"></Textarea>
 </template>
 
 <script>

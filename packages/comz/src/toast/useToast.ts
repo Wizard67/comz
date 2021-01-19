@@ -6,18 +6,22 @@ type Container = HTMLElement | null
 export const useToast = () => {
   let container: Container = document.createElement('div')
 
-  const vn = createVNode(Toast, {
-    show: false,
-    'onUpdate:show': async (state: boolean) => {
-      vn.component!.props.show = state
+  const vn = createVNode(
+    Toast,
+    {
+      show: false,
+      'onUpdate:show': async (state: boolean) => {
+        vn.component!.props.show = state
 
-      await nextTick()
-      render(null, container!)
-      container = null
+        await nextTick()
+        render(null, container!)
+        container = null
+      }
+    },
+    {
+      default: () => 'okok'
     }
-  }, {
-    default: () => 'okok'
-  })
+  )
 
   render(vn, container)
 

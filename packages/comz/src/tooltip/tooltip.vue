@@ -1,10 +1,6 @@
 <template>
   <section class="ctooltip">
-    <div
-      v-show="show"
-      class="ctooltip__text"
-      ref="textRef"
-    >
+    <div v-show="show" class="ctooltip__text" ref="textRef">
       {{ text }}
     </div>
     <div class="ctooltip__slot" ref="slotRef">
@@ -17,8 +13,7 @@
 import type { Ref } from 'vue'
 import type { Placement, Instance } from '@popperjs/core'
 
-import { defineProps, defineEmit } from 'vue'
-import { ref } from 'vue'
+import { defineProps, defineEmit, ref } from 'vue'
 import { useEvent, useToggle, usePopper } from '@comz/vca'
 import { string } from 'vue-types'
 
@@ -39,12 +34,14 @@ useEvent(slotRef, 'mouseenter', () => {
   const { popperInstance } = usePopper(slotRef, textRef, {
     placement: (props.placement || 'bottom') as Placement,
     strategy: 'fixed',
-    modifiers: [{
-      name: 'offset',
-      options: {
-        offset: [0, 8]
+    modifiers: [
+      {
+        name: 'offset',
+        options: {
+          offset: [0, 8]
+        }
       }
-    }]
+    ]
   })
 
   popper = popperInstance

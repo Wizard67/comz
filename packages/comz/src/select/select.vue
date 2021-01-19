@@ -1,12 +1,6 @@
 <template>
-  <div
-    ref="selectRef"
-    :class="className"
-  >
-    <div
-      class="cselect__selector"
-      @click.stop="() => !disabled && toggle()"
-    >
+  <div ref="selectRef" :class="className">
+    <div class="cselect__selector" @click.stop="() => !disabled && toggle()">
       <div :class="fieldClassName">{{ currentText }}</div>
       <div class="cselect__icon">
         <Icon>
@@ -25,8 +19,16 @@
 import type { Ref } from 'vue'
 import type { Handler } from './utils'
 
-import { defineProps, defineEmit } from 'vue'
-import { ref, toRefs, computed, provide, useContext, getCurrentInstance } from 'vue'
+import {
+  defineProps,
+  defineEmit,
+  useContext,
+  getCurrentInstance,
+  ref,
+  toRefs,
+  computed,
+  provide
+} from 'vue'
 import { useBEM, useToggle } from '@comz/vca'
 import { oneOfType, string, bool } from 'vue-types'
 import { useClickOutSide, isEmpty } from './utils'
@@ -34,19 +36,17 @@ import { useClickOutSide, isEmpty } from './utils'
 import { Icon } from 'comz'
 import { ChevronDown, ChevronUp } from '@comz/icons'
 
+const { expose } = useContext()
+
 const props = defineProps({
   modelValue: oneOfType([String, Number, Boolean, Array, Object]).isRequired,
   placeholder: string(),
   disabled: bool().isRequired
 })
 
-const emit = defineEmit([
-  'update:modelValue'
-])
+const emit = defineEmit(['update:modelValue'])
 
 const instance = getCurrentInstance()!
-const { expose } = useContext()
-expose(instance['ctx'])
 
 const { modelValue, placeholder, disabled } = toRefs(props)
 
@@ -56,7 +56,7 @@ const label = ref('')
 const { state: expand, toggle } = useToggle(false)
 
 provide<Ref<unknown>>(`select-${uid}-value`, modelValue)
-provide<Handler>(`select-${uid}-handler`, payload => {
+provide<Handler>(`select-${uid}-handler`, (payload) => {
   label.value = payload.label
   toggle(false)
   emit('update:modelValue', payload.value)
@@ -81,13 +81,11 @@ const optionsClassName = useBEM(({ b, e, m }) => ({
 
 const selectRef = ref<HTMLElement | null>(null)
 
-useClickOutSide(
-  expand,
-  selectRef,
-  result => expand.value = result
+useClickOutSide(expand, selectRef, (result) => (expand.value = result))
+
+const currentText = computed(
+  () => label.value || modelValue.value || placeholder?.value
 )
 
-const currentText = computed(() =>
-  label.value || modelValue.value || placeholder?.value
-)
+expose(instance['ctx'])
 </script>

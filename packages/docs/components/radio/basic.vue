@@ -18,7 +18,8 @@ import { Flex, Radio } from 'comz'
 
 export default {
   components: {
-    Flex, Radio
+    Flex,
+    Radio
   },
   setup() {
     return {

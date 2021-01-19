@@ -2,10 +2,9 @@ import { isRef } from 'vue'
 import { useToggle } from './index'
 
 describe('useToggle', () => {
-
   it('should works.', () => {
     const { state, toggle } = useToggle()
-    
+
     expect(isRef(state)).toBe(true)
 
     expect(state.value).toBe(false)
@@ -29,5 +28,4 @@ describe('useToggle', () => {
     toggle(true)
     expect(state.value).toBe(true)
   })
-
 })

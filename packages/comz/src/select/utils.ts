@@ -3,7 +3,9 @@ import {
   onUnmounted,
   watchEffect,
   computed,
-  Ref, ComputedRef, UnwrapRef
+  Ref,
+  ComputedRef,
+  UnwrapRef
 } from 'vue'
 
 export const useClickOutSide = (
@@ -16,7 +18,7 @@ export const useClickOutSide = (
     if (elementRef.value === undefined) {
       return callback(false)
     }
-  
+
     const el = <HTMLInputElement>event.target
     const hasContains = elementRef.value?.contains(el)
     callback(hasContains!)
@@ -24,15 +26,15 @@ export const useClickOutSide = (
 
   watchEffect(() => {
     track.value
-    ? window.addEventListener('click', handler)
-    : window.removeEventListener('click', handler)
+      ? window.addEventListener('click', handler)
+      : window.removeEventListener('click', handler)
   })
 
   onUnmounted(() => window.removeEventListener('click', handler))
 }
 
 type Option = UnwrapRef<{
-  value: unknown,
+  value: unknown
   label: string
 }>
 
@@ -47,15 +49,18 @@ export const useOptionState = (
   let lock = false
 
   const state = computed<'normal' | 'selected'>(() => {
-    const isCurrent = JSON.stringify(option?.value) === JSON.stringify(target?.value)
-  
-    !lock && isCurrent && handler({
-      value: option.value,
-      label: option.label
-    })
-  
+    const isCurrent =
+      JSON.stringify(option?.value) === JSON.stringify(target?.value)
+
+    !lock &&
+      isCurrent &&
+      handler({
+        value: option.value,
+        label: option.label
+      })
+
     lock = false
-  
+
     return isCurrent ? 'selected' : 'normal'
   })
 
@@ -77,7 +82,5 @@ export const useOptionState = (
 }
 
 export const isEmpty = (value: unknown) => {
-  return value === null ||
-         value === undefined ||
-         value === ''
+  return value === null || value === undefined || value === ''
 }

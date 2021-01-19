@@ -1,9 +1,5 @@
 <template>
-  <Grid
-    class="grid"
-    :template="template"
-    border
-  >
+  <Grid class="grid" :template="template" border>
     <GridItem name="first"></GridItem>
     <GridItem name="second"></GridItem>
     <GridItem name="third"></GridItem>

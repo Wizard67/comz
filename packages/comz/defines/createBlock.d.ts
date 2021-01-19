@@ -7,9 +7,9 @@ interface ClassComponent {
 
 /**
  * fix type error when building Teleport using the <script setup lang="ts">
- * 
+ *
  * @see https://github.com/vuejs/vue-next/issues/2855
- * 
+ *
  */
 declare module '@vue/runtime-core' {
   export function createBlock(

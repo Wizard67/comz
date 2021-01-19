@@ -5,11 +5,12 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
-import { toRefs, useContext, getCurrentInstance } from 'vue'
+import { defineProps, useContext, getCurrentInstance, toRefs } from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
 import { string, bool } from 'vue-types'
 import { useCssShorthand } from '../utils/useCssShorthand'
+
+const { expose } = useContext()
 
 const props = defineProps({
   areas: string(),
@@ -27,8 +28,6 @@ const props = defineProps({
 })
 
 const instance = getCurrentInstance()!
-const { expose } = useContext()
-expose(instance['ctx'])
 
 const {
   areas,
@@ -50,7 +49,7 @@ const className = useBEM(({ b, m }) => ({
   [m('inline')]: inline
 }))
 
-const [ align, justify ] = useCssShorthand(placeContent)
+const [align, justify] = useCssShorthand(placeContent)
 
 const cssVars = useCssVars({
   '--cgrid-areas': areas,
@@ -66,4 +65,6 @@ const cssVars = useCssVars({
   '--cgrid-height': height,
   '--cgrid-padding': padding
 })
+
+expose(instance['ctx'])
 </script>

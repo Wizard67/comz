@@ -1,11 +1,11 @@
 <template>
   <Flex gap="16px" flow="column">
     <Flex flow="column">
-      <div>value: {{value1}}</div>
+      <div>value: {{ value1 }}</div>
       <Slider v-model="value1" :step="0.1" :min="0" :max="10"></Slider>
     </Flex>
     <Flex flow="column">
-      <div>value: {{value2}}</div>
+      <div>value: {{ value2 }}</div>
       <Slider v-model="value2" :step="30"></Slider>
     </Flex>
   </Flex>
@@ -17,7 +17,8 @@ import { Flex, Slider } from 'comz'
 
 export default defineComponent({
   components: {
-    Flex, Slider
+    Flex,
+    Slider
   },
   setup() {
     return {

@@ -3,22 +3,23 @@ import { mount, DOMWrapper } from '@vue/test-utils'
 import { usePopper } from './index'
 
 describe('usePopper', () => {
-
   it('should be work.', async () => {
-    const wrapper = mount(defineComponent({
-      setup() {
-        const referenceRef = ref(null)
-        const popperRef = ref(null)
+    const wrapper = mount(
+      defineComponent({
+        setup() {
+          const referenceRef = ref(null)
+          const popperRef = ref(null)
 
-        usePopper(referenceRef, popperRef)
+          usePopper(referenceRef, popperRef)
 
-        return { referenceRef, popperRef }
-      },
-      render: () => [
-        h('div', { ref: 'popperRef' }, 'popper text'),
-        h('div', { ref: 'referenceRef' })
-      ]
-    }))
+          return { referenceRef, popperRef }
+        },
+        render: () => [
+          h('div', { ref: 'popperRef' }, 'popper text'),
+          h('div', { ref: 'referenceRef' })
+        ]
+      })
+    )
 
     await nextTick()
     expect(wrapper.find('[data-popper-placement]')).toBeInstanceOf(DOMWrapper)
@@ -27,21 +28,23 @@ describe('usePopper', () => {
   it('should be destroyed when component unmounted.', async () => {
     let popper = null
 
-    const wrapper = mount(defineComponent({
-      setup() {
-        const referenceRef = ref(null)
-        const popperRef = ref(null)
+    const wrapper = mount(
+      defineComponent({
+        setup() {
+          const referenceRef = ref(null)
+          const popperRef = ref(null)
 
-        const { popperInstance } = usePopper(referenceRef, popperRef)
-        popper = popperInstance
+          const { popperInstance } = usePopper(referenceRef, popperRef)
+          popper = popperInstance
 
-        return { referenceRef, popperRef }
-      },
-      render: () => [
-        h('div', { ref: 'popperRef' }, 'popper text'),
-        h('div', { ref: 'referenceRef' })
-      ]
-    }))
+          return { referenceRef, popperRef }
+        },
+        render: () => [
+          h('div', { ref: 'popperRef' }, 'popper text'),
+          h('div', { ref: 'referenceRef' })
+        ]
+      })
+    )
 
     await nextTick()
     expect(popper.value).not.toBeNull()
@@ -54,20 +57,22 @@ describe('usePopper', () => {
     let popper = null
     const referenceRef = ref(null)
 
-    mount(defineComponent({
-      setup() {
-        const popperRef = ref(null)
+    mount(
+      defineComponent({
+        setup() {
+          const popperRef = ref(null)
 
-        const { popperInstance } = usePopper(referenceRef, popperRef)
-        popper = popperInstance
+          const { popperInstance } = usePopper(referenceRef, popperRef)
+          popper = popperInstance
 
-        return { referenceRef, popperRef }
-      },
-      render: () => [
-        h('div', { ref: 'popperRef' }, 'popper text'),
-        h('div', { ref: 'referenceRef' })
-      ]
-    }))
+          return { referenceRef, popperRef }
+        },
+        render: () => [
+          h('div', { ref: 'popperRef' }, 'popper text'),
+          h('div', { ref: 'referenceRef' })
+        ]
+      })
+    )
 
     await nextTick()
     expect(referenceRef).not.toBeNull()
@@ -80,21 +85,23 @@ describe('usePopper', () => {
   it('should be destroyed when method invoke.', async () => {
     let popper = null
 
-    const wrapper = mount(defineComponent({
-      setup() {
-        const referenceRef = ref(null)
-        const popperRef = ref(null)
+    const wrapper = mount(
+      defineComponent({
+        setup() {
+          const referenceRef = ref(null)
+          const popperRef = ref(null)
 
-        const { popperInstance } = usePopper(referenceRef, popperRef)
-        popper = popperInstance
+          const { popperInstance } = usePopper(referenceRef, popperRef)
+          popper = popperInstance
 
-        return { referenceRef, popperRef }
-      },
-      render: () => [
-        h('div', { ref: 'popperRef' }, 'popper text'),
-        h('div', { ref: 'referenceRef' })
-      ]
-    }))
+          return { referenceRef, popperRef }
+        },
+        render: () => [
+          h('div', { ref: 'popperRef' }, 'popper text'),
+          h('div', { ref: 'referenceRef' })
+        ]
+      })
+    )
 
     await nextTick()
     popper.value.destroy()
@@ -104,50 +111,61 @@ describe('usePopper', () => {
   it('should be update options.', async () => {
     let popper = null
 
-    const wrapper = mount(defineComponent({
-      setup() {
-        const referenceRef = ref(null)
-        const popperRef = ref(null)
+    const wrapper = mount(
+      defineComponent({
+        setup() {
+          const referenceRef = ref(null)
+          const popperRef = ref(null)
 
-        const { popperInstance } = usePopper(referenceRef, popperRef)
-        popper = popperInstance
+          const { popperInstance } = usePopper(referenceRef, popperRef)
+          popper = popperInstance
 
-        return { referenceRef, popperRef }
-      },
-      render: () => [
-        h('div', { ref: 'popperRef' }, 'popper text'),
-        h('div', { ref: 'referenceRef' })
-      ]
-    }))
+          return { referenceRef, popperRef }
+        },
+        render: () => [
+          h('div', { ref: 'popperRef' }, 'popper text'),
+          h('div', { ref: 'referenceRef' })
+        ]
+      })
+    )
 
     await nextTick()
     popper.value.setOptions({ placement: 'top' })
     await nextTick()
-    expect(wrapper.get('[data-popper-placement="top"]')).toBeInstanceOf(DOMWrapper)
+    expect(wrapper.get('[data-popper-placement="top"]')).toBeInstanceOf(
+      DOMWrapper
+    )
   })
 
   it('autoClear option should be work.', async () => {
     let popper = null
     let stop = null
 
-    const wrapper = mount(defineComponent({
-      setup() {
-        const referenceRef = ref(null)
-        const popperRef = ref(null)
+    const wrapper = mount(
+      defineComponent({
+        setup() {
+          const referenceRef = ref(null)
+          const popperRef = ref(null)
 
-        const { popperInstance, stopWatch } = usePopper(referenceRef, popperRef, {}, {
-          autoClear: false
-        })
-        popper = popperInstance
-        stop = stopWatch
+          const { popperInstance, stopWatch } = usePopper(
+            referenceRef,
+            popperRef,
+            {},
+            {
+              autoClear: false
+            }
+          )
+          popper = popperInstance
+          stop = stopWatch
 
-        return { referenceRef, popperRef }
-      },
-      render: () => [
-        h('div', { ref: 'popperRef' }, 'popper text'),
-        h('div', { ref: 'referenceRef' })
-      ]
-    }))
+          return { referenceRef, popperRef }
+        },
+        render: () => [
+          h('div', { ref: 'popperRef' }, 'popper text'),
+          h('div', { ref: 'referenceRef' })
+        ]
+      })
+    )
 
     await nextTick()
     wrapper.unmount()

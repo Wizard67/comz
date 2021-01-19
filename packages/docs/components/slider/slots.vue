@@ -7,13 +7,13 @@
 
     <Slider
       :modelValue="Number(value2)"
-      @update:modelValue="val => value2 = val"
+      @update:modelValue="(val) => (value2 = val)"
     >
       <template #append>
         <Input
           :modelValue="String(value2)"
-          @update:modelValue="val => value2 = val"
-          style="width: 50px;"
+          @update:modelValue="(val) => (value2 = val)"
+          style="width: 50px"
         ></Input>
       </template>
     </Slider>
@@ -26,7 +26,9 @@ import { Flex, Slider, Input } from 'comz'
 
 export default defineComponent({
   components: {
-    Flex, Slider, Input
+    Flex,
+    Slider,
+    Input
   },
   setup() {
     return {

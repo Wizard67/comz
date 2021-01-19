@@ -14,10 +14,18 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmit } from 'vue'
-import { computed, toRefs, useContext, getCurrentInstance } from 'vue'
+import {
+  defineProps,
+  defineEmit,
+  useContext,
+  getCurrentInstance,
+  computed,
+  toRefs
+} from 'vue'
 import { useBEM } from '@comz/vca'
 import { array, oneOfType, bool } from 'vue-types'
+
+const { expose } = useContext()
 
 const props = defineProps({
   modelValue: array().isRequired,
@@ -25,25 +33,19 @@ const props = defineProps({
   disabled: bool().isRequired
 })
 
-const emit = defineEmit([
-  'update:modelValue'
-])
+const emit = defineEmit(['update:modelValue'])
 
 const instance = getCurrentInstance()!
-const { expose } = useContext()
-expose(instance['ctx'])
 
 const { disabled } = toRefs(props)
 
 const strModelValue = computed(() =>
-  props.modelValue.map(item => JSON.stringify(item))
+  props.modelValue.map((item) => JSON.stringify(item))
 )
 
 const strValue = computed(() => JSON.stringify(props.value))
 
-const checked = computed(() =>
-  strModelValue.value.includes(strValue.value)
-)
+const checked = computed(() => strModelValue.value.includes(strValue.value))
 
 const className = useBEM(({ b, m }) => ({
   [b('ccheckbox')]: true,
@@ -55,9 +57,11 @@ const handleValueChange = (event: InputEvent) => {
   const index = strModelValue.value.indexOf(strValue.value)
 
   index >= 0
-  ? props.modelValue.splice(index, 1)
-  : props.modelValue.push(props.value)
+    ? props.modelValue.splice(index, 1)
+    : props.modelValue.push(props.value)
 
   emit('update:modelValue', props.modelValue)
 }
+
+expose(instance['ctx'])
 </script>

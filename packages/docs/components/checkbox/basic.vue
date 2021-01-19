@@ -17,7 +17,8 @@ import { Flex, Checkbox } from 'comz'
 
 export default defineComponent({
   components: {
-    Flex, Checkbox
+    Flex,
+    Checkbox
   },
   setup() {
     return {

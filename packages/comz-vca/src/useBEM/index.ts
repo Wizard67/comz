@@ -6,16 +6,20 @@ type NodeType = 'block' | 'element' | 'modifier'
 type InputValue<T> = T | undefined | Ref<T> | Ref<undefined>
 
 interface BEMNode {
-  type: NodeType,
-  key: InputValue<string>,
+  type: NodeType
+  key: InputValue<string>
   value: InputValue<boolean>
 }
 
 type BEMNodeList = Array<BEMNode>
 
-type Condition = (content: {
-  [k in 'b' | 'e' | 'm']: (key: InputValue<string>) => Exclude<keyof any, number>
-}) => {
+type Condition = (
+  content: {
+    [k in 'b' | 'e' | 'm']: (
+      key: InputValue<string>
+    ) => Exclude<keyof any, number>
+  }
+) => {
   [key: string]: InputValue<boolean>
 }
 
@@ -24,7 +28,11 @@ const INVALID_KEY = Symbol()
 const SEPARATOR_ELEMENT = '__'
 const SEPARATOR_MODIFIER = '--'
 
-function markNode (type: NodeType, target: BEMNodeList, key: InputValue<string>) {
+function markNode(
+  type: NodeType,
+  target: BEMNodeList,
+  key: InputValue<string>
+) {
   target.push({
     type: type,
     key: key,
@@ -35,12 +43,13 @@ function markNode (type: NodeType, target: BEMNodeList, key: InputValue<string>)
   return k !== undefined ? k : INVALID_KEY
 }
 
-function transNodes2ClassName (nodes: BEMNodeList): string {
+function transNodes2ClassName(nodes: BEMNodeList): string {
   function filter(target: BEMNodeList, type: NodeType) {
-    return target.filter(node =>
-      node.type === type &&
-      unref(node.key) !== undefined &&
-      unref(node.value) === true
+    return target.filter(
+      (node) =>
+        node.type === type &&
+        unref(node.key) !== undefined &&
+        unref(node.value) === true
     )
   }
 
@@ -53,28 +62,28 @@ function transNodes2ClassName (nodes: BEMNodeList): string {
   }
 
   const component = rawElement?.key
-                    ? [rawBlock?.key, rawElement.key].join(SEPARATOR_ELEMENT)
-                    : rawBlock?.key
+    ? [rawBlock?.key, rawElement.key].join(SEPARATOR_ELEMENT)
+    : rawBlock?.key
 
-  const modifiers = Array.from(rawModifiers).map(modifier => {
+  const modifiers = Array.from(rawModifiers).map((modifier) => {
     return [component, unref(modifier.key)].join(SEPARATOR_MODIFIER)
   })
 
   return [component, ...modifiers].join(' ')
 }
 
-export function useBEM (condition: Condition): Ref<string> {
+export function useBEM(condition: Condition): Ref<string> {
   const nodeList: BEMNodeList = reactive([])
 
-  function b (key: InputValue<string>) {
+  function b(key: InputValue<string>) {
     return markNode('block', nodeList, key)
   }
 
-  function e (key: InputValue<string>) {
+  function e(key: InputValue<string>) {
     return markNode('element', nodeList, key)
   }
 
-  function m (key: InputValue<string>) {
+  function m(key: InputValue<string>) {
     return markNode('modifier', nodeList, key)
   }
 
@@ -82,8 +91,8 @@ export function useBEM (condition: Condition): Ref<string> {
     const conditionState = condition({ b, e, m })
     const keys = Object.keys(conditionState)
 
-    keys.map(key => {
-      const index = nodeList.findIndex(node => node.key === key)
+    keys.map((key) => {
+      const index = nodeList.findIndex((node) => node.key === key)
       nodeList[index]['value'] = conditionState[key]
     })
   })

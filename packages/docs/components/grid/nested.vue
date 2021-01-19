@@ -1,10 +1,5 @@
 <template>
-  <Grid
-    class="grid"
-    gap="16px"
-    rows="auto"
-    columns="3fr 1fr 1fr"
-  >
+  <Grid class="grid" gap="16px" rows="auto" columns="3fr 1fr 1fr">
     <GridItem>
       <Grid
         class="grid2"

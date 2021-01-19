@@ -1,41 +1,36 @@
 <template>
   <section :class="className">
-    <div
-      v-if="$slots.header"
-      class="ccard__header"
-    >
+    <div v-if="$slots.header" class="ccard__header">
       <slot name="header" />
     </div>
 
     <div class="ccard__body"><slot /></div>
 
-    <div
-      v-if="$slots.footer"
-      class="ccard__footer"
-    >
+    <div v-if="$slots.footer" class="ccard__footer">
       <slot name="footer" />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
-import { toRefs, useContext, getCurrentInstance } from 'vue'
+import { defineProps, useContext, getCurrentInstance, toRefs } from 'vue'
 import { useBEM } from '@comz/vca'
 import { bool } from 'vue-types'
+
+const { expose } = useContext()
 
 const props = defineProps({
   shadow: bool().isRequired
 })
 
-const { shadow } = toRefs(props)
-
 const instance = getCurrentInstance()!
-const { expose } = useContext()
-expose(instance['ctx'])
+
+const { shadow } = toRefs(props)
 
 const className = useBEM(({ b, m }) => ({
   [b('ccard')]: true,
   [m('shadow')]: shadow
 }))
+
+expose(instance['ctx'])
 </script>

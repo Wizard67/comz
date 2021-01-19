@@ -1,5 +1,5 @@
 <template>
-  <Card style="width: 300px;">
+  <Card style="width: 300px">
     <template #header>
       <span>Title</span>
       <span>X</span>
