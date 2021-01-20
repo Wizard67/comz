@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es6",
+    "lib": ["dom", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "allowSyntheticDefaultImports": true,
+    "removeComments": false,
+    "paths": {
+      "comz": ["packages/comz"],
+      "@comz/icons": ["packages/comz-icons"],
+      "@comz/style": ["packages/comz-style"],
+      "@comz/vca": ["packages/comz-vca"]
+    }
+  }
+}

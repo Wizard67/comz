@@ -1,29 +1,16 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "comz": ["index.ts"],
-    },
-    "target": "es6",
-    "lib": ["dom", "esnext"],
+    "baseUrl": ".",
     "declaration": true,
     "declarationDir": "types",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": false,
-    "suppressImplicitAnyIndexErrors": true,
-    "allowSyntheticDefaultImports": true,
-    "allowJs": true
   },
   "include": [
-    "defines/vue.d.ts",
-    "defines/createBlock.d.ts",
+    "defines/*.ts",
     "index.ts",
     "src/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "src/**/*.spec.ts"
   ]
 }

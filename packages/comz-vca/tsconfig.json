@@ -1,25 +1,15 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "target": "es6",
-    "lib": ["dom", "esnext"],
     "declaration": true,
-    "declarationDir": "types",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": false,
-    "suppressImplicitAnyIndexErrors": true,
-    "allowSyntheticDefaultImports": true
+    "declarationDir": "types"
   },
   "include": [
-    "src",
+    "src/**/*.ts",
     "index.ts"
   ],
   "exclude": [
-    "node_modules",
-    "vue",
-    "src/**/index.spec.ts"
+    "src/**/*.spec.ts"
   ]
 }
