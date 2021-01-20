@@ -19,9 +19,8 @@
 import type { Ref } from 'vue'
 import type { Handler } from './utils'
 
+import { defineProps, defineEmit } from 'vue'
 import {
-  defineProps,
-  defineEmit,
   useContext,
   getCurrentInstance,
   ref,

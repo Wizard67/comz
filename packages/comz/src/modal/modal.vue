@@ -31,7 +31,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmit, toRefs } from 'vue'
+import { defineProps, defineEmit } from 'vue'
+import { toRefs } from 'vue'
 import { useCssVars } from '@comz/vca'
 import { string, bool } from 'vue-types'
 

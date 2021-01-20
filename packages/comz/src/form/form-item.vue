@@ -10,10 +10,10 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, toRefs } from 'vue'
+import { defineProps } from 'vue'
 import { string } from 'vue-types'
 
-const props = defineProps({
+defineProps({
   label: string()
 })
 </script>

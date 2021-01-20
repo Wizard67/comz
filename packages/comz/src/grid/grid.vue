@@ -5,7 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, useContext, getCurrentInstance, toRefs } from 'vue'
+import { defineProps } from 'vue'
+import { useContext, getCurrentInstance, toRefs } from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
 import { string, bool } from 'vue-types'
 import { useCssShorthand } from '../utils/useCssShorthand'

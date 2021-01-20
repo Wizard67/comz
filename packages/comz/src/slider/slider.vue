@@ -18,9 +18,8 @@
 import type { Ref, WatchStopHandle } from 'vue'
 import type { MouseState } from '@comz/vca'
 
+import { defineProps, defineEmit } from 'vue'
 import {
-  defineProps,
-  defineEmit,
   useContext,
   getCurrentInstance,
   ref,

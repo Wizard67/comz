@@ -13,7 +13,8 @@
 import type { Ref } from 'vue'
 import type { Placement, Instance } from '@popperjs/core'
 
-import { defineProps, defineEmit, ref } from 'vue'
+import { defineProps, defineEmit } from 'vue'
+import { ref } from 'vue'
 import { useEvent, useToggle, usePopper } from '@comz/vca'
 import { string } from 'vue-types'
 

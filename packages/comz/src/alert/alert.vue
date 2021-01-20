@@ -10,13 +10,8 @@
 </template>
 
 <script setup lang="ts">
-import {
-  defineProps,
-  defineEmit,
-  useContext,
-  getCurrentInstance,
-  toRefs
-} from 'vue'
+import { defineProps, defineEmit } from 'vue'
+import { useContext, getCurrentInstance, toRefs } from 'vue'
 import { useCssVars } from '@comz/vca'
 import { string, bool } from 'vue-types'
 
