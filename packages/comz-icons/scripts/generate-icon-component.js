@@ -29,9 +29,9 @@ const rollupEntriesTemplate = (enties) =>
 
 const typesTemplate = (comps) => 
   "declare module '@comz/icons' {\n" +
-  "  import { defineComponent } from 'vue'\n" +
-  "  type Vue = typeof defineComponent\n" + comps.map(c => 
-  `  export const ${ pascalCaseName(c) }: Vue`).join('\n') + '\n' +
+  "  import { DefineComponent } from 'vue'\n" +
+  "  type component = DefineComponent<{}, {}, any>\n" + comps.map(c => 
+  `  export const ${ pascalCaseName(c) }: component`).join('\n') + '\n' +
   "}"
 
 const generateVueSFC = (sourcePath, name) => {
