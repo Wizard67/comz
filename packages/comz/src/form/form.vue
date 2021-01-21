@@ -10,14 +10,14 @@ import { toRefs, useContext, getCurrentInstance } from 'vue'
 import { useCssVars } from '@comz/vca'
 import { string } from 'vue-types'
 
+const { expose } = useContext()
+
 const props = defineProps({
   labelWidth: string(),
   labelAlign: string()
 })
 
 const instance = getCurrentInstance()!
-const { expose } = useContext()
-expose(instance['ctx'])
 
 const { labelWidth, labelAlign } = toRefs(props)
 
@@ -25,4 +25,6 @@ const cssVars = useCssVars({
   '--cform-label-width': labelWidth,
   '--cform-label-align': labelAlign
 })
+
+expose(instance['ctx'])
 </script>

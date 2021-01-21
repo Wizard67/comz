@@ -19,9 +19,9 @@ const { expose } = useContext()
 
 const props = defineProps({
   type: oneOf(['', 'default', 'primary', 'text']).def(''),
-  loading: bool().isRequired,
-  disabled: bool().isRequired,
-  danger: bool().isRequired
+  loading: bool().def(false),
+  disabled: bool().def(false),
+  danger: bool().def(false)
 })
 
 const emit = defineEmit(['on-click'])

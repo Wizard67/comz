@@ -21,7 +21,7 @@ import { bool } from 'vue-types'
 const { expose } = useContext()
 
 const props = defineProps({
-  shadow: bool().isRequired
+  shadow: bool().def(false)
 })
 
 const instance = getCurrentInstance()!

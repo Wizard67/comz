@@ -21,7 +21,7 @@ const props = defineProps({
   autoColumns: string(),
   flow: string(),
   gap: string(),
-  inline: bool().isRequired,
+  inline: bool().def(false),
   placeContent: string(),
   width: string(),
   height: string(),

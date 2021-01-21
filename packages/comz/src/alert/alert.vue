@@ -22,7 +22,7 @@ const { expose } = useContext()
 
 const props = defineProps({
   color: string(),
-  show: bool().isRequired
+  show: bool().def(false)
 })
 
 const emit = defineEmit(['update:show', 'on-close'])

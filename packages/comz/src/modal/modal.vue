@@ -44,8 +44,8 @@ import { X } from '@comz/icons'
 const props = defineProps({
   title: string(),
   width: string(),
-  show: bool().isRequired,
-  closable: bool().isRequired
+  show: bool().def(false),
+  closable: bool().def(false)
 })
 
 const emit = defineEmit(['update:show', 'on-close'])

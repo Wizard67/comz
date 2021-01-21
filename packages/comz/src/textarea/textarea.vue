@@ -26,8 +26,8 @@ const props = defineProps({
   width: string(),
   rows: number(),
   placeholder: string(),
-  readonly: bool().isRequired,
-  disabled: bool().isRequired
+  readonly: bool().def(false),
+  disabled: bool().def(false)
 })
 
 const emit = defineEmit(['update:modelValue'])
@@ -48,7 +48,7 @@ const cssVars = useCssVars({
   '--ctextarea-width': width
 })
 
-const handleInput = (event: InputEvent) => {
+const handleInput = (event: Event) => {
   emit('update:modelValue', (event.target as HTMLTextAreaElement).value)
 }
 

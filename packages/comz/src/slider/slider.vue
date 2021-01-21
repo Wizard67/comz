@@ -40,7 +40,7 @@ const props = defineProps({
   min: number(),
   max: number(),
   step: number(),
-  disabled: bool().isRequired
+  disabled: bool().def(false)
 })
 
 const emit = defineEmit(['update:modelValue'])

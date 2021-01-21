@@ -4,7 +4,7 @@
     <input
       type="checkbox"
       class="ccheckbox__field"
-      :value="value"
+      :value="JSON.stringify(value)"
       :checked="checked"
       :disabled="disabled"
       @change="handleValueChange"
@@ -24,7 +24,7 @@ const { expose } = useContext()
 const props = defineProps({
   modelValue: array().isRequired,
   value: oneOfType([String, Number, Boolean, Array, Object]).isRequired,
-  disabled: bool().isRequired
+  disabled: bool().def(false)
 })
 
 const emit = defineEmit(['update:modelValue'])
@@ -47,7 +47,7 @@ const className = useBEM(({ b, m }) => ({
   [m('disabled')]: disabled
 }))
 
-const handleValueChange = (event: InputEvent) => {
+const handleValueChange = () => {
   const index = strModelValue.value.indexOf(strValue.value)
 
   index >= 0

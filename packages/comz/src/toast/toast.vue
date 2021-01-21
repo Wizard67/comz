@@ -30,7 +30,7 @@ import {
 } from '@comz/icons'
 
 const props = defineProps({
-  show: bool().isRequired,
+  show: bool().def(false),
   type: string(),
   duration: number()
 })

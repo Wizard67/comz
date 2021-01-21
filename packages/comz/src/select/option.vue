@@ -17,7 +17,7 @@ import { useOptionState } from './utils'
 const props = defineProps({
   value: oneOfType([String, Number, Boolean, Array, Object]).isRequired,
   label: string().isRequired,
-  disabled: bool().isRequired
+  disabled: bool().def(false)
 })
 
 const instance = getCurrentInstance()!

@@ -4,7 +4,7 @@
     <input
       class="cradio__field"
       type="radio"
-      :value="value"
+      :value="JSON.stringify(value)"
       :checked="checked"
       :disabled="disabled"
       @change="handleValueChange"
@@ -24,7 +24,7 @@ const { expose } = useContext()
 const props = defineProps({
   modelValue: oneOfType([String, Number, Boolean, Array, Object]).isRequired,
   value: oneOfType([String, Number, Boolean, Array, Object]).isRequired,
-  disabled: bool().isRequired
+  disabled: bool().def(false)
 })
 
 const emit = defineEmit(['update:modelValue'])
@@ -43,7 +43,7 @@ const className = useBEM(({ b, m }) => ({
   [m('disabled')]: disabled
 }))
 
-const handleValueChange = (event: InputEvent) => {
+const handleValueChange = () => {
   // to avoid object-value being stringify, return props.value
   emit('update:modelValue', props.value)
 }

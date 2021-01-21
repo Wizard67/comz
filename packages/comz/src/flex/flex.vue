@@ -1,10 +1,8 @@
 <template>
   <section :class="className" :style="cssVars">
-    <template v-for="(item, index) in slots" :key="index">
-      <div class="cflex__item">
-        <component :is="item" />
-      </div>
-    </template>
+    <div class="cflex__item" v-for="(item, index) in slots" :key="index">
+      <component :is="item" />
+    </div>
   </section>
 </template>
 
@@ -19,8 +17,8 @@ import { useCssShorthand } from '../utils/useCssShorthand'
 const { expose, slots: originSlots } = useContext()
 
 const props = defineProps({
-  inline: bool().isRequired,
-  wrap: bool().isRequired,
+  inline: bool().def(false),
+  wrap: bool().def(false),
   gap: string(),
   flow: string(),
   placeContent: string(),

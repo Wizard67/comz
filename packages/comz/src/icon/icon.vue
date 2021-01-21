@@ -15,8 +15,8 @@ const { expose } = useContext()
 const props = defineProps({
   size: string(),
   color: string(),
-  spin: bool().isRequired,
-  link: bool().isRequired
+  spin: bool().def(false),
+  link: bool().def(false)
 })
 
 const emit = defineEmit(['on-click'])

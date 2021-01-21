@@ -40,9 +40,9 @@ const { expose } = useContext()
 const props = defineProps({
   modelValue: string().isRequired,
   placeholder: string(),
-  readonly: bool().isRequired,
-  disabled: bool().isRequired,
-  clearable: bool().isRequired
+  readonly: bool().def(false),
+  disabled: bool().def(false),
+  clearable: bool().def(false)
 })
 
 const emit = defineEmit([
@@ -70,15 +70,15 @@ const allowClear = computed(
     !props.disabled
 )
 
-const handleInputChange = (event: InputEvent) => {
+const handleInputChange = (event: Event) => {
   emit('update:modelValue', (event.target as HTMLInputElement).value)
 }
 
-const handleInputFocus = (event: InputEvent) => {
+const handleInputFocus = (event: FocusEvent) => {
   emit('on-focus', (event.target as HTMLInputElement).value)
 }
 
-const handleInputBlur = (event: InputEvent) => {
+const handleInputBlur = (event: FocusEvent) => {
   emit('on-blur', (event.target as HTMLInputElement).value)
 }
 

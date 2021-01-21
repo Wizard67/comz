@@ -22,7 +22,7 @@ const { expose } = useContext()
 
 const props = defineProps({
   modelValue: bool().isRequired,
-  disabled: bool().isRequired
+  disabled: bool().def(false)
 })
 
 const emit = defineEmit(['update:modelValue'])
