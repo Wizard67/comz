@@ -1,0 +1,16 @@
+.cexpand-enter-active,
+.cexpand-leave-active {
+  opacity: 1;
+  overflow: visible;
+  transition: height .2s ease-in-out,
+              opacity .2s linear .2s;
+}
+
+.cexpand-enter-from,
+.cexpand-leave-to {
+  transform: translateZ(0);
+  opacity: 0;
+  overflow: hidden;
+  transition: height .2s ease-in-out,
+              opacity .2s linear;
+}
