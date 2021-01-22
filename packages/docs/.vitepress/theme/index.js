@@ -60,7 +60,7 @@ import FlexPlace from '../../components/flex/place.vue'
 
 import FormBasic from '../../components/form/basic.vue'
 
-import PanelDefault from '../../components/panel/default.vue'
+import PanelUsage from '../../components/panel/usage.vue'
 
 import SwitchBasic from '../../components/switch/basic.vue'
 import SwitchSlots from '../../components/switch/slots.vue'
@@ -136,7 +136,7 @@ export default {
 
     app.component('FormBasic', FormBasic)
 
-    app.component('PanelDefault', PanelDefault)
+    app.component('PanelUsage', PanelUsage)
 
     app.component('SwitchBasic', SwitchBasic)
     app.component('SwitchSlots', SwitchSlots)

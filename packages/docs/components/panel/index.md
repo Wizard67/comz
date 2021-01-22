@@ -1,7 +1,7 @@
 # Panel 面板
 
-## 基础用法
+## 用例
 
-::: component <PanelDefault/>
-<<< ./components/panel/default.vue
+::: component <PanelUsage/>
+<<< ./components/panel/usage.vue
 :::

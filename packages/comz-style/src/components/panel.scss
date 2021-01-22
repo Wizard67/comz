@@ -3,24 +3,25 @@
 
 .cpanel { @extend %panel; }
 .cpanel__header { @extend %panel__header; }
-.cpanel__wrap { @extend %panel__wrap; }
-.cpanel__wrap.cpanel__wrap--expand { @extend %panel__wrap--expand; }
+.cpanel__icon { @extend %panel__icon; }
+.cpanel__title { @extend %panel__title }
 .cpanel__body { @extend %panel__body; }
 
 %panel {
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  color: rgb(51, 51, 51);
+  width: 100%;
+  border-radius: 2px;
+  box-shadow: $shadow-form;
+  color: $text-color;
   background-color: white;
-  font-size: 14px;
 }
 
 %panel__header {
   display: flex;
   align-items: center;
   height: 22px;
-  padding: 0 4px;
+  padding: 0 8px;
   background-color: rgba(200, 202, 208, 0.5);
+  font-size: 14px;
   user-select: none;
   cursor: pointer;
 
@@ -33,28 +34,14 @@
   }
 }
 
-%panel__wrap {
-  box-sizing: border-box;
-  position: relative;
-  height: 0;
-  padding: 0;
-  transform: translateZ(0);
-  opacity: 0;
-  overflow: hidden;
-  transition: height .2s ease-in-out,
-              opacity .2s linear,
-              padding .2s ease-in-out;
+%panel__icon {
+  margin-right: 8px;
 }
 
-%panel__wrap--expand {
-  padding: 4px;
-  opacity: 1;
-  overflow: visible;
-  transition: height .2s ease-in-out,
-              opacity .2s linear .2s,
-              padding .2s ease-in-out;
+%panel__title {
+
 }
 
 %panel__body {
-  
+
 }

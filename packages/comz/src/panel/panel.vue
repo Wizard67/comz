@@ -1,28 +1,29 @@
 <template>
-  <section class="cpanel">
+  <section :class="className">
     <div class="cpanel__header" @click="togglePanelState">
-      <Icon size="22px">
+      <div class="cpanel__icon">
         <ChevronExpand v-if="expand" />
-        <ChevronContract v-else />
-      </Icon>
-      <template v-if="true">{{ title }}</template>
+        <Dash v-else />
+      </div>
+      <div class="cpanel__title">{{ title }}</div>
     </div>
-    <div ref="wrapRef" :class="className" :style="{ height }">
-      <div class="cpanel__body" ref="bodyRef">
+
+    <ExpandTransition>
+      <div class="cpanel__body" v-if="expand">
         <slot />
       </div>
-    </div>
+    </ExpandTransition>
   </section>
 </template>
 
 <script setup lang="ts">
 import { defineProps, defineEmit } from 'vue'
 import { useContext, getCurrentInstance, toRefs } from 'vue'
-import { useBEM, useHeightToggle } from '@comz/vca'
+import { useBEM } from '@comz/vca'
 import { string, bool } from 'vue-types'
 
-import { Icon } from 'comz'
-import { ChevronExpand, ChevronContract } from '@comz/icons'
+import { Dash, ChevronExpand } from '@comz/icons'
+import ExpandTransition from '../transition/expand.vue'
 
 const { expose } = useContext()
 
@@ -37,15 +38,10 @@ const instance = getCurrentInstance()!
 
 const { expand } = toRefs(props)
 
-const className = useBEM(({ b, e, m }) => ({
+const className = useBEM(({ b, m }) => ({
   [b('cpanel')]: true,
-  [e('wrap')]: true,
   [m('expand')]: expand
 }))
-
-const { wrapRef, bodyRef, height } = useHeightToggle(expand, {
-  wrapPadding: 8
-})
 
 const togglePanelState = () => {
   emit('update:expand', !expand.value)
