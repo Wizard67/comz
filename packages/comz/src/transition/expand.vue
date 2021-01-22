@@ -8,23 +8,14 @@
     @leave="leave"
     @after-leave="afterLeave"
   >
-    <section v-if="expand">
-      <slot />
-    </section>
+    <slot />
   </Transition>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
-import { bool } from 'vue-types'
-
-defineProps({
-  expand: bool().def(false)
-})
-
 // prettier-ignore
 const beforeEnter = (el: Element) => {
-  (el as HTMLElement).style.height = '0'
+  (el as HTMLElement).style.height = '0px'
 }
 
 // prettier-ignore
@@ -36,7 +27,7 @@ const enter = (el: Element) => {
 
 // prettier-ignore
 const afterEnter = (el: Element) => {
-  (el as HTMLElement).style.height = ''
+  (el as HTMLElement).style.height = 'auto'
 }
 
 // prettier-ignore
@@ -47,12 +38,12 @@ const beforeLeave = (el: Element) => {
 // prettier-ignore
 const leave = (el: Element) => {
   if (el.scrollHeight) {
-    (el as HTMLElement).style.height = '0'
+    (el as HTMLElement).style.height = '0px'
   }
 }
 
 // prettier-ignore
 const afterLeave = (el: Element) => {
-  (el as HTMLElement).style.height = ''
+  (el as HTMLElement).style.height = 'auto'
 }
 </script>
