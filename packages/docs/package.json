@@ -12,6 +12,6 @@
     "build": "vitepress build"
   },
   "devDependencies": {
-    "vitepress": "^0.11.3"
+    "vitepress": "^0.11.4"
   }
 }
