@@ -7,4 +7,4 @@ export * from './src/useOverlay'
 export * from './src/useMouse'
 export * from './src/useClickOutside'
 
-export * from './src/usePopper'
+export * from './src/usePopover'
