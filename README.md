@@ -8,33 +8,49 @@ yarn add comz
 
 ## Component
 
-### Todo
+### Layout
 
+|   component    |   state(P/I/E)   |    test    |
+|----------------|:----------------:|:----------:|
+| Grid           | E                | -          |
+| Flex           | E                | -          |
 
-|   component    |    type    |   state(I/E)     |    test    |
-|----------------|------------|:----------------:|:----------:|
-| Button         | General    | E                | -          |
-| Icon           | General    | E                | -          |
-| Grid           | Layout     | E                | -          |
-| GridItem       | Layout     | E                | -          |
-| Card           | Container  | E                | -          |
-| Table          | Container  | -                | -          |
-| Alert          | Feedback   | E                | -          |
-| Toast          | Feedback   | E                | -          |
-| Modal          | Feedback   | E                | -          |
-| Form           | Form       | -                | -          |
-| Input          | Form       | E                | -          |
-| Textarea       | Form       | E                | -          |
-| Radio          | Form       | E                | -          |
-| Checkbox       | Form       | E                | -          |
-| Select         | Form       | E                | -          |
+### Basic
 
-|   component    |    type    |    state(i/e)    |    test    |
-|----------------|------------|:----------------:|:----------:|
-| Space          | Layout     | E                | -          |
-| Article        | General    | -                | -          |
-| Tree           | Container  | -                | -          |
-| Divider        | Layout     | -                | -          |
-| Slider         | Form       | -                | -          |
-| Upload         | Form       | -                | -          |
-| Picker         | Form       | -                | -          |
+|   component    |   state(P/I/E)   |    test    |
+|----------------|:----------------:|:----------:|
+| Button         | E                | -          |
+| Icon           | E                | -          |
+
+### Data
+
+|   component    |   state(P/I/E)   |    test    |
+|----------------|:----------------:|:----------:|
+| Input          | E                | -          |
+| Textarea       | I                | -          |
+| Radio          | E                | -          |
+| Checkbox       | E                | -          |
+| Select         | I                | -          |
+| Switch         | E                | -          |
+| Slider         | E                | -          |
+| Upload         | -                | -          |
+| Picker         | -                | -          |
+
+### Container
+
+|   component    |   state(P/I/E)   |    test    |
+|----------------|:----------------:|:----------:|
+| Card           | I                | -          |
+| Panel          | I                | -          |
+| Form           | E                | -          |
+| Table          | -                | -          |
+| Tree           | -                | -          |
+
+### FeedBack
+
+|   component    |   state(P/I/E)   |    test    |
+|----------------|:----------------:|:----------:|
+| Modal          | I                | -          |
+| Alert          | I                | -          |
+| Toast          | I                | -          |
+| Tooltip        | E                | -          |
