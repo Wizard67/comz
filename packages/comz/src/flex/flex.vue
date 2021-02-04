@@ -11,7 +11,7 @@ import { defineProps } from 'vue'
 import { useContext, getCurrentInstance, toRefs, computed } from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
 import { string, bool } from 'vue-types'
-import { getVnodes } from './utils'
+import { getSlotVnodes } from '../utils/getVnodes'
 import { useCssShorthand } from '../utils/useCssShorthand'
 
 const { expose, slots: originSlots } = useContext()
@@ -29,7 +29,7 @@ const props = defineProps({
 const instance = getCurrentInstance()!
 
 // filter vnode which type is comment
-const slots = computed(() => getVnodes(originSlots?.default?.() || []))
+const slots = computed(() => getSlotVnodes(originSlots?.default?.() || []))
 
 const { inline, wrap, gap, flow, placeContent, placeItems, placeSelf } = toRefs(
   props
