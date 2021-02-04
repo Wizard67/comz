@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { Tooltip, Button } from 'comz'
+import { Button, Tooltip } from 'comz'
 
 export default {
   components: {

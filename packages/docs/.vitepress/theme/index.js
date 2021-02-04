@@ -66,6 +66,7 @@ import SwitchBasic from '../../components/switch/basic.vue'
 import SwitchSlots from '../../components/switch/slots.vue'
 
 import TooltipDefault from '../../components/tooltip/default.vue'
+import TooltipPlacement from '../../components/tooltip/placement.vue'
 
 import SliderBasic from '../../components/slider/basic.vue'
 import SliderRange from '../../components/slider/range.vue'
@@ -142,12 +143,12 @@ export default {
     app.component('SwitchSlots', SwitchSlots)
 
     app.component('TooltipDefault', TooltipDefault)
+    app.component('TooltipPlacement', TooltipPlacement)
 
     app.component('SliderBasic', SliderBasic)
     app.component('SliderRange', SliderRange)
     app.component('SliderStep', SliderStep)
     app.component('SliderSlots', SliderSlots)
-
 
     app.component('LayoutDemo1', LayoutDemo1)
     app.component('LayoutDemo2', LayoutDemo2)

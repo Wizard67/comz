@@ -2,18 +2,16 @@
 @import "../mixins/function";
 
 .ctooltip { @extend %tooltip; }
-.ctooltip__text { @extend %tooltip__text; }
-.ctooltip__slot { @extend %tooltip__slot; }
-
+.ttooltip__content { @extend %tooltip__content; }
 
 %tooltip {
-  position: relative;
-  display: inline-block;
+  display: inline-flex;
+  pointer-events: none;
+  z-index: 100;
 }
 
-%tooltip__text {
-  position: absolute;
-  display: inline-flex;
+%tooltip__content {
+  display: flex;
   align-items: center;
   max-width: 160px;
   padding: 4px 16px;
@@ -23,10 +21,43 @@
   background-color: rgb(47, 49, 55);
   font-size: 14px;
   line-height: 1.2em;
-  z-index: 100;
-  pointer-events: none;
 }
 
-%tooltip__slot {
-  
+.ctooltip-enter-active {
+  transition: all .3s ease-out;
+}
+.ctooltip-leave-active {
+  transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+[data-popper-placement*="top"] {
+  .ctooltip-enter-from,
+  .ctooltip-leave-to {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+}
+
+[data-popper-placement*="right"] {
+  .ctooltip-enter-from,
+  .ctooltip-leave-to {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+}
+
+[data-popper-placement*="bottom"] {
+  .ctooltip-enter-from,
+  .ctooltip-leave-to {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+}
+
+[data-popper-placement*="left"] {
+  .ctooltip-enter-from,
+  .ctooltip-leave-to {
+    transform: translateX(10px);
+    opacity: 0;
+  }
 }
