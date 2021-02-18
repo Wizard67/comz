@@ -4,7 +4,7 @@
 .cpanel { @extend %panel; }
 .cpanel__header { @extend %panel__header; }
 .cpanel__icon { @extend %panel__icon; }
-.cpanel__title { @extend %panel__title }
+.cpanel__title { @extend %panel__title; }
 .cpanel__body { @extend %panel__body; }
 
 %panel {
@@ -35,6 +35,8 @@
 }
 
 %panel__icon {
+  display: flex;
+  align-items: center;
   margin-right: 8px;
 }
 
@@ -43,5 +45,15 @@
 }
 
 %panel__body {
+  position: relative;
+  padding: 0 8px;
 
+  &::before,
+  &::after {
+    content: "\200b";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
 }
