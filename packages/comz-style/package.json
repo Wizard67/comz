@@ -13,9 +13,10 @@
   },
   "devDependencies": {
     "cssnano": "^4.1.10",
-    "flex-gap-polyfill": "^1.0.4",
+    "flex-gap-polyfill": "^2.2.1",
     "gulp": "^4.0.2",
     "gulp-dart-sass": "^1.0.2",
-    "gulp-postcss": "^9.0.0"
+    "gulp-postcss": "^9.0.0",
+    "postcss": "^8.2.6"
   }
 }
