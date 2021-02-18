@@ -1,7 +1,7 @@
 <template>
   <div class="cform-item">
     <div class="cform-item__label">
-      {{ label ? label + ':' : '' }}
+      {{ label }}
     </div>
     <div class="cform-item__field">
       <slot />

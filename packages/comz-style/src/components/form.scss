@@ -16,12 +16,13 @@ $align: var(--cform-label-align, right);
 
   display: flex;
   flex-direction: column;
+  margin: 8px 0;
 }
 
 %form-item {
   display: flex;
   align-items: flex-start;
-  margin: 6px 0;
+  margin: 4px 0;
 }
 
 %form-item__label {
@@ -39,6 +40,6 @@ $align: var(--cform-label-align, right);
 
 %form-item__field {
   position: relative;
+  width: 100%;
   margin-left: 8px;
 }
-
