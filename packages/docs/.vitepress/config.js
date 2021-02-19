@@ -51,7 +51,7 @@ module.exports = {
     editLinkText: 'Edit this page on GitHub',
 
     nav: [
-      // { text: '', link: ''}
+      { text: 'playground', link: '/playground/'}
     ],
 
     sidebar: {
