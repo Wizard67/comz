@@ -25,10 +25,9 @@ $offset: var(--cslider-thumb-offset, 0);
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
-  padding: px2em(4px) 0;
+  width: 100%;
   font-size: 14px;
   line-height: 1.2;
-  cursor: var(--cursor, pointer);
 
   &::before {
     content: "\200b";
@@ -62,17 +61,16 @@ $offset: var(--cslider-thumb-offset, 0);
 }
 
 %slider__field {
+  flex: auto;
   position: relative;
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
-  width: 100%;
-  min-width: 160px;
   margin: 0 .5em;
   color: var(--color, #{$color-primary});
   border-radius: px2em(100px);
   background: linear-gradient(to right, var(--background-color, #{$color-primary}) $offset, var(--inactive-color, #{$color-disabled}) $offset);
-  cursor: pointer;
+  cursor: var(--cursor, pointer);
 }
 
 %slider__thumb {
@@ -81,7 +79,7 @@ $offset: var(--cslider-thumb-offset, 0);
   height: px2em(4px);
   transform: translateX($offset);
   color: var(--background-color, #{$color-primary});
-  cursor: inherit;
+  cursor: var(--cursor, pointer);
 
   &::before,
   &::after {
