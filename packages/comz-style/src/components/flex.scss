@@ -7,7 +7,8 @@
 
 .cflex__item { @extend %flex-item; }
 
-$gap: var(--cflex-gap, 8px);
+$row-gap: var(--cflex-row-gap, 8px);
+$column-gap: var(--cflex-column-gap, 8px);
 $flow: var(--cflex-flow, row);
 $align-content: var(--cflex-align-content);
 $justify-content: var(--cflex-justify-content);
@@ -17,7 +18,8 @@ $align-self: var(--cflex-align-self);
 $justify-self: var(--cflex-justify-self);
 
 %flex {
-  --cflex-gap: initial;
+  --cflex-row-gap: initial;
+  --cflex-column-gap: initial;
   --cflex-flow: initial;
   --cflex-align-content: initial;
   --cflex-justify-content: initial;
@@ -30,6 +32,8 @@ $justify-self: var(--cflex-justify-self);
   --flex-wrap: initial;
 
   display: flex;
+  row-gap: $row-gap;
+  column-gap: $column-gap;
   flex-direction: $flow;
   align-content: $align-content;
   justify-content: $justify-content;
@@ -38,7 +42,6 @@ $justify-self: var(--cflex-justify-self);
   align-self: $align-self;
   justify-self: $justify-self;
   flex-wrap: var(--flex-wrap, initial);
-  gap: $gap;
 }
 
 %flex--inline {

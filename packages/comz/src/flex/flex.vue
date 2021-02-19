@@ -47,7 +47,6 @@ const className = useBEM(({ b, m }) => ({
 }))
 
 const cssVars = useCssVars({
-  '--cflex-gap': gap,
   '--cflex-row-gap': rowGap,
   '--cflex-column-gap': columnGap,
   '--cflex-flow': flow,
