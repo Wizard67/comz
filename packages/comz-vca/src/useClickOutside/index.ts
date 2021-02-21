@@ -17,7 +17,7 @@ export function useClickOutSide(
 
     if (
       element === event.target ||
-      (el instanceof Node && element.contains(el))
+      (el instanceof Node && !element.contains(el))
     ) {
       callback(event)
     }
