@@ -80,6 +80,10 @@ import LayoutDemo4 from '../../demo/layout/demo4.vue'
 
 import PlaygroundDemo1 from '../../playground/demo1.vue'
 
+import { initCustomFormatter } from 'vue'
+// formate chrome console info
+initCustomFormatter()
+
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
