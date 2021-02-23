@@ -6,7 +6,8 @@ type TypeRef<T> = T | Ref<T> | ComputedRef<T>
 
 export function useClickOutSide(
   elementRef: TypeRef<Element | null | undefined>,
-  callback: (event: MouseEvent) => void
+  callback: (event: MouseEvent) => void,
+  options?: boolean | AddEventListenerOptions
 ) {
   const handler = (event: MouseEvent) => {
     const element = unref(elementRef)
@@ -15,10 +16,7 @@ export function useClickOutSide(
 
     const el = event.target
 
-    if (
-      element === event.target ||
-      (el instanceof Node && !element.contains(el))
-    ) {
+    if (el instanceof Node && !element.contains(el)) {
       callback(event)
     }
   }
@@ -29,7 +27,7 @@ export function useClickOutSide(
     () => unref(elementRef),
     (element, _, cleanUp) => {
       if (element) {
-        stop = useEvent(window, 'click', handler)
+        useEvent(window, 'click', handler, options)
       } else {
         stop()
       }
