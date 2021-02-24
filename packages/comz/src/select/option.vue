@@ -1,5 +1,5 @@
 <template>
-  <div :class="className" @click="() => !disabled && changeState()">
+  <div :class="className" @click.stop="handleOptionSelect">
     <slot />
   </div>
 </template>
@@ -9,11 +9,10 @@ import type { Ref, ComputedRef } from 'vue'
 import type { Handler } from './utils'
 
 import { defineProps } from 'vue'
-import { getCurrentInstance, inject, computed, reactive, toRefs } from 'vue'
+import { getCurrentInstance, inject, toRefs, reactive } from 'vue'
 import { useBEM } from '@comz/vca'
 import { oneOfType, string, bool } from 'vue-types'
 import { useOptionState } from './utils'
-
 const props = defineProps({
   value: oneOfType([String, Number, Boolean, Array, Object]).isRequired,
   label: string().isRequired,
@@ -21,7 +20,7 @@ const props = defineProps({
 })
 
 const instance = getCurrentInstance()!
-const uid = instance.parent?.uid
+const uid = instance.parent?.parent?.parent?.uid
 
 const currentValue = inject<Ref<unknown> | ComputedRef<unknown>>(
   `select-${uid}-value`
@@ -35,9 +34,13 @@ const { state, changeState } = useOptionState(
   inject<Handler>(`select-${uid}-handler`)!
 )
 
+const handleOptionSelect = () => {
+  !disabled.value && changeState()
+}
+
 const className = useBEM(({ b, m }) => ({
   [b('coption')]: true,
-  [m('selected')]: computed(() => state.value === 'selected'),
+  [m('selected')]: state,
   [m('disabled')]: disabled
 }))
 </script>

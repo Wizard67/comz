@@ -1,37 +1,5 @@
-import {
-  nextTick,
-  onUnmounted,
-  watchEffect,
-  computed,
-  Ref,
-  ComputedRef,
-  UnwrapRef
-} from 'vue'
-
-export const useClickOutSide = (
-  track: Ref<boolean>,
-  elementRef: Ref<null | HTMLElement>,
-  callback: (state: boolean) => void
-) => {
-  const handler = async (event: MouseEvent) => {
-    await nextTick()
-    if (elementRef.value === undefined) {
-      return callback(false)
-    }
-
-    const el = <HTMLInputElement>event.target
-    const hasContains = elementRef.value?.contains(el)
-    callback(hasContains!)
-  }
-
-  watchEffect(() => {
-    track.value
-      ? window.addEventListener('click', handler)
-      : window.removeEventListener('click', handler)
-  })
-
-  onUnmounted(() => window.removeEventListener('click', handler))
-}
+import type { Ref, ComputedRef, UnwrapRef } from 'vue'
+import { computed } from 'vue'
 
 type Option = UnwrapRef<{
   value: unknown
@@ -48,7 +16,7 @@ export const useOptionState = (
   // prevent updating state twice
   let lock = false
 
-  const state = computed<'normal' | 'selected'>(() => {
+  const state = computed<boolean>(() => {
     const isCurrent =
       JSON.stringify(option?.value) === JSON.stringify(target?.value)
 
@@ -61,11 +29,11 @@ export const useOptionState = (
 
     lock = false
 
-    return isCurrent ? 'selected' : 'normal'
+    return isCurrent
   })
 
   const changeState = () => {
-    if (state.value === 'selected') return
+    if (state.value) return
 
     lock = true
 
@@ -79,8 +47,4 @@ export const useOptionState = (
     state,
     changeState
   }
-}
-
-export const isEmpty = (value: unknown) => {
-  return value === null || value === undefined || value === ''
 }

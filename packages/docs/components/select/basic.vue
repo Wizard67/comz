@@ -2,29 +2,23 @@
   <pre>value: {{ value }}</pre>
 
   <Flex gap="32px" wrap>
-    <Flex>
-      <Select class="select" v-model="value" placeholder="Select">
-        <Option label="Apple" value="1">🍎 Apple</Option>
-        <Option label="Banana" value="2">🍌 Banana</Option>
-        <Option label="Cherry" value="3">🍒 Cherry</Option>
-      </Select>
-    </Flex>
+    <Select class="select" v-model="value" placeholder="Select">
+      <Option label="Apple" value="1">🍎 Apple</Option>
+      <Option label="Banana" value="2">🍌 Banana</Option>
+      <Option label="Cherry" value="3">🍒 Cherry</Option>
+    </Select>
 
-    <Flex>
-      <Select class="select" v-model="value" placeholder="Select">
-        <Option label="Apple" value="1" disabled>🍎 Apple</Option>
-        <Option label="Banana" value="2" disabled>🍌 Banana</Option>
-        <Option label="Cherry" value="3">🍒 Cherry</Option>
-      </Select>
-    </Flex>
+    <Select class="select" v-model="value" placeholder="Select">
+      <Option label="Apple" value="1" disabled>🍎 Apple</Option>
+      <Option label="Banana" value="2" disabled>🍌 Banana</Option>
+      <Option label="Cherry" value="3">🍒 Cherry</Option>
+    </Select>
 
-    <Flex>
-      <Select class="select" v-model="value" placeholder="Select" disabled>
-        <Option label="Apple" value="1">🍎 Apple</Option>
-        <Option label="Banana" value="2">🍌 Banana</Option>
-        <Option label="Cherry" value="3">🍒 Cherry</Option>
-      </Select>
-    </Flex>
+    <Select class="select" v-model="value" placeholder="Select" disabled>
+      <Option label="Apple" value="1">🍎 Apple</Option>
+      <Option label="Banana" value="2">🍌 Banana</Option>
+      <Option label="Cherry" value="3">🍒 Cherry</Option>
+    </Select>
   </Flex>
 </template>
 
@@ -48,6 +42,6 @@ export default defineComponent({
 
 <style scoped>
 .select {
-  width: 100px;
+  width: 200px;
 }
 </style>
