@@ -74,7 +74,7 @@ describe('useEvent', () => {
 
   it('should remove event listener if element ref changes.', async () => {
     const time = ref(0)
-    const elementRef = ref(null)
+    const elementRef = ref<null | HTMLElement>(null)
     const wrapper = mount(
       defineComponent({
         setup() {

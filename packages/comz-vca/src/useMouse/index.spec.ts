@@ -1,8 +1,14 @@
-import { defineComponent, h, ref, nextTick, isReactive } from 'vue'
+import type { MouseState } from './index'
+import { defineComponent, h, ref, onMounted, nextTick, isReactive } from 'vue'
 import { mount } from '@vue/test-utils'
 import { useMouse } from './index'
 
-const mouseMoveEvent = (position) => {
+type Position = {
+  pageX: number
+  pageY: number
+}
+
+const mouseMoveEvent = (position: Position) => {
   const event = new Event('mousemove')
   ;(event as any).pageX = position.pageX
   ;(event as any).pageY = position.pageY
@@ -17,7 +23,7 @@ describe('useMouse', () => {
   })
 
   it('should be work.', () => {
-    let mouseState = null
+    let mouseState: MouseState | null = null
 
     mount(
       defineComponent({
@@ -33,131 +39,123 @@ describe('useMouse', () => {
   })
 
   it('should be change when mouse move.', async () => {
-    let mouseState = null
-
     mount(
       defineComponent({
         setup() {
           const { state } = useMouse()
-          mouseState = state
+
+          onMounted(async () => {
+            await nextTick()
+
+            document.dispatchEvent(mouseMoveEvent({ pageX: 10, pageY: 10 }))
+            expect(state.x).toBe(10)
+            expect(state.y).toBe(10)
+
+            document.dispatchEvent(mouseMoveEvent({ pageX: 20, pageY: 30 }))
+            expect(state.x).toBe(20)
+            expect(state.y).toBe(30)
+          })
         },
         render: () => h('div')
       })
     )
-
-    await nextTick()
-
-    document.dispatchEvent(mouseMoveEvent({ pageX: 10, pageY: 10 }))
-    expect(mouseState.x).toBe(10)
-    expect(mouseState.y).toBe(10)
-
-    document.dispatchEvent(mouseMoveEvent({ pageX: 20, pageY: 30 }))
-    expect(mouseState.x).toBe(20)
-    expect(mouseState.y).toBe(30)
   })
 
   it('should be calculate inner state.', async () => {
-    let mouseState = null
-
     mount(
       defineComponent({
         setup() {
           const { state } = useMouse()
-          mouseState = state
+
+          onMounted(async () => {
+            await nextTick()
+
+            document.dispatchEvent(mouseMoveEvent({ pageX: 10, pageY: 10 }))
+            expect(state.inner).toBe(true)
+
+            document.dispatchEvent(mouseMoveEvent({ pageX: 200, pageY: 200 }))
+            expect(state.inner).toBe(false)
+          })
         },
         render: () => h('div')
       })
     )
-
-    await nextTick()
-
-    document.dispatchEvent(mouseMoveEvent({ pageX: 10, pageY: 10 }))
-    expect(mouseState.inner).toBe(true)
-
-    document.dispatchEvent(mouseMoveEvent({ pageX: 200, pageY: 200 }))
-    expect(mouseState.inner).toBe(false)
   })
 
   it('should be recalculate when target change.', async () => {
-    let mouseState = null
-    const targetRef = ref(null)
-
     mount(
       defineComponent({
         setup() {
+          const targetRef = ref<HTMLElement | null>(null)
+
           const { state } = useMouse(targetRef)
-          mouseState = state
+
+          onMounted(async () => {
+            await nextTick()
+            expect(state.target.width).toBe(0)
+            expect(state.target.height).toBe(0)
+
+            targetRef.value = document.body
+            await nextTick()
+            document.dispatchEvent(mouseMoveEvent({ pageX: 0, pageY: 0 }))
+            expect(state.target.width).toBe(100)
+            expect(state.target.height).toBe(100)
+            expect(state.inner).toBe(true)
+          })
         },
         render: () => h('div')
       })
     )
-
-    await nextTick()
-    expect(mouseState.target.width).toBe(0)
-    expect(mouseState.target.height).toBe(0)
-
-    targetRef.value = document.body
-    await nextTick()
-    document.dispatchEvent(mouseMoveEvent({ pageX: 0, pageY: 0 }))
-    expect(mouseState.target.width).toBe(100)
-    expect(mouseState.target.height).toBe(100)
-    expect(mouseState.inner).toBe(true)
   })
 
   it('should be recalculate when target rect change.', async () => {
-    let mouseState = null
-
     mount(
       defineComponent({
         setup() {
           const { state } = useMouse()
-          mouseState = state
+
+          onMounted(async () => {
+            await nextTick()
+            document.dispatchEvent(mouseMoveEvent({ pageX: 200, pageY: 200 }))
+
+            await nextTick()
+            expect(state.target.width).toBe(100)
+            expect(state.target.height).toBe(100)
+
+            document.body.style.height = `200px` // trigger MutationObserver
+            document.body.getBoundingClientRect = () =>
+              ({ width: 200, height: 200, left: 0, top: 0 } as DOMRect)
+            await nextTick()
+            expect(state.target.width).toBe(200)
+            expect(state.target.height).toBe(200)
+          })
         },
         render: () => h('div')
       })
     )
-
-    await nextTick()
-
-    document.dispatchEvent(mouseMoveEvent({ pageX: 200, pageY: 200 }))
-    await nextTick()
-    expect(mouseState.target.width).toBe(100)
-    expect(mouseState.target.height).toBe(100)
-
-    document.body.style.height = `200px` // trigger MutationObserver
-    document.body.getBoundingClientRect = () =>
-      ({ width: 200, height: 200, left: 0, top: 0 } as DOMRect)
-    await nextTick()
-    expect(mouseState.target.width).toBe(200)
-    expect(mouseState.target.height).toBe(200)
   })
 
   it('should be remove all event listener after `stop` function invoke.', async () => {
-    let mouseState = null
-    let stopHandle = null
-
     mount(
       defineComponent({
         setup() {
           const { state, stop } = useMouse()
-          mouseState = state
-          stopHandle = stop
+
+          onMounted(async () => {
+            await nextTick()
+
+            stop()
+            await nextTick()
+            document.dispatchEvent(mouseMoveEvent({ pageX: 10, pageY: 10 }))
+            expect(state.x).not.toBe(10)
+          })
         },
         render: () => h('div')
       })
     )
-
-    await nextTick()
-
-    stopHandle()
-    await nextTick()
-    document.dispatchEvent(mouseMoveEvent({ pageX: 10, pageY: 10 }))
-    expect(mouseState.x).not.toBe(10)
   })
 
   it('hooks should be work.', async () => {
-    let mouseState = null
-
     mount(
       defineComponent({
         setup() {
@@ -174,18 +172,19 @@ describe('useMouse', () => {
               pageY: event.pageY + 10
             })
           })
-          mouseState = state
+
+          onMounted(async () => {
+            await nextTick()
+            expect(state.x).toBe(11)
+            expect(state.y).toBe(12)
+
+            document.dispatchEvent(mouseMoveEvent({ pageX: 10, pageY: 10 }))
+            expect(state.x).toBe(20)
+            expect(state.y).toBe(20)
+          })
         },
         render: () => h('div')
       })
     )
-
-    await nextTick()
-    expect(mouseState.x).toBe(11)
-    expect(mouseState.y).toBe(12)
-
-    document.dispatchEvent(mouseMoveEvent({ pageX: 10, pageY: 10 }))
-    expect(mouseState.x).toBe(20)
-    expect(mouseState.y).toBe(20)
   })
 })
