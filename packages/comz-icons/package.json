@@ -27,6 +27,6 @@
     "rimraf": "^3.0.2"
   },
   "peerDependencies": {
-    "vue": "^3.0.7"
+    "vue": "^3.0.11"
   }
 }
