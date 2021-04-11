@@ -1,7 +1,7 @@
 export default {
   optimizeDeps: {
     include: [
-      'comz',
+      // 'comz',
       '@comz/icons',
       '@comz/vca'
     ]
