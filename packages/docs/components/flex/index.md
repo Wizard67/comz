@@ -4,13 +4,13 @@
 
 ## 用例
 
-<FlexUsage/>
+<Usage/>
 
 ## 基础用法
 
 放置在容器内的组件预设了 `8px` 的间距，可以通过 `gap` 属性重新设置。
 
-::: component <FlexBasic/>
+::: component <Basic/>
 <<< ./components/flex/basic.vue
 :::
 
@@ -18,7 +18,7 @@
 
 容器默认为块级元素，可以添加 `inline` 属性声明成内联元素。
 
-::: component <FlexInline/>
+::: component <Inline/>
 <<< ./components/flex/inline.vue
 :::
 
@@ -26,7 +26,7 @@
 
 设置 `wrap` 属性，允许空间不足时换行。
 
-::: component <FlexWrap/>
+::: component <Wrap/>
 <<< ./components/flex/wrap.vue
 :::
 
@@ -36,7 +36,7 @@
 
 > 如果指定了 Flex 组件的高度，可以添加 `wrap` 使之内容允许换行。
 
-::: component <FlexVertical/>
+::: component <Vertical/>
 <<< ./components/flex/vertical.vue
 :::
 
@@ -49,7 +49,7 @@
 > `center` 属性是预设值，可以使容器项水平垂直居中。  
 > 复杂的对齐方式，建议配合 Grid 组件或者使用 css 实现。
 
-::: component <FlexPlace/>
+::: component <Place/>
 <<< ./components/flex/place.vue
 :::
 
@@ -71,3 +71,13 @@
 | Slot    | Description |
 |---------|-------------|
 | default | 默认插槽     |
+
+
+<script setup>
+  import Usage from './usage.vue'
+  import Basic from './basic.vue'
+  import Inline from './inline.vue'
+  import Wrap from './wrap.vue'
+  import Vertical from './vertical.vue'
+  import Place from './place.vue'
+</script>

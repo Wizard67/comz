@@ -6,7 +6,7 @@
 
 `Form` 组件内使用 `FormItem` 组件包裹表单控件。
 
-::: component <FormBasic/>
+::: component <Basic/>
 <<< ./components/form/basic.vue
 :::
 
@@ -36,3 +36,8 @@
 | Slot    | Description |
 |---------|-------------|
 | default | 默认插槽     |
+
+
+<script setup>
+  import Basic from './basic.vue'
+</script>

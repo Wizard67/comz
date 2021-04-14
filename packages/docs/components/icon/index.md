@@ -10,7 +10,7 @@
 
 > UI 样式中推荐 `flex` 布局来直接对齐 `SVG` 图标。
 
-::: component <IconBasic/>
+::: component <Basic/>
 <<< ./components/icon/basic.vue
 :::
 
@@ -18,7 +18,7 @@
 
 添加 `spin` 属性可以使被包裹的图标顺时针旋转。
 
-::: component <IconSpin/>
+::: component <Spin/>
 <<< ./components/icon/spin.vue
 :::
 
@@ -30,7 +30,7 @@
 > `color` 用来修改图标的颜色  
 > `link` 用来声明可点击的鼠标样式
 
-::: component <IconStyle/>
+::: component <Style/>
 <<< ./components/icon/style.vue
 :::
 
@@ -55,3 +55,9 @@
 | Event    | Type         | Description |
 |----------|--------------|-------------|
 | on-click | `() => void` | 监听点击事件  |
+
+<script setup>
+  import Basic from './basic.vue'
+  import Spin from './spin.vue'
+  import Style from './style.vue'
+</script>

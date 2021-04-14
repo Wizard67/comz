@@ -2,13 +2,13 @@
 
 ## 默认状态
 
-::: component <AlertDefault/>
+::: component <Default/>
 <<< ./components/alert/default.vue
 :::
 
 ## 自定义关闭样式
 
-::: component <AlertExtra/>
+::: component <Extra/>
 <<< ./components/alert/extra.vue
 :::
 
@@ -32,3 +32,9 @@
 |-------------|---------------|---------------|
 | on-close    | () => void    | 监听关闭事件    |
 | update:show | () => boolean | 监听展示状态变化 |
+
+
+<script setup>
+  import Default from './default.vue'
+  import Extra from './extra.vue'
+</script>

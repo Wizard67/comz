@@ -6,7 +6,7 @@
 
 可以使用 `type` 属性，指定 Toast 的类型。
 
-::: component <ToastBasic/>
+::: component <Basic/>
 <<< ./components/toast/basic.vue
 :::
 
@@ -14,7 +14,7 @@
 
 `duration` 属性设置自动关闭的时长。
 
-::: component <ToastDuration/>
+::: component <Duration/>
 <<< ./components/toast/duration.vue
 :::
 
@@ -39,3 +39,9 @@
 | Event       | Type                       | Description       |
 |-------------|----------------------------|-------------------|
 | update:show | `(state: boolean) => void` | 监听 `show` 值变化  |
+
+
+<script setup>
+  import Basic from './basic.vue'
+  import Duration from './duration.vue'
+</script>

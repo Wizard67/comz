@@ -2,7 +2,7 @@
 
 ## 默认样式
 
-::: component <CardDefault/>
+::: component <Default/>
 <<< ./components/card/default.vue
 :::
 
@@ -10,7 +10,7 @@
 
 可以使用 `header` 和 `footer` 插槽，在组件顶部和底部插入内容。
 
-::: component <CardSlot/>
+::: component <Slot/>
 <<< ./components/card/slot.vue
 :::
 
@@ -18,7 +18,7 @@
 
 为了提高视觉层级，可以给卡片添加阴影。
 
-::: component <CardShadow/>
+::: component <Shadow/>
 <<< ./components/card/shadow.vue
 :::
 
@@ -35,3 +35,10 @@
 | header  | 标题栏插槽（space-between） |
 | default | 默认插槽                   |
 | footer  | 底部插槽 (flex-end)        |
+
+
+<script setup>
+  import Default from './default.vue'
+  import Slot from './slot.vue'
+  import Shadow from './shadow.vue'
+</script>

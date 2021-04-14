@@ -6,7 +6,7 @@
 
 ## 基础用法
 
-::: component <InputBasic/>
+::: component <Basic/>
 <<< ./components/input/basic.vue
 :::
 
@@ -16,7 +16,7 @@
 
 > `禁用` 和 `只读` 状态下输入框不响应任何事件。
 
-::: component <InputState/>
+::: component <State/>
 <<< ./components/input/state.vue
 :::
 
@@ -24,7 +24,7 @@
 
 使用 `prepend` 和 `append` 插槽可以在输入框前后插入内容。
 
-::: component <InputSlots/>
+::: component <Slots/>
 <<< ./components/input/slots.vue
 :::
 
@@ -32,7 +32,7 @@
 
 为组件添加 `clearable` 属性，在用户输入字符后显示可清空值的按钮。
 
-::: component <InputClearable/>
+::: component <Clearable/>
 <<< ./components/input/clearable.vue
 :::
 
@@ -62,3 +62,11 @@
 |---------|--------------------|
 | prepend | 放置在输入框之前的插槽 |
 | append  | 放置在输入框之后的插槽 |
+
+
+<script setup>
+  import Basic from './basic.vue'
+  import State from './state.vue'
+  import Slots from './slots.vue'
+  import Clearable from './clearable.vue'
+</script>

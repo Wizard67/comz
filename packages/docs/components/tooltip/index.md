@@ -2,7 +2,7 @@
 
 ## 基础用法
 
-::: component <TooltipDefault/>
+::: component <Default/>
 <<< ./components/tooltip/default.vue
 :::
 
@@ -10,6 +10,12 @@
 
 `placement` 属性可以设置提示显示位置。
 
-::: component <TooltipPlacement/>
+::: component <placement/>
 <<< ./components/tooltip/placement.vue
 :::
+
+
+<script setup>
+  import Default from './default.vue'
+  import Placement from './placement.vue'
+</script>

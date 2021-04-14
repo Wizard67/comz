@@ -8,7 +8,7 @@
 
 可以添加 `disabled` 属性禁用滑动条。
 
-::: component <SliderBasic/>
+::: component <Basic/>
 <<< ./components/slider/basic.vue
 :::
 
@@ -16,7 +16,7 @@
 
 使用 `min` 和 `max` 指定滑动条的范围。
 
-::: component <SliderRange/>
+::: component <Range/>
 <<< ./components/slider/range.vue
 :::
 
@@ -26,7 +26,7 @@
 
 > 需要注意的是，如果 `step` 的值不能被 `max - min` 整除的话，滑动条将不能拉满。
 
-::: component <SliderStep/>
+::: component <Step/>
 <<< ./components/slider/step.vue
 :::
 
@@ -34,7 +34,7 @@
 
 使用 `prepend` 和 `append` 插槽可以在滑动条前后插入内容。
 
-::: component <SliderSlots/>
+::: component <Slots/>
 <<< ./components/slider/slots.vue
 :::
 
@@ -61,3 +61,10 @@
 |---------|--------------------|
 | prepend | 放置在滑动条之前的插槽 |
 | append  | 放置在滑动条之后的插槽 |
+
+<script setup>
+  import Basic from './basic.vue'
+  import Range from './range.vue'
+  import Step from './step.vue'
+  import Slots from './slots.vue'
+</script>

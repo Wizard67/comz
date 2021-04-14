@@ -2,7 +2,7 @@
 
 ## 默认样式
 
-::: component <ModalDefault/>
+::: component <Default/>
 <<< ./components/modal/default.vue
 :::
 
@@ -10,7 +10,7 @@
 
 通过使用作用域插槽可以达到异步关闭的效果。
 
-::: component <ModalAsync/>
+::: component <Async/>
 <<< ./components/modal/async.vue
 :::
 
@@ -37,3 +37,9 @@
 |-------------|---------------|---------------|
 | on-close    | () => void    | 监听关闭事件    |
 | update:show | () => boolean | 监听展示状态变化 |
+
+
+<script setup>
+  import Default from './default.vue'
+  import Async from './async.vue'
+</script>

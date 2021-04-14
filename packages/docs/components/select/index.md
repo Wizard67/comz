@@ -12,7 +12,7 @@
 
 添加 `disabled` 属性可以声明禁用状态。
 
-::: component <SelectBasic/>
+::: component <Basic/>
 <<< ./components/select/basic.vue
 :::
 
@@ -50,3 +50,7 @@
 |---------|-------------|
 | default | 默认插槽     |
 
+
+<script setup>
+  import Basic from './basic.vue'
+</script>

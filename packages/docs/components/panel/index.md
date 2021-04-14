@@ -2,6 +2,10 @@
 
 ## 用例
 
-::: component <PanelUsage/>
+::: component <Usage/>
 <<< ./components/panel/usage.vue
 :::
+
+<script setup>
+  import Usage from './usage.vue'
+</script>

@@ -4,7 +4,7 @@
 
 ## 用例
 
-<ButtonUsage/>
+<Usage/>
 
 ## 按钮类型
 
@@ -18,7 +18,7 @@
 > `loading` 状态表示异步等待，仍然可以监听点击动作。  
 > `diabled` 状态表示禁止操作，不可监听点击动作。
 
-::: component <ButtonBasic/>
+::: component <Basic/>
 <<< ./components/button/basic.vue
 :::
 
@@ -26,7 +26,7 @@
 
 配合 `Icon` 组件可以在按钮内添加图标。
 
-::: component <ButtonIcons/>
+::: component <Icons/>
 <<< ./components/button/icons.vue
 :::
 
@@ -51,3 +51,10 @@
 | Slot    | Description |
 |---------|-------------|
 | default | 默认插槽     |
+
+
+<script setup>
+  import Usage from './usage.vue'
+  import Basic from './basic.vue'
+  import Icons from './icons.vue'
+</script>

@@ -2,19 +2,19 @@
 
 ## 基础样式
 
-::: component <TextareaDefault/>
+::: component <Default/>
 <<< ./components/textarea/default.vue
 :::
 
 ## 禁用状态
 
-::: component <TextareaDisabled/>
+::: component <Disabled/>
 <<< ./components/textarea/disabled.vue
 :::
 
 ## 只读状态
 
-::: component <TextareaReadonly/>
+::: component <Readonly/>
 <<< ./components/textarea/readonly.vue
 :::
 
@@ -34,3 +34,10 @@
 | Event             | Type                    | Description            |
 |-------------------|-------------------------|------------------------|
 | update:modelValue | (state: string) => void | 监听 `modelValue` 值变化 |
+
+
+<script setup>
+  import Default from './default.vue'
+  import Disabled from './disabled.vue'
+  import Readonly from './readonly.vue'
+</script>

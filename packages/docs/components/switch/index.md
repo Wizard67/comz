@@ -8,7 +8,7 @@
 
 添加 `disabeld` 属性可以声明禁用状态。
 
-::: component <SwitchBasic/>
+::: component <Basic/>
 <<< ./components/switch/basic.vue
 :::
 
@@ -16,7 +16,7 @@
 
 使用 `prepend` 和 `append` 插槽可以在开关前后插入内容。
 
-::: component <SwitchSlots/>
+::: component <Slots/>
 <<< ./components/switch/slots.vue
 :::
 
@@ -41,3 +41,8 @@
 |---------|------------------ |
 | prepend | 放置在开关之前的插槽 |
 | append  | 放置在开关之后的插槽 |
+
+<script setup>
+  import Basic from './basic.vue'
+  import Slots from './slots.vue'
+</script>

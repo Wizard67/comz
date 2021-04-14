@@ -10,7 +10,7 @@
 
 添加 `disabled` 属性，声明组件为禁用状态。
 
-::: component <RadioBasic/>
+::: component <Basic/>
 <<< ./components/radio/basic.vue
 :::
 
@@ -20,7 +20,7 @@
 
 > `value` 在组件内部会使用 `JSON.stringify` 序列化成 `JSON` 格式再进行处理，所以需要注意不能被序列化的属性值将会被抛弃。
 
-::: component <RadioValue/>
+::: component <Value/>
 <<< ./components/radio/value.vue
 :::
 
@@ -28,7 +28,7 @@
 
 `Radio` 的默认插槽可以放置任意内容。
 
-::: component <RadioLabel/>
+::: component <Label/>
 <<< ./components/radio/label.vue
 :::
 
@@ -53,3 +53,10 @@
 | Event             | Type                      | Description           |
 |-------------------|---------------------------|-----------------------|
 | update:modelValue | `(state: string) => void` | 监听`modelValue`值变化  |
+
+
+<script setup>
+  import Basic from './basic.vue'
+  import Value from './value.vue'
+  import Label from './label.vue'
+</script>

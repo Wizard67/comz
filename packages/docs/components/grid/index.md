@@ -4,7 +4,7 @@
 
 ## 用例
 
-<GridUsage/>
+<Usage/>
 
 ## 基础用法
 
@@ -17,7 +17,7 @@
 
 > 使用 `areas` 在 `Grid` 组件上声明布局时，`GridItem` 组件的 `area` 属性用来指定布局区域对应的名字；否则 `area` 属性需要传递该项在网格内占据的[网格线区间信息](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-area)。如果不设置 `area` 属性，项将会按照 `flow` 属性指定的填充方式排布。
 
-::: component <GridBasic/>
+::: component <Basic/>
 <<< ./components/grid/basic.vue
 :::
 
@@ -25,7 +25,7 @@
 
 通过 `gap` 属性，声明网格间距。
 
-::: component <GridGap/>
+::: component <Gap/>
 <<< ./components/grid/gap.vue
 :::
 
@@ -33,7 +33,7 @@
 
 网格可以嵌套使用，且属性不会相互影响（例子中外层 `Grid` 的 `gap` 属性不会作用在内层）。
 
-::: component <GridNested/>
+::: component <Nested/>
 <<< ./components/grid/nested.vue
 :::
 
@@ -71,3 +71,11 @@
 | Slot    | Description |
 |---------|-------------|
 | default | 默认插槽     |
+
+
+<script setup>
+  import Usage from './usage.vue'
+  import Basic from './basic.vue'
+  import Gap from './gap.vue'
+  import Nested from './nested.vue'
+</script>

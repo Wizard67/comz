@@ -10,7 +10,7 @@
 
 添加 `disabled` 属性，声明组件为禁用状态。
 
-::: component <CheckboxBasic/>
+::: component <Basic/>
 <<< ./components/checkbox/basic.vue
 :::
 
@@ -20,7 +20,7 @@
 
 > `value` 在组件内部会使用 `JSON.stringify` 序列化成 `JSON` 格式再进行处理。需要注意不能被序列化的属性值将会被抛弃，不能保证正确性，所以请避免使用其他类型的值。
 
-::: component <CheckboxValue/>
+::: component <Value/>
 <<< ./components/checkbox/value.vue
 :::
 
@@ -28,7 +28,7 @@
 
 `Checkbox` 的默认插槽可以放置任意内容。
 
-::: component <CheckboxLabel/>
+::: component <Label/>
 <<< ./components/checkbox/label.vue
 :::
 
@@ -53,3 +53,10 @@
 | Event               | Type                      | Description            |
 |---------------------|---------------------------|------------------------|
 | `update:modelValue` | `(state: string) => void` | 监听 `modelValue` 值变化 |
+
+
+<script setup>
+  import Basic from './basic.vue'
+  import Value from './value.vue'
+  import Label from './label.vue'
+</script>
