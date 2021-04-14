@@ -1,56 +1,10 @@
-# COMZ
+# [WIP] COMZ
 
-## Usage
+> A vue3 component library for `<script setup>` and `composition api` exploration.
 
-```bash
-yarn add comz
-```
+## packgaes
 
-## Component
-
-### Layout
-
-|   component    |   state(P/I/E)   |    test    |
-|----------------|:----------------:|:----------:|
-| Grid           | E                | -          |
-| Flex           | E                | -          |
-
-### Basic
-
-|   component    |   state(P/I/E)   |    test    |
-|----------------|:----------------:|:----------:|
-| Button         | E                | -          |
-| Icon           | E                | -          |
-
-### Data
-
-|   component    |   state(P/I/E)   |    test    |
-|----------------|:----------------:|:----------:|
-| Input          | E                | -          |
-| Textarea       | I                | -          |
-| Radio          | E                | -          |
-| Checkbox       | E                | -          |
-| Select         | I                | -          |
-| Switch         | E                | -          |
-| Slider         | E                | -          |
-| Upload         | -                | -          |
-| Picker         | -                | -          |
-
-### Container
-
-|   component    |   state(P/I/E)   |    test    |
-|----------------|:----------------:|:----------:|
-| Card           | I                | -          |
-| Panel          | I                | -          |
-| Form           | E                | -          |
-| Table          | -                | -          |
-| Tree           | -                | -          |
-
-### FeedBack
-
-|   component    |   state(P/I/E)   |    test    |
-|----------------|:----------------:|:----------:|
-| Modal          | I                | -          |
-| Alert          | I                | -          |
-| Toast          | I                | -          |
-| Tooltip        | E                | -          |
+- [comz](./packages/comz) - components
+- [@comz/icons](./packages/comz-icons) - icon components
+- [@comz/style](./packages/comz-style) - component style
+- [@comz/vca](./packages/comz-vca) - vue-composition-api utils
