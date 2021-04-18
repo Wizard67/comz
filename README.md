@@ -16,7 +16,7 @@ yarn install
 
 yarn workspace @comz/icons build
 yarn workspace @comz/style build
-yarn workspace @comz/vac build
+yarn workspace @comz/vca build
 yarn workspace comz build
 
 yarn workspace docs dev
