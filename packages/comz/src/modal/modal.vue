@@ -47,7 +47,10 @@ const props = defineProps({
   closable: bool().def(false)
 })
 
-const emit = defineEmit(['update:show', 'on-close'])
+const emit = defineEmit<{
+  (e: 'update:show', p: boolean): void
+  (e: 'on-close'): void
+}>()
 
 const { closable, width } = toRefs(props)
 

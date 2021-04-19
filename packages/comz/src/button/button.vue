@@ -30,7 +30,9 @@ const props = defineProps({
   danger: bool().def(false)
 })
 
-const emit = defineEmit(['on-click'])
+const emit = defineEmit<{
+  (e: 'on-click'): void
+}>()
 
 const instance = getCurrentInstance()!
 

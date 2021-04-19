@@ -34,7 +34,9 @@ const props = defineProps({
   duration: number()
 })
 
-const emit = defineEmit(['update:show'])
+const emit = defineEmit<{
+  (e: 'update:show', p: boolean): void
+}>()
 
 const { show, type, duration } = toRefs(props)
 

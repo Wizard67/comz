@@ -51,12 +51,12 @@ const props = defineProps({
   clearable: bool().def(false)
 })
 
-const emit = defineEmit([
-  'update:modelValue',
-  'on-focus',
-  'on-blur',
-  'on-clear'
-])
+const emit = defineEmit<{
+  (e: 'update:modelValue', p: string): void
+  (e: 'on-focus', p: string): void
+  (e: 'on-blur', p: string): void
+  (e: 'on-clear'): void
+}>()
 
 const instance = getCurrentInstance()!
 

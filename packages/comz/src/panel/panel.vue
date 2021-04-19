@@ -37,7 +37,9 @@ const props = defineProps({
   title: string()
 })
 
-const emit = defineEmit(['update:expand'])
+const emit = defineEmit<{
+  (e: 'update:expand', p: boolean): void
+}>()
 
 const instance = getCurrentInstance()!
 

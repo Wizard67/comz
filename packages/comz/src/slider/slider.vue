@@ -44,7 +44,9 @@ const props = defineProps({
   disabled: bool().def(false)
 })
 
-const emit = defineEmit(['update:modelValue'])
+const emit = defineEmit<{
+  (e: 'update:modelValue', p: number): void
+}>()
 
 const instance = getCurrentInstance()!
 
