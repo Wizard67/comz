@@ -5,8 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
-import { toRefs, useContext, getCurrentInstance } from 'vue'
+import { defineProps, toRefs, useContext, getCurrentInstance } from 'vue'
 import { useCssVars } from '@comz/vca'
 import { string } from 'vue-types'
 

@@ -8,8 +8,7 @@
 import type { Ref, ComputedRef } from 'vue'
 import type { Handler } from './utils'
 
-import { defineProps } from 'vue'
-import { getCurrentInstance, inject, toRefs, reactive } from 'vue'
+import { defineProps, getCurrentInstance, inject, toRefs, reactive } from 'vue'
 import { useBEM } from '@comz/vca'
 import { oneOfType, string, bool } from 'vue-types'
 import { useOptionState } from './utils'

@@ -26,8 +26,9 @@ import type { Ref } from 'vue'
 import type { Placement } from '@popperjs/core'
 import type { Handler } from './utils'
 
-import { defineProps, defineEmit } from 'vue'
 import {
+  defineProps,
+  defineEmit,
   useContext,
   getCurrentInstance,
   ref,

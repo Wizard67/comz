@@ -14,8 +14,14 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmit } from 'vue'
-import { useContext, getCurrentInstance, computed, toRefs } from 'vue'
+import {
+  defineProps,
+  defineEmit,
+  useContext,
+  getCurrentInstance,
+  computed,
+  toRefs
+} from 'vue'
 import { useBEM } from '@comz/vca'
 import { array, oneOfType, bool } from 'vue-types'
 

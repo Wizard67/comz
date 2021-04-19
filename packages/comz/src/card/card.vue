@@ -13,8 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
-import { useContext, getCurrentInstance, toRefs } from 'vue'
+import { defineProps, useContext, getCurrentInstance, toRefs } from 'vue'
 import { useBEM } from '@comz/vca'
 import { bool } from 'vue-types'
 

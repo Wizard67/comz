@@ -16,8 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmit } from 'vue'
-import { computed, toRefs } from 'vue'
+import { defineProps, defineEmit, computed, toRefs } from 'vue'
 import { useOverlay, useCssVars } from '@comz/vca'
 import { string, number, bool } from 'vue-types'
 

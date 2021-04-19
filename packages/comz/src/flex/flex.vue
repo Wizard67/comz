@@ -7,8 +7,13 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
-import { useContext, getCurrentInstance, toRefs, computed } from 'vue'
+import {
+  defineProps,
+  useContext,
+  getCurrentInstance,
+  toRefs,
+  computed
+} from 'vue'
 import { useBEM, useCssVars } from '@comz/vca'
 import { string, bool } from 'vue-types'
 import { getSlotVnodes } from '../utils/getVnodes'
