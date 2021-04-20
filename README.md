@@ -2,6 +2,8 @@
 
 > A vue3 component library for `<script setup>` and `composition api` exploration.
 
+[online docs](https://comz.netlify.app/)
+
 ## Packgaes
 
 - [comz](./packages/comz) - components
@@ -21,8 +23,6 @@ yarn workspace comz build
 
 yarn workspace docs dev
 ```
-
-Or you can run the `yarn build` script to build the above packages, but ignore it for now as a pending issue with vite will cause the build of the docs to fail.
 
 ## Some Problems
 
