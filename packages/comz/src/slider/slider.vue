@@ -33,6 +33,7 @@ import { useEvent, useMouse, useBEM, useCssVars } from '@comz/vca'
 import { strip } from 'number-precision'
 import { number, bool } from 'vue-types'
 import { useElementRect, getPointValue } from './utils'
+import { isServer } from '../utils/isServer'
 
 const { expose } = useContext()
 
@@ -113,22 +114,23 @@ watchEffect(() => {
 
 let stopUseMouse: WatchStopHandle | null = null
 
-useEvent(sliderRef, 'mousedown', (event) => {
-  if (disabled.value) return
+!isServer &&
+  useEvent(sliderRef, 'mousedown', (event) => {
+    if (disabled.value) return
 
-  const { state, stop } = useMouse(sliderRef, {
-    onBefore: () => event,
-    onUpdate: ({ pageX, pageY }) => ({
-      pageX: getPointValue(pageX, breakPoints.value),
-      pageY: pageY
+    const { state, stop } = useMouse(sliderRef, {
+      onBefore: () => event,
+      onUpdate: ({ pageX, pageY }) => ({
+        pageX: getPointValue(pageX, breakPoints.value),
+        pageY: pageY
+      })
     })
+
+    mouseState.value = state
+    stopUseMouse = stop
   })
 
-  mouseState.value = state
-  stopUseMouse = stop
-})
-
-useEvent(window, 'mouseup', () => stopUseMouse?.())
+!isServer && useEvent(window, 'mouseup', () => stopUseMouse?.())
 
 expose(instance['ctx'])
 </script>
