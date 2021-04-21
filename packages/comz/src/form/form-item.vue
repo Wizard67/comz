@@ -1,5 +1,5 @@
 <template>
-  <div class="cform-item">
+  <div ref="$el" class="cform-item">
     <div class="cform-item__label">
       {{ label }}
     </div>
@@ -11,9 +11,12 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue'
+import { useExpose } from '@comz/vca'
 import { string } from 'vue-types'
 
 defineProps({
   label: string()
 })
+
+const $el = useExpose()
 </script>

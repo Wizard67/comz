@@ -1,12 +1,12 @@
 <template>
-  <section class="cgrid-item" :style="cssStyle">
+  <section ref="$el" class="cgrid-item" :style="cssStyle">
     <slot />
   </section>
 </template>
 
 <script setup lang="ts">
 import { defineProps, toRefs } from 'vue'
-import { useCssVars } from '@comz/vca'
+import { useCssVars, useExpose } from '@comz/vca'
 import { string } from 'vue-types'
 import { useCssShorthand } from '../utils/useCssShorthand'
 
@@ -26,4 +26,6 @@ const cssStyle = useCssVars({
   '--cgrid-item-align-items': align,
   '--cgrid-item-justify-items': justify
 })
+
+const $el = useExpose()
 </script>

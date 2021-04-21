@@ -1,5 +1,5 @@
 <template>
-  <div :class="className" @click="handleValueChange">
+  <div ref="$el" :class="className" @click="handleValueChange">
     <div v-if="$slots.prepend" class="cswitch__prepend">
       <slot name="prepend" />
     </div>
@@ -13,17 +13,9 @@
 </template>
 
 <script setup lang="ts">
-import {
-  defineProps,
-  defineEmit,
-  useContext,
-  getCurrentInstance,
-  toRefs
-} from 'vue'
-import { useBEM } from '@comz/vca'
+import { defineProps, defineEmit, toRefs } from 'vue'
+import { useBEM, useExpose } from '@comz/vca'
 import { bool } from 'vue-types'
-
-const { expose } = useContext()
 
 const props = defineProps({
   modelValue: bool().isRequired,
@@ -33,8 +25,6 @@ const props = defineProps({
 const emit = defineEmit<{
   (e: 'update:modelValue', p: boolean): void
 }>()
-
-const instance = getCurrentInstance()!
 
 const { modelValue, disabled } = toRefs(props)
 
@@ -49,5 +39,5 @@ const handleValueChange = () => {
   emit('update:modelValue', !modelValue.value)
 }
 
-expose(instance['ctx'])
+const $el = useExpose()
 </script>

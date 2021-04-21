@@ -1,6 +1,6 @@
 <template>
   <Teleport to="body">
-    <div v-if="showWrap" class="ttooltip" ref="popperRef">
+    <div v-if="showWrap" ref="popperRef" class="ttooltip">
       <Transition name="ctooltip" @after-leave="handleAfterLeave">
         <div v-show="showContent" class="ttooltip__content" v-html="text"></div>
       </Transition>
@@ -19,7 +19,7 @@ import { useEvent, useToggle } from '@comz/vca'
 import { string } from 'vue-types'
 import { getSlotVnodes, getSlotHTMLElement } from '../utils/getVnodes'
 
-import { usePopover } from '@comz/vca'
+import { usePopover, useExpose } from '@comz/vca'
 
 const props = defineProps({
   text: string(),
@@ -79,5 +79,9 @@ useEvent(referenceRef, 'mouseenter', async () => {
 
 useEvent(referenceRef, 'mouseleave', () => {
   toggleShowContent(false)
+})
+
+useExpose({
+  $el: popperRef
 })
 </script>

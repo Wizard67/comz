@@ -1,21 +1,13 @@
 <template>
-  <div :class="className" :style="cssVars" @click="handleClick">
+  <div ref="$el" :class="className" :style="cssVars" @click="handleClick">
     <slot />
   </div>
 </template>
 
 <script setup lang="ts">
-import {
-  defineProps,
-  defineEmit,
-  useContext,
-  getCurrentInstance,
-  toRefs
-} from 'vue'
-import { useBEM, useCssVars } from '@comz/vca'
+import { defineProps, defineEmit, toRefs } from 'vue'
+import { useBEM, useCssVars, useExpose } from '@comz/vca'
 import { string, bool } from 'vue-types'
-
-const { expose } = useContext()
 
 const props = defineProps({
   size: string(),
@@ -27,8 +19,6 @@ const props = defineProps({
 const emit = defineEmit<{
   (e: 'on-click'): void
 }>()
-
-const instance = getCurrentInstance()!
 
 const { spin, link, size, color } = toRefs(props)
 
@@ -45,5 +35,5 @@ const cssVars = useCssVars({
 
 const handleClick = () => emit('on-click')
 
-expose(instance['ctx'])
+const $el = useExpose()
 </script>

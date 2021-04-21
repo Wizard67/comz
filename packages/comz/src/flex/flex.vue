@@ -1,5 +1,5 @@
 <template>
-  <section :class="className" :style="cssVars">
+  <section ref="$el" :class="className" :style="cssVars">
     <div class="cflex__item" v-for="(item, index) in slots" :key="index">
       <component :is="item" />
     </div>
@@ -7,19 +7,13 @@
 </template>
 
 <script setup lang="ts">
-import {
-  defineProps,
-  useContext,
-  getCurrentInstance,
-  toRefs,
-  computed
-} from 'vue'
-import { useBEM, useCssVars } from '@comz/vca'
+import { defineProps, useContext, toRefs, computed } from 'vue'
+import { useBEM, useCssVars, useExpose } from '@comz/vca'
 import { string, bool } from 'vue-types'
 import { getSlotVnodes } from '../utils/getVnodes'
 import { useCssShorthand } from '../utils/useCssShorthand'
 
-const { expose, slots: originSlots } = useContext()
+const { slots: originSlots } = useContext()
 
 const props = defineProps({
   inline: bool().def(false),
@@ -30,8 +24,6 @@ const props = defineProps({
   placeItems: string(),
   placeSelf: string()
 })
-
-const instance = getCurrentInstance()!
 
 // filter vnode which type is comment
 const slots = computed(() => getSlotVnodes(originSlots?.default?.() || []))
@@ -63,5 +55,5 @@ const cssVars = useCssVars({
   '--cflex-justify-self': justifySelf
 })
 
-expose(instance['ctx'])
+const $el = useExpose()
 </script>

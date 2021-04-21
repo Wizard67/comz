@@ -1,5 +1,5 @@
 <template>
-  <section :class="className">
+  <section ref="$el" :class="className">
     <div v-if="$slots.header" class="ccard__header">
       <slot name="header" />
     </div>
@@ -13,17 +13,13 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, useContext, getCurrentInstance, toRefs } from 'vue'
-import { useBEM } from '@comz/vca'
+import { defineProps, toRefs } from 'vue'
+import { useBEM, useExpose } from '@comz/vca'
 import { bool } from 'vue-types'
-
-const { expose } = useContext()
 
 const props = defineProps({
   shadow: bool().def(false)
 })
-
-const instance = getCurrentInstance()!
 
 const { shadow } = toRefs(props)
 
@@ -32,5 +28,5 @@ const className = useBEM(({ b, m }) => ({
   [m('shadow')]: shadow
 }))
 
-expose(instance['ctx'])
+const $el = useExpose()
 </script>

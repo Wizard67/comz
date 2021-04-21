@@ -1,16 +1,14 @@
 <template>
-  <section :class="className" :style="cssVars">
+  <section ref="$el" :class="className" :style="cssVars">
     <slot />
   </section>
 </template>
 
 <script setup lang="ts">
-import { defineProps, useContext, getCurrentInstance, toRefs } from 'vue'
-import { useBEM, useCssVars } from '@comz/vca'
+import { defineProps, toRefs } from 'vue'
+import { useBEM, useCssVars, useExpose } from '@comz/vca'
 import { string, bool } from 'vue-types'
 import { useCssShorthand } from '../utils/useCssShorthand'
-
-const { expose } = useContext()
 
 const props = defineProps({
   areas: string(),
@@ -26,8 +24,6 @@ const props = defineProps({
   height: string(),
   padding: string()
 })
-
-const instance = getCurrentInstance()!
 
 const {
   areas,
@@ -66,5 +62,5 @@ const cssVars = useCssVars({
   '--cgrid-padding': padding
 })
 
-expose(instance['ctx'])
+const $el = useExpose()
 </script>

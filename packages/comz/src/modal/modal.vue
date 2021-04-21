@@ -3,6 +3,7 @@
     <transition name="modal">
       <div
         v-if="show"
+        ref="$el"
         class="cmodal"
         :style="cssVars"
         @click.self="handleMaskClick"
@@ -32,7 +33,7 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmit, toRefs } from 'vue'
-import { useCssVars } from '@comz/vca'
+import { useCssVars, useExpose } from '@comz/vca'
 import { string, bool } from 'vue-types'
 
 import { Card } from 'comz'
@@ -68,4 +69,6 @@ const handleMaskClick = () => {
 const cssVars = useCssVars({
   '--cmodal-width': width
 })
+
+const $el = useExpose()
 </script>

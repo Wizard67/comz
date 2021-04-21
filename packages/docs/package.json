@@ -9,7 +9,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "vitepress",
-    "build": "vitepress build"
+    "build": "vitepress build",
+    "serve": "vitepress serve"
   },
   "devDependencies": {
     "vitepress": "^0.13.0",

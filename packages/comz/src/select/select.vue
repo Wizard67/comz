@@ -1,5 +1,5 @@
 <template>
-  <div :class="className" ref="selectRef">
+  <div ref="selectRef" :class="className">
     <div class="cselect__selector" @click="handleSelectorClick">
       <input
         class="cselect__field"
@@ -29,7 +29,6 @@ import type { Handler } from './utils'
 import {
   defineProps,
   defineEmit,
-  useContext,
   getCurrentInstance,
   ref,
   computed,
@@ -43,13 +42,12 @@ import {
   useCssVars,
   useToggle,
   usePopover,
-  useClickOutSide
+  useClickOutSide,
+  useExpose
 } from '@comz/vca'
 import { oneOfType, string, bool } from 'vue-types'
 
 import { ChevronExpand } from '@comz/icons'
-
-const { expose } = useContext()
 
 const props = defineProps({
   modelValue: oneOfType([String, Number, Boolean, Array, Object]).isRequired,
@@ -134,5 +132,7 @@ watch(
   { flush: 'post' }
 )
 
-expose(instance['ctx'])
+useExpose({
+  $el: selectRef
+})
 </script>

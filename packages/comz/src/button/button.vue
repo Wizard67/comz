@@ -1,5 +1,6 @@
 <template>
   <button
+    ref="$el"
     type="button"
     :class="className"
     :disabled="disabled"
@@ -10,18 +11,9 @@
 </template>
 
 <script setup lang="ts">
-import {
-  defineProps,
-  defineEmit,
-  useContext,
-  getCurrentInstance,
-  toRefs,
-  computed
-} from 'vue'
-import { useBEM } from '@comz/vca'
+import { defineProps, defineEmit, toRefs, computed } from 'vue'
+import { useBEM, useExpose } from '@comz/vca'
 import { oneOf, bool } from 'vue-types'
-
-const { expose } = useContext()
 
 const props = defineProps({
   type: oneOf(['', 'default', 'primary', 'text']).def(''),
@@ -33,8 +25,6 @@ const props = defineProps({
 const emit = defineEmit<{
   (e: 'on-click'): void
 }>()
-
-const instance = getCurrentInstance()!
 
 const { type, danger, loading, disabled } = toRefs(props)
 
@@ -48,5 +38,5 @@ const className = useBEM(({ b, m }) => ({
 
 const handleClick = () => emit('on-click')
 
-expose(instance['ctx'])
+const $el = useExpose()
 </script>

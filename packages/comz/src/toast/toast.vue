@@ -1,7 +1,7 @@
 <template>
   <teleport to="body">
     <transition name="ctoast">
-      <div v-if="show" class="ctoast" :style="cssVars">
+      <div v-if="show" ref="$el" class="ctoast" :style="cssVars">
         <div class="ctoast__icon">
           <Icon>
             <component :is="icon"></component>
@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmit, computed, toRefs } from 'vue'
-import { useOverlay, useCssVars } from '@comz/vca'
+import { useOverlay, useCssVars, useExpose } from '@comz/vca'
 import { string, number, bool } from 'vue-types'
 
 import { Icon } from 'comz'
@@ -70,4 +70,6 @@ const icon = computed(() => {
       break
   }
 })
+
+const $el = useExpose()
 </script>

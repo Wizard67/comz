@@ -1,5 +1,5 @@
 <template>
-  <section :class="className">
+  <section ref="$el" :class="className">
     <div v-if="$slots.prepend" class="cslider__prepend">
       <slot name="prepend" />
     </div>
@@ -21,21 +21,17 @@ import type { MouseState } from '@comz/vca'
 import {
   defineProps,
   defineEmit,
-  useContext,
-  getCurrentInstance,
   ref,
   toRefs,
   computed,
   watchEffect,
   watch
 } from 'vue'
-import { useEvent, useMouse, useBEM, useCssVars } from '@comz/vca'
+import { useEvent, useMouse, useBEM, useCssVars, useExpose } from '@comz/vca'
 import { strip } from 'number-precision'
 import { number, bool } from 'vue-types'
 import { useElementRect, getPointValue } from './utils'
 import { isServer } from '../utils/isServer'
-
-const { expose } = useContext()
 
 const props = defineProps({
   modelValue: number().isRequired,
@@ -48,8 +44,6 @@ const props = defineProps({
 const emit = defineEmit<{
   (e: 'update:modelValue', p: number): void
 }>()
-
-const instance = getCurrentInstance()!
 
 const { disabled } = toRefs(props)
 
@@ -132,5 +126,5 @@ let stopUseMouse: WatchStopHandle | null = null
 
 !isServer && useEvent(window, 'mouseup', () => stopUseMouse?.())
 
-expose(instance['ctx'])
+const $el = useExpose()
 </script>

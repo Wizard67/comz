@@ -1,5 +1,5 @@
 <template>
-  <div :class="className">
+  <div ref="$el" :class="className">
     <div v-if="$slots.prepend" class="cinput__prepend">
       <slot name="prepend" />
     </div>
@@ -28,20 +28,11 @@
 </template>
 
 <script setup lang="ts">
-import {
-  defineProps,
-  defineEmit,
-  useContext,
-  getCurrentInstance,
-  computed,
-  toRefs
-} from 'vue'
-import { useBEM } from '@comz/vca'
+import { defineProps, defineEmit, computed, toRefs } from 'vue'
+import { useBEM, useExpose } from '@comz/vca'
 import { string, bool } from 'vue-types'
 
 import { XCircleFill } from '@comz/icons'
-
-const { expose } = useContext()
 
 const props = defineProps({
   modelValue: string().isRequired,
@@ -57,8 +48,6 @@ const emit = defineEmit<{
   (e: 'on-blur', p: string): void
   (e: 'on-clear'): void
 }>()
-
-const instance = getCurrentInstance()!
 
 const { readonly, disabled } = toRefs(props)
 
@@ -93,5 +82,5 @@ const clearValue = () => {
   emit('on-clear')
 }
 
-expose(instance['ctx'])
+const $el = useExpose()
 </script>

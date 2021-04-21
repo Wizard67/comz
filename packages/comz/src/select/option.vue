@@ -1,5 +1,5 @@
 <template>
-  <div :class="className" @click.stop="handleOptionSelect">
+  <div ref="$el" :class="className" @click.stop="handleOptionSelect">
     <slot />
   </div>
 </template>
@@ -9,7 +9,7 @@ import type { Ref, ComputedRef } from 'vue'
 import type { Handler } from './utils'
 
 import { defineProps, getCurrentInstance, inject, toRefs, reactive } from 'vue'
-import { useBEM } from '@comz/vca'
+import { useBEM, useExpose } from '@comz/vca'
 import { oneOfType, string, bool } from 'vue-types'
 import { useOptionState } from './utils'
 const props = defineProps({
@@ -42,4 +42,6 @@ const className = useBEM(({ b, m }) => ({
   [m('selected')]: state,
   [m('disabled')]: disabled
 }))
+
+const $el = useExpose()
 </script>

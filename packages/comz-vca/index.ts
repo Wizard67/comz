@@ -6,5 +6,6 @@ export * from './src/useCssVars'
 export * from './src/useOverlay'
 export * from './src/useMouse'
 export * from './src/useClickOutside'
+export * from './src/useExpose'
 
 export * from './src/usePopover'

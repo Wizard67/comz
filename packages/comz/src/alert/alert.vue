@@ -1,5 +1,5 @@
 <template>
-  <section v-if="show" class="calert" :style="cssVars">
+  <section v-if="show" ref="$el" class="calert" :style="cssVars">
     <div class="calert__content"><slot /></div>
     <div class="calert__extra">
       <slot name="extra" :close="handleClose">
@@ -10,20 +10,12 @@
 </template>
 
 <script setup lang="ts">
-import {
-  defineProps,
-  defineEmit,
-  useContext,
-  getCurrentInstance,
-  toRefs
-} from 'vue'
-import { useCssVars } from '@comz/vca'
+import { defineProps, defineEmit, toRefs } from 'vue'
+import { useCssVars, useExpose } from '@comz/vca'
 import { string, bool } from 'vue-types'
 
 import { Icon } from 'comz'
 import { X } from '@comz/icons'
-
-const { expose } = useContext()
 
 const props = defineProps({
   color: string(),
@@ -34,8 +26,6 @@ const emit = defineEmit<{
   (e: 'update:show', p: boolean): void
   (e: 'on-close'): void
 }>()
-
-const instance = getCurrentInstance()!
 
 const { color } = toRefs(props)
 
@@ -48,5 +38,5 @@ const handleClose = () => {
   emit('on-close')
 }
 
-expose(instance['ctx'])
+const $el = useExpose()
 </script>

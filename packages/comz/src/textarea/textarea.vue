@@ -1,5 +1,5 @@
 <template>
-  <div class="ctextarea">
+  <div ref="$el" class="ctextarea">
     <textarea
       :class="className"
       :style="cssVars"
@@ -14,18 +14,9 @@
 </template>
 
 <script setup lang="ts">
-import {
-  defineProps,
-  defineEmit,
-  useContext,
-  getCurrentInstance,
-  computed,
-  toRefs
-} from 'vue'
-import { useBEM, useCssVars } from '@comz/vca'
+import { defineProps, defineEmit, computed, toRefs } from 'vue'
+import { useBEM, useCssVars, useExpose } from '@comz/vca'
 import { string, number, bool } from 'vue-types'
-
-const { expose } = useContext()
 
 const props = defineProps({
   modelValue: string().isRequired,
@@ -39,8 +30,6 @@ const props = defineProps({
 const emit = defineEmit<{
   (e: 'update:modelValue', p: string): void
 }>()
-
-const instance = getCurrentInstance()!
 
 const { rows, disabled, width } = toRefs(props)
 
@@ -60,5 +49,5 @@ const handleInput = (event: Event) => {
   emit('update:modelValue', (event.target as HTMLTextAreaElement).value)
 }
 
-expose(instance['ctx'])
+const $el = useExpose()
 </script>

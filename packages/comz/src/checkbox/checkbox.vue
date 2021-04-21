@@ -1,5 +1,5 @@
 <template>
-  <label :class="className">
+  <label ref="$el" :class="className">
     <div class="ccheckbox__button">{{ '\u200b' }}</div>
     <input
       type="checkbox"
@@ -14,18 +14,9 @@
 </template>
 
 <script setup lang="ts">
-import {
-  defineProps,
-  defineEmit,
-  useContext,
-  getCurrentInstance,
-  computed,
-  toRefs
-} from 'vue'
-import { useBEM } from '@comz/vca'
+import { defineProps, defineEmit, computed, toRefs } from 'vue'
+import { useBEM, useExpose } from '@comz/vca'
 import { array, oneOfType, bool } from 'vue-types'
-
-const { expose } = useContext()
 
 const props = defineProps({
   modelValue: array().isRequired,
@@ -36,8 +27,6 @@ const props = defineProps({
 const emit = defineEmit<{
   (e: 'update:modelValue', p: unknown): void
 }>()
-
-const instance = getCurrentInstance()!
 
 const { disabled } = toRefs(props)
 
@@ -65,5 +54,5 @@ const handleValueChange = () => {
   emit('update:modelValue', props.modelValue)
 }
 
-expose(instance['ctx'])
+const $el = useExpose()
 </script>

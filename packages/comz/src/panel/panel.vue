@@ -1,5 +1,5 @@
 <template>
-  <section :class="className">
+  <section ref="$el" :class="className">
     <div class="cpanel__header" @click="togglePanelState">
       <div class="cpanel__icon">
         <ChevronExpand v-if="expand" />
@@ -17,20 +17,12 @@
 </template>
 
 <script setup lang="ts">
-import {
-  defineProps,
-  defineEmit,
-  useContext,
-  getCurrentInstance,
-  toRefs
-} from 'vue'
-import { useBEM } from '@comz/vca'
+import { defineProps, defineEmit, toRefs } from 'vue'
+import { useBEM, useExpose } from '@comz/vca'
 import { string, bool } from 'vue-types'
 
 import { Dash, ChevronExpand } from '@comz/icons'
 import ExpandTransition from '../transition/expand.vue'
-
-const { expose } = useContext()
 
 const props = defineProps({
   expand: bool().isRequired,
@@ -40,8 +32,6 @@ const props = defineProps({
 const emit = defineEmit<{
   (e: 'update:expand', p: boolean): void
 }>()
-
-const instance = getCurrentInstance()!
 
 const { expand } = toRefs(props)
 
@@ -54,5 +44,5 @@ const togglePanelState = () => {
   emit('update:expand', !expand.value)
 }
 
-expose(instance['ctx'])
+const $el = useExpose()
 </script>
