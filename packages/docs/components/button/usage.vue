@@ -16,11 +16,11 @@
 
         <Select v-model="type" placeholder="button type" style="width: 100%">
           <Option label="default" value="default">default</Option>
-          <Option label="primary" value="primary">primary</Option>
           <Option label="text" value="text">text</Option>
         </Select>
 
-        <Checkbox v-model="props" value="danger">danger</Checkbox>
+        <input type="color" v-model="color" />
+
         <Checkbox v-model="props" value="icon">icon</Checkbox>
         <Checkbox v-model="props" value="loading">loading</Checkbox>
         <Checkbox v-model="props" value="disabled">disabled</Checkbox>
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, computed } from 'vue'
+import { defineComponent, ref, computed, watch } from 'vue'
 
 import {
   Button,
@@ -61,6 +61,8 @@ export default defineComponent({
   },
   setup() {
     const text = ref('Button')
+    const color = ref('')
+
     const type = ref('')
 
     const props = ref([])
@@ -70,11 +72,15 @@ export default defineComponent({
       props.value
         .filter((item) => item !== 'icon')
         .map((item) => (obj[item] = true))
+
+      obj['color'] = color.value
+
       return obj
     })
 
     return {
       text,
+      color,
       type,
       props,
       atts

@@ -2,31 +2,60 @@
 @import "../mixins/function";
 
 .cbutton { @extend %button; }
-.cbutton.cbutton--default { @extend %button--default; }
-.cbutton.cbutton--primary { @extend %button--primary; }
 .cbutton.cbutton--text { @extend %button--text; }
-.cbutton.cbutton--danger { @extend %button--danger; }
 .cbutton.cbutton--loading { @extend %button--loading; }
 .cbutton.cbutton--disabled { @extend %button--disabled; }
+ 
+$props-color-r: --cbutton-color-r;
+$props-color-g: --cbutton-color-g;
+$props-color-b: --cbutton-color-b;
 
-$animation-before: unique-id();
-$animation-after: unique-id();
+$animation: unique-id();
 
 %button {
-  --is-fill: initial;
-  --is-text: initial;
+  --cbutton-color-r: initial;
+  --cbutton-color-g: initial;
+  --cbutton-color-b: initial;
 
-  --border: initial;
   --box-shadow: initial;
   --color: initial;
   --background-color: initial;
   --cursor: initial;
 
-  --hover-background-color: initial;
-  --active-background-color: initial;
+  // if type is text, the default color is rgb(52, 142, 199)
+  // else is rgb(255, 255, 255).
+  --is-text: initial;
+  --text-r: var(--is-text) 52;
+  --text-g: var(--is-text) 142;
+  --text-b: var(--is-text) 199;
+  --default-r: var(--text-r, 255);
+  --default-g: var(--text-g, 255);
+  --default-b: var(--text-b, 255);
 
-  --loading-pseudo-element-height: initial;
-  --loading-pseudo-element-background-color: initial;
+  // current color.
+  --red: var(#{$props-color-r}, var(--default-r));
+  --green: var(#{$props-color-g}, var(--default-g));
+  --blue: var(#{$props-color-b}, var(--default-b));
+  
+  // calculate the foreground-color and the background-color.
+  --r: calc(var(--red) * 0.2126);
+  --g: calc(var(--green) * 0.7152);
+  --b: calc(var(--blue) * 0.0722);
+  --sum: calc(var(--r) + var(--g) + var(--b));
+
+  --lightness: calc(var(--sum) / 255);
+  --darkness: calc((var(--lightness) - 0.8) * 100);
+
+  --custom-color: rgb(var(--red), var(--green), var(--blue));
+  --foreground: hsl(0, 0%, calc((var(--lightness) - 0.5) * -10000000%));
+  --background: rgba(
+                  calc(var(--red) - var(--darkness)),
+                  calc(var(--green) - var(--darkness)),
+                  calc(var(--blue) - var(--darkness)),
+                  0.9
+                );
+
+  --color: var(--foreground);
 
   appearance: none;
   box-sizing: border-box;
@@ -35,21 +64,21 @@ $animation-after: unique-id();
   justify-content: center;
   align-items: center;
   padding: px2em(4px) px2em(16px);
-  border: var(--border, none);
+  border: none;
   border-radius: px2em(4px);
   box-shadow: var(--box-shadow, #{$shadow-form});
-  color: var(--color, #{$text-color});
-  background-color: var(--background-color, white);
+  background-color: var(--background-color, var(--custom-color));
+  color: var(--color);
   font-size: 14px;
-  letter-spacing: px2em(1px);
   line-height: 1.2;
-  transition: box-shadow .1s ease-in-out;
+  transition: all .1s ease-in-out;
   user-select: none;
   overflow: hidden;
   cursor: var(--cursor, pointer);
+  isolation: isolate;
 
   &::before {
-    content: "\200b"
+    content: "\200b";
   }
 
   &:focus {
@@ -57,107 +86,75 @@ $animation-after: unique-id();
   }
 
   &:hover {
-    background-color: var(--hover-background-color, rgb(252, 252, 252));
+    background-color: var(--background);
   }
 
   &:active {
-    background-color: var(--active-background-color, rgb(235, 235, 235));
+    background-color: var(--background-color, var(--custom-color));
   }
-}
-
-%button--default {}
-
-%button--primary {
-  --is-fill: ;
-
-  --color: white;
-  --background-color: #{$color-primary};
-
-  --hover-background-color: rgb(32, 123, 180);
-  --active-background-color: #{$color-primary};
-
-  --loading-pseudo-element-background-color: rgb(24, 99, 170);
 }
 
 %button--text {
   --is-text: ;
 
   --box-shadow: none;
+  --color: var(--custom-color);
   --background-color: transparent;
 
-  --hover-background-color: transparent;
+  &:hover {
+    color: var(--background);
+    background-color: unset;
+  }
 
-  --loading-pseudo-element-height: #{px2em(2px)};
-  --loading-pseudo-element-background-color: #{$color-primary};
-}
-
-%button--danger {
-  --c: var(--is-fill) white;
-  --b-c: var(--is-fill) #e63946;
-  --h-b-c: var(--is-fill) #c42936;
-  --a-b-c: var(--is-fill) #e63946;
-  --l-p-e-b-c: var(--is-fill) #a31621;
-
-  --color: var(--c, #e63946);
-  --background-color: var(--b-c, transparent);
-
-  --hover-background-color: var(--h-b-c, rgb(252, 252, 252));
-  --active-background-color: var(--a-b-c, rgb(235, 235, 235));
-
-  --loading-pseudo-element-background-color: var(--l-p-e-b-c, #e63946);
+  &:active {
+    color: var(--custom-color);
+  }
 }
 
 %button--loading {
   --cursor: wait;
 
-  &::before,
+  * {
+    opacity: 0;
+  }
+
   &::after {
-    content: "\200b";
-    box-sizing: border-box;
+    content: "";
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: auto;
-    width: auto;
-    height: var(--loading-pseudo-element-height, px2em(4px));
-    background-color: var(--loading-pseudo-element-background-color, #{$color-primary});
-    will-change: right left;
-  }
-
-  &::before {
-    animation: #{$animation-before} 1.4s linear infinite forwards;
-  }
-
-  &::after {
-    animation: #{$animation-after} 1.4s linear infinite forwards;
+    display: block;
+    width: px2em(14px);
+    height: px2em(14px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    box-sizing: border-box;
+    border-top: px2em(2px) solid currentColor;
+    border-left: px2em(2px) solid transparent;
+    border-right: px2em(2px) solid transparent;
+    border-bottom: px2em(2px) solid transparent;
+    border-radius: 100%;
+    animation: #{$animation} 0.6s ease-out infinite;
   }
 }
 
 %button--disabled {
   --b-s: var(--is-text) none;
   --b-c: var(--is-text) transparent;
-  --h-b-c: var(--is-text) transparent;
-  --a-b-c: var(--is-text) transparent;
 
   --box-shadow: var(--b-s, #{$shadow-form-disabled});
   --color: #{$text-disabled};
   --background-color: var(--b-c, #{$color-inactive});
   --cursor: not-allowed;
 
-  --hover-background-color: var(--h-b-c, #{$color-inactive});
-  --active-background-color: var(--a-b-c, #{$color-inactive});
-
-  --loading-pseudo-element-background-color: rgb(189, 189, 189);
+  &:hover {
+    color: var(--color);
+    background-color: var(--b-c, #{$color-inactive});
+  }
 }
 
-@keyframes #{$animation-before} {
-  0% { left: -90%; right: 100%; }
-  60% { left: -90%; right: 100%; }
-  100% { left: 100%; right: -35%; }
-}
-
-@keyframes #{$animation-after} {
-  0% { left: -200%; right: 100%; }
-  60% { left: 107%; right: -8%; }
-  100% { left: 107%; right: -8%; }
+@keyframes #{$animation} {
+	100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
