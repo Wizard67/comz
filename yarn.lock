@@ -3200,10 +3200,10 @@ es6-weak-map@^2.0.1:
     es6-iterator "^2.0.3"
     es6-symbol "^3.1.1"
 
-esbuild@^0.9.3:
-  version "0.9.7"
-  resolved "https://registry.npm.taobao.org/esbuild/download/esbuild-0.9.7.tgz#ea0d639cbe4b88ec25fbed4d6ff00c8d788ef70b"
-  integrity sha1-6g1jnL5LiOwl++1Nb/AMjXiO9ws=
+esbuild@^0.11.20:
+  version "0.11.21"
+  resolved "https://registry.nlark.com/esbuild/download/esbuild-0.11.21.tgz?cache=0&sync_timestamp=1620981646448&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fesbuild%2Fdownload%2Fesbuild-0.11.21.tgz#9220b0185ae40947811dcaff6bfcfb572bebac08"
+  integrity sha1-kiCwGFrkCUeBHcr/a/z7VyvrrAg=
 
 escalade@^3.1.1:
   version "3.1.1"
@@ -4014,6 +4014,11 @@ hex-color-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npm.taobao.org/hex-color-regex/download/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha1-TAb8y0YC/iYCs8k9+C1+fb8aio4=
+
+hex-rgb@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.nlark.com/hex-rgb/download/hex-rgb-5.0.0.tgz#e2c9eb6a37498d66c5a350a221ed4c2c7d1a92d6"
+  integrity sha1-4snrajdJjWbFo1CiIe1MLH0aktY=
 
 homedir-polyfill@^1.0.1:
   version "1.0.3"
@@ -5631,6 +5636,11 @@ nanoid@^3.1.22:
   resolved "https://registry.npm.taobao.org/nanoid/download/nanoid-3.1.22.tgz#b35f8fb7d151990a8aebd5aa5015c03cf726f844"
   integrity sha1-s1+Pt9FRmQqK69WqUBXAPPcm+EQ=
 
+nanoid@^3.1.23:
+  version "3.1.23"
+  resolved "https://registry.nlark.com/nanoid/download/nanoid-3.1.23.tgz#f744086ce7c2bc47ee0a8472574d5c78e4183a81"
+  integrity sha1-90QIbOfCvEfuCoRyV01ceOQYOoE=
+
 nanomatch@^1.2.9:
   version "1.2.13"
   resolved "https://registry.npm.taobao.org/nanomatch/download/nanomatch-1.2.13.tgz#b87a8aa4fc0de8fe6be88895b38983ff265bd119"
@@ -6566,13 +6576,22 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.27:
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-postcss@^8.1.10, postcss@^8.2.1, postcss@^8.2.6:
+postcss@^8.1.10, postcss@^8.2.6:
   version "8.2.10"
   resolved "https://registry.npm.taobao.org/postcss/download/postcss-8.2.10.tgz#ca7a042aa8aff494b334d0ff3e9e77079f6f702b"
   integrity sha1-ynoEKqiv9JSzNND/Pp53B59vcCs=
   dependencies:
     colorette "^1.2.2"
     nanoid "^3.1.22"
+    source-map "^0.6.1"
+
+postcss@^8.2.10:
+  version "8.2.15"
+  resolved "https://registry.nlark.com/postcss/download/postcss-8.2.15.tgz#9e66ccf07292817d226fc315cbbf9bc148fbca65"
+  integrity sha1-nmbM8HKSgX0ib8MVy7+bwUj7ymU=
+  dependencies:
+    colorette "^1.2.2"
+    nanoid "^3.1.23"
     source-map "^0.6.1"
 
 preact@^10.0.0:
@@ -8217,13 +8236,13 @@ vinyl@^2.0.0:
     remove-trailing-separator "^1.0.1"
     replace-ext "^1.0.0"
 
-vite@^2.0.5, vite@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.nlark.com/vite/download/vite-2.2.1.tgz#90c481f69371f32867d86a6a623bb064b876ad3d"
-  integrity sha1-kMSB9pNx8yhn2GpqYjuwZLh2rT0=
+vite@^2.0.5:
+  version "2.3.2"
+  resolved "https://registry.nlark.com/vite/download/vite-2.3.2.tgz?cache=0&sync_timestamp=1620841448286&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvite%2Fdownload%2Fvite-2.3.2.tgz#cfac76b04d4dee1c7303b55f563b5b62d32f41fe"
+  integrity sha1-z6x2sE1N7hxzA7VfVjtbYtMvQf4=
   dependencies:
-    esbuild "^0.9.3"
-    postcss "^8.2.1"
+    esbuild "^0.11.20"
+    postcss "^8.2.10"
     resolve "^1.19.0"
     rollup "^2.38.5"
   optionalDependencies:

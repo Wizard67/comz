@@ -9,3 +9,5 @@ export * from './src/useClickOutside'
 export * from './src/useExpose'
 
 export * from './src/usePopover'
+
+export * from './src/useColor'
