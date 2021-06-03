@@ -2072,10 +2072,10 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.npm.taobao.org/boolbase/download/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-bootstrap-icons@^1.4.0:
-  version "1.4.1"
-  resolved "https://registry.npm.taobao.org/bootstrap-icons/download/bootstrap-icons-1.4.1.tgz#5071d2ea9dab0ad79ca5673a97a0074872c74e14"
-  integrity sha1-UHHS6p2rCtecpWc6l6AHSHLHThQ=
+bootstrap-icons@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.nlark.com/bootstrap-icons/download/bootstrap-icons-1.5.0.tgz#2cb19da148aa9105cb3174de2963564982d3dc55"
+  integrity sha1-LLGdoUiqkQXLMXTeKWNWSYLT3FU=
 
 brace-expansion@^1.1.7:
   version "1.1.11"
