@@ -1,50 +1,52 @@
 <template>
   <button
-    ref="$el"
     type="button"
-    :class="className"
-    :style="style"
     :disabled="disabled"
-    @click="handleClick"
+    @[clickEvent]="onClick"
+    @[cancelEvent]="onCancel"
   >
     <slot />
   </button>
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmit, toRefs, computed } from 'vue'
-import { useBEM, useCssVars, useColor, useExpose } from '@comz/vca'
-import { oneOf, bool, string } from 'vue-types'
+import { defineProps, defineEmit, toRefs, computed, onUnmounted } from 'vue'
+import { number, bool } from 'vue-types'
+import { useClick, useToggle } from '../hooks'
 
 const props = defineProps({
-  type: oneOf(['', 'default', 'text']).def(''),
-  color: string().def(''),
-  loading: bool().def(false),
-  disabled: bool().def(false)
+  throttle: number().def(0),
+  continuous: bool().def(false)
 })
 
 const emit = defineEmit<{
-  (e: 'on-click'): void
+  (event: 'on-click', playload: MouseEvent): void
 }>()
 
-const { type, color, loading, disabled } = toRefs(props)
+const { throttle, continuous: cont } = toRefs(props)
 
-const { r, g, b } = useColor(color)
+const { state, toggle } = useToggle(false, throttle)
 
-const className = useBEM(({ b, m }) => ({
-  [b('cbutton')]: true,
-  [m(type)]: computed(() => !!type?.value),
-  [m('loading')]: loading,
-  [m('disabled')]: disabled
-}))
+const disabled = computed(() => !cont.value && state.value)
+const clickEvent = computed(() => (cont.value ? 'mousedown' : 'click'))
+const cancelEvent = computed(() => (cont.value ? 'mouseup' : ''))
 
-const style = useCssVars({
-  '--cbutton-color-r': r,
-  '--cbutton-color-g': g,
-  '--cbutton-color-b': b
+let timer: NodeJS.Timeout
+
+const onClick = useClick({
+  disabled: state,
+  click(event) {
+    if (cont.value) {
+      clearInterval(timer)
+      timer = setInterval(() => emit('on-click', event), throttle.value)
+    }
+
+    toggle()
+    emit('on-click', event)
+  }
 })
 
-const handleClick = () => emit('on-click')
+const onCancel = () => clearInterval(timer)
 
-const $el = useExpose()
+onUnmounted(() => clearInterval(timer))
 </script>
